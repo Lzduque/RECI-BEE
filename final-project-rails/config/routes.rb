@@ -1,21 +1,39 @@
 Rails.application.routes.draw do
 
-  root to: 'products#index'
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  resources :products, only: [:index, :show]
-  resources :categories, only: [:show]
+  # homepage cannot be '/', need controller for it
+  root to: 'home#show'
 
-  resource :cart, only: [:show] do
-    post   :add_item
-    post   :remove_item
-  end
+  # don't need gets to these because react is rendering the forms on the same home page
+  # don't symbols because we are telling the route what to do
 
-  resources :orders, only: [:create, :show]
+  post '/login' => 'sessions#create'
 
-  namespace :admin do
-    root to: 'dashboard#show'
-    resources :products, except: [:edit, :update, :show]
-  end
+  get '/logout' => 'sessions#destroy'
+
+  post '/users' => 'users#create'
+
+end
+
+
+# !!!!!!! JUNGLE FOR EXAMPLE PURPOSES !!!!!!!
+  # root to: 'products#index'
+
+  # resources :products, only: [:index, :show]
+  # resources :categories, only: [:show]
+
+  # resource :cart, only: [:show] do
+  #   post   :add_item
+  #   post   :remove_item
+  # end
+
+  # resources :orders, only: [:create, :show]
+
+  # namespace :admin do
+  #   root to: 'dashboard#show'
+  #   resources :products, except: [:edit, :update, :show]
+  # end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -71,4 +89,3 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-end
