@@ -9,7 +9,9 @@ class UsersController < ApplicationController
     else
       render(
         status: 200,
-        json: User.where(["name LIKE ?", "#{name}"]).limit(1)
+        #User is name of model not table
+        #When searching with curl: localhost:3001/api/users?name=test
+        json: User.where(["name LIKE ?", "#{name}"]).first
       )
     end
   end
