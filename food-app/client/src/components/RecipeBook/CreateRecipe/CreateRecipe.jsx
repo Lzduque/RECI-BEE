@@ -4,6 +4,7 @@ class CreateRecipe extends Component {
   render() {
     return (
       <div>
+
       <p>Create Recipe Page</p>
       </div>
     )
