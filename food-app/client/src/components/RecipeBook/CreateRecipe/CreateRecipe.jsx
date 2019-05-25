@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Ingredients from './Ingredients.jsx';
 // import Autosuggest from 'react-autosuggest';
 // https://github.com/moroshko/react-autosuggest
 
@@ -17,48 +16,77 @@ function checkStatus(response) {
 class CreateRecipe extends Component {
   constructor(props) {
     super(props);
-    this.state = { newRecipe: { recipeTitle: "",
-                                mealType: "meal",
-                                preparation: "",
-                                recipeImg: "",
-                                servings: 0,
-                                cookingTime: 0,
-                                ingredients: []
-                              },
+    this.state = { recipeTitle: "",
+                    mealType: "meal",
+                    preparation: "",
+                    recipeImg: "",
+                    servings: 0,
+                    cookingTime: 0,
+                    ingredients: []
                   };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  updateIngredient = (id, collectionName, event) => {
+    event.persist();
+    this.setState((prevState) => ({
+      [collectionName]: prevState[collectionName].map(item => {
+        return item.id !== id ? item : Object.assign({}, item, {
+          [event.target.name]: event.target.value
+        });
+      })
+    }));
+  };
+
+  addIngredient = (collectionName) => {
+    this.setState((prevState) => ({
+      [collectionName]: prevState[collectionName].concat([{
+        id: _.uniqueId(`${collectionName}-value-`),
+        value: ''
+      }])
+    }));
+  };
+
+  removeIngredient = (id, collectionName, event) => {
+    this.setState((prevState) => {
+      let indexToRemove = prevState[collectionName].findIndex(x => x.id === id);
+      return {
+        [collectionName]: [...prevState[collectionName].slice(0, indexToRemove), ...prevState[collectionName].slice(indexToRemove + 1)]
+      }
+    });
+  };
+
+
   handleChange = (propertyName) => (event) => {
     console.log('Handling change!');
-    console.log('this.state.newRecipe: ', this.state.newRecipe);
+    console.log('this.state: ', this.state);
 
-    const { newRecipe } = this.state;
-    const recipe = {
-      ...newRecipe,
+    const { recipe } = this.state;
+    const newRecipe = {
+      ...recipe,
       [propertyName]: event.target.value
     };
-    this.setState({ newRecipe: recipe });
-    console.log('this.state.newRecipe.recipeTitle: ', this.state.newRecipe.recipeTitle);
-    console.log('this.state.newRecipe.mealType: ', this.state.newRecipe.mealType);
-    console.log('this.state.newRecipe.preparation: ', this.state.newRecipe.preparation);
-    console.log('this.state.newRecipe.recipeImg: ', this.state.newRecipe.recipeImg);
-    console.log('this.state.newRecipe.servings: ', this.state.newRecipe.servings);
-    console.log('this.state.newRecipe.cookingTime: ', this.state.newRecipe.cookingTime);
-    console.log('this.state.newRecipe.ingredients: ', this.state.newRecipe.ingredients);
+    this.setState({ recipe: newRecipe });
+    console.log('this.state.recipeTitle: ', this.state.recipeTitle);
+    console.log('this.state.mealType: ', this.state.mealType);
+    console.log('this.state.preparation: ', this.state.preparation);
+    console.log('this.state.recipeImg: ', this.state.recipeImg);
+    console.log('this.state.servings: ', this.state.servings);
+    console.log('this.state.cookingTime: ', this.state.cookingTime);
+    console.log('this.state.ingredients: ', this.state.ingredients);
   }
 
   handleSubmit(event) {
     event.preventDefault();
     let newRecipe = {
-      recipeTitle: this.state.newRecipe.recipeTitle,
-      mealType: this.state.newRecipe.mealType,
-      preparation: this.state.newRecipe.preparation,
-      recipeImg: this.state.newRecipe.recipeImg,
-      servings: this.state.newRecipe.servings,
-      cookingTime: this.state.newRecipe.cookingTime,
-      ingredients: this.state.newRecipe.ingredients
+      recipeTitle: this.state.recipeTitle,
+      mealType: this.state.mealType,
+      preparation: this.state.preparation,
+      recipeImg: this.state.recipeImg,
+      servings: this.state.servings,
+      cookingTime: this.state.cookingTime,
+      ingredients: this.state.ingredients
     }
 
     fetch(`/api/recipe/create?newRecipe=${newRecipe}`, {
@@ -68,7 +96,7 @@ class CreateRecipe extends Component {
         return response.json();
       })
 
-    alert('A recipe was created: ' + this.state.newRecipe.recipeTitle);
+    alert('A recipe was created: ' + this.state.recipeTitle);
 
   }
 
@@ -84,17 +112,36 @@ class CreateRecipe extends Component {
             <div className="container-1-box">
               <input name="recipeTitle"
                       type="text"
-                      value={this.state.newRecipe.recipeTitle}
+                      value={this.state.recipeTitle}
                       onChange={this.handleChange('recipeTitle')} />
             </div>
           </label>
           <label>
-            <Ingredients />
+
+          {
+            this.state.ingredients.map((item, i) => (
+              <div>
+                <div className="form-group" key={item.id}>
+                  <label>Ingredient {i + 1}:</label>
+                  <div className="input-group">
+                    <input className="form-control" name="value" value={item.value} onChange={this.updateIngredient.bind(this, item.id, 'ingredients')}/>
+                    <span className="input-group-btn">
+                      <button className="btn btn-danger" onClick={this.removeIngredient.bind(this, item.id, 'ingredients')}>Remove</button>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            ))
+          }
+          <div className="form-group">
+            <button type="button" className="btn btn-primary" onClick={this.addIngredient.bind(this, 'dynamicValues')}>Add Ingredient</button>
+          </div>
+
           </label>
           <label>
             <div className="container-1-box">
               <h3>Recipe Image</h3>
-              <input name="recipeImg" value={this.state.newRecipe.recipeImg} type="file" onChange={this.handleChange('recipeImg')} />
+              <input name="recipeImg" value={this.state.recipeImg} type="file" onChange={this.handleChange('recipeImg')} />
             </div>
           </label>
           <label>
@@ -103,7 +150,7 @@ class CreateRecipe extends Component {
               <p>qt.(input field that acepts only integers)</p>
               <input name="servings"
                       type="number"
-                      value={this.state.newRecipe.servings}
+                      value={this.state.servings}
                       onChange={this.handleChange('servings')} />
             </div>
           </label>
@@ -113,14 +160,14 @@ class CreateRecipe extends Component {
               <p>qt.(input field that acepts only integers) minutes (hardcoded string)</p>
               <input name="cookingTime"
                       type="number"
-                      value={this.state.newRecipe.cookingTime}
+                      value={this.state.cookingTime}
                       onChange={this.handleChange('cookingTime')} /> minutes
             </div>
           </label>
           <label>
             <div className="container-1-box">
               <h3>Meal Type (one choice only)</h3>
-              <select name="mealType" value={this.state.newRecipe.mealType} onChange={this.handleChange('mealType')}>
+              <select name="mealType" value={this.state.mealType} onChange={this.handleChange('mealType')}>
                 <option value="breakfast">Breakfast</option>
                 <option value="meal">Meal</option>
                 <option value="snack">Snack</option>
@@ -130,7 +177,7 @@ class CreateRecipe extends Component {
           <label>
             <div className="container-1-box">
               <h3>Preparation</h3>
-              <textarea name="preparation" value={this.state.newRecipe.preparation} onChange={this.handleChange('preparation')} />
+              <textarea name="preparation" value={this.state.preparation} onChange={this.handleChange('preparation')} />
             </div>
           </label>
           <div className="container-1-box">
