@@ -3,3 +3,34 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+@media(min-width: 768px) {
+
+}
+.container-1 {
+  display: flex;
+  /* align-items: flex-end; -start -center actually makes all boxes inside with different hieghts*/
+  flex-direction: column;
+  /* justify-content: space-between; divides the space inbetween the boxes, and live a spece inbetween
+  in the container you have to specify a width of 30% for example! (or flex-basis) */
+}
+
+.container-1 div {
+  border: 1px #ccc solid;
+  padding: 10px;
+}
+
+.container-1-box div {
+
+}
+
+.container-ingredients {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.ingredients-box div {
+
+}
