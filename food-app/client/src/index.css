@@ -23,3 +23,12 @@ body {
 .container-1-box div {
 
 }
+
+.container-ingredients {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.ingredients-box div {
+
+}
