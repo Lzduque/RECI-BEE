@@ -10,10 +10,48 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190524170433) do
+ActiveRecord::Schema.define(version: 20190525150101) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "books", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "recipe_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recipe_id"], name: "index_books_on_recipe_id", using: :btree
+    t.index ["user_id"], name: "index_books_on_user_id", using: :btree
+  end
+
+  create_table "ingredients", force: :cascade do |t|
+    t.string   "name"
+    t.string   "unit"
+    t.string   "food_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "quantities", force: :cascade do |t|
+    t.integer  "ingredient_id"
+    t.integer  "recipe_id"
+    t.decimal  "quantity"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["ingredient_id"], name: "index_quantities_on_ingredient_id", using: :btree
+    t.index ["recipe_id"], name: "index_quantities_on_recipe_id", using: :btree
+  end
+
+  create_table "recipes", force: :cascade do |t|
+    t.string   "name"
+    t.string   "image"
+    t.integer  "servings"
+    t.integer  "time"
+    t.text     "preparation"
+    t.string   "meal_type"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
@@ -21,4 +59,8 @@ ActiveRecord::Schema.define(version: 20190524170433) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "books", "recipes"
+  add_foreign_key "books", "users"
+  add_foreign_key "quantities", "ingredients"
+  add_foreign_key "quantities", "recipes"
 end
