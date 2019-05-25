@@ -8,6 +8,12 @@ class CreateRecipe extends Component {
                     preparation: "",
                     recipeImg: ""
     };
+    // this.state = { newRecipe: { recipeTitle: "",
+    //                             mealType: "meal",
+    //                             preparation: "",
+    //                             recipeImg: ""
+    //                           }
+    //               };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -22,28 +28,41 @@ class CreateRecipe extends Component {
     console.log('this.state.recipeImg: ', this.state.recipeImg)
   }
 
-  // handleSubmit(event) {
-  //   event.preventDefault();
-  //   alert('A recipe was created: ' + this.state.recipeTitle);
+  // handleChange(propertyName, event) {
+  //   const newRecipe = this.state.newRecipe;
+  //   newRecipe[propertyName] = event.target.value;
+  //   this.setState({ newRecipe: newRecipe });
+  // },
 
-  //   const search = ([recipeTitle, mealType], callback) => {
-  //     return fetch(`/api/recipe/create?recipeTitle=${recipeTitle}?mealType=${mealType}`, {
-  //         accept: 'application/json',
-  //       }).then(checkStatus)
-  //       .then( (response) => {
-  //         return response.json();
-  //       })
-  //       .then(callback)
+  handleSubmit(event) {
+    event.preventDefault();
+    let newRecipe = {
+      recipeTitle: this.state.newRecipe.recipeTitle,
+      mealType: this.state.newRecipe.mealType,
+      preparation: this.state.newRecipe.preparation,
+      recipeImg: this.state.newRecipe.recipeImg
+    }
 
-  //     search(this.state.name, (user) => {
-  //       console.log(user);
-  //       this.setState({
-  //         user
-  //       });
-  //     });
+    fetch(`/api/recipe/create?newRecipe=${newRecipe}`, {
+        accept: 'application/json',
+      }).then(checkStatus)
+      .then( (response) => {
+        return response.json();
+      })
 
-  //   };
-  // }
+    alert('A recipe was created: ' + this.state.recipeTitle);
+
+    // const search = (newRecipe, callback) => {
+    //   return fetch(`/api/recipe/create?newRecipe=${newRecipe}`, {
+    //       accept: 'application/json',
+    //     }).then(checkStatus)
+    //     .then( (response) => {
+    //       return response.json();
+    //     })
+    //     .then(callback)
+    // };
+
+  }
 
 
   render() {
