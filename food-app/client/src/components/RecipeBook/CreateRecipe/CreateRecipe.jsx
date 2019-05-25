@@ -42,7 +42,7 @@ class CreateRecipe extends Component {
   addIngredient = (collectionName) => {
     this.setState((prevState) => ({
       [collectionName]: prevState[collectionName].concat([{
-        id: _.uniqueId(`${collectionName}-value-`),
+        id: `${collectionName}-${this.state.ingredients.length}`,
         value: ''
       }])
     }));
