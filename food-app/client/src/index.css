@@ -28,7 +28,9 @@ body {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: space-between;
 }
+
 .ingredients-box div {
 
 }
