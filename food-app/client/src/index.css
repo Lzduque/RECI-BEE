@@ -58,3 +58,14 @@ body {
 .center {
   padding: 5.5rem;
 }
+
+.slick-carousel {
+  width: auto;
+  margin: 60px 50px 50px;
+}
+
+.slick-slide {
+  background: blue;
+  color: white;
+  padding: 40px 0;
+}
