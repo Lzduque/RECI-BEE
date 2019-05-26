@@ -34,3 +34,7 @@ body {
 .ingredients-box div {
 
 }
+
+h3 {
+  display: block;
+}

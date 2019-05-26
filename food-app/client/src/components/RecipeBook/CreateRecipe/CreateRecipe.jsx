@@ -124,6 +124,7 @@ class CreateRecipe extends Component {
         <form>
           <label>
             <div className="container-1-box">
+            <h3>Recipe Title</h3>
               <input name="recipeTitle"
                       value={this.state.recipeTitle}
                       type="text"
@@ -132,6 +133,8 @@ class CreateRecipe extends Component {
           </label>
           <label>
             <div className="container-ingredients">
+              <h3>Ingredients</h3>
+              <div className="container-ingredients">
               {
                 this.state.ingredients.map((item, i) => (
                   <div className="ingredients-box" key={item.id} >
@@ -139,19 +142,22 @@ class CreateRecipe extends Component {
                             value={item.ingridentName}
                             onChange={this.updateIngredient.bind(this, item.id, 'ingredients')}>
                       { options.forEach((data) => { return <option key={data.id} value={data.name}>{data.name}</option> }) }
+                      <option key={1} value="cauliflower">cauliflower</option>
+                      <option key={2} value="vegetable oil">vegetable oil</option>
                     </select>
                     <input className="form-control"
                             name="ingredientQt"
                             value={item.ingredientQt}
                             type="number"
                             onChange={this.updateIngredient.bind(this, item.id, 'ingredients')}/>
-                    type of unit
+                    type of unit - search for ingredient in options with the same id and return data.unit
                     <span>
                       <button className="btn btn-danger" onClick={this.removeIngredient.bind(this, item.id, 'ingredients')}>Remove</button>
                     </span>
                   </div>
                 ))
               }
+              </div>
               <div className="ingredients-box">
                 <button type="button" className="btn btn-primary" onClick={this.addIngredient.bind(this, 'ingredients')}>Add Ingredient</button>
               </div>
@@ -169,17 +175,15 @@ class CreateRecipe extends Component {
           <label>
             <div className="container-1-box">
               <h3>Servings per Recipe</h3>
-              <p>qt.(input field that acepts only integers)</p>
               <input name="servings"
                       value={this.state.servings}
                       type="number"
-                      onChange={this.handleChange} />
+                      onChange={this.handleChange} /> servings
             </div>
           </label>
           <label>
             <div className="container-1-box">
               <h3>Cooking Time</h3>
-              <p>qt.(input field that acepts only integers) minutes (hardcoded string)</p>
               <input name="cookingTime"
                       value={this.state.cookingTime}
                       type="number"
@@ -188,7 +192,7 @@ class CreateRecipe extends Component {
           </label>
           <label>
             <div className="container-1-box">
-              <h3>Meal Type (one choice only)</h3>
+              <h3>Meal Type</h3>
               <select name="mealType"
                       value={this.state.mealType}
                       onChange={this.handleChange}>
