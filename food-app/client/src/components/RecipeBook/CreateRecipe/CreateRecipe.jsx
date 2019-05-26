@@ -116,8 +116,17 @@ class CreateRecipe extends Component {
               {
                 this.state.ingredients.map((item, i) => (
                   <div className="ingredients-box" key={item.id} >
-                    <input className="form-control" name="ingridentName" value={item.ingridentName} onChange={this.updateIngredient.bind(this, item.id, 'ingredients')}/>
-                    <input className="form-control" name="ingredientQt" value={item.ingredientQt} onChange={this.updateIngredient.bind(this, item.id, 'ingredients')}/>
+                    <input className="form-control"
+                            name="ingridentName"
+                            value={item.ingridentName}
+                            type="text"
+                            onChange={this.updateIngredient.bind(this, item.id, 'ingredients')}/>
+                    <input className="form-control"
+                            name="ingredientQt"
+                            value={item.ingredientQt}
+                            type="number"
+                            onChange={this.updateIngredient.bind(this, item.id, 'ingredients')}/>
+                    type of unit
                     <span>
                       <button className="btn btn-danger" onClick={this.removeIngredient.bind(this, item.id, 'ingredients')}>Remove</button>
                     </span>
@@ -132,7 +141,10 @@ class CreateRecipe extends Component {
           <label>
             <div className="container-1-box">
               <h3>Recipe Image</h3>
-              <input name="recipeImg" value={this.state.recipeImg} type="file" onChange={this.handleChange} />
+              <input name="recipeImg"
+                      value={this.state.recipeImg}
+                      type="file"
+                      onChange={this.handleChange} />
             </div>
           </label>
           <label>
@@ -170,7 +182,7 @@ class CreateRecipe extends Component {
           <label>
             <div className="container-1-box">
               <h3>Preparation</h3>
-              <textarea name="preparation" value={this.state.preparation} onChange={this.handleChange} />
+              <textarea name="preparation" type="text" value={this.state.preparation} onChange={this.handleChange} />
             </div>
           </label>
           <div className="container-1-box">
