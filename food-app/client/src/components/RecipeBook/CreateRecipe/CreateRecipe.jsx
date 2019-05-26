@@ -22,11 +22,46 @@ class CreateRecipe extends Component {
                     recipeImg: "",
                     servings: 0,
                     cookingTime: 0,
-                    ingredients: []
+                    ingredients: [],
+                    options: ""
                   };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    // this.ingredientsOp = this.ingredientsOp.bind(this);
   }
+
+  componentDidMount() {
+
+    fetch('/api/ingredients')
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error('Something went wrong ...');
+        }
+      })
+      .then(options => this.setState({ options }))
+      .catch(error => this.setState({ error }));
+  }
+
+
+  // ingredientsOp = (ingredients, callback) => {
+  //   return fetch(`/api/${ingredients}`, {
+  //     accept: 'application/json',
+  //   }).then(checkStatus)
+  //   .then( (response) => {
+  //     return response.json();
+  //   })
+  //   .then(callback)
+  // };
+
+  // ingredientsOp(ingredients, (options) => {
+  //   console.log(options);
+  //   this.setState({
+  //     options
+  //   });
+  // });
+
 
   updateIngredient = (id, collectionName, event) => {
     event.persist();
@@ -119,6 +154,9 @@ class CreateRecipe extends Component {
                     <select name="ingridentName"
                             value={item.ingridentName}
                             onChange={this.updateIngredient.bind(this, item.id, 'ingredients')}>
+                      { this.state.options.map((data, index) => {
+                        <option key={index} value={data}>{data}</option>
+                      })}
                       <option value="breakfast">Breakfast</option>
                       <option value="meal">Meal</option>
                       <option value="snack">Snack</option>
