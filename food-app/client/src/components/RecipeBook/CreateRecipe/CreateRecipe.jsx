@@ -41,26 +41,9 @@ class CreateRecipe extends Component {
         }
       })
       .then(options => this.setState({ options }))
-      .catch(error => this.setState({ error }));
+      .catch(error => this.setState({ error }))
+
   }
-
-
-  // ingredientsOp = (ingredients, callback) => {
-  //   return fetch(`/api/${ingredients}`, {
-  //     accept: 'application/json',
-  //   }).then(checkStatus)
-  //   .then( (response) => {
-  //     return response.json();
-  //   })
-  //   .then(callback)
-  // };
-
-  // ingredientsOp(ingredients, (options) => {
-  //   console.log(options);
-  //   this.setState({
-  //     options
-  //   });
-  // });
 
 
   updateIngredient = (id, collectionName, event) => {
@@ -131,6 +114,7 @@ class CreateRecipe extends Component {
   }
 
   render() {
+    let options = this.state.options;
     return (
       <div className="create-recipe container-1">
         <div className="container-1-box">
@@ -154,12 +138,7 @@ class CreateRecipe extends Component {
                     <select name="ingridentName"
                             value={item.ingridentName}
                             onChange={this.updateIngredient.bind(this, item.id, 'ingredients')}>
-                      { this.state.options.map((data, index) => {
-                        <option key={index} value={data}>{data}</option>
-                      })}
-                      <option value="breakfast">Breakfast</option>
-                      <option value="meal">Meal</option>
-                      <option value="snack">Snack</option>
+                      { options.forEach((data) => { return <option key={data.id} value={data.name}>{data.name}</option> }) }
                     </select>
                     <input className="form-control"
                             name="ingredientQt"
