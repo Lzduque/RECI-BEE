@@ -35,14 +35,10 @@ body {
 
 } */
 
-.swipeContainer {
+.carouselContainer {
+  display: flex;
+  justify-content: center;
   padding: 1em;
-}
-
-.swipe {
-  display: inline-block;
-  border: 2px solid gray;
-  padding: 5px;
 }
 
 .hollow {
@@ -60,5 +56,5 @@ body {
 }
 
 .center {
-  padding: 2em;
+  padding: 5.5rem;
 }

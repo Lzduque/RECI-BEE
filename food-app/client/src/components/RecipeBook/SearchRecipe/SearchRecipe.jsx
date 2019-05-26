@@ -22,14 +22,14 @@ const buttonStyles = {
 
 class SearchRecipe extends Component {
 
-  constructor(props, context) {
-    super(props, context);
+  constructor(props) {
+    super(props);
     this.state = { imageIdx: 0 };
   }
 
   onClick(direction) {
     if (direction === CENTER) {
-      return alert("GO TO VIEW")
+      return alert("GO TO VIEW RECIPE")
     }
     const change = direction === RIGHT ? RIGHT : LEFT;
     const adjustedIdx = this.state.imageIdx + Number(change);
@@ -47,13 +47,20 @@ class SearchRecipe extends Component {
   render() {
     const { imageIdx = 0 } = this.state;
     const imageStyles = {
+      order: 3,
+      flexDirection: 'column',
       width: IMG_WIDTH,
       height: IMG_HEIGHT,
       backgroundImage: `url(${IMAGES[imageIdx]})`
     };
+    const searchStyle = {
+      display: 'flex',
+      flexDirection: 'column'
+    };
     return (
-      <div className="swipeContainer">
-        <div>Image: {imageIdx + 1}</div>
+      <div style={searchStyle}>
+        <font align="center" size="3" color="green"><h1>Search Results</h1></font>
+      <div className="carouselContainer">
         <div style={imageStyles}>
           <button
             onClick={()=>this.onClick(RIGHT)}
@@ -63,11 +70,11 @@ class SearchRecipe extends Component {
             onClick={()=>this.onClick(LEFT)}
             className="hollow float-right"
             style={buttonStyles}>⇨</button>
-            <div style={{
-              display: 'flex',
-              justifyContent:'center',
-              alignItems:'center'
-              }}>
+          <div style={{
+            order: 4,
+            justifyContent:'center',
+            alignItems:'center'
+            }}>
             <button
               onClick={()=>this.onClick(CENTER)}
               className="hollow center"
@@ -75,6 +82,9 @@ class SearchRecipe extends Component {
             </div>
           </div>
         </div>
+        <font align="center" size="1">Recipe: {imageIdx + 1}</font>
+        <font align="center" size="3" color="green"><h1>YOUR SAVED RECIPES</h1></font>
+      </div>
     )
   }
 };
