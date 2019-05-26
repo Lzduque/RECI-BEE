@@ -1,6 +1,5 @@
 class IngredientsController < ApplicationController
 
-<<<<<<< HEAD
   def index
 
     render(
@@ -10,6 +9,4 @@ class IngredientsController < ApplicationController
       json: Ingredient.all
     )
   end
-=======
->>>>>>> origin/master
 end
