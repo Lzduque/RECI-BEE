@@ -19,9 +19,6 @@ class RecipeBook extends Component {
             <Link to="/recipe/create">Create Recipe</Link>
           </li>
           <li>
-            <Link to="/recipe/view">View Recipe</Link>
-          </li>
-          <li>
             <Link to="/recipe/saved">Saved Recipe</Link>
           </li>
           <li>
