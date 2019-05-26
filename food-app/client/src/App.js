@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+// import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 // import logo from './logo.svg';
 import Routes from './routes.js';
 import './App.css';
@@ -11,16 +11,16 @@ import './App.css';
 //     }).then(checkStatus)
 //     .then(parseJSON);
 // }
-function checkStatus(response) {
-  if (response.status >= 200 && response.status < 300) {
-    return response;
-  }
-  const error = new Error(`HTTP Error ${response.statusText}`);
-  error.status = response.statusText;
-  error.response = response;
-  console.log(error); // eslint-disable-line no-console
-  throw error;
-}
+// function checkStatus(response) {
+//   if (response.status >= 200 && response.status < 300) {
+//     return response;
+//   }
+//   const error = new Error(`HTTP Error ${response.statusText}`);
+//   error.status = response.statusText;
+//   error.response = response;
+//   console.log(error); // eslint-disable-line no-console
+//   throw error;
+// }
 
 class App extends Component {
   // constructor(props) {

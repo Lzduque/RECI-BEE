@@ -10,13 +10,13 @@ class Routes extends Component {
   //   cookies: instanceOf(Cookies).isRequired
   // }
 
-  constructor (props) {
-    super(props);
+  // constructor (props) {
+  //   super(props);
     // const { cookies } = props;
     // this.state = {
     //   id: cookies.get('id') || '0'
     // }
-  }
+  // }
 
   // componentDidMount() {
   //   if (this.state.id === '0') {
