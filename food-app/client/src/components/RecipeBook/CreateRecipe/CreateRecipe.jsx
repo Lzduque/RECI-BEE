@@ -116,8 +116,8 @@ class CreateRecipe extends Component {
               {
                 this.state.ingredients.map((item, i) => (
                   <div className="ingredients-box" key={item.id} >
-                    <input className="form-control" name={item.ingridentName} onChange={this.updateIngredient.bind(this, item.id, 'ingredients')}/>
-                    <input className="form-control" name={item.ingredientQt} onChange={this.updateIngredient.bind(this, item.id, 'ingredients')}/>
+                    <input className="form-control" name="ingridentName" value={item.ingridentName} onChange={this.updateIngredient.bind(this, item.id, 'ingredients')}/>
+                    <input className="form-control" name="ingredientQt" value={item.ingredientQt} onChange={this.updateIngredient.bind(this, item.id, 'ingredients')}/>
                     <span>
                       <button className="btn btn-danger" onClick={this.removeIngredient.bind(this, item.id, 'ingredients')}>Remove</button>
                     </span>
