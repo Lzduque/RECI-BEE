@@ -116,11 +116,13 @@ class CreateRecipe extends Component {
               {
                 this.state.ingredients.map((item, i) => (
                   <div className="ingredients-box" key={item.id} >
-                    <input className="form-control"
-                            name="ingridentName"
+                    <select name="ingridentName"
                             value={item.ingridentName}
-                            type="text"
-                            onChange={this.updateIngredient.bind(this, item.id, 'ingredients')}/>
+                            onChange={this.updateIngredient.bind(this, item.id, 'ingredients')}>
+                      <option value="breakfast">Breakfast</option>
+                      <option value="meal">Meal</option>
+                      <option value="snack">Snack</option>
+                    </select>
                     <input className="form-control"
                             name="ingredientQt"
                             value={item.ingredientQt}
