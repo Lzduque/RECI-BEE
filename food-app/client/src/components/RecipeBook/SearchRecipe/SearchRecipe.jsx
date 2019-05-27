@@ -149,8 +149,8 @@ class SearchRecipe extends Component {
         <h1 style={{ 'textAlign': 'center' }}>
           Recipe Search
         </h1>
-        <CardContainer cards={ cardsData }/>
-        { cardsData.state ? <ViewRecipe/> : null }
+        <CardContainer cards={ cardsData } image={ cardsData.imgUrl }/>
+        { !cardsData.state ? <ViewRecipe/> : null }
       </div>
     )
   }

@@ -1,6 +1,21 @@
 import React, { Component } from 'react';
+import SavedRecipe from '../SavedRecipe/SavedRecipe';
 
 class ViewRecipe extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = { saved: false };
+    this.saveRecipe = this.saveRecipe.bind(this)
+  }
+
+  saveRecipe() {
+    this.setState(function(prevState) {
+      return { saved: !prevState.saved };
+    });
+    console.log(this.state.saved)
+  }
+
   render() {
     return (
       <div className='popup' style={{
@@ -24,11 +39,11 @@ class ViewRecipe extends Component {
           background: 'white'
         }}>
           <p>View Recipe Page</p>
-          <h1 style={{
-            margin: '0',
-            padding: '0'
-          }}>{this.props.text}</h1>
+          <h1>{this.props.text}</h1>
+          <img src={this.props.image} width={200} height={200}/>
           <button onClick={this.props.closePopup}>CLOSE</button>
+          <button onClick={ this.saveRecipe }>
+          { !this.state.saved ? `♥` : `♡` } </button>
         </div>
       </div>
     )
