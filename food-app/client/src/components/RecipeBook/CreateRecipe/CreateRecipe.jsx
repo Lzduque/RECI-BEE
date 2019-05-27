@@ -104,7 +104,7 @@ class CreateRecipe extends Component {
     console.log('newRecipe: ',newRecipe);
 
     const createRecipe = (userid, data) => {
-      return fetch(`/api/user/${userid}/recipe/create?data=${data}`, {
+      return fetch(`/api/user/${userid}/recipe/create?data=${data}?userId=${userid}`, {
           method: 'PUT',
           body: JSON.stringify(data),
           headers: {
@@ -120,7 +120,6 @@ class CreateRecipe extends Component {
   }
 
   render() {
-    let options = this.state.options;
     return (
       <div className="create-recipe container-1">
         <div className="container-1-box page-title">
@@ -146,9 +145,9 @@ class CreateRecipe extends Component {
                     <select name="ingridentName"
                             value={item.ingridentName}
                             onChange={this.updateIngredient.bind(this, item.id, 'ingredients')}>
-                      { options.forEach((data) => { return <option key={data.id} value={data.name}>{data.name}</option> }) }
-                      <option key={1} value="cauliflower">cauliflower</option>
-                      <option key={2} value="vegetable oil">vegetable oil</option>
+                      { this.state.options.map((data) => <option key={data.id} value={data.name}>{data.name}</option>)
+                      }
+
                     </select>
                     <input className="form-control"
                             name="ingredientQt"

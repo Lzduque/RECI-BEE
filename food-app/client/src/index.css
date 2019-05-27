@@ -4,6 +4,8 @@
   margin: 0;
   padding: 0;
   font-family: 'ABeeZee', sans-serif;
+  --background: rgb(231, 231, 231);
+  background-color: var(--background);
   --blue: rgb(96, 215, 255);
   --gold-yellow: goldenrod;
   --dark-yellow: rgb(180, 136, 22);
