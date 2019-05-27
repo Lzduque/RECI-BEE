@@ -28,12 +28,11 @@ const Card = (props) => (
 );
 
 
-// togglePopup = () => {
-//     card.state ? null : RecipeView
-//       showPopup: !this.state.showPopup
-//     });
-//     console.log(this.state.showPopup)
-//   }
+const onClickCard = ( evt ) => {
+  debugger
+  console.log(evt)
+}
+
 
 const CardContainer = (props) => (
 
@@ -49,7 +48,7 @@ const CardContainer = (props) => (
   }}>
     {
       props.cards.map((card) => (
-        <button key={ card.id} onClick={() => card.state === false }><Card
+        <button key={ card.id} onClick={ onClickCard }><Card
           key={ card.id }
           title={ card.title }
           content={ card.content }
@@ -150,7 +149,7 @@ class SearchRecipe extends Component {
           Recipe Search
         </h1>
         <CardContainer cards={ cardsData } image={ cardsData.imgUrl }/>
-        { !cardsData.state ? <ViewRecipe/> : null }
+        { cardsData.state ? <ViewRecipe/> : null }
       </div>
     )
   }
