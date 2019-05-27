@@ -34,7 +34,7 @@ class Routes extends Component {
       <div>
         <div className="nav-bar">
           <div className="app-name">
-            <h1>Recipe-bee</h1><img src="../../food-app/docs/free-icon_bee-icon-png-60.png" alt="Bee" height="42" width="42" />
+            <h1>Recipe-bee</h1><img src="https://github.com/Lzduque/final-project/blob/feature/create-recipe/food-app/docs/free-icon_bee-icon-png-60.png?raw=true" alt="Bee" height="42" width="42" />
           </div>
           <ul className="nav-links-container">
             <Link className="nav-link" to="/">Welcome</Link>

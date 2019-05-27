@@ -48,6 +48,18 @@ hr {
   background-color: var(--dark-yellow);
 }
 
+div.app-name{
+  display: flexbox;
+}
+
+div.app-name img {
+  display: flex;
+}
+
+div.app-name h1 {
+  display: flex;
+}
+
 .page-title {
   background-color: var(--blue);
 }
