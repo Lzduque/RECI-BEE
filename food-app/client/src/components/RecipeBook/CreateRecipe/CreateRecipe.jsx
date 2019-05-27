@@ -81,7 +81,7 @@ class CreateRecipe extends Component {
     const name = event.target.name;
     console.log('Handling change!');
     console.log('this.state: ', this.state);
-    console.log('event.target.value: ',event.target.value);
+    console.log('event.target.value: ', event.target.value);
     console.log('event.target.name', event.target.name);
 
     this.setState({
@@ -92,7 +92,7 @@ class CreateRecipe extends Component {
 
   handleSubmit = (event) => {
     alert('Submitted 1: ' + this.state.recipeTitle);
-    debugger
+    // debugger
     event.preventDefault();
     let newRecipe = {
       name: this.state.recipeTitle,
@@ -173,8 +173,10 @@ class CreateRecipe extends Component {
               <h3>Recipe Image</h3>
               <input name="recipeImg"
                       value={this.state.recipeImg}
-                      type="file"
-                      onChange={this.handleChange} />
+                      onChange={this.handleChange}
+                      type="url"
+                      placeholder="https://example.com"
+                      pattern="https://.*" size="30" />
             </div>
           </label>
           <label>
