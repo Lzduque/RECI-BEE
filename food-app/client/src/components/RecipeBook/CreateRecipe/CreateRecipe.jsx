@@ -2,16 +2,16 @@ import React, { Component } from 'react';
 // import Autosuggest from 'react-autosuggest';
 // https://github.com/moroshko/react-autosuggest
 
-function checkStatus(response) {
-  if (response.status >= 200 && response.status < 300) {
-    return response;
-  }
-  const error = new Error(`HTTP Error ${response.statusText}`);
-  error.status = response.statusText;
-  error.response = response;
-  console.log(error); // eslint-disable-line no-console
-  throw error;
-}
+// function checkStatus(response) {
+//   if (response.status >= 200 && response.status < 300) {
+//     return response;
+//   }
+//   const error = new Error(`HTTP Error ${response.statusText}`);
+//   error.status = response.statusText;
+//   error.response = response;
+//   console.log(error); // eslint-disable-line no-console
+//   throw error;
+// }
 
 class CreateRecipe extends Component {
   constructor(props) {
@@ -90,7 +90,7 @@ class CreateRecipe extends Component {
     console.log('new this.state: ', this.state);
   }
 
-  handleSubmit(event) {
+  handleSubmit = (event) => {
     event.preventDefault();
     let newRecipe = {
       recipeTitle: this.state.recipeTitle,
@@ -101,16 +101,22 @@ class CreateRecipe extends Component {
       cookingTime: this.state.cookingTime,
       ingredients: this.state.ingredients
     }
+    console.log('newRecipe: ',newRecipe);
 
-    fetch(`/api/recipe/create?newRecipe=${newRecipe}`, {
-        accept: 'application/json',
-      }).then(checkStatus)
-      .then( (response) => {
-        return response.json();
-      })
+    const createRecipe = (userid, data) => {
+      return fetch(`/api/user/${userid}/recipe/create?data=${data}`, {
+          method: 'PUT',
+          body: JSON.stringify(data),
+          headers: {
+              'Content-Type': 'application/json'
+          }
+      }).then(response => {
+          return response;
+      }).catch(error => error);
+    };
 
+    createRecipe(1, newRecipe);
     alert('A recipe was created: ' + this.state.recipeTitle);
-
   }
 
   render() {
@@ -120,7 +126,6 @@ class CreateRecipe extends Component {
         <div className="container-1-box">
           <h1>Create Recipe Page</h1>
         </div>
-        <hr />
         <form>
           <label>
             <div className="container-1-box">

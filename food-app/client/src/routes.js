@@ -32,14 +32,17 @@ class Routes extends Component {
     return (
       <Router>
       <div>
-        <ul>
-          <Link to="/">Welcome</Link>
-          <Link to="/profile">Profile</Link>
-          <Link to="/recipebook">RecipeBook</Link>
-          <Link to="/mealplan">MealPlan</Link>
-        </ul>
-
-        <hr />
+        <div className="nav-bar">
+          <div className="app-name">
+            <h1>Recipe-bee</h1>
+          </div>
+          <ul className="nav-links-container">
+            <Link className="nav-link" to="/">Welcome</Link>
+            <Link className="nav-link" to="/profile">Profile</Link>
+            <Link className="nav-link" to="/recipebook">RecipeBook</Link>
+            <Link className="nav-link" to="/mealplan">MealPlan</Link>
+          </ul>
+        </div>
 
         <Route exact path="/" component={Welcome} />
         <Route path="/profile" component={Profile} />
