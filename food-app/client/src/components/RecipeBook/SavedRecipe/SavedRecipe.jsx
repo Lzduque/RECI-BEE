@@ -5,15 +5,19 @@ import rec1 from './rec1.jpg';
 import rec2 from './rec2.jpg';
 import rec3 from './rec3.jpg';
 
-// console.log(rec1, rec2, rec3)
+  // handleSubmit(event) {
+  //   event.preventDefault();
+  //   //alert('A name was submitted: ' + this.state.name);
 
-// function getFavRecipes(id, cb) {
-//   let url = '/api/SavedRecipes/' + id;
-//   fetch(url).then(response =>
-//     {
-//     return response
-//   }).then(checkStatus).then(cb)
-// }
+  //   const search = (name, callback) => {
+  //     return fetch(`/api/users?name=${name}`, {
+  //         accept: 'application/json',
+  //       }).then(checkStatus)
+  //       .then( (response) => {
+  //         return response.json();
+  //       })
+  //       .then(callback)
+  //   };
 
 const images = [rec1, rec2, rec3];
 const imgWidth = '300px';
@@ -34,10 +38,27 @@ class SavedRecipe extends Component {
     super(props);
     this.state = {
       imageIndex: 0,
-      showPopup: false
+      showPopup: false,
+      savedRecipes: ""
     };
     this.togglePopup = this.togglePopup.bind(this)
   }
+
+  componentDidMount() {
+
+    fetch('/api/recipes/')
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error('Something went wrong ...');
+        }
+      })
+      .then(savedRecipes => this.setState({ savedRecipes }))
+      .catch(error => this.setState({ error }))
+
+    }
+
 
   togglePopup() {
     this.setState({

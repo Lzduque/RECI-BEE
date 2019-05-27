@@ -29,10 +29,8 @@ const Card = (props) => (
 
 
 const onClickCard = ( evt ) => {
-  debugger
   console.log(evt)
 }
-
 
 const CardContainer = (props) => (
 
@@ -149,7 +147,6 @@ class SearchRecipe extends Component {
           Recipe Search
         </h1>
         <CardContainer cards={ cardsData } image={ cardsData.imgUrl }/>
-        { cardsData.state ? <ViewRecipe/> : null }
       </div>
     )
   }
