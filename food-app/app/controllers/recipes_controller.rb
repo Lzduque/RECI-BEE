@@ -10,6 +10,7 @@ class RecipesController < ApplicationController
 
     if @recipe.save
       render json: @recipe, status: :created
+      alert('A recipe was created: ' + this.state.recipeTitle);
     else
       render json: @recipe.errors, status: :unprocessable_entity
     end

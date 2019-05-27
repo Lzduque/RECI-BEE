@@ -91,6 +91,8 @@ class CreateRecipe extends Component {
   }
 
   handleSubmit = (event) => {
+    alert('Submitted 1: ' + this.state.recipeTitle);
+    debugger
     event.preventDefault();
     let newRecipe = {
       name: this.state.recipeTitle,
@@ -116,9 +118,6 @@ class CreateRecipe extends Component {
     };
 
     createRecipe(newRecipe)
-
-
-    alert('A recipe was created: ' + this.state.recipeTitle);
   }
 
   render() {
@@ -127,7 +126,7 @@ class CreateRecipe extends Component {
         <div className="container-1-box page-title">
           <h1>Create Recipe Page</h1>
         </div>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <label>
             <div className="container-1-box">
             <h3>Recipe Title</h3>
