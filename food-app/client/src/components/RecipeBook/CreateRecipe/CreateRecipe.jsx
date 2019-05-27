@@ -123,7 +123,7 @@ class CreateRecipe extends Component {
     let options = this.state.options;
     return (
       <div className="create-recipe container-1">
-        <div className="container-1-box">
+        <div className="container-1-box page-title">
           <h1>Create Recipe Page</h1>
         </div>
         <form>
@@ -210,7 +210,12 @@ class CreateRecipe extends Component {
           <label>
             <div className="container-1-box">
               <h3>Preparation</h3>
-              <textarea name="preparation" type="text" value={this.state.preparation} onChange={this.handleChange} />
+              <textarea className="preparation-box"
+                        name="preparation"
+                        type="text"
+                        placeholder="1. First ...."
+                        value={this.state.preparation}
+                        onChange={this.handleChange} />
             </div>
           </label>
           <div className="container-1-box">

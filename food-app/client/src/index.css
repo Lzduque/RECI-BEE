@@ -4,6 +4,10 @@
   margin: 0;
   padding: 0;
   font-family: 'ABeeZee', sans-serif;
+  --blue: rgb(96, 215, 255);
+  --gold-yellow: goldenrod;
+  --dark-yellow: rgb(180, 136, 22);
+  --text-color-link: white;
 }
 
 @media(min-width: 768px) {
@@ -16,7 +20,7 @@ hr {
 }
 
 .nav-bar {
-  background-color: rgb(96, 215, 255);
+  background-color: var(--blue);
 }
 
 .app-name {
@@ -29,8 +33,8 @@ hr {
 }
 
 .nav-link {
-  background-color: goldenrod;
-  color: white;
+  background-color: var(--gold-yellow);
+  color: var(--text-color-link);
   padding: 0.5em 0.5em;
   margin: 0.5em 0.5em 1em 0.5em;
   text-decoration: none;
@@ -41,7 +45,11 @@ hr {
 }
 
 .nav-link:hover {
-  background-color: rgb(180, 136, 22);
+  background-color: var(--dark-yellow);
+}
+
+.page-title {
+  background-color: var(--blue);
 }
 
 .container-1 {
@@ -53,7 +61,7 @@ hr {
 }
 
 .container-1 div {
-  border: 1px #ccc solid;
+  /* border: 1px var(--dark-yellow) solid; */
   padding: 10px;
 }
 
@@ -66,4 +74,62 @@ hr {
 
 h3 {
   display: block;
+}
+
+input {
+  width: auto;
+  height: 1.5em;
+  padding: 0.5em;
+  margin: 0.5em;
+  box-sizing: border-box;
+  border: 2px solid var(--dark-yellow);
+  border-radius: 4px;
+  text-align: center;
+}
+
+input[type=text] {
+  width: auto;
+  height: 3em;
+}
+
+input[type=number] {
+  width: 5em;
+  height: 2em;
+}
+
+input[type=file] {
+  width: auto;
+  height: 4em;
+  border: hidden;
+}
+
+input[type=submit] {
+  height: 3em;
+  /* align-items: flex-end; */
+}
+
+select {
+  width: auto;
+  height: 2em;
+  padding: 0.5em;
+  margin: 0.5em;
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+
+button {
+  width: auto;
+  height: 2em;
+  padding: 0.5em;
+  margin: 0.5em;
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+
+.preparation-box {
+  width: 99%;
+  min-height: 200px;
+  box-sizing: border-box;
+  padding: 0.5em;
+  margin: 0.5em;
 }
