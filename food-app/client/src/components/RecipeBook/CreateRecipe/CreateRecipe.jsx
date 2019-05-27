@@ -61,7 +61,7 @@ class CreateRecipe extends Component {
     this.setState((prevState) => ({
       [collectionName]: prevState[collectionName].concat([{
         id: `${collectionName}-${this.state.ingredients.length}`,
-        ingridentName: '',
+        ingredientName: '',
         ingredientQt: 0
       }])
     }));
@@ -143,8 +143,8 @@ class CreateRecipe extends Component {
               {
                 this.state.ingredients.map((item, i) => (
                   <div className="ingredients-box" key={item.id} >
-                    <select name="ingridentName"
-                            value={item.ingridentName}
+                    <select name="ingredientName"
+                            value={item.ingredientName}
                             onChange={this.updateIngredient.bind(this, item.id, 'ingredients')}>
                       { this.state.options.map((data) => <option key={data.id} value={data.name}>{data.name}</option>)
                       }
