@@ -93,19 +93,19 @@ class CreateRecipe extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     let newRecipe = {
-      recipeTitle: this.state.recipeTitle,
-      mealType: this.state.mealType,
+      name: this.state.recipeTitle,
+      meal_type: this.state.mealType,
       preparation: this.state.preparation,
-      recipeImg: this.state.recipeImg,
+      image: this.state.recipeImg,
       servings: this.state.servings,
-      cookingTime: this.state.cookingTime,
+      time: this.state.cookingTime,
       ingredients: this.state.ingredients
     }
     console.log('newRecipe: ',newRecipe);
 
-    const createRecipe = (userid, data) => {
-      return fetch(`/api/user/${userid}/recipe/create?data=${data}?userId=${userid}`, {
-          method: 'PUT',
+    const createRecipe = (data) => {
+      return fetch('/api/recipes', {
+          method: 'POST',
           body: JSON.stringify(data),
           headers: {
               'Content-Type': 'application/json'
@@ -115,7 +115,9 @@ class CreateRecipe extends Component {
       }).catch(error => error);
     };
 
-    createRecipe(1, newRecipe);
+    createRecipe(newRecipe)
+
+
     alert('A recipe was created: ' + this.state.recipeTitle);
   }
 
