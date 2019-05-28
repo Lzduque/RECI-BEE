@@ -12,13 +12,38 @@ class RecipesController < ApplicationController
 
   # POST /lists
   def create
-    @recipe = Recipe.new(params_recipe)
+    # byebug
+    puts 'params_recipe'
+    puts params_recipe
+    @newRecipe = Recipe.new(params_recipe)
 
-    if @recipe.save
-      render json: @recipe
+    if @newRecipe.save
+      render json: @newRecipe
     else
-      render json: @recipe.errors
+      render json: @newRecipe.errors
     end
+
+    puts '@newRecipe'
+    pp @newRecipe
+
+    puts '@newRecipe.id'
+    puts @newRecipe.id
+
+    puts 'params ingredients'
+    puts params[:ingredients]
+
+    params[:ingredients].each do |ingredient|
+      puts 'ingredient'
+      puts ingredient
+      newQuantity = { "recipe_id" => @newRecipe.id, "ingredient_id" => ingredient[:ingredientId], "quantity" => ingredient[:ingredientQt] }
+      puts "newQuantity"
+      puts newQuantity
+
+
+    end
+
+    # @newRecipe.ingredients.create(params[:ingredients])
+
   end
 
 
@@ -30,10 +55,10 @@ class RecipesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def params_recipe
-      params.require(:recipe).permit(:name, :image, :servings, :time, :preparation, :meal_type)
+      params.permit(:name, :image, :servings, :time, :preparation, :meal_type)
     end
 
-    def params_ingredients
-      params.require(:recipe).permit(:ingredients)
-    end
+    # def params_ingredients
+    #   params.permit(:ingredients)
+    # end
 end
