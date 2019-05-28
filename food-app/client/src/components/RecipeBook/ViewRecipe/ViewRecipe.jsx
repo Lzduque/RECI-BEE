@@ -8,10 +8,8 @@ class ViewRecipe extends Component {
   }
 
   saveRecipe() {
-    this.setState(function(prevState) {
-      return { saved: !prevState.saved };
-    });
-  }
+    this.setState({ saved: !this.state.saved })
+  };
 
   render() {
     return (
@@ -40,8 +38,8 @@ class ViewRecipe extends Component {
           <img alt="" src={this.props.recipe.image} width={200} height={200}/>
           <pre>{this.props.recipe.preparation}</pre>
           <button onClick={this.props.closePopup}>CLOSE</button>
-          <button onClick={() => this.saveRecipe}>
-          { !this.state.saved ? `♥` : `♡` } </button>
+          <button onClick={() => this.saveRecipe()}>
+          { this.state.saved ? `♥` : `♡` } </button>
         </div>
       </div>
     )

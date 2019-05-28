@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ViewRecipe from '../ViewRecipe/ViewRecipe';
+
 
 const Card = (props) => (
   <div className="card">
@@ -11,11 +11,6 @@ const Card = (props) => (
     </div>
   </div>
 );
-
-
-const onClickCard = ( evt ) => {
-  console.log(evt)
-}
 
 const CardContainer = (props) => (
 
@@ -34,7 +29,26 @@ const CardContainer = (props) => (
   </div>
 );
 
+const onClickCard = (evt) => {
+  console.log(evt)
+  /**
+   * 1. load recipe details from backend
+   * 2. update state to include
+   *      'showRecipe': true
+   *      'recipeDetails': ...
+   */
+}
+
+
+
 class SearchRecipe extends Component {
+
+  // constructor(props) {
+  //   super(props);
+
+  //   this.togglePopup = this.togglePopup.bind(this);
+  // }
+
 
   render() {
 
@@ -110,12 +124,17 @@ class SearchRecipe extends Component {
       state: true
     },
   ];
+
     return (
       <div className="cards-page">
         <h1 style={{ 'textAlign': 'center' }}>
           Recipe Search
         </h1>
         <CardContainer cards={ cardsData } image={ cardsData.imgUrl }/>
+        {/* {
+          this.state.showRecipe &&
+            <RecipeComponent {...this.state.recipeDetails} />
+        } */}
       </div>
     )
   }

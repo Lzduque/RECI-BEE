@@ -1,15 +1,43 @@
 class RecipesController < ApplicationController
   # before_action :set_recipe
 
+  #renders for the user (all of their saved recipes)
   def index
     @recipe = Recipe.all
-     render json: @recipe
+     render json: @recipe.all
     # render(
     #   status: 200,
     #   #User is name of model not table
     #   #When searching with curl: localhost:3001/api/users?name=test
     #   json: Recipe.all
     # )
+  end
+
+  #query for recipe search
+
+  def search
+    if params[:q].blank?
+      render status: 400, json: { error: 'Expected parameter `q`' }
+    else
+      @search = params[:q]
+    # params["search"] # -> {q: "veggy"}
+      @recipes = Recipe.where(["meal_type LIKE ?", "#{search}"]).limit(10))
+      render json: @recipes
+    end
+  end
+
+  def show
+    # search = params[:searchValue]
+
+    # if search.blank?
+    #   render status: 400, json: { error: 'Expected parameter `search`' }
+    # else
+    #   render(
+    #     status: 200,
+    #     #User is name of model not table
+    #     #When searching with curl: localhost:3001/api/users?name=test
+    #     json: Recipe.where(["meal_type LIKE ?", "#{search}"]).limit(10))
+    # end
   end
 
   # POST /lists
