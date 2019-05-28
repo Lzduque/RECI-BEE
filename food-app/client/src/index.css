@@ -5,7 +5,9 @@
   padding: 0;
   font-family: 'ABeeZee', sans-serif;
   --background: rgb(231, 231, 231);
-  background-color: var(--background);
+  /* background-color: var(--background); */
+  /* background-image: url("https://images.pexels.com/photos/125457/pexels-photo-125457.jpeg?cs=srgb&dl=blue-sky-bright-clouds-125457.jpg&fm=jpg"); */
+  background-position: center;
   --blue: rgb(96, 215, 255);
   --gold-yellow: goldenrod;
   --dark-yellow: rgb(180, 136, 22);

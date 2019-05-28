@@ -22,7 +22,7 @@ class SavedRecipe extends Component {
       showPopup: 0,
       savedRecipes: []
     };
-    // console.log(this.state.savedRecipes);
+
     this.togglePopup = this.togglePopup.bind(this);
   }
 
@@ -45,6 +45,7 @@ class SavedRecipe extends Component {
         })
       })
       .catch(error => this.setState({ error }))
+      .then(() => console.log(this.state.savedRecipes));
   }
 
   togglePopup(id) {
