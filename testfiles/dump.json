@@ -113,154 +113,41 @@ spices = [
   "thyme"
 ]
 
-//5 each
-{
- "urls": [
- "https://www.pickuplimes.com/single-post/2019/05/15/Frozen-Yogurt-Breakfast-Bars",
- "https://www.pickuplimes.com/single-post/2019/05/08/Samosa-Sweet-Potatoes-Breakfast-Wraps-With-Tofu-Scramble",
- "https://www.pickuplimes.com/single-post/2019/04/01/Gluten-Free-Apple-Banana-Peanut-Butter-Breakfast-Cups",
- "https://www.pickuplimes.com/single-post/2018/11/20/Fabulously-Healthy-Buckwheat-Pancakes",
- "https://www.pickuplimes.com/single-post/2018/10/05/Herb-and-Garlic-Tofu-and-Cashew-Spread",
- "https://www.pickuplimes.com/single-post/2018/10/05/Nourishing-Coconut-Milk-Oatmeal",
- "https://www.pickuplimes.com/single-post/2018/10/04/Hazelnut-Granola-Breakfast-Bars",
- "https://www.pickuplimes.com/single-post/2018/04/05/Classic-Comforting-Oatmeal",
- "https://www.pickuplimes.com/single-post/2018/03/18/GRANOLA-%C2%BB-a-collection-of-all-our-recipes",
- "https://www.pickuplimes.com/single-post/2018/03/16/Baked-Buckwheat-Pancakes",
- "https://www.pickuplimes.com/single-post/2017/11/01/Chocolate-Hazelnut-Fig-Granola",
- "https://www.pickuplimes.com/single-post/2017/10/17/Peanut-Butter-Jelly-Smoothie-Bowl",
- "https://www.pickuplimes.com/single-post/2017/09/05/Quick-cooking-Millet-Breakfast-Porridge",
- "https://www.pickuplimes.com/single-post/2017/07/23/One-bowl-Blueberry-Almond-Breakfast-Cookies",
- "https://www.pickuplimes.com/single-post/2017/05/16/HEALTHIEST-EVER-GRANOLA-%C2%BB-whole-foods-oil-free",
- "https://www.pickuplimes.com/single-post/2017/05/09/Cocoa-Granola-Mixed-Berry-Breakfast-Parfait",
- "https://www.pickuplimes.com/single-post/2017/04/18/Roasted-Cashew-Coconut-Cocoa-Granola",
- "https://www.pickuplimes.com/single-post/2017/04/06/Easy-Berry-Chia-Seed-Jam",
- "https://www.pickuplimes.com/single-post/2017/03/30/BEST-EVER-VEGAN-NUTELLA-%C2%BB-a-step-by-step-guide",
- "https://www.pickuplimes.com/single-post/2017/03/23/UN-COMPLICATE-BREAKFAST-%C2%BB-with-5-minute-breakfast-ideas",
- "https://www.pickuplimes.com/single-post/2017/02/23/One-bowl-Oatmeal-Blueberry-Muffins",
- "https://www.pickuplimes.com/single-post/2017/02/22/Speedy-Creamy-Steel-Cut-Oats",
- "https://www.pickuplimes.com/single-post/2016/12/04/Mixed-Berry-Muesli-Yogurt-Parfait",
- "https://www.pickuplimes.com/single-post/2016/11/27/Crunchy-Pecan-Cranberry-Muesli",
- "https://www.pickuplimes.com/single-post/2016/10/24/Toasted-Coconut-Oat-Granola",
- "https://www.pickuplimes.com/single-post/2015/10/03/Cinnamon-Spiced-Pear-Pineapple-Smoothie-Boat",
- "https://www.pickuplimes.com/single-post/2016/10/20/Chocolate-Chia-Breakfast-Pudding",
- "https://www.pickuplimes.com/single-post/2015/08/30/Vanilla-Chia-Pudding-with-Mixed-Fruit-Nut-Muesli"
- ]
-}
 
-{
-  "pdfs": [
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
+Balsamic & Basil Bruschetta
+Yield: 8-10 servings 
+Total Time: 10 min (+ 2 hrs optional ‘melding’ time)
+7 medium tomatoes, diced
+1/4 medium red onion, finely chopped*
+1/3 cup (20-25 leaves) fresh basil, thinly sliced 2 cloves garlic, finely minced
+1 Tbsp (15 mL) balsamic vinegar
+1 tsp (5 mL) olive oil
+1/2 tsp (2.5g) garlic powder
+1/4 tsp salt
+1/4 tsp pepper
+1. Add all ingredients to a medium bowl and gently toss until combined. When adding the tomatoes, allow any juice that seeped out when cutting to remain on the cutting board; do not add this to the bowl.
+2. Although you can enjoy immediately, it’s best to cover and let sit in the fridge for at least 2 hours to allow the flavours to meld.
+3. Serve fresh on toasted bread, or even toast together in the oven for a warm bruschetta. Personally, I enjoyed it best when spreading some hummus on the toasted bread before adding the mixture on top. Garnish with fresh basil if desired. Enjoy!
 
-  ]
-}
+Chocolate Chia Breakfast Pudding
+Yield: 2 cups (1 serving) 
+Total Time: 1-2 hrs (refrigeration time for chia seeds to gel)
+INGREDIENTS: The Pudding directions
+ 3 Tbsp (45g) chia seeds
+1 cup (250mL) coconut or soy milk (or other plant-
+based milk of choice)
+5 dates, pitted, chopped roughly 1 Tbsp (8g) cocoa powder
+1 tsp (5mL) pure vanilla extract 1/8 tsp cinnamon
+INGREDIENTS: The Toppings
+1/2 medium pomegranate, seeded 1 banana, sliced
+2 dates, chopped roughly
+1-2 Tbsp (15-30g) pumpkin seeds 1-2 Tbsp (15g-30g) sunflower seeds
+1. Combine all pudding ingredients in a bowl or jar, stirring to combine. Let sit for 5-10 minutes and the stir again to prevent clumping.
+2. Cover and chill in the fridge for 1-2 hours, or overnight (yay make-ahead breakfasts!).
+3. Stir well before serving. Portion into bowl(s) and add desired toppings. Mine were bananas, pomegranate seeds, pumpkin seeds and sunflower seeds.
 
 
 
-recipe1 = {
-  name: "Frozen Yogurt Breakfast Bar",
-  picture: "https://static.wixstatic.com/media/26357d_c10bc634bd634b69850bd5f601a7dfd7~mv2_d_3747_5620_s_4_2.jpg/v1/fill/w_1260,h_1890,al_c,q_90,usm_0.66_1.00_0.01/26357d_c10bc634bd634b69850bd5f601a7dfd7~mv2_d_3747_5620_s_4_2.webp",
-  servings: 8,
-  time: 15,
-  preparation: [
-    "1. First, stew the berries until soft, set aside to cool.",
-    "2. In a food processor, blend the dates until they are smooth, scraping down the sides as needed. Add the oatmeal, ground flaxseed, almond butter, and cinnamon and combine, scraping down the sides once or twice.",
-    "3. Transfer the mix to a parchment lined baking dish and press the base into the dish.",
-    "4. Top with the yogurt and spread out evenly.",
-    "5. Dot the yogurt with the stewed berries and use a knife to swirl.",
-    "6. Place into the freezer and let freeze for 1 - 2 hours, or until the bars are solid enough to cut.",
-    "7. When removed from the freezer, cut into squares or bars of desired size.",
-    "8. Let thaw for 3 - 5 minutes before eating. Enjoy!"
-  ],
-  ingredients: [
-    "1 cup(about 12) pitted soft dates",
-    "2 cups(180 g) rolled oats(GF if preferred)",
-    "1 cup(250 ml) almond butter",
-    "1 / 4 cup(28 g) ground flaxseed",
-    "1 tsp (5 g) ground cinnamon",
-    "1.5 cups (375 ml) plant based - yogurt(we used soy)",
-    "1 cup (100 g) frozen berries or fresh fruit, stewed",
-    "1 Tbsp (15 ml) vegetable oil",
-    "1 yellow onion, diced",
-    "3 cloves garlic, crushed",
-    "1 Tbsp (15 g) curry powder",
-    "1/2 Tbsp (7.5 g) garam masala powder",
-    "1/2 Tbsp (7.5 g) turmeric powder",
-    "1 tsp (5 g) cumin powder"
-    "1 tsp (5 g) coriander powder",
-    "1 tsp (5 g) cinnamon powder",
-    "1 tsp (5 g) salt",
-    "1 can (400 g) diced tomatoes",
-    "10 cherry tomatoes, cut into halves or quarters",
-    "1 can (400 ml) coconut milk",
-    "1 can (250 g) cooked brown lentils",
-    "2 cups (60 g) fresh spinach"
-  ],
-  category_id: 1 (BREAKFAST?)
-}
 
-recipe2 = {
-  name:  "Roasted Cauliflower Lentil Curry",
-  picture:  "https://static.wixstatic.com/media/26357d_c27847b36be6429ba735bd715378bd59~mv2_d_6000_4000_s_4_2.jpg/v1/fill/w_1260,h_840,al_c,q_85,usm_0.66_1.00_0.01/26357d_c27847b36be6429ba735bd715378bd59~mv2_d_6000_4000_s_4_2.webp",
-  servings:  6,
-  time:   70,
-  preparation: [
-    "1. Preheat the oven to 400 F/ 210 C. Toss the cauliflower with the oil and spices until coated. Spread evenly on a baking tray lined with baking paper or tinfoil. Roast for 40-50 minutes, until crispy and golden, stopping to mix once halfway.",
-    "2. In a large pot on medium heat, cook the onions in the oil, until soft and slightly golden. Add splashes of water if needed to prevent burning or sticking in the pot. Once soft, add the garlic and all the spices, and stir until fragrant (about 1 minutes).",
-    "3. Add the can of tomatoes and diced tomatoes, and stir to combine everything. Allow to simmer for 5 minutes.",
-    "4. Finally, add the coconut milk, lentils, spinach, and roasted cauliflower, and mix until everything is combined and heated through, about 5 minutes. Serve with rice, and enjoy!"
-  ],
-  ingredients: [
-    "1 head of cauliflower, broken into bite-sized pieces",
-    "1 Tbsp (15 ml) vegetable oil",
-    "1 tsp (5 g) garlic powder",
-    "1 tsp (5 g) onion powder",
-    "1/2 tsp paprika powder",
-    "1/4 tsp salt",
-    "1/4 tsp black pepper"
-  ],
-  category_id: 2 (MEAL?)
-}
 
-recipe3 = {
-  name: "Garden Chickpea Dill Dip",
-  picture: "https://static.wixstatic.com/media/26357d_9ea67e5914e34c3c83dd6a79adf376ed~mv2_d_6000_4000_s_4_2.jpg/v1/fill/w_1260,h_840,al_c,q_85,usm_0.66_1.00_0.01/26357d_9ea67e5914e34c3c83dd6a79adf376ed~mv2_d_6000_4000_s_4_2.webp",
-  servings: 4,
-  time: 15,
-  preparation: [
-    "Add chickpeas to a large bowl and mash with a fork until all chickpeas are broken.",
-    "Add the remaining ingredients to the bowl and mix, mashing slightly. Chill before serving, if possible, to enhance flavours. Enjoy as-is like a salad, or with crackers and veggies, or spread onto a sandwich!"
-  ],
-  ingredients: [
-    "1 cup (200 g) cooked lentils",
-    "1 cup (240 g) cooked chickpeas",
-    "1 celery rib, finely chopped",
-    "1 small carrot, grated",
-    "1/4 red bell pepper, finely chopped",
-    "1/4 red onions, finely chopped",
-    "3 Tbsp (12 g) fresh dill, finely chopped",
-    "2  Tbsp (10 g) roasted sunflower seeds",
-    "1 pickle, finely chopped",
-    "1 tsp (5 g) capers, chopped",
-    "1/2 lemon, juiced (~15 mL)",
-    "3 Tbsp (45 g) vegan mayo (or tahini for a more earthy flavour)",
-    "1/2 tsp dijon mustard",
-    "1/4 tsp salt",
-    "Black pepper"
-  ],
-  category_id: 3 (SNACK?)
-}
 
-recipe4 = {
-  name: ,
-  picture: ,
-  servings: ,
-  time: ,
-  preparation: ,
-  ingredients: ,
-  category_id:
-}
