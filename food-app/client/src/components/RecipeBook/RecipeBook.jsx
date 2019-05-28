@@ -4,10 +4,12 @@ import CreateRecipe from './CreateRecipe/CreateRecipe.jsx';
 import ViewRecipe from './ViewRecipe/ViewRecipe.jsx';
 import SearchRecipe from './SearchRecipe/SearchRecipe.jsx';
 import SavedRecipe from './SavedRecipe/SavedRecipe.jsx';
+import { ModalLink } from 'react-router-modal';
 
 class RecipeBook extends Component {
 
   render() {
+    let state = { show: false }
     return (
       <Router>
       <div>
@@ -19,6 +21,9 @@ class RecipeBook extends Component {
             <Link to="/recipe/create">Create Recipe</Link>
           </li>
           <li>
+            <Link to="/recipe/view">View Recipe</Link>
+          </li>
+          <li>
             <Link to="/recipe/saved">Saved Recipe</Link>
           </li>
           <li>
@@ -27,7 +32,6 @@ class RecipeBook extends Component {
         </ul>
 
         <hr />
-
         <Route path="/recipe/create" component={CreateRecipe} />
         <Route path="/recipe/view" component={ViewRecipe} />
         <Route path="/recipe/saved" component={SavedRecipe} />
