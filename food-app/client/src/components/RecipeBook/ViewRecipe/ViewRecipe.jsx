@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import SavedRecipe from '../SavedRecipe/SavedRecipe';
 
 class ViewRecipe extends Component {
-
   constructor(props) {
     super(props);
     this.state = { saved: false };
@@ -13,7 +11,6 @@ class ViewRecipe extends Component {
     this.setState(function(prevState) {
       return { saved: !prevState.saved };
     });
-    console.log(this.state.saved)
   }
 
   render() {
@@ -38,13 +35,12 @@ class ViewRecipe extends Component {
           margin: 'auto',
           background: 'white'
         }}>
-          <h1>{ this.props.recipe[0].name }</h1>
-          <p>Type: {this.props.recipe[0].meal_type} Servings: {this.props.recipe[0].servings}, Time: {this.props.recipe[0].time}min</p>
-          <img src={this.props.recipe[0].image} width={200} height={200}/>
-          <pre>{this.props.recipe[0].preparation}</pre>
-          {/* <pre style={{marginTop: '1em'}}>{JSON.stringify(this.props.recipe, null, '\t')}</pre> */}
+          <h1>{ this.props.recipe.name }</h1>
+          <p>Type: {this.props.recipe.meal_type} Servings: {this.props.recipe.servings}, Time: {this.props.recipe.time}min</p>
+          <img alt="" src={this.props.recipe.image} width={200} height={200}/>
+          <pre>{this.props.recipe.preparation}</pre>
           <button onClick={this.props.closePopup}>CLOSE</button>
-          <button onClick={ this.saveRecipe }>
+          <button onClick={() => this.saveRecipe}>
           { !this.state.saved ? `♥` : `♡` } </button>
         </div>
       </div>
