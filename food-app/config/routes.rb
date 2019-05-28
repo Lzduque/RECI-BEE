@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   scope '/api' do
     resources :users
     resources :ingredients
-    resources :recipes [:index]
+    resources :recipes
     get '/recipes/search' => 'recipes#search'
 
   end
