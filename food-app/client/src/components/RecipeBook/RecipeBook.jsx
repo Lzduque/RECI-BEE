@@ -149,7 +149,7 @@ class RecipeBook extends Component {
         )}
 
         <SearchRecipe />
-        <br />
+        <br/>
         <SavedRecipe />
 
       </div>
