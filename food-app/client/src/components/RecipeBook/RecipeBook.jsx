@@ -139,6 +139,11 @@ class RecipeBook extends Component {
                   </button>
                 </div>
               </div>
+              STATE
+              <pre style={{marginTop: '1em'}}>{JSON.stringify(this.state, null, '\t')}</pre>
+              PROPS
+              <pre style={{marginTop: '1em'}}>{JSON.stringify(this.props, null, '\t')}</pre>
+
             </form>
           </div>
 
@@ -148,7 +153,7 @@ class RecipeBook extends Component {
         } />
         )}
 
-        <SearchRecipe />
+        <SearchRecipe searchQuery={this.state.checkboxes} />
         <br/>
         <SavedRecipe />
 
