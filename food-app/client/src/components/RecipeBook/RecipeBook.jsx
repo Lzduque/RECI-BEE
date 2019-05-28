@@ -42,6 +42,8 @@ class RecipeBook extends Component {
             <Link to="/recipe/search">Search Recipe</Link>
           </li>
         </ul>
+
+
       </div>
         <hr/>
         <br/>
@@ -51,8 +53,6 @@ class RecipeBook extends Component {
             <input type="checkbox" name="Checkbox"/>Meal
             <input type="checkbox" name="Checkbox"/>Snack
         </div>
-
-        <Route path="/recipe/create" component={CreateRecipe} />
 
         <hr />
         { this.state.toggleState && (
