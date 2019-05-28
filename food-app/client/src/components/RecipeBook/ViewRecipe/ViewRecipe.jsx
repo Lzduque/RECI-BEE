@@ -29,7 +29,7 @@ class ViewRecipe extends Component {
         margin: 'auto',
         backgroundColor: 'rgba(0,0,0, 0.5)'
       }}>
-        <div className='popup_inner' style={{
+        <div className='popup-inner' style={{
           position: 'fixed',
           left: '5%',
           right: '5%',
@@ -38,9 +38,11 @@ class ViewRecipe extends Component {
           margin: 'auto',
           background: 'white'
         }}>
-          <p>View Recipe Page</p>
-          <h1>{this.props.text}</h1>
-          <img src={this.props.image} width={200} height={200}/>
+          <h1>{ this.props.recipe[0].name }</h1>
+          <p>Type: {this.props.recipe[0].meal_type} Servings: {this.props.recipe[0].servings}, Time: {this.props.recipe[0].time}min</p>
+          <img src={this.props.recipe[0].image} width={200} height={200}/>
+          <pre>{this.props.recipe[0].preparation}</pre>
+          {/* <pre style={{marginTop: '1em'}}>{JSON.stringify(this.props.recipe, null, '\t')}</pre> */}
           <button onClick={this.props.closePopup}>CLOSE</button>
           <button onClick={ this.saveRecipe }>
           { !this.state.saved ? `♥` : `♡` } </button>

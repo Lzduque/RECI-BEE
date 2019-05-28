@@ -2,17 +2,6 @@ import React, { Component } from 'react';
 // import Autosuggest from 'react-autosuggest';
 // https://github.com/moroshko/react-autosuggest
 
-// function checkStatus(response) {
-//   if (response.status >= 200 && response.status < 300) {
-//     return response;
-//   }
-//   const error = new Error(`HTTP Error ${response.statusText}`);
-//   error.status = response.statusText;
-//   error.response = response;
-//   console.log(error); // eslint-disable-line no-console
-//   throw error;
-// }
-
 class CreateRecipe extends Component {
   constructor(props) {
     super(props);
@@ -32,16 +21,16 @@ class CreateRecipe extends Component {
 
   componentDidMount() {
 
-    fetch('/api/ingredients')
-      .then(response => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error('Something went wrong ...');
-        }
-      })
-      .then(options => this.setState({ options }))
-      .catch(error => this.setState({ error }))
+  fetch('/api/ingredients')
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error('Something went wrong ...');
+      }
+    })
+    .then(options => this.setState({ options }))
+    .catch(error => this.setState({ error }))
 
   }
 

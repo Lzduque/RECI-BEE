@@ -1,8 +1,10 @@
 class RecipesController < ApplicationController
-  before_action :set_recipe
+  # before_action :set_recipe
 
-  # def index
-  # end
+  def index
+    @recipe = Recipe.all
+     render json: @recipe
+  end
 
   # POST /lists
   def create
@@ -28,4 +30,4 @@ class RecipesController < ApplicationController
         params.require(:recipe).permit(:name, :image, :servings, :time, :preparation, :meal_type, :ingredients)
       end
   end
-end
+

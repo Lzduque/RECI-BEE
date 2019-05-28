@@ -2,24 +2,9 @@ import React, { Component } from 'react';
 import ViewRecipe from '../ViewRecipe/ViewRecipe';
 
 const Card = (props) => (
-  <div className="card" style={{
-    flex: '1 0 250px',
-    boxShadow: '#fff',
-    margin: '1 rem',
-    overflow: 'hidden',
-    borderRadius: '6 px',
-    cursor: 'pointer',
-    transition: 'all 250 ms ease - in -out'
-  }}>
-    <img src={ props.imgUrl } style={{
-      width: '250px',
-      height: '250px',
-      objectFit: 'center'
-    }}
-      alt={ props.alt || 'Image' } />
-    <div className="card-content" style={{
-      padding: '1rem'
-    }}>
+  <div className="card">
+    <img className="card-img" src={ props.imgUrl } alt={ props.alt || 'Image' }/>
+    <div className="card-content">
       <h2>{ props.title }</h2>
       <p>{ props.content }</p>
       <h6>{ props.state }</h6>
@@ -34,19 +19,10 @@ const onClickCard = ( evt ) => {
 
 const CardContainer = (props) => (
 
-  <div className="cards-container" style={{
-    display: 'flex',
-    borderRadius: '6 px',
-    color: 'grey',
-    background: 'white',
-    padding: '1rem',
-    boxShadow: '0 0 1 rem #000 inset',
-    overflow: 'auto',
-    position: 'relative'
-  }}>
+  <div className="cards-container">
     {
       props.cards.map((card) => (
-        <button key={ card.id} onClick={ onClickCard }><Card
+        <button className="cards-button" key={ card.id} onClick={ onClickCard }><Card
           key={ card.id }
           title={ card.title }
           content={ card.content }
@@ -135,14 +111,7 @@ class SearchRecipe extends Component {
     },
   ];
     return (
-      <div className="container-hi" style={{
-        width: '90%',
-        margin: 'auto',
-        background: 'white',
-        color: 'grey',
-        minHeight: '100%',
-        minWidth: '100%'
-      }}>
+      <div className="cards-page">
         <h1 style={{ 'textAlign': 'center' }}>
           Recipe Search
         </h1>

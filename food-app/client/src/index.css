@@ -86,48 +86,103 @@ div.app-name h1 {
   justify-content: space-between;
 }
 
-/* .ingredients-box div {
-
-} */
-
-.carouselContainer {
+.search-container {
   display: flex;
-  justify-content: center;
-  padding: 1em;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: center-fixed;
 }
 
-.hollow {
+.carousel-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+h3 {
+  display: block;
+}
+
+.slide-left {
+  order: 1;
+  height: 500px;
+  color: #eeeeee;
+  font-size: 2em;
+  position: left;
   background-color: transparent;
   border: 0;
   cursor: pointer;
 }
 
-.float-right {
-  float: right!important;
+.slide-right {
+  order: 3;
+  height: 500px;
+  color: #eeeeee;
+  font-size: 2em;
+  position: right;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
 }
 
-.float-left {
-  float: left!important;
+.slide-center {
+  height: 500px;
+  color: #eeeeee;
+  font-size: 2em;
+  position: center;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
 }
 
-.center {
-  padding: 5.5rem;
+.card {
+  flex: 1 0 250px;
+  box-shadow: #fff;
+  margin: 1 rem;
+  overflow: hidden;
+  border-radius: 6 px;
+  cursor: pointer;
+  transition: all 250 ms ease - in -out;
 }
 
-.slick-carousel {
+.card-img {
+  width: 250px;
+  height: 250px;
+  object-fit: center;
+}
+
+.card-content {
+  padding: 1rem;
+}
+
+.cards-page {
+  width: 90%;
+  margin: auto;
+  background: white;
+  color: grey;
+  min-height: 100%;
+  min-width: 100%;
+}
+
+.cards-container {
+
+  display: flex;
+  border-radius: 6 px;
+  color: grey;
+  background: white;
+  padding: 1rem;
+  box-shadow: 0 0 1 rem #000 inset;
+  overflow: auto;
+  position: relative;
+}
+
+.cards-button {
   width: auto;
-  margin: 60px 50px 50px;
+  height: auto;
+  padding: auto;
+  margin: auto;
+  box-sizing: border-box;
+  border-radius: auto;
 }
-
-.slick-slide {
-  background: blue;
-  color: white;
-  padding: 40px 0;
-}
-h3 {
-  display: block;
-}
-
 input {
   width: auto;
   height: 1.5em;
