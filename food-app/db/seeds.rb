@@ -181,19 +181,19 @@ ing24 = Ingredient.create!({
   food_type:  "spice"
 })
 
-ing24 = Ingredient.create!({
+ing25 = Ingredient.create!({
   name:       "lemon",
   unit:       "mL",
   food_type:  "fruit"
 })
 
-ing25 = Ingredient.create!({
+ing26 = Ingredient.create!({
   name:       "tahini",
   unit:       "g",
   food_type:  "sauce"
 })
 
-ing26 = Ingredient.create!({
+ing27 = Ingredient.create!({
   name:       "mustard",
   unit:       "g",
   food_type:  "sauce"
@@ -393,19 +393,19 @@ q26 = Quantity.create!({
 q27 = Quantity.create!({
   ingredient_id: ing27.id,
   recipe_id:     rec3.id,
-  quantity:
+  quantity:      2.5
 })
 
 q28 = Quantity.create!({
   ingredient_id: ing6.id,
   recipe_id:     rec3.id,
-  quantity:
+  quantity:      1.25
 })
 
 q29 = Quantity.create!({
   ingredient_id: ing7.id,
   recipe_id:     rec3.id,
-  quantity:
+  quantity:      1.25
 })
 
 # BOOKS

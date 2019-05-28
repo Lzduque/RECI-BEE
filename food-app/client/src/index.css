@@ -9,9 +9,11 @@
   /* background-image: url("https://images.pexels.com/photos/125457/pexels-photo-125457.jpeg?cs=srgb&dl=blue-sky-bright-clouds-125457.jpg&fm=jpg"); */
   background-position: center;
   --blue: rgb(96, 215, 255);
+  --light-yellow: rgb(241, 215, 147);
   --gold-yellow: goldenrod;
   --dark-yellow: rgb(180, 136, 22);
   --text-color-link: white;
+  vertical-align: middle;
 }
 
 @media(min-width: 768px) {
@@ -95,7 +97,7 @@ div.app-name h1 {
   align-content: center-fixed;
 }
 
-.carousel-container {
+.carouselContainer {
   display: flex;
   justify-content: space-between;
 }
@@ -191,13 +193,20 @@ input {
   padding: 0.5em;
   margin: 0.5em;
   box-sizing: border-box;
-  border: 2px solid var(--dark-yellow);
+  border: 2px solid var(--gold-yellow);
   border-radius: 4px;
   text-align: center;
+  font-size: 1em;
+  background-color: var(--light-yellow);
 }
 
 input[type=text] {
-  width: auto;
+  width: 30em;
+  height: 3em;
+}
+
+input[type=url] {
+  width: 30em;
   height: 3em;
 }
 
@@ -233,6 +242,7 @@ button {
   margin: 0.5em;
   box-sizing: border-box;
   border-radius: 4px;
+  font-size: 1em;
 }
 
 .preparation-box {
@@ -241,4 +251,5 @@ button {
   box-sizing: border-box;
   padding: 0.5em;
   margin: 0.5em;
+  font-size: 1em;
 }

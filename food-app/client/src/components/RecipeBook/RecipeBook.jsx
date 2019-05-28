@@ -14,6 +14,7 @@ class RecipeBook extends Component {
         <div>
         <p>Recipe Book Page</p>
         </div>
+      <div>
         <ul>
           <li>
             <Link to="/recipe/create">Create Recipe</Link>
@@ -25,8 +26,15 @@ class RecipeBook extends Component {
             <Link to="/recipe/search">Search Recipe</Link>
           </li>
         </ul>
-
-        <hr />
+      </div>
+        <hr/>
+        <br/>
+        <div>
+        <h1>Search Recipes by Category</h1>
+          <input type="checkbox" text="Breakfast"/>Breakfast
+          <input type="checkbox" name="Checkbox"/>Meal
+          <input type="checkbox" name="Checkbox"/>Snack
+        </div>
 
         <Route path="/recipe/create" component={CreateRecipe} />
         <Route path="/recipe/view" component={ViewRecipe} />

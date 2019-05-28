@@ -34,11 +34,40 @@ class CreateRecipe extends Component {
 
   }
 
+  getIngredientId = (event) => {
+    let id;
+    this.state.options.forEach((option) => {
+      if (option.name === event.target.value) {
+        return id = option.id;
+      }
+    })
+    return id;
+  }
 
   updateIngredient = (id, collectionName, event) => {
+    // console.log('item', id);
+    // console.log('collectionName', collectionName);
+    // debugger
     event.persist();
     this.setState((prevState) => ({
       [collectionName]: prevState[collectionName].map(item => {
+        // console.log('event.target', event.target)
+        return item.id !== id ? item : Object.assign({}, item, {
+          [event.target.name]: event.target.value,
+          ingredientId: this.getIngredientId(event),
+        });
+      })
+    }));
+  };
+
+  updateQuantity = (id, collectionName, event) => {
+    // console.log('item', id);
+    // console.log('collectionName', collectionName);
+    // debugger
+    event.persist();
+    this.setState((prevState) => ({
+      [collectionName]: prevState[collectionName].map(item => {
+        // console.log('event.target', event.target)
         return item.id !== id ? item : Object.assign({}, item, {
           [event.target.name]: event.target.value
         });
@@ -49,8 +78,9 @@ class CreateRecipe extends Component {
   addIngredient = (collectionName) => {
     this.setState((prevState) => ({
       [collectionName]: prevState[collectionName].concat([{
-        id: `${collectionName}-${this.state.ingredients.length}`,
-        ingridentName: '',
+        id: Math.floor(Math.random() * 100),
+        ingredientId: this.state.options[0].id,
+        ingredientName: this.state.options[0].name,
         ingredientQt: 0
       }])
     }));
@@ -70,7 +100,7 @@ class CreateRecipe extends Component {
     const name = event.target.name;
     console.log('Handling change!');
     console.log('this.state: ', this.state);
-    console.log('event.target.value: ',event.target.value);
+    console.log('event.target.value: ', event.target.value);
     console.log('event.target.name', event.target.name);
 
     this.setState({
@@ -80,8 +110,8 @@ class CreateRecipe extends Component {
   }
 
   handleSubmit = (event) => {
-    alert('Submitted 1: ' + this.state.recipeTitle);
-    debugger
+    // alert('Submitted 1: ' + this.state.recipeTitle);
+    // debugger
     event.preventDefault();
     let newRecipe = {
       name: this.state.recipeTitle,
@@ -113,7 +143,7 @@ class CreateRecipe extends Component {
     return (
       <div className="create-recipe container-1">
         <div className="container-1-box page-title">
-          <h1>Create Recipe Page</h1>
+          <h1 className="page-title">Create Recipe Page</h1>
         </div>
         <form onSubmit={this.handleSubmit}>
           <label>
@@ -122,6 +152,7 @@ class CreateRecipe extends Component {
               <input name="recipeTitle"
                       value={this.state.recipeTitle}
                       type="text"
+                      placeholder="Recipe Title"
                       onChange={this.handleChange} />
             </div>
           </label>
@@ -132,21 +163,21 @@ class CreateRecipe extends Component {
               {
                 this.state.ingredients.map((item, i) => (
                   <div className="ingredients-box" key={item.id} >
-                    <select name="ingridentName"
-                            value={item.ingridentName}
+                    <select name="ingredientName"
+                            value={item.ingredientName}
+                            ingredientid={item.ingredientid}
                             onChange={this.updateIngredient.bind(this, item.id, 'ingredients')}>
-                      { this.state.options.map((data) => <option key={data.id} value={data.name}>{data.name}</option>)
+                            {console.log('item', item)}
+                      { this.state.options.map((data) => <option key={data.id} id={data.id} ingredientid={data.id} unit={data.unit} value={data.name}>{data.name} ({data.unit})</option>)
                       }
-
                     </select>
-                    <input className="form-control"
-                            name="ingredientQt"
-                            value={item.ingredientQt}
-                            type="number"
-                            onChange={this.updateIngredient.bind(this, item.id, 'ingredients')}/>
-                    type of unit - search for ingredient in options with the same id and return data.unit
+                    qt.:<input className="form-control"
+                                name="ingredientQt"
+                                value={item.ingredientQt}
+                                type="number"
+                                onChange={this.updateQuantity.bind(this, item.id, 'ingredients')}/>
                     <span>
-                      <button className="btn btn-danger" onClick={this.removeIngredient.bind(this, item.id, 'ingredients')}>Remove</button>
+                      <button type="button" className="btn btn-danger" onClick={this.removeIngredient.bind(this, item.id, 'ingredients')}>Remove</button>
                     </span>
                   </div>
                 ))
@@ -159,11 +190,13 @@ class CreateRecipe extends Component {
           </label>
           <label>
             <div className="container-1-box">
-              <h3>Recipe Image</h3>
+              <h3>Recipe Image Url</h3>
               <input name="recipeImg"
                       value={this.state.recipeImg}
-                      type="file"
-                      onChange={this.handleChange} />
+                      onChange={this.handleChange}
+                      type="url"
+                      placeholder="https://example.com"
+                      pattern="https://.*" size="30" />
             </div>
           </label>
           <label>
