@@ -39,7 +39,8 @@ class RecipesController < ApplicationController
       puts "newQuantity"
       puts newQuantity
 
-
+      @quantity = Quantity.new(newQuantity)
+      @quantity.save
     end
 
     # @newRecipe.ingredients.create(params[:ingredients])
