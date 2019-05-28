@@ -158,7 +158,7 @@ class CreateRecipe extends Component {
             <div className="container-1-box page-title">
               <h1 className="page-title">Create Recipe Page</h1>
             </div>
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={ this.handleSubmit } >
               <label>
                 <div className="container-1-box">
                 <h3>Recipe Title</h3>
@@ -253,11 +253,15 @@ class CreateRecipe extends Component {
                             onChange={this.handleChange} />
                 </div>
               </label>
-              <div className="container-1-box">
-                <input type="submit" value="Create Recipe" />
+              <div className="container-1-box container-ingredients">
+                <div className="container-1-box container-ingredients">
+                  <input type="submit" value="Create Recipe" />
+                </div>
+                <div className="container-1-box container-ingredients">
+                  <input type="button" value="Go Back" onClick={ () => this.props.closePopup() }/>
+                </div>
               </div>
             </form>
-            <pre style={{marginTop: '1em'}}>{JSON.stringify(this.state, null, '\t')}</pre>
           </div>
         </div>
       </div>
@@ -266,3 +270,6 @@ class CreateRecipe extends Component {
 };
 
 export default CreateRecipe;
+
+// <pre style={{marginTop: '1em'}}>{JSON.stringify(this.state, null, '\t')}</pre>
+// <pre style={{marginTop: '1em'}}>{JSON.stringify(this.props, null, '\t')}</pre>

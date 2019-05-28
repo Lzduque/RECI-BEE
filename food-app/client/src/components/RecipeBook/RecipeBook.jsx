@@ -7,9 +7,21 @@ import SavedRecipe from './SavedRecipe/SavedRecipe.jsx';
 import { ModalLink } from 'react-router-modal';
 
 class RecipeBook extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      toggleState: false
+    };
+    this.togglePopup = this.togglePopup.bind(this);
+  };
+
+  togglePopup(state) {
+    this.setState({
+      toggleState: state
+    });
+  };
 
   render() {
-    let state = { show: false }
     return (
       <Router>
       <div>
@@ -18,7 +30,7 @@ class RecipeBook extends Component {
         </div>
         <ul>
           <li>
-            <Link to="/recipe/create">Create Recipe</Link>
+            <Link to="/recipe/create" onClick={ () => this.togglePopup(true) }>Create Recipe</Link>
           </li>
           <li>
             <Link to="/recipe/view">View Recipe</Link>
@@ -32,7 +44,11 @@ class RecipeBook extends Component {
         </ul>
 
         <hr />
-        <Route path="/recipe/create" component={CreateRecipe} />
+        { this.state.toggleState && (
+        <Route path="/recipe/create" component={
+          () => <CreateRecipe closePopup={ () => this.togglePopup(false) } />
+        } />
+        )}
         <Route path="/recipe/view" component={ViewRecipe} />
         <Route path="/recipe/saved" component={SavedRecipe} />
         <Route path="/recipe/search" component={SearchRecipe} />

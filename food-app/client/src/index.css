@@ -38,12 +38,14 @@ hr {
 
 .popup-inner {
   position: fixed;
-  left: 5%;
-  right: 5%;
-  top: 5%;
-  bottom: 5%;
+  left: 10%;
+  right: 10%;
+  top: 10%;
+  bottom: 10%;
   margin: auto;
   background-color: var(--background);
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .nav-bar {
@@ -187,6 +189,16 @@ input[type=file] {
 input[type=submit] {
   height: 3em;
   /* align-items: flex-end; */
+}
+
+input[type=button] {
+  width: auto;
+  height: 3em;
+  padding: 0.5em;
+  margin: 0.5em;
+  box-sizing: border-box;
+  border-radius: 4px;
+  font-size: 1em;
 }
 
 select {
