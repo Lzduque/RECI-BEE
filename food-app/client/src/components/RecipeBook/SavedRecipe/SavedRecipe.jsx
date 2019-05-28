@@ -20,7 +20,8 @@ class SavedRecipe extends Component {
     this.state = {
       imageIndex: 0,
       showPopup: 0,
-      savedRecipes: []
+      savedRecipes: [],
+      savedRecipesByID: {}
     };
 
     this.togglePopup = this.togglePopup.bind(this);
@@ -39,10 +40,11 @@ class SavedRecipe extends Component {
       .then(recipes => {
           console.log('recipes', recipes);
         this.setState({
-          savedRecipes: recipes.reduce(
+          savedRecipes: recipes,
+          savedRecipesByID: recipes.reduce(
             (acc, item) => Object.assign(acc, {
               [item.id]: item
-            }), {})
+              }), {})
         })
       })
       .catch(error => this.setState({ error }))
@@ -53,19 +55,23 @@ class SavedRecipe extends Component {
     this.setState({
       showPopup: id
     });
+          console.log('id', id);
+
   }
 
   onClick(direction) {
+    const recipes = this.state.savedRecipes;
     const change = direction === right ? right : left;
     const changedIndex = this.state.imageIndex + Number(change);
     let newIndex;
-    if (changedIndex >= images.length) {
+    if (changedIndex >= recipes.length) {
       newIndex = 0;
     } else if (changedIndex < 0) {
-      newIndex = images.length - 1
+      newIndex = recipes.length - 1
     } else {
       newIndex = changedIndex;
     }
+    console.log('click, oldindex', this.state.imageIndex, 'click newIndex', newIndex, 'direction', direction);
     this.setState({ imageIndex: newIndex });
   }
 
@@ -82,12 +88,17 @@ class SavedRecipe extends Component {
       backgroundSize: 'cover'
     });
 
+    const recipe = this.state.savedRecipes[imageIndex];
+    console.log('recipe', recipe);
+    //if recipe, render otherwise loading screen
+    if (!recipe) {
+      return false;
+      //show spinner here
+    }
     return (
       <div className="search-container">
         <font align="center" size="3" color="green"><h1>Saved Recipes</h1></font>
         <div className="carousel-container">
-          {Object.values(this.state.savedRecipes).map(
-            recipe => (
               <div style={imageStyles(recipe.image)} key={recipe.id}>
                 <button
                   onClick={()=>this.onClick(right)}
@@ -99,11 +110,10 @@ class SavedRecipe extends Component {
                   onClick={() => this.togglePopup(recipe.id)}
                   className="slide-center">⇪</button>
               </div>
-              ))}
             {this.state.showPopup > 0 && (
               <ViewRecipe
                 closePopup = {() => this.togglePopup(0)}
-                recipe = {this.state.savedRecipes[this.state.showPopup]}
+                recipe = {this.state.savedRecipesByID[this.state.showPopup]}
               />)}
         </div>
         <font align="center" size="1">Recipe: {imageIndex}</font>
