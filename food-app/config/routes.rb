@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   # '/' -> index.html?
 
   scope '/api' do
-    get :users, to: 'users#index'
+    resources :users
+    resources :ingredients
+    resources :recipes
   end
 end

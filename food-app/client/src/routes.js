@@ -10,13 +10,13 @@ class Routes extends Component {
   //   cookies: instanceOf(Cookies).isRequired
   // }
 
-  constructor (props) {
-    super(props);
+  // constructor (props) {
+  //   super(props);
     // const { cookies } = props;
     // this.state = {
     //   id: cookies.get('id') || '0'
     // }
-  }
+  // }
 
   // componentDidMount() {
   //   if (this.state.id === '0') {
@@ -32,14 +32,17 @@ class Routes extends Component {
     return (
       <Router>
       <div>
-        <ul>
-          <Link to="/">Welcome</Link>
-          <Link to="/profile">Profile</Link>
-          <Link to="/recipebook">RecipeBook</Link>
-          <Link to="/mealplan">MealPlan</Link>
-        </ul>
-
-        <hr />
+        <div className="nav-bar">
+          <div className="app-name">
+            <h1>Reci-bee</h1><img src="https://github.com/Lzduque/final-project/blob/feature/create-recipe/food-app/docs/free-icon_bee-icon-png-60.png?raw=true" alt="Bee" height="42" width="42" />
+          </div>
+          <ul className="nav-links-container">
+            <Link className="nav-link" to="/">Welcome</Link>
+            <Link className="nav-link" to="/profile">Profile</Link>
+            <Link className="nav-link" to="/recipebook">RecipeBook</Link>
+            <Link className="nav-link" to="/mealplan">MealPlan</Link>
+          </ul>
+        </div>
 
         <Route exact path="/" component={Welcome} />
         <Route path="/profile" component={Profile} />
