@@ -37,6 +37,7 @@ class SavedRecipe extends Component {
         }
       })
       .then(recipes => {
+          console.log('recipes', recipes);
         this.setState({
           savedRecipes: recipes.reduce(
             (acc, item) => Object.assign(acc, {

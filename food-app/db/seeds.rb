@@ -46,7 +46,7 @@ ing1 = Ingredient.create!({
 ing2 = Ingredient.create!({
   name:      "vegetable oil",
   unit:      "mL",
-  food_type: "other"
+  food_type: "sauce"
 })
 
 ing3 = Ingredient.create!({
@@ -94,7 +94,7 @@ ing9 = Ingredient.create!({
 ing10 = Ingredient.create!({
   name:      "almond butter",
   unit:      "mL",
-  food_type: "other"
+  food_type: "sauce"
 })
 
 ing11 = Ingredient.create!({
@@ -121,6 +121,84 @@ ing14 = Ingredient.create!({
   food_type: "fruit"
 })
 
+ing15 = Ingredient.create!({
+  name:       "cooked lentils",
+  unit:       "g",
+  food_type:  "grain"
+})
+
+ing16 = Ingredient.create!({
+  name:       "cooked chickpeas",
+  unit:       "g",
+  food_type:  "grain"
+})
+
+ing17 = Ingredient.create!({
+  name:       "celery",
+  unit:       "whole",
+  food_type:  "vegetable"
+})
+
+ing18 = Ingredient.create!({
+  name:       "carrot",
+  unit:       "whole",
+  food_type:  "vegetable"
+})
+
+ing19 = Ingredient.create!({
+  name:       "bell pepper",
+  unit:       "whole",
+  food_type:  "vegetable"
+})
+
+ing20 = Ingredient.create!({
+  name:       "red onion",
+  unit:       "whole",
+  food_type:  "vegetable"
+})
+
+ing21 = Ingredient.create!({
+  name:       "dill",
+  unit:       "g",
+  food_type:  "spice"
+})
+
+ing22 = Ingredient.create!({
+  name:       "sunflower seeds",
+  unit:       "g",
+  food_type:  "grain"
+})
+
+ing23 = Ingredient.create!({
+  name:       "pickle",
+  unit:       "whole",
+  food_type:  "vegetable"
+})
+
+ing24 = Ingredient.create!({
+  name:       "capers",
+  unit:       "g",
+  food_type:  "spice"
+})
+
+ing24 = Ingredient.create!({
+  name:       "lemon",
+  unit:       "mL",
+  food_type:  "fruit"
+})
+
+ing25 = Ingredient.create!({
+  name:       "tahini",
+  unit:       "g",
+  food_type:  "sauce"
+})
+
+ing26 = Ingredient.create!({
+  name:       "mustard",
+  unit:       "g",
+  food_type:  "sauce"
+})
+
 # RECIPES
 
 puts "Re-creating Recipes ..."
@@ -141,6 +219,15 @@ rec2 = Recipe.create!({
   time:         15,
   preparation:  "\n 1. First, stew the berries until soft, set aside to cool. \n 2. In a food processor, blend the dates until they are smooth, scraping down the sides as needed. Add the oatmeal, ground flaxseed, almond butter, and cinnamon and combine, scraping down the sides once or twice. \n 3. Transfer the mix to a parchment lined baking dish and press the base into the dish. \n 4. Top with the yogurt and spread out evenly. \n 5. Dot the yogurt with the stewed berries and use a knife to swirl. \n 6. Place into the freezer and let freeze for 1-2 hours, or until the bars are solid enough to cut. \n 7. When removed from the freezer, cut into squares or bars of desired size. \n 8. Let thaw for 3-5 minutes before eating. Enjoy!",
   meal_type:    "breakfast"
+})
+
+rec3 = Recipe.create!({
+  name:        "Garden Chickpea Dill Dip",
+  image:       "https://static.wixstatic.com/media/26357d_9ea67e5914e34c3c83dd6a79adf376ed~mv2_d_6000_4000_s_4_2.jpg/v1/fill/w_1260,h_840,al_c,q_85,usm_0.66_1.00_0.01/26357d_9ea67e5914e34c3c83dd6a79adf376ed~mv2_d_6000_4000_s_4_2.webp",
+  servings:     4,
+  time:         15,
+  preparation:  "\n 1. Add chickpeas to a large bowl and mash with a fork until all chickpeas are broken. \n 2. Add the remaining ingredients to the bowl and mix, mashing slightly. Chill before serving, if possible, to enhance flavours. Enjoy as-is like a salad, or with crackers and veggies, or spread onto a sandwich!",
+  meal_type:    "snack"
 })
 
 # QUANTITIES
@@ -231,6 +318,95 @@ q14 = Quantity.create!({
   quantity:      100
 })
 
+q15 = Quantity.create!({
+  ingredient_id: ing15.id,
+  recipe_id:     rec3.id,
+  quantity:      200
+})
+
+q16 = Quantity.create!({
+  ingredient_id: ing16.id,
+  recipe_id:     rec3.id,
+  quantity:      240
+})
+
+q17 = Quantity.create!({
+  ingredient_id: ing17.id,
+  recipe_id:     rec3.id,
+  quantity:      1
+})
+
+q18 = Quantity.create!({
+  ingredient_id: ing18.id,
+  recipe_id:     rec3.id,
+  quantity:      1
+})
+
+q19 = Quantity.create!({
+  ingredient_id: ing19.id,
+  recipe_id:     rec3.id,
+  quantity:      1.25
+})
+
+q20 = Quantity.create!({
+  ingredient_id: ing20.id,
+  recipe_id:     rec3.id,
+  quantity:      1.25
+})
+
+q21 = Quantity.create!({
+  ingredient_id: ing21.id,
+  recipe_id:     rec3.id,
+  quantity:      12
+})
+
+q22 = Quantity.create!({
+  ingredient_id: ing22.id,
+  recipe_id:     rec3.id,
+  quantity:      10
+})
+
+q23 = Quantity.create!({
+  ingredient_id: ing23.id,
+  recipe_id:     rec3.id,
+  quantity:      1
+})
+
+q24 = Quantity.create!({
+  ingredient_id: ing24.id,
+  recipe_id:     rec3.id,
+  quantity:      5
+})
+
+q25 = Quantity.create!({
+  ingredient_id: ing25.id,
+  recipe_id:     rec3.id,
+  quantity:      15
+})
+
+q26 = Quantity.create!({
+  ingredient_id: ing26.id,
+  recipe_id:     rec3.id,
+  quantity:      45
+})
+
+q27 = Quantity.create!({
+  ingredient_id: ing27.id,
+  recipe_id:     rec3.id,
+  quantity:
+})
+
+q28 = Quantity.create!({
+  ingredient_id: ing6.id,
+  recipe_id:     rec3.id,
+  quantity:
+})
+
+q29 = Quantity.create!({
+  ingredient_id: ing7.id,
+  recipe_id:     rec3.id,
+  quantity:
+})
 
 # BOOKS
 
