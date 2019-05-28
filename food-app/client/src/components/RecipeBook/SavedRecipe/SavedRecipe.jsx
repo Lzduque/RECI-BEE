@@ -112,8 +112,8 @@ class SavedRecipe extends Component {
               </div>
             {this.state.showPopup > 0 && (
               <ViewRecipe
-                closePopup = {() => this.togglePopup(0)}
-                recipe = {this.state.savedRecipesByID[this.state.showPopup]}
+                closePopup={() => this.togglePopup(0)}
+                recipe={this.state.savedRecipesByID[this.state.showPopup]}
               />)}
         </div>
         <font align="center" size="1">Recipe: {imageIndex}</font>
