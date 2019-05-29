@@ -55,8 +55,7 @@ class SavedRecipe extends Component {
     this.setState({
       showPopup: id
     });
-          console.log('id', id);
-
+    console.log('id', id);
   }
 
   onClick(direction) {
@@ -97,18 +96,18 @@ class SavedRecipe extends Component {
     }
     return (
       <div className="search-container">
-        <font align="center" size="3" color="green"><h1>Saved Recipes</h1></font>
+        <font align="center" size="3" color="grey"><h1>Saved Recipes</h1></font>
         <div className="carousel-container">
               <div style={imageStyles(recipe.image)} key={recipe.id}>
                 <button
                   onClick={()=>this.onClick(right)}
-                  className="slide-right">⇦</button>
+                  className="click-right">⇦</button>
                 <button
                   onClick={()=>this.onClick(left)}
-                  className="slide-left">⇨</button>
+                  className="click-left">⇨</button>
                 <button
                   onClick={() => this.togglePopup(recipe.id)}
-                  className="slide-center">⇪</button>
+                  className="click-center">⇪</button>
               </div>
             {this.state.showPopup > 0 && (
               <ViewRecipe

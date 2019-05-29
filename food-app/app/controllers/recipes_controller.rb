@@ -1,6 +1,7 @@
 class RecipesController < ApplicationController
   # before_action :set_recipe
 
+
   #renders for the user (all of their saved recipes)
   def index
     @recipe = Recipe.all

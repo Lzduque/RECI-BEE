@@ -34,7 +34,7 @@ class ViewRecipe extends Component {
           background: 'white'
         }}>
           <h1>{ this.props.recipe.name }</h1>
-          <p>Type: {this.props.recipe.meal_type} Servings: {this.props.recipe.servings}, Time: {this.props.recipe.time}min</p>
+          <p>Type: {this.props.recipe.meal_type} | Servings: {this.props.recipe.servings} | Time: {this.props.recipe.time}min</p>
           <img alt="" src={this.props.recipe.image} width={200} height={200}/>
           <pre>{this.props.recipe.preparation}</pre>
           <button onClick={this.props.closePopup}>CLOSE</button>

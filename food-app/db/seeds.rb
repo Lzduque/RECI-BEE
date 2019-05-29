@@ -199,6 +199,96 @@ ing27 = Ingredient.create!({
   food_type:  "sauce"
 })
 
+ing28 = Ingredient.create!({
+  name:       "tomato",
+  unit:       "whole",
+  food_type:  "vegetable"
+})
+
+ing29 = Ingredient.create!({
+  name:       "basil",
+  unit:       "whole",
+  food_type:  "spice"
+})
+
+ing30 = Ingredient.create!({
+  name:       "balsamic vinegar",
+  unit:       "mL",
+  food_type:  "sauce"
+})
+
+ing31 = Ingredient.create!({
+  name:       "olive oil",
+  unit:       "mL",
+  food_type:  "sauce"
+})
+
+ing32 = Ingredient.create!({
+  name:       "garlic",
+  unit:       "whole",
+  food_type:  "vegetable"
+})
+
+ing33 = Ingredient.create!({
+  name:       "mushroom",
+  unit:       "whole",
+  food_type:  "vegetable"
+})
+
+ing34 = Ingredient.create!({
+  name:       "rice",
+  unit:       "g",
+  food_type:  "grain"
+})
+
+ing35 = Ingredient.create!({
+  name:       "bouillon",
+  unit:       "whole",
+  food_type:  "spice"
+})
+
+ing36 = Ingredient.create!({
+  name:       "zucchini",
+  unit:       "whole",
+  food_type:  "vegetable"
+})
+
+ing37 = Ingredient.create!({
+  name:       "chia seeds",
+  unit:       "g",
+  food_type:  "grain"
+})
+
+ing38 = Ingredient.create!({
+  name:       "coconut milk",
+  unit:       "mL",
+  food_type:  "dairy"
+})
+
+ing39 = Ingredient.create!({
+  name:       "vanilla extract",
+  unit:       "mL",
+  food_type:  "spice"
+})
+
+ing40 = Ingredient.create!({
+  name:       "pomegranate",
+  unit:       "whole",
+  food_type:  "fruit"
+})
+
+ing41 = Ingredient.create!({
+  name:       "banana",
+  unit:       "whole",
+  food_type:  "fruit"
+})
+
+ing42 = Ingredient.create!({
+  name:       "pumpkin seeds",
+  unit:       "g",
+  food_type:  "grain"
+})
+
 # RECIPES
 
 puts "Re-creating Recipes ..."
@@ -230,6 +320,33 @@ rec3 = Recipe.create!({
   meal_type:    "snack"
 })
 
+rec4 = Recipe.create!({
+  name:         "Balsamic and Basil Bruschetta",
+  image:        "",
+  servings:     10,
+  time:         10,
+  preparation:  "\n 1. Add all ingredients to a medium bowl and gently toss until combined. \n 2. When adding the tomatoes, allow any juice that seeped out when cutting to remain on the cutting board; do not add this to the bowl. \n 3. Although you can enjoy immediately, it’s best to cover and let sit in the fridge for at least 2 hours to allow the flavours to meld. \n 4. Serve fresh on toasted bread, or even toast together in the oven for a warm bruschetta. \n 5. Personally, I enjoyed it best when spreading some hummus on the toasted bread before adding the mixture on top. \n 6.Garnish with fresh basil if desired. Enjoy!",
+  meal_type     "snack"
+})
+
+rec5 = Recipe.create!({
+  name:         "Mushroom Risotto with Brown and Red Rice",
+  image:        "",
+  servings:     4,
+  time:         50,
+  preparation:  "\n 1. In a pot on high heat, sauté the oil and mock chicken pieces, stirring throughout until lightly browned, about 3 minutes. Place in a small bowl and set aside. \n 2. Now add the olive oil, onion, garlic, mushrooms + 2 Tbsp (30 mL) water to the large pot on high heat, and sauté until all the moisture released from the mushrooms evaporates, about 8 minutes. \n 3. Then add the brown and red rice, bouillon cubes plus 2 cups (500 mL) boiling water. Bring to a boil then reduce to a simmer, partially cover and allow to sit for 10 minutes. \n 4. After this, add the white rice and zucchini to the pot, stirring frequently and scraping the bottom of the pot with a wooden spatula to avoid burning. Continue for about 5 minutes, before adding the tomatoes. \n 5. With the heat at medium-high, continue to stir, adding water as needed, until the rice is al dente and a risotto consistency is achieved. This will take about 10-15 minutes. Gently stir in the mock chicken pieces, serve while hot, garnish and serve with a side of salad if desire and enjoy!",
+  meal_type:    "meal"
+})
+
+rec6 = Recipe.create!({
+  name:         "Chocolate Chia Breakfast Pudding",
+  image:        "",
+  servings:     1,
+  time:         60,
+  preparation:  "\n 1. Combine all pudding ingredients in a bowl or jar, stirring to combine. \n 2. Let sit for 5-10 minutes and the stir again to prevent clumping. \n 3. Cover and chill in the fridge for 1-2 hours, or overnight (yay make-ahead breakfasts!). \n 4. Stir well before serving. Portion into bowl(s) and add desired toppings. Mine were bananas, pomegranate seeds, pumpkin seeds and sunflower seeds.",
+  meal_type:    "breakfast"
+})
+
 # QUANTITIES
 
 puts "Re-creating Quantities ..."
@@ -237,25 +354,25 @@ puts "Re-creating Quantities ..."
 q1 = Quantity.create!({
   ingredient_id: ing1.id,
   recipe_id:     rec1.id,
-  quantity:      1.0
+  quantity:      1
 })
 
 q2 = Quantity.create!({
   ingredient_id: ing2.id,
   recipe_id:     rec1.id,
-  quantity:      15.0
+  quantity:      15
 })
 
 q3 = Quantity.create!({
   ingredient_id: ing3.id,
   recipe_id:     rec1.id,
-  quantity:      5.0
+  quantity:      5
 })
 
 q4 = Quantity.create!({
   ingredient_id: ing4.id,
   recipe_id:     rec1.id,
-  quantity:      5.0
+  quantity:      5
 })
 
 q5 = Quantity.create!({
@@ -406,6 +523,138 @@ q29 = Quantity.create!({
   ingredient_id: ing7.id,
   recipe_id:     rec3.id,
   quantity:      1.25
+})
+
+q30 = Quantity.create!({
+  ingredient_id: ing28.id,
+  recipe_id:     rec4.id,
+  quantity:      7
+})
+
+q31 = Quantity.create!({
+  ingredient_id: ing29.id,
+  recipe_id:     rec4.id,
+  quantity:      25
+})
+
+q32 = Quantity.create!({
+  ingredient_id: ing30.id,
+  recipe_id:     rec4.id,
+  quantity:      15
+})
+
+q33 = Quantity.create!({
+  ingredient_id: ing31.id,
+  recipe_id:     rec4.id,
+  quantity:      5
+})
+
+q34 = Quantity.create!({
+  ingredient_id: ing3.id,
+  recipe_id:     rec4.id,
+  quantity:      2.5
+})
+
+q35 = Quantity.create!({
+  ingredient_id: ing6.id,
+  recipe_id:     rec4.id,
+  quantity:      1.25
+})
+
+q36 = Quantity.create!({
+  ingredient_id: ing7.id,
+  recipe_id:     rec4.id,
+  quantity:      1.25
+})
+
+q37 = Quantity.create!({
+  ingredient_id: ing31.id,
+  recipe_id:     rec5.id,
+  quantity:      !!! 1 TSP HOW MANY ML
+})
+
+q38 = Quantity.create!({
+  ingredient_id: ing20.id,
+  recipe_id:     rec5.id,
+  quantity:      2
+})
+
+q39 = Quantity.create!({
+  ingredient_id: ing32.id,
+  recipe_id:     rec5.id,
+  quantity:      3
+})
+
+q40 = Quantity.create!({
+  ingredient_id: ing33.id,
+  recipe_id:     rec5.id,
+  quantity:      20
+})
+
+q41 = Quantity.create!({
+  ingredient_id: ing34.id,
+  recipe_id:     rec5.id,
+  quantity:      285
+})
+
+q42 = Quantity.create!({
+  ingredient_id: ing35.id,
+  recipe_id:     rec5.id,
+  quantity:      2
+})
+
+q43 = Quantity.create!({
+  ingredient_id: ing36.id,
+  recipe_id:     rec5.id,
+  quantity:      1
+})
+
+q44 = Quantity.create!({
+  ingredient_id: ing28.id,
+  recipe_id:     rec5.id,
+  quantity:      2
+})
+
+q45 = Quantity.create!({
+  ingredient_id: ing37.id,
+  recipe_id:     rec6.id,
+  quantity:      45
+})
+
+q46 = Quantity.create!({
+  ingredient_id: ing38.id,
+  recipe_id:     rec6.id,
+  quantity:      250
+})
+
+q47 = Quantity.create!({
+  ingredient_id: ing8.id,
+  recipe_id:     rec6.id,
+  quantity:      7
+})
+
+q48 = Quantity.create!({
+  ingredient_id: ing39.id,
+  recipe_id:     rec6.id,
+  quantity:      5
+})
+
+q49 = Quantity.create!({
+  ingredient_id: ing40.id,
+  recipe_id:     rec6.id,
+  quantity:      0.5
+})
+
+q50 = Quantity.create!({
+  ingredient_id: ing41.id,
+  recipe_id:     rec6.id,
+  quantity:      1
+})
+
+q51 = Quantity.create!({
+  ingredient_id: ing42.id,
+  recipe_id:     rec6.id,
+  quantity:      30
 })
 
 # BOOKS
