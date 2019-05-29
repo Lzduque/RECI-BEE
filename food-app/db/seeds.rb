@@ -322,25 +322,25 @@ rec3 = Recipe.create!({
 
 rec4 = Recipe.create!({
   name:         "Balsamic and Basil Bruschetta",
-  image:        "",
+  image:        "https://static.wixstatic.com/media/26357d_215a204c72164417a9e8c10f9187d3ad~mv2_d_6000_4000_s_4_2.jpg/v1/fill/w_1260,h_840,al_c,q_85,usm_0.66_1.00_0.01/26357d_215a204c72164417a9e8c10f9187d3ad~mv2_d_6000_4000_s_4_2.webp",
   servings:     10,
   time:         10,
   preparation:  "\n 1. Add all ingredients to a medium bowl and gently toss until combined. \n 2. When adding the tomatoes, allow any juice that seeped out when cutting to remain on the cutting board; do not add this to the bowl. \n 3. Although you can enjoy immediately, it’s best to cover and let sit in the fridge for at least 2 hours to allow the flavours to meld. \n 4. Serve fresh on toasted bread, or even toast together in the oven for a warm bruschetta. \n 5. Personally, I enjoyed it best when spreading some hummus on the toasted bread before adding the mixture on top. \n 6.Garnish with fresh basil if desired. Enjoy!",
-  meal_type     "snack"
+  meal_type:     "snack"
 })
 
 rec5 = Recipe.create!({
   name:         "Mushroom Risotto with Brown and Red Rice",
-  image:        "",
+  image:        "https://static.wixstatic.com/media/26357d_d79c01a32e744205bceece8aed0b309d~mv2_d_6000_4000_s_4_2.jpg/v1/fill/w_1260,h_840,al_c,q_85,usm_0.66_1.00_0.01/26357d_d79c01a32e744205bceece8aed0b309d~mv2_d_6000_4000_s_4_2.webp",
   servings:     4,
   time:         50,
-  preparation:  "\n 1. In a pot on high heat, sauté the oil and mock chicken pieces, stirring throughout until lightly browned, about 3 minutes. Place in a small bowl and set aside. \n 2. Now add the olive oil, onion, garlic, mushrooms + 2 Tbsp (30 mL) water to the large pot on high heat, and sauté until all the moisture released from the mushrooms evaporates, about 8 minutes. \n 3. Then add the brown and red rice, bouillon cubes plus 2 cups (500 mL) boiling water. Bring to a boil then reduce to a simmer, partially cover and allow to sit for 10 minutes. \n 4. After this, add the white rice and zucchini to the pot, stirring frequently and scraping the bottom of the pot with a wooden spatula to avoid burning. Continue for about 5 minutes, before adding the tomatoes. \n 5. With the heat at medium-high, continue to stir, adding water as needed, until the rice is al dente and a risotto consistency is achieved. This will take about 10-15 minutes. Gently stir in the mock chicken pieces, serve while hot, garnish and serve with a side of salad if desire and enjoy!",
+  preparation:  "\n 1. In a pot on high heat, add the olive oil, onion, garlic, mushrooms + 2 Tbsp (30 mL) water to the large pot on high heat, and sauté until all the moisture released from the mushrooms evaporates, about 8 minutes. \n 2. Then add 1/3 of the rice, bouillon cubes plus 2 cups (500 mL) boiling water. Bring to a boil then reduce to a simmer, partially cover and allow to sit for 10 minutes. \n 3. After this, add the rest of the rice and zucchini to the pot, stirring frequently and scraping the bottom of the pot with a wooden spatula to avoid burning. Continue for about 5 minutes, before adding the tomatoes. \n 4. With the heat at medium-high, continue to stir, adding water as needed, until the rice is al dente and a risotto consistency is achieved. This will take about 10-15 minutes. Serve while hot, garnish and serve with a side of salad if desire and enjoy!",
   meal_type:    "meal"
 })
 
 rec6 = Recipe.create!({
   name:         "Chocolate Chia Breakfast Pudding",
-  image:        "",
+  image:        "https://static.wixstatic.com/media/26357d_7195fe55859040cba59576d838a24ec8~mv2_d_5184_3456_s_4_2.jpg/v1/fill/w_1260,h_840,al_c,q_85,usm_0.66_1.00_0.01/26357d_7195fe55859040cba59576d838a24ec8~mv2_d_5184_3456_s_4_2.webp",
   servings:     1,
   time:         60,
   preparation:  "\n 1. Combine all pudding ingredients in a bowl or jar, stirring to combine. \n 2. Let sit for 5-10 minutes and the stir again to prevent clumping. \n 3. Cover and chill in the fridge for 1-2 hours, or overnight (yay make-ahead breakfasts!). \n 4. Stir well before serving. Portion into bowl(s) and add desired toppings. Mine were bananas, pomegranate seeds, pumpkin seeds and sunflower seeds.",
@@ -570,7 +570,7 @@ q36 = Quantity.create!({
 q37 = Quantity.create!({
   ingredient_id: ing31.id,
   recipe_id:     rec5.id,
-  quantity:      !!! 1 TSP HOW MANY ML
+  quantity:      5
 })
 
 q38 = Quantity.create!({

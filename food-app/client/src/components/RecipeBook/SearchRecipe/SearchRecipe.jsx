@@ -39,16 +39,23 @@ class SearchRecipe extends Component {
     super(props);
     this.state = {
       showPopup: 0,
-      selectedRecipe: null,
-      recipes: []
+      selectedRecipe: null
     }
   }
 
-  //getRecipeByID(id) {
-    //if recipe.id == id , then return recipe.obj else return null
+  getRecipeByID(id) {
+    for (let recipe in this.props.recipes) {
+      if (recipe.id === id) {
+        return this.props.recipes.recipe;
+      }
+    }
+    // loop through this.props.recipes
+    // if recipe.id == id , then return recipe.obj else return null
   }
+
   render() {
 
+        // const recipe = this.props.recipes
     const recipe = [
       {
         id: 1,
@@ -86,14 +93,14 @@ class SearchRecipe extends Component {
         </h1>
         <CardContainer cards={ recipe } onCardSelected={this._recipeSelected}/>
         {
-          this.state.selectedRecipe ? <ViewRecipe recipe={ recipe } closePopup={() => this.setState({ selectedRecipe: null }) } /> : null
+          this.state.selectedRecipe ? <ViewRecipe recipe={ this.state.selectedRecipe } closePopup={() => this.setState({ selectedRecipe: null }) } /> : null
         }
       </div>
     )
   }
 
   _recipeSelected = id => {
-    this.setState({selectedRecipe: this.getRecipeByID(id) })
+    this.setState({selectedRecipe: this.getRecipeByID(id)})
     console.log(id);
   }
 };
