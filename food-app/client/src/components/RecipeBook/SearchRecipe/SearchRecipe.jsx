@@ -116,6 +116,8 @@ class SearchRecipe extends Component {
           Recipe Search
         </h1>
         <CardContainer cards={ cardsData } image={ cardsData.imgUrl }/>
+        PROPS
+        <pre style={{marginTop: '1em'}}>{JSON.stringify(this.props, null, '\t')}</pre>
       </div>
     )
   }

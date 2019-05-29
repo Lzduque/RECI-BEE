@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import CreateRecipe from './CreateRecipe/CreateRecipe.jsx';
-import ViewRecipe from './ViewRecipe/ViewRecipe.jsx';
 import SearchRecipe from './SearchRecipe/SearchRecipe.jsx';
 import SavedRecipe from './SavedRecipe/SavedRecipe.jsx';
 import Checkbox from "./Checkbox";
@@ -15,17 +14,16 @@ class RecipeBook extends Component {
     super(props);
     this.state = {
       toggleState: false,
-      checkboxes: OPTIONS.reduce(
-        (options, option) => ({
-          ...options,
-          [option]: false
-        }),
-        {}
-      )
+      checkboxes: { Breakfast: false,
+                    Meal: false,
+                    Snack: false
+      }
     };
     this.togglePopup = this.togglePopup.bind(this);
     this.searchRecipes = this.searchRecipes.bind(this);
+    // this.formatQuery = this.formatQuery.bind(this);
   };
+
 
   togglePopup(state) {
     this.setState({
@@ -46,7 +44,6 @@ class RecipeBook extends Component {
   };
 
   selectAll = () => this.selectAllCheckboxes(true);
-
   deselectAll = () => this.selectAllCheckboxes(false);
 
   handleCheckboxChange = (event) => {
@@ -81,10 +78,25 @@ class RecipeBook extends Component {
 
   createCheckboxes = () => OPTIONS.map(this.createCheckbox);
 
-  searchRecipes = (query) => {
+  // query format --> passing an array to query
+  formatQuery = (queryObj) => {
+    let finalQuery = [];
+    for (let key in queryObj) {
+      if (queryObj.key === true) {
+        finalQuery.push(key);
+      }
+    }
+    console.log(finalQuery);
+    return finalQuery;
+  };
+
+
+  // search recipes with the product of query formatted above
+  searchRecipes = () => {
+    formatQuery(this.state.checkboxes);
     return fetch('/api/recipes/search', {
       method: 'GET',
-      body: JSON.stringify(query),
+      body: JSON.stringify(formatQuery),
       headers: {
           'Content-Type': 'application/json'
       }
@@ -95,6 +107,23 @@ class RecipeBook extends Component {
       }).catch(error => error);
   }
 
+  // componentDidMount = () => {
+
+  //   formatSearchRequest = () => {
+  //     this.setState({
+  //       checkbox: OPTIONS.reduce(
+  //       (options, option) => ({
+  //         ...options,
+  //         [option]: false
+  //       }),
+  //       {}
+  //       )
+  //     })
+  //   }
+
+  //   formatSearchRequest();
+
+  // }
 
   render() {
     return (
@@ -108,44 +137,43 @@ class RecipeBook extends Component {
 
         <br/>
 
-          <div className="create-recipe container-1">
-            <div className="container-1-box page-title">
-              <h1 className="page-title">Recipe Book Page</h1>
-            </div>
-            <br />
-            <h3>Search Recipes by Category</h3>
-            <form onSubmit={this.handleFormSubmit}>
-              <div className="container-1-box container-ingredients">
-                {this.createCheckboxes()}
-              </div>
-              <div className="container-1-box">
-                <div className="container-1-box container-ingredients">
-                  <button
-                    type="button"
-                    className="btn btn-outline-primary mr-2"
-                    onClick={this.selectAll}
-                  >
-                    Select All
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-outline-primary mr-2"
-                    onClick={this.deselectAll}
-                  >
-                    Deselect All
-                  </button>
-                  <button type="submit" className="btn btn-primary">
-                    Search
-                  </button>
-                </div>
-              </div>
-              STATE
-              <pre style={{marginTop: '1em'}}>{JSON.stringify(this.state, null, '\t')}</pre>
-              PROPS
-              <pre style={{marginTop: '1em'}}>{JSON.stringify(this.props, null, '\t')}</pre>
-
-            </form>
+        <div className="create-recipe container-1">
+          <div className="container-1-box page-title">
+            <h1 className="page-title">Recipe Book Page</h1>
           </div>
+          <br />
+          <h3>Search Recipes by Category</h3>
+          <form onSubmit={this.handleFormSubmit}>
+            <div className="container-1-box container-ingredients">
+              {this.createCheckboxes()}
+            </div>
+            <div className="container-1-box">
+              <div className="container-1-box container-ingredients">
+                <button
+                  type="button"
+                  className="btn btn-outline-primary mr-2"
+                  onClick={this.selectAll}
+                >
+                  Select All
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-outline-primary mr-2"
+                  onClick={this.deselectAll}
+                >
+                  Deselect All
+                </button>
+                <button type="submit" onClick={ () => searchRecipes() } className="btn btn-primary">
+                  Search
+                </button>
+              </div>
+            </div>
+            STATE
+            <pre style={{marginTop: '1em'}}>{JSON.stringify(this.state, null, '\t')}</pre>
+            PROPS
+            <pre style={{marginTop: '1em'}}>{JSON.stringify(this.props, null, '\t')}</pre>
+          </form>
+        </div>
 
         { this.state.toggleState && (
         <Route path="/recipe/create" component={
@@ -153,7 +181,7 @@ class RecipeBook extends Component {
         } />
         )}
 
-        <SearchRecipe searchQuery={this.state.checkboxes} />
+        <SearchRecipe />
         <br/>
         <SavedRecipe />
 
