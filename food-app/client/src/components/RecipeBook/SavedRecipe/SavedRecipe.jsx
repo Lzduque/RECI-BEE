@@ -5,6 +5,7 @@ import ViewRecipe from '../ViewRecipe/ViewRecipe.jsx';
 // import rec2 from './rec2.jpg';
 // import rec3 from './rec3.jpg';
 
+// eslint-disable-next-line
 const images = [];
 // rec1, rec2, rec3
 // const imgWidth = '500px';

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import CreateRecipe from './CreateRecipe/CreateRecipe.jsx';
-import ViewRecipe from './ViewRecipe/ViewRecipe.jsx';
 import SearchRecipe from './SearchRecipe/SearchRecipe.jsx';
 import SavedRecipe from './SavedRecipe/SavedRecipe.jsx';
 import Checkbox from "./Checkbox";
@@ -21,21 +20,37 @@ class RecipeBook extends Component {
           [option]: false
         }),
         {}
-      )
+      ),
+      searchedRecipes: "",
+      searchedRecipesByID: "",
+      queryArr: ""
     };
     this.togglePopup = this.togglePopup.bind(this);
-    this.searchRecipes = this.searchRecipes.bind(this);
+    // this.searchRecipes = this.searchRecipes.bind(this);
+    // this.formatQuery = this.formatQuery.bind(this);
   };
 
+  // make popup work - crete recipe
   togglePopup(state) {
     this.setState({
       toggleState: state
     });
   };
 
+  // handling checkbox changes!
+  createCheckbox = (option) => (
+    <Checkbox
+      label={option}
+      isSelected={this.state.checkboxes[option]}
+      onCheckboxChange={this.handleCheckboxChange}
+      key={option}
+    />
+  );
+
+  createCheckboxes = () => OPTIONS.map(this.createCheckbox);
+
   selectAllCheckboxes = (isSelected) => {
     Object.keys(this.state.checkboxes).forEach(checkbox => {
-      // BONUS: Can you explain why we pass updater function to setState instead of an object?
       this.setState(prevState => ({
         checkboxes: {
           ...prevState.checkboxes,
@@ -46,7 +61,6 @@ class RecipeBook extends Component {
   };
 
   selectAll = () => this.selectAllCheckboxes(true);
-
   deselectAll = () => this.selectAllCheckboxes(false);
 
   handleCheckboxChange = (event) => {
@@ -63,37 +77,51 @@ class RecipeBook extends Component {
   handleFormSubmit = (event) => {
     event.preventDefault();
 
+    // query format --> passing an array to query not key pair values
+    let queryArr = [];
     Object.keys(this.state.checkboxes)
       .filter(checkbox => this.state.checkboxes[checkbox])
       .forEach(checkbox => {
         console.log(checkbox, "is selected.");
-      });
+        queryArr.push(checkbox);
+        console.log("queryArr: ", queryArr);
+        // setting the state and and sendind to the backend
+        this.setState({ queryArr },
+          () => {
+            console.log("fetch is happening")
+            // debugger
+
+            fetch(`/api/recipes/search?queryArr=${this.state.queryArr}`, {
+              method: 'GET',
+              headers: {
+                  'Content-Type': 'application/json'
+              }
+            })
+            .then(response => {
+              console.log("response is happening")
+              if (response.ok) {
+                return response.json();
+              } else {
+                throw new Error('Something went wrong ...');
+              }
+            })
+            .then(recipes => {
+                console.log('recipes', recipes);
+              this.setState({
+                searchedRecipes: recipes,
+                searchedRecipesByID: recipes.reduce(
+                  (acc, item) => Object.assign(acc, {
+                    [item.id]: item
+                    }), {})
+              })
+            })
+            .catch(error => this.setState({ error }))
+            .then(() => console.log(this.state.searchedRecipes));
+
+          })
+      })
+
   };
-
-  createCheckbox = (option) => (
-    <Checkbox
-      label={option}
-      isSelected={this.state.checkboxes[option]}
-      onCheckboxChange={this.handleCheckboxChange}
-      key={option}
-    />
-  );
-
-  createCheckboxes = () => OPTIONS.map(this.createCheckbox);
-
-  searchRecipes = (query) => {
-    return fetch('/api/recipes/search', {
-      method: 'GET',
-      body: JSON.stringify(query),
-      headers: {
-          'Content-Type': 'application/json'
-      }
-    }).then(response => {
-      return this.setState({
-        // toggleState: this.state
-      });
-      }).catch(error => error);
-  }
 
 
   render() {
@@ -108,44 +136,43 @@ class RecipeBook extends Component {
 
         <br/>
 
-          <div className="create-recipe container-1">
-            <div className="container-1-box page-title">
-              <h1 className="page-title">Recipe Book Page</h1>
-            </div>
-            <br />
-            <h3>Search Recipes by Category</h3>
-            <form onSubmit={this.handleFormSubmit}>
-              <div className="container-1-box container-ingredients">
-                {this.createCheckboxes()}
-              </div>
-              <div className="container-1-box">
-                <div className="container-1-box container-ingredients">
-                  <button
-                    type="button"
-                    className="btn btn-outline-primary mr-2"
-                    onClick={this.selectAll}
-                  >
-                    Select All
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-outline-primary mr-2"
-                    onClick={this.deselectAll}
-                  >
-                    Deselect All
-                  </button>
-                  <button type="submit" className="btn btn-primary">
-                    Search
-                  </button>
-                </div>
-              </div>
-              STATE
-              <pre style={{marginTop: '1em'}}>{JSON.stringify(this.state, null, '\t')}</pre>
-              PROPS
-              <pre style={{marginTop: '1em'}}>{JSON.stringify(this.props, null, '\t')}</pre>
-
-            </form>
+        <div className="create-recipe container-1">
+          <div className="container-1-box page-title">
+            <h1 className="page-title">Recipe Book Page</h1>
           </div>
+          <br />
+          <h3>Search Recipes by Category</h3>
+          <form onSubmit={this.handleFormSubmit}>
+            <div className="container-1-box container-ingredients">
+              {this.createCheckboxes()}
+            </div>
+            <div className="container-1-box">
+              <div className="container-1-box container-ingredients">
+                <button
+                  type="button"
+                  className="btn btn-outline-primary mr-2"
+                  onClick={this.selectAll}
+                >
+                  Select All
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-outline-primary mr-2"
+                  onClick={this.deselectAll}
+                >
+                  Deselect All
+                </button>
+                <button type="submit" className="btn btn-primary">
+                  Search
+                </button>
+              </div>
+            </div>
+            STATE
+            <pre style={{marginTop: '1em'}}>{JSON.stringify(this.state, null, '\t')}</pre>
+            PROPS
+            <pre style={{marginTop: '1em'}}>{JSON.stringify(this.props, null, '\t')}</pre>
+          </form>
+        </div>
 
         { this.state.toggleState && (
         <Route path="/recipe/create" component={
@@ -153,7 +180,7 @@ class RecipeBook extends Component {
         } />
         )}
 
-        <SearchRecipe searchQuery={this.state.checkboxes} />
+        <SearchRecipe searchedRecipesByID={this.state.searchedRecipesByID} />
         <br/>
         <SavedRecipe />
 
