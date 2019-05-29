@@ -1,6 +1,17 @@
-@import url('https://fonts.googleapis.com/css?family=ABeeZee:400,400i&display=swap');
+/*
+normalize css
+how to centralize texts inside buttons and inputs
+add ingredient - what should we use, grid or felx?
+inspiration for templates designs
+apply style to classes, or classes + tag? when to do each?
+bee on teh side of the title
+start designing for mobile size first - media query?
+popups - best way to do it? modals, popup...
 
-* {
+add ingredient in another class --> box, column reverse and add button in the start
+ */
+@import url('https://fonts.googleapis.com/css?family=ABeeZee:400,400i&display=swap');
+#root {
   --background: rgb(231, 231, 231);
   --blue: rgb(96, 215, 255);
   --light-yellow: rgb(241, 215, 147);
@@ -8,15 +19,25 @@
   --dark-yellow: rgb(180, 136, 22);
   --text-color-link: white;
   --modal-background: rgba(0,0,0, 0.5);
+}
+
+* {
+
   margin: 0;
   padding: 0;
   font-family: 'ABeeZee', sans-serif;
   background-color: var(--background);
   vertical-align: middle;
+  box-sizing: border-box;
 }
 
 @media(min-width: 768px) {
-
+  /* transofrm grid css in flex, so all the columns will transform into one, when the window gets smaller
+  @media only screen and (max-width: 700px) */
+  /* .container {
+    display: flex;
+    flex-flow: column nowrap;
+  } */
 }
 
 hr {
@@ -36,6 +57,20 @@ hr {
   background-color: var(--modal-background);
 }
 
+
+/* width: auto;
+height: 2.5em;
+padding: 0.5em;
+margin: 0.5em;
+box-sizing: border-box;
+border-radius: 4px;
+font-size: 1em;
+text-align: center;
+display: flex;
+justify-content: center;
+align-items: center; */
+
+
 .popup-inner {
   position: fixed;
   left: 10%;
@@ -52,8 +87,27 @@ hr {
   background-color: var(--blue);
 }
 
+/* div a {
+  color: green;
+}
+
+.text{
+  color: purple;
+}
+
+<div class="text">
+  Hi
+  <a> test </a>
+<div> */
+
 .app-name {
   padding: 0.5em;
+  display: flex;
+  align-content: center;
+}
+
+.app-name img{
+  margin: 0 0.5em;
 }
 
 .nav-links-container{

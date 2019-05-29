@@ -12,6 +12,22 @@ class RecipesController < ApplicationController
     # )
   end
 
+  # GET/search - just to get meals out of all reciepes
+  def search
+    # byebug
+    puts 'params[:queryArr]'
+    puts params[:queryArr]
+    search = params[:queryArr].split(",").map { |l| l.downcase }
+    if search.blank?
+      render status: 400, json: { error: 'Expected parameter `queryArr`' }
+    else
+
+    # params["search"] # -> {q: "veggy"}
+      @recipes = Recipe.where(["meal_type IN (?)", search]).limit(10)
+      render json: @recipes
+    end
+  end
+
   # POST /lists
   def create
     # byebug

@@ -14,26 +14,43 @@ class RecipeBook extends Component {
     super(props);
     this.state = {
       toggleState: false,
-      checkboxes: { Breakfast: false,
-                    Meal: false,
-                    Snack: false
-      }
+      checkboxes: OPTIONS.reduce(
+        (options, option) => ({
+          ...options,
+          [option]: false
+        }),
+        {}
+      ),
+      searchedRecipes: "",
+      searchedRecipesByID: "",
+      queryArr: ""
     };
     this.togglePopup = this.togglePopup.bind(this);
-    this.searchRecipes = this.searchRecipes.bind(this);
+    // this.searchRecipes = this.searchRecipes.bind(this);
     // this.formatQuery = this.formatQuery.bind(this);
   };
 
-
+  // make popup work - crete recipe
   togglePopup(state) {
     this.setState({
       toggleState: state
     });
   };
 
+  // handling checkbox changes!
+  createCheckbox = (option) => (
+    <Checkbox
+      label={option}
+      isSelected={this.state.checkboxes[option]}
+      onCheckboxChange={this.handleCheckboxChange}
+      key={option}
+    />
+  );
+
+  createCheckboxes = () => OPTIONS.map(this.createCheckbox);
+
   selectAllCheckboxes = (isSelected) => {
     Object.keys(this.state.checkboxes).forEach(checkbox => {
-      // BONUS: Can you explain why we pass updater function to setState instead of an object?
       this.setState(prevState => ({
         checkboxes: {
           ...prevState.checkboxes,
@@ -60,70 +77,52 @@ class RecipeBook extends Component {
   handleFormSubmit = (event) => {
     event.preventDefault();
 
+    // query format --> passing an array to query not key pair values
+    let queryArr = [];
     Object.keys(this.state.checkboxes)
       .filter(checkbox => this.state.checkboxes[checkbox])
       .forEach(checkbox => {
         console.log(checkbox, "is selected.");
-      });
+        queryArr.push(checkbox);
+        console.log("queryArr: ", queryArr);
+        // setting the state and and sendind to the backend
+        this.setState({ queryArr },
+          () => {
+            console.log("fetch is happening")
+            // debugger
+
+            fetch(`/api/recipes/search?queryArr=${this.state.queryArr}`, {
+              method: 'GET',
+              headers: {
+                  'Content-Type': 'application/json'
+              }
+            })
+            .then(response => {
+              console.log("response is happening")
+              if (response.ok) {
+                return response.json();
+              } else {
+                throw new Error('Something went wrong ...');
+              }
+            })
+            .then(recipes => {
+                console.log('recipes', recipes);
+              this.setState({
+                searchedRecipes: recipes,
+                searchedRecipesByID: recipes.reduce(
+                  (acc, item) => Object.assign(acc, {
+                    [item.id]: item
+                    }), {})
+              })
+            })
+            .catch(error => this.setState({ error }))
+            .then(() => console.log(this.state.searchedRecipes));
+
+          })
+      })
+
   };
 
-  createCheckbox = (option) => (
-    <Checkbox
-      label={option}
-      isSelected={this.state.checkboxes[option]}
-      onCheckboxChange={this.handleCheckboxChange}
-      key={option}
-    />
-  );
-
-  createCheckboxes = () => OPTIONS.map(this.createCheckbox);
-
-  // query format --> passing an array to query
-  formatQuery = (queryObj) => {
-    let finalQuery = [];
-    for (let key in queryObj) {
-      if (queryObj.key === true) {
-        finalQuery.push(key);
-      }
-    }
-    console.log(finalQuery);
-    return finalQuery;
-  };
-
-
-  // search recipes with the product of query formatted above
-  searchRecipes = () => {
-    formatQuery(this.state.checkboxes);
-    return fetch('/api/recipes/search', {
-      method: 'GET',
-      body: JSON.stringify(formatQuery),
-      headers: {
-          'Content-Type': 'application/json'
-      }
-    }).then(response => {
-      return this.setState({
-        // toggleState: this.state
-      });
-      }).catch(error => error);
-  }
-
-  // componentDidMount = () => {
-
-  //   formatSearchRequest = () => {
-  //     this.setState({
-  //       checkbox: OPTIONS.reduce(
-  //       (options, option) => ({
-  //         ...options,
-  //         [option]: false
-  //       }),
-  //       {}
-  //       )
-  //     })
-  //   }
-
-  //   formatSearchRequest();
-
-  // }
 
   render() {
     return (
@@ -163,7 +162,7 @@ class RecipeBook extends Component {
                 >
                   Deselect All
                 </button>
-                <button type="submit" onClick={ () => searchRecipes() } className="btn btn-primary">
+                <button type="submit" className="btn btn-primary">
                   Search
                 </button>
               </div>
@@ -181,7 +180,7 @@ class RecipeBook extends Component {
         } />
         )}
 
-        <SearchRecipe />
+        <SearchRecipe searchedRecipesByID={this.state.searchedRecipesByID} />
         <br/>
         <SavedRecipe />
 

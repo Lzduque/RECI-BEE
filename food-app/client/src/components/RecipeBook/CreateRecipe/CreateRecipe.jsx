@@ -177,6 +177,7 @@ class CreateRecipe extends Component {
                                     name="ingredientQt"
                                     value={item.ingredientQt}
                                     type="number"
+                                    min="0"
                                     onChange={this.updateQuantity.bind(this, item.id, 'ingredients')}/>
                         <span>
                           <button type="button" className="btn btn-danger" onClick={this.removeIngredient.bind(this, item.id, 'ingredients')}>Remove</button>
@@ -207,6 +208,7 @@ class CreateRecipe extends Component {
                   <input name="servings"
                           value={this.state.servings}
                           type="number"
+                          min="0"
                           onChange={this.handleChange} /> servings
                 </div>
               </label>
@@ -216,6 +218,7 @@ class CreateRecipe extends Component {
                   <input name="cookingTime"
                           value={this.state.cookingTime}
                           type="number"
+                          min="0"
                           onChange={this.handleChange} /> minutes
                 </div>
               </label>
@@ -244,10 +247,10 @@ class CreateRecipe extends Component {
               </label>
               <div className="container-1-box container-ingredients">
                 <div className="container-1-box container-ingredients">
-                  <input type="submit" value="Create Recipe" />
+                  <button type="submit">Create Recipe</button>
                 </div>
                 <div className="container-1-box container-ingredients">
-                  <input type="button" value="Go Back" onClick={ () => this.props.closePopup() }/>
+                  <button onClick={ () => this.props.closePopup() }>Go Back</button>
                 </div>
               </div>
             </form>
