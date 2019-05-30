@@ -1,21 +1,22 @@
 class RecipesController < ApplicationController
   # before_action :set_recipe
 
-  def index
-    @recipe = Recipe.all
-      render json: @recipe
-  end
+  # def index
+  #   @recipe = Recipe.all
+  #     render json: @recipe
+  # end
 
-  def show
+  def index
     render json: Recipe.find(params[:recipe_id]).quantities.all
   end
+
   # renders for the user (all of their saved recipes)
-#     # render(
-#     #   status: 200,
-#     #   #When searching with curl: localhost:3001/api/users?name=test
-#     #   json: Recipe.all
-#     # )
-#   end
+  #   # render(
+  #   #   status: 200,
+  #   #   #When searching with curl: localhost:3001/api/users?name=test
+  #   #   json: Recipe.all
+  #   # )
+  # end
 
   # GET/search - just to get meals out of all recipes
   def search
