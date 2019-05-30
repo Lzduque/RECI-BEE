@@ -1,20 +1,21 @@
 class RecipesController < ApplicationController
   # before_action :set_recipe
 
-
-  #renders for the user (all of their saved recipes)
   def index
     @recipe = Recipe.all
-     render json: @recipe
-    # render(
-    #   status: 200,
-    #   #User is name of model not table
-    #   #When searching with curl: localhost:3001/api/users?name=test
-    #   json: Recipe.all
-    # )
+      render json: @recipe
   end
 
-  # GET/search - just to get meals out of all reciepes
+  # renders for the user (all of their saved recipes)
+#     # render(
+#     #   status: 200,
+#     #   #User is name of model not table
+#     #   #When searching with curl: localhost:3001/api/users?name=test
+#     #   json: Recipe.all
+#     # )
+#   end
+
+  # GET/search - just to get meals out of all recipes
   def search
     # byebug
     puts 'params[:queryArr]'
@@ -24,7 +25,7 @@ class RecipesController < ApplicationController
       render status: 400, json: { error: 'Expected parameter `queryArr`' }
     else
 
-    # params["search"] # -> {q: "veggy"}
+    # params["search"] # -> {q: "veggie"}
       @recipes = Recipe.where(["meal_type IN (?)", search]).limit(10)
       render json: @recipes
     end

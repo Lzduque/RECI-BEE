@@ -8,7 +8,9 @@ class ViewRecipe extends Component {
   }
 
   saveRecipe() {
+    console.log("first", this.state.saved);
     this.setState({ saved: !this.state.saved })
+    console.log("this.state", this.state.saved)
   };
 
   render() {

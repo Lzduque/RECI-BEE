@@ -5,11 +5,13 @@ Rails.application.routes.draw do
   # root to: 'recipes#index'
 
   scope '/api' do
-    get '/recipes/search' => 'recipes#search'
 
     resources :users
-    resources :ingredients
-    resources :recipes
+
+    resources :recipes do
+      resources :quantities, only: [:index]
+      resources :ingredients, only: [:index]
+    end
     get '/recipes/search' => 'recipes#search'
 
   end

@@ -289,12 +289,72 @@ ing42 = Ingredient.create!({
   food_type:  "grain"
 })
 
+ing43 = Ingredient.create!({
+  name:       "kidney beans",
+  unit:       "g",
+  food_type:  "grain"
+})
+
+ing44 = Ingredient.create!({
+  name:       "water",
+  unit:       "mL",
+  food_type:  "sauce"
+})
+
+ing45 = Ingredient.create!({
+  name:       "oregano",
+  unit:       "g",
+  food_type:  "spice"
+})
+
+ing46 = Ingredient.create!({
+  name:       "paprika",
+  unit:       "g",
+  food_type:  "spice"
+})
+
+ing47 = Ingredient.create!({
+  name:       "chili pepper",
+  unit:       "g",
+  food_type:  "spice"
+})
+
+ing48 = Ingredient.create!({
+  name:       "hot sauce",
+  unit:       "mL",
+  food_type:  "sauce"
+})
+
+ing49 = Ingredient.create!({
+  name:       "tortilla",
+  unit:       "whole",
+  food_type:  "grain"
+})
+
+ing50 = Ingredient.create!({
+  name:       "cabbage",
+  unit:       "whole",
+  food_type:  "vegetable"
+})
+
+ing51 = Ingredient.create!({
+  name:       "green onion",
+  unit:       "whole",
+  food_type:  "vegetable"
+})
+
+ing52 = Ingredient.create!({
+  name:       "cilantro",
+  unit:       "whole",
+  food_type:  "spice"
+})
+
 # RECIPES
 
 puts "Re-creating Recipes ..."
 
 rec1 = Recipe.create!({
-  name:        "Roasted Cauliflower Lentil Curry",
+  name:        "Cauliflower Lentil Curry",
   image:       "https://static.wixstatic.com/media/26357d_c27847b36be6429ba735bd715378bd59~mv2_d_6000_4000_s_4_2.jpg/v1/fill/w_1260,h_840,al_c,q_85,usm_0.66_1.00_0.01/26357d_c27847b36be6429ba735bd715378bd59~mv2_d_6000_4000_s_4_2.webp",
   servings:    6,
   time:        70,
@@ -303,7 +363,7 @@ rec1 = Recipe.create!({
 })
 
 rec2 = Recipe.create!({
-  name:        "Frozen Yogurt Breakfast Bars",
+  name:        "Yogurt Breakfast Bars",
   image:       "https://static.wixstatic.com/media/26357d_90b4cade532243748568d864fbc229f9~mv2_d_3582_5373_s_4_2.jpg/v1/fill/w_1260,h_1890,al_c,q_90,usm_0.66_1.00_0.01/26357d_90b4cade532243748568d864fbc229f9~mv2_d_3582_5373_s_4_2.webp",
   servings:     8,
   time:         15,
@@ -312,7 +372,7 @@ rec2 = Recipe.create!({
 })
 
 rec3 = Recipe.create!({
-  name:        "Garden Chickpea Dill Dip",
+  name:        "Chickpea Dill Dip",
   image:       "https://static.wixstatic.com/media/26357d_9ea67e5914e34c3c83dd6a79adf376ed~mv2_d_6000_4000_s_4_2.jpg/v1/fill/w_1260,h_840,al_c,q_85,usm_0.66_1.00_0.01/26357d_9ea67e5914e34c3c83dd6a79adf376ed~mv2_d_6000_4000_s_4_2.webp",
   servings:     4,
   time:         15,
@@ -321,7 +381,7 @@ rec3 = Recipe.create!({
 })
 
 rec4 = Recipe.create!({
-  name:         "Balsamic and Basil Bruschetta",
+  name:         "Bruschetta",
   image:        "https://static.wixstatic.com/media/26357d_215a204c72164417a9e8c10f9187d3ad~mv2_d_6000_4000_s_4_2.jpg/v1/fill/w_1260,h_840,al_c,q_85,usm_0.66_1.00_0.01/26357d_215a204c72164417a9e8c10f9187d3ad~mv2_d_6000_4000_s_4_2.webp",
   servings:     10,
   time:         10,
@@ -330,7 +390,7 @@ rec4 = Recipe.create!({
 })
 
 rec5 = Recipe.create!({
-  name:         "Mushroom Risotto with Brown and Red Rice",
+  name:         "Mushroom Risotto",
   image:        "https://static.wixstatic.com/media/26357d_d79c01a32e744205bceece8aed0b309d~mv2_d_6000_4000_s_4_2.jpg/v1/fill/w_1260,h_840,al_c,q_85,usm_0.66_1.00_0.01/26357d_d79c01a32e744205bceece8aed0b309d~mv2_d_6000_4000_s_4_2.webp",
   servings:     4,
   time:         50,
@@ -339,12 +399,21 @@ rec5 = Recipe.create!({
 })
 
 rec6 = Recipe.create!({
-  name:         "Chocolate Chia Breakfast Pudding",
+  name:         "Breakfast Pudding",
   image:        "https://static.wixstatic.com/media/26357d_7195fe55859040cba59576d838a24ec8~mv2_d_5184_3456_s_4_2.jpg/v1/fill/w_1260,h_840,al_c,q_85,usm_0.66_1.00_0.01/26357d_7195fe55859040cba59576d838a24ec8~mv2_d_5184_3456_s_4_2.webp",
   servings:     1,
   time:         60,
   preparation:  "\n 1. Combine all pudding ingredients in a bowl or jar, stirring to combine. \n 2. Let sit for 5-10 minutes and the stir again to prevent clumping. \n 3. Cover and chill in the fridge for 1-2 hours, or overnight (yay make-ahead breakfasts!). \n 4. Stir well before serving. Portion into bowl(s) and add desired toppings. Mine were bananas, pomegranate seeds, pumpkin seeds and sunflower seeds.",
   meal_type:    "breakfast"
+})
+
+rec7 = Recipe.create!({
+  name:        "Purple Burrito Bowl",
+  image:       "",
+  servings:    4,
+  time:        20,
+  preparation: "\n 1. Add oil, beans, and chopped tomato to a medium-sized pot on medium-high heat. Stir to combine. Continue to stir for 3-5 minutes until the tomatoes and beans have heated and softened. \n 2. Reduce to medium heat and add the water and bean-filling spices. Partially cover. \n 3. While the beans are marinating in spices on the stove, place all salsa ingredients into a bowl and mix to combine. \n 4. Return periodically to the beans and stir to avoid burning. Feel free to mash beans into a chunky puree of desired. \n 5. After 10-15 minutes on the stove, the beans are ready. Until ready to serve, reduce the heat to low and add a splash of water if needed to allow the spices to continue to infuse into the beans. \n 6. Toast the tortilla wraps, cut the cabbage and prepare the garnish.",
+  meal_type:   "meal"
 })
 
 # QUANTITIES
@@ -655,6 +724,102 @@ q51 = Quantity.create!({
   ingredient_id: ing42.id,
   recipe_id:     rec6.id,
   quantity:      30
+})
+
+q52 = Quantity.create!({
+  ingredient_id: ing2.id,
+  recipe_id:     rec7.id,
+  quantity:      5
+})
+
+q53 = Quantity.create!({
+  ingredient_id: ing43.id,
+  recipe_id:     rec7.id,
+  quantity:      560
+})
+
+q54 = Quantity.create!({
+  ingredient_id: ing28.id,
+  recipe_id:     rec7.id,
+  quantity:      1
+})
+
+q55 = Quantity.create!({
+  ingredient_id: ing44.id,
+  recipe_id:     rec7.id,
+  quantity:      60
+})
+
+q56 = Quantity.create!({
+  ingredient_id: ing4.id,
+  recipe_id:     rec7.id,
+  quantity:      7
+})
+
+q57 = Quantity.create!({
+  ingredient_id: ing45.id,
+  recipe_id:     rec7.id,
+  quantity:      4
+})
+
+q58 = Quantity.create!({
+  ingredient_id: ing29.id,
+  recipe_id:     rec7.id,
+  quantity:      4
+})
+
+q59 = Quantity.create!({
+  ingredient_id: ing46.id,
+  recipe_id:     rec7.id,
+  quantity:      "!!!!!!!!!!!!!!!!!"
+})
+
+q60 = Quantity.create!({
+  ingredient_id: ing7.id,
+  recipe_id:     rec7.id,
+  quantity:      "!!!!!!!!!!!!!!!!! 1/8 tsp black pepper"
+})
+
+q61 = Quantity.create!({
+  ingredient_id: ing47.id,
+  recipe_id:     rec7.id,
+  quantity:      "!!!!!!!!!!!!!!!!! 1/8 tsp chili pepper"
+})
+
+q62 = Quantity.create!({
+  ingredient_id: ing48.id,
+  recipe_id:     rec7.id,
+  quantity:      30
+})
+
+q63 = Quantity.create!({
+  ingredient_id: ing49.id,
+  recipe_id:     rec7.id,
+  quantity:      4
+})
+
+q64 = Quantity.create!({
+  ingredient_id: ing50.id,
+  recipe_id:     rec7.id,
+  quantity:      0.5
+})
+
+q65 = Quantity.create!({
+  ingredient_id: ing19.id,
+  recipe_id:     rec7.id,
+  quantity:      1
+})
+
+q66 = Quantity.create!({
+  ingredient_id: ing51.id,
+  recipe_id:     rec7.id,
+  quantity:      2
+})
+
+q67 = Quantity.create!({
+  ingredient_id: ing52.id,
+  recipe_id:     rec7.id,
+  quantity:      15
 })
 
 # BOOKS
