@@ -409,7 +409,7 @@ rec6 = Recipe.create!({
 
 rec7 = Recipe.create!({
   name:        "Purple Burrito Bowl",
-  image:       "",
+  image:       "https://static.wixstatic.com/media/26357d_8a9d235d4b924579857cfe2fd7a23364~mv2.jpg/v1/fill/w_1024,h_683,al_c,q_85/26357d_8a9d235d4b924579857cfe2fd7a23364~mv2.webp",
   servings:    4,
   time:        20,
   preparation: "\n 1. Add oil, beans, and chopped tomato to a medium-sized pot on medium-high heat. Stir to combine. Continue to stir for 3-5 minutes until the tomatoes and beans have heated and softened. \n 2. Reduce to medium heat and add the water and bean-filling spices. Partially cover. \n 3. While the beans are marinating in spices on the stove, place all salsa ingredients into a bowl and mix to combine. \n 4. Return periodically to the beans and stir to avoid burning. Feel free to mash beans into a chunky puree of desired. \n 5. After 10-15 minutes on the stove, the beans are ready. Until ready to serve, reduce the heat to low and add a splash of water if needed to allow the spices to continue to infuse into the beans. \n 6. Toast the tortilla wraps, cut the cabbage and prepare the garnish.",
@@ -771,19 +771,19 @@ q58 = Quantity.create!({
 q59 = Quantity.create!({
   ingredient_id: ing46.id,
   recipe_id:     rec7.id,
-  quantity:      "!!!!!!!!!!!!!!!!!"
+  quantity:      7.2
 })
 
 q60 = Quantity.create!({
   ingredient_id: ing7.id,
   recipe_id:     rec7.id,
-  quantity:      "!!!!!!!!!!!!!!!!! 1/8 tsp black pepper"
+  quantity:      1.8
 })
 
 q61 = Quantity.create!({
   ingredient_id: ing47.id,
   recipe_id:     rec7.id,
-  quantity:      "!!!!!!!!!!!!!!!!! 1/8 tsp chili pepper"
+  quantity:      1.8
 })
 
 q62 = Quantity.create!({
