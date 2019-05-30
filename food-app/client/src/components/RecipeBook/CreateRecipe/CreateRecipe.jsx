@@ -21,16 +21,17 @@ class CreateRecipe extends Component {
 
   componentDidMount() {
 
-  fetch('/api/ingredients')
-    .then(response => {
-      if (response.ok) {
-        return response.json();
-      } else {
-        throw new Error('Something went wrong ...');
-      }
-    })
-    .then(options => this.setState({ options }))
-    .catch(error => this.setState({ error }))
+    // render all ingredients that exist
+    fetch('/api/ingredients')
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error('Something went wrong ...');
+        }
+      })
+      .then(options => this.setState({ options }))
+      .catch(error => this.setState({ error }))
 
   }
 
@@ -124,6 +125,7 @@ class CreateRecipe extends Component {
     }
     console.log('newRecipe: ',newRecipe);
 
+    // to create a new recipe in DB, connect it to ingredients and to the user
     const createRecipe = (data) => {
       return fetch('/api/recipes', {
           method: 'POST',

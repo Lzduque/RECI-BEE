@@ -1,12 +1,16 @@
 class RecipesController < ApplicationController
   # before_action :set_recipe
 
-  # query all recipes from user --> to render saved recipes
+  # SAVEDRECIPES - GET/ - recipes - to get all recipes for the user --> to render saved recipes
   def index
-    render json: Recipe.find(params[:recipe_id]).quantities.all
+    @recipes = Recipe.all
+
+    # pp @recipes
+
+    render :json => @recipes.to_json(:include => {ingredients: {include: :quantities}})
   end
 
-  # GET/search - just to get meals out of all reciepes --> to render search recipes
+  # RECIPEBOOK - GET/ - recipes/search - to get meals types out of all recipes --> to render search recipes
   def search
     # byebug
     puts 'params[:queryArr]'
@@ -22,7 +26,7 @@ class RecipesController < ApplicationController
     end
   end
 
-  # POST /lists
+  # CREATERECIPE - POST/ - recipes/ - to create new recipe connected to a user and new quantities --> to create recipe button
   def create
     # byebug
     puts 'params_recipe'

@@ -19,7 +19,7 @@ class ViewRecipe extends Component {
     }
   };
 
-  // save recipe in Db
+  // save recipe in Db for a user
   saveInDB = () => {
     fetch(`/api/books?id=${this.props.recipe.id}`, {
       method: 'POST',
@@ -39,6 +39,7 @@ class ViewRecipe extends Component {
 
   }
 
+  // remove recipe in Db for a user
   removeFromDB = () => {
     fetch(`/api/books/${this.props.recipe.id}`, {
       method: 'DELETE',
@@ -59,7 +60,7 @@ class ViewRecipe extends Component {
   }
 
   componentDidMount() {
-
+    // check recipe in Db for a user
     fetch(`/api/books/${this.props.recipe.id}`, {
       method: 'GET',
       headers: {

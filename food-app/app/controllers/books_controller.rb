@@ -2,7 +2,7 @@ class BooksController < ApplicationController
   # before_action :set_recipe
   before_filter :new_book, :only => [:create]
 
-  # query all recipes from user --> to render saved recipes
+  # VIEWRECIPE - GET/ - books/:recipe_id - to check recipe in Db for a user --> to render saved button state
   def show
     # byebug
     puts "show method"
@@ -25,6 +25,7 @@ class BooksController < ApplicationController
     end
   end
 
+  # VIEWRECIPE - POST/ - books/:recipe_id - to save recipe in Db for a user --> save button
   def create
     puts "create method"
     @user_id = 1
@@ -56,6 +57,7 @@ class BooksController < ApplicationController
     end
   end
 
+  # VIEWRECIPE - DELETE/ - books/:recipe_id - to remove recipe in Db for a user --> unsave button
   def destroy
     puts "destroy method"
     puts 'params'

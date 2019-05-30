@@ -1,17 +1,8 @@
 class IngredientsController < ApplicationController
 
-#this is needed for the create recipe component
-  # def index
-  #   render(
-  #     status: 200,
-  #     #When searching with curl: localhost:3001/api/users?name=test
-  #     json: Ingredient.all
-  #   )
-  # end
-
-    # #this needs to be under index to fill out recipes' ingredient's list???
+  # CREATERECIPE - GET/ - ingredients/ - to render all ingredients in Db --> to render select elements
   def index
-    render json: Recipe.find(params[:recipe_id]).ingredients.all
+    render json: Ingredient.all
   end
 
   private

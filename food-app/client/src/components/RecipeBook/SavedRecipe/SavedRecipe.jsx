@@ -22,7 +22,7 @@ class SavedRecipe extends Component {
   }
 
   componentDidMount() {
-
+    // getting all recipes for this user
     fetch('/api/recipes/')
       .then(response => {
         if (response.ok) {
