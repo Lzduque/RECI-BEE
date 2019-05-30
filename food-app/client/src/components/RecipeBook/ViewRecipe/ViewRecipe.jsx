@@ -99,7 +99,7 @@ class ViewRecipe extends Component {
   render() {
     let ingredientsList = () => {
       console.log("inside ingredients")
-
+      console.log("this.props.recipe: ", this.props.recipe)
       return this.props.recipe.ingredients.map((ingredient) => (<li key={ingredient.id}>{ingredient.quantities[0].quantity} {ingredient.unit} {ingredient.name}</li>))
     }
 
@@ -109,10 +109,10 @@ class ViewRecipe extends Component {
           <h1>{ this.props.recipe.name }</h1>
           <p>Type: {this.props.recipe.meal_type} | Servings: {this.props.recipe.servings} | Time: {this.props.recipe.time}min</p>
           <img alt="" src={this.props.recipe.image} width={200} height={200}/>
-          <h2>Ingredients:</h2>
-          <ul>
-            { ingredientsList() }
-          </ul>
+           <h2>Ingredients:</h2>
+            <ul>
+              { ingredientsList() }
+            </ul>
           <pre>{this.props.recipe.preparation}</pre>
           <button onClick={this.props.closePopup}>CLOSE</button>
           <button onClick={() => this.saveRecipe()}>

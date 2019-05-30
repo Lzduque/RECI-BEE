@@ -44,9 +44,9 @@ class SearchRecipe extends Component {
   }
 
   getRecipeByID(id) {
-    // console.log('thispropssearch', this.props.searchedRecipes);
+    console.log('thispropssearch', this.props.searchedRecipes);
     for (let recipe of this.props.searchedRecipes) {
-      // console.log('recipe', recipe);
+      console.log('recipe', recipe);
       if (recipe.id == id) {
         return recipe;
       }
@@ -76,7 +76,7 @@ class SearchRecipe extends Component {
   _recipeSelected = id => {
     let selectedRecipe = this.getRecipeByID(id);
     this.setState({selectedRecipe: selectedRecipe})
-    // console.log(id, 'selectedrep', 'null?', selectedRecipe);
+    console.log(id, 'selectedrep', 'null?', selectedRecipe);
   }
 };
 
