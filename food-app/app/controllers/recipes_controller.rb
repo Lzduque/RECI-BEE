@@ -1,24 +1,12 @@
 class RecipesController < ApplicationController
   # before_action :set_recipe
 
-  # def index
-  #   @recipe = Recipe.all
-  #     render json: @recipe
-  # end
-
+  # query all recipes from user --> to render saved recipes
   def index
     render json: Recipe.find(params[:recipe_id]).quantities.all
   end
 
-  # renders for the user (all of their saved recipes)
-  #   # render(
-  #   #   status: 200,
-  #   #   #When searching with curl: localhost:3001/api/users?name=test
-  #   #   json: Recipe.all
-  #   # )
-  # end
-
-  # GET/search - just to get meals out of all recipes
+  # GET/search - just to get meals out of all reciepes --> to render search recipes
   def search
     # byebug
     puts 'params[:queryArr]'
@@ -40,6 +28,7 @@ class RecipesController < ApplicationController
     puts 'params_recipe'
     puts params_recipe
     @newRecipe = Recipe.new(params_recipe)
+    pp @newRecipe
 
     if @newRecipe.save
       render json: @newRecipe
@@ -47,11 +36,20 @@ class RecipesController < ApplicationController
       render json: @newRecipe.errors
     end
 
+    @user_id = 1
+    puts '@user_id'
+    pp @user_id
+
     puts '@newRecipe'
     pp @newRecipe
 
     puts '@newRecipe.id'
     puts @newRecipe.id
+
+    @newParams = { "recipe_id" => @newRecipe.id, "user_id" => @user_id }
+    @book = Book.new(@newParams)
+
+    @book.save
 
     puts 'params ingredients'
     puts params[:ingredients]

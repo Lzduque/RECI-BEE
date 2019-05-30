@@ -118,7 +118,8 @@ class RecipeBook extends Component {
               })
             })
             .catch(error => this.setState({ error }))
-            .then(() => console.log('noid', this.state.searchedRecipes, 'id', this.state.searchedRecipesByID));
+            .then(() => console.log('end of fetch', this.state.searchedRecipes));
+
           })
       })
 
@@ -180,7 +181,7 @@ class RecipeBook extends Component {
           () => <CreateRecipe closePopup={ () => this.togglePopup(false) } />
         } />
         )}
-        { this.state.searchShow ? <SearchRecipe searchedRecipes={this.state.searchedRecipesByID} /> : null }
+        { this.state.searchShow ? <SearchRecipe searchedRecipesByID={this.state.searchedRecipesByID} /> : null }
         <br/>
         <SavedRecipe />
       </div>

@@ -8,6 +8,9 @@ Rails.application.routes.draw do
 
     get '/recipes/search' => 'recipes#search'
     resources :users
+    resources :ingredients
+    resources :recipes
+    resources :books
     resources :recipes do
       resources :quantities, only: [:index]
       resources :ingredients
