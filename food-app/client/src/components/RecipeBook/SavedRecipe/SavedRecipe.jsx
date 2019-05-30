@@ -1,15 +1,8 @@
 import React, { Component } from 'react';
 import ViewRecipe from '../ViewRecipe/ViewRecipe.jsx';
 
-// import rec1 from './rec1.jpg';
-// import rec2 from './rec2.jpg';
-// import rec3 from './rec3.jpg';
-
 // eslint-disable-next-line
 const images = [];
-// rec1, rec2, rec3
-// const imgWidth = '500px';
-// const imgHeight = '500px';
 
 const right = '-1';
 const left = '+1';
@@ -39,7 +32,7 @@ class SavedRecipe extends Component {
         }
       })
       .then(recipes => {
-          console.log('recipes', recipes);
+          // console.log('recipes', recipes);
         this.setState({
           savedRecipes: recipes,
           savedRecipesByID: recipes.reduce(
@@ -49,14 +42,14 @@ class SavedRecipe extends Component {
         })
       })
       .catch(error => this.setState({ error }))
-      .then(() => console.log(this.state.savedRecipes));
+      // .then(() => console.log(this.state.savedRecipes));
   }
 
   togglePopup(id) {
     this.setState({
       showPopup: id
     });
-    console.log('id', id);
+    // console.log('id', id);
   }
 
   onClick(direction) {
@@ -71,7 +64,7 @@ class SavedRecipe extends Component {
     } else {
       newIndex = changedIndex;
     }
-    console.log('click, oldindex', this.state.imageIndex, 'click newIndex', newIndex, 'direction', direction);
+    // console.log('click, oldindex', this.state.imageIndex, 'click newIndex', newIndex, 'direction', direction);
     this.setState({ imageIndex: newIndex });
   }
 
@@ -89,7 +82,7 @@ class SavedRecipe extends Component {
     });
 
     const recipe = this.state.savedRecipes[imageIndex];
-    console.log('recipe', recipe);
+    // console.log('recipe', recipe);
     //if recipe, render otherwise loading screen
     if (!recipe) {
       return false;

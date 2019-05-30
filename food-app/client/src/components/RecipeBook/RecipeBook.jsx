@@ -14,6 +14,7 @@ class RecipeBook extends Component {
     super(props);
     this.state = {
       toggleState: false,
+      searchShow: false,
       checkboxes: OPTIONS.reduce(
         (options, option) => ({
           ...options,
@@ -106,8 +107,9 @@ class RecipeBook extends Component {
               }
             })
             .then(recipes => {
-                console.log('recipes', recipes);
+                // console.log('recipes', recipes);
               this.setState({
+                searchShow: true,
                 searchedRecipes: recipes,
                 searchedRecipesByID: recipes.reduce(
                   (acc, item) => Object.assign(acc, {
@@ -116,8 +118,7 @@ class RecipeBook extends Component {
               })
             })
             .catch(error => this.setState({ error }))
-            .then(() => console.log(this.state.searchedRecipes));
-
+            .then(() => console.log('noid', this.state.searchedRecipes, 'id', this.state.searchedRecipesByID));
           })
       })
 
@@ -167,10 +168,10 @@ class RecipeBook extends Component {
                 </button>
               </div>
             </div>
-            STATE
+            {/* STATE
             <pre style={{marginTop: '1em'}}>{JSON.stringify(this.state, null, '\t')}</pre>
             PROPS
-            <pre style={{marginTop: '1em'}}>{JSON.stringify(this.props, null, '\t')}</pre>
+            <pre style={{marginTop: '1em'}}>{JSON.stringify(this.props, null, '\t')}</pre> */}
           </form>
         </div>
 
@@ -179,11 +180,9 @@ class RecipeBook extends Component {
           () => <CreateRecipe closePopup={ () => this.togglePopup(false) } />
         } />
         )}
-
-        <SearchRecipe searchedRecipesByID={this.state.searchedRecipesByID} />
+        { this.state.searchShow ? <SearchRecipe searchedRecipes={this.state.searchedRecipesByID} /> : null }
         <br/>
         <SavedRecipe />
-
       </div>
     </Router>
     )

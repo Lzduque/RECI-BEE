@@ -6,10 +6,12 @@ class RecipesController < ApplicationController
       render json: @recipe
   end
 
+  def show
+    render json: Recipe.find(params[:recipe_id]).quantities.all
+  end
   # renders for the user (all of their saved recipes)
 #     # render(
 #     #   status: 200,
-#     #   #User is name of model not table
 #     #   #When searching with curl: localhost:3001/api/users?name=test
 #     #   json: Recipe.all
 #     # )

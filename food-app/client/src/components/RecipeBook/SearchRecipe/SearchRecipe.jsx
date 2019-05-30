@@ -20,7 +20,7 @@ const CardContainer = (props) => {
   return (
     <div className="card-container">
       {
-        props.cards.map((recipe) => (
+        this.cards.map((recipe) => (
           <div className="card-button" key={ recipe.id } onClick={ onClickCard(recipe.id) }><RecipeCard
             key={ recipe.id }
             name={ recipe.name }
@@ -55,7 +55,7 @@ class SearchRecipe extends Component {
 
   render() {
 
-        // const recipe = this.props.recipes
+        // const recipe = this.props.selectedRecipe
     const recipe = [
       {
         id: 1,
@@ -93,7 +93,7 @@ class SearchRecipe extends Component {
         </h1>
         <CardContainer cards={ recipe } onCardSelected={this._recipeSelected}/>
         {
-          this.state.selectedRecipe ? <ViewRecipe recipe={ this.state.selectedRecipe } closePopup={() => this.setState({ selectedRecipe: null }) } /> : null
+          this.state.selectedRecipe ? <ViewRecipe recipe={ this.props.selectedRecipe } closePopup={() => this.setState({ selectedRecipe: null }) } /> : null
         }
       </div>
     )
