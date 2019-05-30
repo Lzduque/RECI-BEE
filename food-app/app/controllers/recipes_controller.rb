@@ -22,7 +22,7 @@ class RecipesController < ApplicationController
 
     # params["search"] # -> {q: "veggie"}
       @recipes = Recipe.where(["meal_type IN (?)", search]).limit(10)
-      render json: @recipes
+      render json: @recipes.to_json(:include => {ingredients: {include: :quantities}})
     end
   end
 
