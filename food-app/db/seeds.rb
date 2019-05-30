@@ -354,7 +354,7 @@ ing52 = Ingredient.create!({
 puts "Re-creating Recipes ..."
 
 rec1 = Recipe.create!({
-  name:        "Cauliflower Lentil Curry",
+  name:        "Cauliflower Curry",
   image:       "https://static.wixstatic.com/media/26357d_c27847b36be6429ba735bd715378bd59~mv2_d_6000_4000_s_4_2.jpg/v1/fill/w_1260,h_840,al_c,q_85,usm_0.66_1.00_0.01/26357d_c27847b36be6429ba735bd715378bd59~mv2_d_6000_4000_s_4_2.webp",
   servings:    6,
   time:        70,
