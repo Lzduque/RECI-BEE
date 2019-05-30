@@ -93,23 +93,30 @@ class ViewRecipe extends Component {
     .catch(error => this.setState({ error }))
     .then(() => console.log("this.state.saved final after fetch: ", this.state.saved));
 
+
   };
 
   render() {
+    let ingredientsList = () => {
+      console.log("inside ingredients")
+
+      return this.props.recipe.ingredients.map((ingredient) => (<li key={ingredient.id}>{ingredient.quantities[0].quantity} {ingredient.unit} {ingredient.name}</li>))
+    }
+
     return (
       <div className='popup' >
         <div className='popup-inner' >
           <h1>{ this.props.recipe.name }</h1>
           <p>Type: {this.props.recipe.meal_type} | Servings: {this.props.recipe.servings} | Time: {this.props.recipe.time}min</p>
           <img alt="" src={this.props.recipe.image} width={200} height={200}/>
+          <h2>Ingredients:</h2>
+          <ul>
+            { ingredientsList() }
+          </ul>
           <pre>{this.props.recipe.preparation}</pre>
           <button onClick={this.props.closePopup}>CLOSE</button>
           <button onClick={() => this.saveRecipe()}>
           { this.state.saved ? `♥` : `♡` } </button>
-          STATE
-          <pre style={{marginTop: '1em'}}>{JSON.stringify(this.state, null, '\t')}</pre>
-          PROPS
-          <pre style={{marginTop: '1em'}}>{JSON.stringify(this.props, null, '\t')}</pre>
         </div>
       </div>
     )
