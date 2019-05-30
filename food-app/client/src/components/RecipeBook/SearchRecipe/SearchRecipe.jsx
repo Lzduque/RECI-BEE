@@ -44,17 +44,21 @@ class SearchRecipe extends Component {
   }
 
   getRecipeByID(id) {
-    for (let recipe in this.props.recipes) {
-      if (recipe.id === id) {
-        return this.props.recipes.recipe;
+    // console.log('thispropssearch', this.props.searchedRecipes);
+    for (let recipe of this.props.searchedRecipes) {
+      // console.log('recipe', recipe);
+      if (recipe.id == id) {
+        return recipe;
       }
     }
+    return false;
     // loop through this.props.recipes
     // if recipe.id == id , then return recipe.obj else return null
   }
 
   render() {
     // const recipe = this.props.searchedRecipe
+     console.log('props from book', this.props.searchedRecipes);
 
     return (
       <div className="search-page">
@@ -63,15 +67,16 @@ class SearchRecipe extends Component {
         </h1>
         <CardContainer searchedRecipes={ this.props.searchedRecipes } onCardSelected={this._recipeSelected}/>
         {
-          this.state.selectedRecipe ? <ViewRecipe recipe={ this.props.selectedRecipe } closePopup={() => this.setState({ selectedRecipe: null }) } /> : null
+          this.state.selectedRecipe ? <ViewRecipe recipe={ this.state.selectedRecipe } closePopup={() => this.setState({ selectedRecipe: null }) } /> : null
         }
       </div>
     )
   }
 
   _recipeSelected = id => {
-    this.setState({selectedRecipe: this.getRecipeByID(id)})
-    console.log(id);
+    let selectedRecipe = this.getRecipeByID(id);
+    this.setState({selectedRecipe: selectedRecipe})
+    // console.log(id, 'selectedrep', 'null?', selectedRecipe);
   }
 };
 

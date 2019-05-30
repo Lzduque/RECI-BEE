@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import ViewRecipe from '../ViewRecipe/ViewRecipe.jsx';
 
 // eslint-disable-next-line
-const images = [];
 
 const right = '-1';
 const left = '+1';
