@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import ViewRecipe from '../ViewRecipe/ViewRecipe.jsx';
 
 // eslint-disable-next-line
-const images = [];
 
 const right = '-1';
 const left = '+1';
@@ -97,11 +96,11 @@ class SavedRecipe extends Component {
                   onClick={()=>this.onClick(right)}
                   className="click-right">⇦</button>
                 <button
-                  onClick={()=>this.onClick(left)}
-                  className="click-left">⇨</button>
-                <button
                   onClick={() => this.togglePopup(recipe.id)}
                   className="click-center">⇪</button>
+                <button
+                  onClick={()=>this.onClick(left)}
+                  className="click-left">⇨</button>
               </div>
             {this.state.showPopup > 0 && (
               <ViewRecipe

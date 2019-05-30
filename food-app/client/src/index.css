@@ -194,22 +194,22 @@ h3 {
   cursor: pointer;
 }
 
+.click-center {
+  height: 500px;
+  color: #eeeeee;
+  font-size: 2em;
+  position: center;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
 .click-right {
   order: 3;
   height: 500px;
   color: #eeeeee;
   font-size: 2em;
   position: right;
-  background-color: transparent;
-  border: 0;
-  cursor: pointer;
-}
-
-.click-center {
-  height: 500px;
-  color: #eeeeee;
-  font-size: 2em;
-  position: center;
   background-color: transparent;
   border: 0;
   cursor: pointer;
