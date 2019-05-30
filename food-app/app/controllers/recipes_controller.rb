@@ -1,6 +1,7 @@
 class RecipesController < ApplicationController
   # before_action :set_recipe
 
+  # query all recipes from user --> to render saved recipes
   def index
     @recipe = Recipe.all
      render json: @recipe
@@ -12,7 +13,7 @@ class RecipesController < ApplicationController
     # )
   end
 
-  # GET/search - just to get meals out of all reciepes
+  # GET/search - just to get meals out of all reciepes --> to render search recipes
   def search
     # byebug
     puts 'params[:queryArr]'
