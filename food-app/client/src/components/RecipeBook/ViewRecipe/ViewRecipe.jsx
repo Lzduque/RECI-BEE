@@ -6,18 +6,42 @@ class ViewRecipe extends Component {
     this.state = { saved: false };
   };
 
+  // save recipe in recipe and in Db or unsave it and remove it
   saveRecipe = () => {
     if (!this.state.saved) {
-      this.setState({ saved: true });
+      this.setState({ saved: true },
+      this.saveInDB()
+      );
     } else {
-      this.setState({ saved: false });
+      this.setState({ saved: false },
+      this.removeFromDB()
+      );
     }
   };
 
-  componentDidMount() {
+  // save recipe in Db
+  saveInDB = () => {
+    fetch(`/api/books?id=${this.props.recipe.id}`, {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      }
+    })
+    .then(response => {
+      console.log("response is happening inside save in DB")
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error('Something went wrong ...');
+      }
+    })
+    .catch(error => this.setState({ error }));
 
+  }
+
+  removeFromDB = () => {
     fetch(`/api/books/${this.props.recipe.id}`, {
-      method: 'GET',
+      method: 'DELETE',
       headers: {
           'Content-Type': 'application/json'
       }
@@ -30,19 +54,39 @@ class ViewRecipe extends Component {
         throw new Error('Something went wrong ...');
       }
     })
+    .catch(error => this.setState({ error }));
+
+  }
+
+  componentDidMount() {
+
+    fetch(`/api/books/${this.props.recipe.id}`, {
+      method: 'GET',
+      headers: {
+          'Content-Type': 'application/json'
+      }
+    })
+    .then(response => {
+      console.log("response is happening inside query DB")
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error('Something went wrong inside query DB...');
+      }
+    })
     .then(recipeIsSaved => {
-        console.log('recipe if saved?', recipeIsSaved);
+        console.log('recipe if saved after query DB?', recipeIsSaved);
 
         if (recipeIsSaved) {
           // this.setState = { saved: true };
           this.saveRecipe();
           console.log("is being set to TRUE")
-          console.log("this.state.saved should be TRUE now: ", this.state.saved)
+          // console.log("this.state.saved should be TRUE now: ", this.state.saved)
         } else {
           // this.setState = { saved: false };
           this.saveRecipe();
           console.log("is being set to FALSE")
-          console.log("this.state.saved should be FALSE now: ", this.state.saved)
+          // console.log("this.state.saved should be FALSE now: ", this.state.saved)
         }
     })
     .catch(error => this.setState({ error }))
@@ -51,7 +95,7 @@ class ViewRecipe extends Component {
   };
 
   render() {
-    console.log("this.state.saved now: ", this.state.saved)
+    console.log("this.state.saved now (inside render - official): ", this.state.saved)
     return (
       <div className='popup' >
         <div className='popup-inner' >
@@ -62,6 +106,10 @@ class ViewRecipe extends Component {
           <button onClick={this.props.closePopup}>CLOSE</button>
           <button onClick={() => this.saveRecipe()}>
           { this.state.saved ? `♥` : `♡` } </button>
+          STATE
+          <pre style={{marginTop: '1em'}}>{JSON.stringify(this.state, null, '\t')}</pre>
+          PROPS
+          <pre style={{marginTop: '1em'}}>{JSON.stringify(this.props, null, '\t')}</pre>
         </div>
       </div>
     )
