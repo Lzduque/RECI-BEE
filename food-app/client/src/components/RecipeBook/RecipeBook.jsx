@@ -22,9 +22,9 @@ class RecipeBook extends Component {
         }),
         {}
       ),
-      searchedRecipes: "",
-      searchedRecipesByID: "",
-      queryArr: ""
+      searchedRecipes: [],
+      searchedRecipesByID: null,
+      queryArr: []
     };
     this.togglePopup = this.togglePopup.bind(this);
     // this.searchRecipes = this.searchRecipes.bind(this);
@@ -181,7 +181,7 @@ class RecipeBook extends Component {
           () => <CreateRecipe closePopup={ () => this.togglePopup(false) } />
         } />
         )}
-        { this.state.searchShow ? <SearchRecipe searchedRecipesByID={this.state.searchedRecipesByID} /> : null }
+        { this.state.searchShow ? <SearchRecipe searchedRecipes={this.state.searchedRecipes} /> : null }
         <br/>
         <SavedRecipe />
       </div>
