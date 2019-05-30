@@ -84,8 +84,8 @@ class ViewRecipe extends Component {
           // console.log("this.state.saved should be TRUE now: ", this.state.saved)
         } else {
           // this.setState = { saved: false };
-          this.saveRecipe();
-          console.log("is being set to FALSE")
+          // this.saveRecipe();
+          console.log("this.state.saved is FALSE")
           // console.log("this.state.saved should be FALSE now: ", this.state.saved)
         }
     })
@@ -95,7 +95,6 @@ class ViewRecipe extends Component {
   };
 
   render() {
-    console.log("this.state.saved now (inside render - official): ", this.state.saved)
     return (
       <div className='popup' >
         <div className='popup-inner' >
