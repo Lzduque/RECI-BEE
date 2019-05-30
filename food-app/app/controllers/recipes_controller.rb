@@ -35,6 +35,7 @@ class RecipesController < ApplicationController
     puts 'params_recipe'
     puts params_recipe
     @newRecipe = Recipe.new(params_recipe)
+    pp @newRecipe
 
     if @newRecipe.save
       render json: @newRecipe
@@ -42,11 +43,20 @@ class RecipesController < ApplicationController
       render json: @newRecipe.errors
     end
 
+    @user_id = 1
+    puts '@user_id'
+    pp @user_id
+
     puts '@newRecipe'
     pp @newRecipe
 
     puts '@newRecipe.id'
     puts @newRecipe.id
+
+    @newParams = { "recipe_id" => @newRecipe.id, "user_id" => @user_id }
+    @book = Book.new(@newParams)
+
+    @book.save
 
     puts 'params ingredients'
     puts params[:ingredients]
