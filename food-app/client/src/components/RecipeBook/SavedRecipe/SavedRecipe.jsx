@@ -16,7 +16,6 @@ class SavedRecipe extends Component {
       savedRecipes: [],
       savedRecipesByID: {}
     };
-
     this.togglePopup = this.togglePopup.bind(this);
   }
 
@@ -36,22 +35,25 @@ class SavedRecipe extends Component {
       .then(data => {
         const recipes = data.map(x => x.recipe)
           // console.log('recipes', recipes);
-        this.setState({
-          savedRecipes: recipes,
-          savedRecipesByID: recipes.reduce(
-            (acc, item) => Object.assign(acc, {
-              [item.id]: item
-              }), {})
+          this.setState({
+            savedRecipes: recipes,
+            savedRecipesByID: recipes.reduce(
+              (acc, item) => Object.assign(acc, {
+                [item.id]: item
+                }), {})
+          })
         })
       })
       .catch(error => this.setState({ error }))
       .then(() => console.log("savedrec", this.state.savedRecipes, "savedrecID", this.state.savedRecipesByID));
+    }
+    getRecipes();
   }
 
   togglePopup(id) {
     this.setState({
       showPopup: id
-    });
+    }, () => this.getRecipes)
     // console.log('id', id);
   }
 
@@ -108,6 +110,7 @@ class SavedRecipe extends Component {
               </div>
             {this.state.showPopup > 0 && (
               <ViewRecipe
+                getRecipes={() => this.getRecipes()}
                 closePopup={() => this.togglePopup(0)}
                 recipe={this.state.savedRecipesByID[this.state.showPopup]}
               />)}
