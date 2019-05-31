@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import MealView from './MealView/MealView.jsx';
+
 // import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 class MealPlan extends Component {
@@ -8,10 +10,10 @@ class MealPlan extends Component {
     this.state = {
       showPopup: false,
       showRecipes: [],
-      showRecipesByID: null,
+      showRecipesByID: {},
       recipeType: ""
     }
-    this.typeToggle = this.typeToggle.bind(this);
+    this.typeChangee = this.typeChange.bind(this);
   };
 
   typeToggle = (type) => {
@@ -35,17 +37,21 @@ class MealPlan extends Component {
       .then(data => {
         const recipes = data.map( x => x.recipe)
         this.setState({
-          showPopup: true,
           showRecipes: recipes,
           showRecipesByID: recipes.reduce(
             (acc, item) => Object.assign(acc, {
               [item.id]: item
-            }), {})
+            }), {}),
+          showPopup: true,
         })
       })
       .catch(error => this.setState({ error }))
       .then(() => console.log("end of fetch", "show", this.state.showRecipes, "showID", this.state.showRecipesByID, this.state.showPopup));
     })
+  }
+
+  typeChange(id) {
+    this.setState({ showPopup: id })
   }
 
   render() {
@@ -71,28 +77,33 @@ class MealPlan extends Component {
         <br/>
         <button style={{
           backgroundColor: 'white',
-          color: 'blue'}} onClick={() => this.typeToggle('breakfast')}>+</button>
+          color: 'blue'}} onClick={() => this.typeChange('breakfast')}>+</button>
         <br/>
         <br/>
         <h2>LUNCH</h2>
         <br/>
         <button style={{
           backgroundColor: 'white',
-          color: 'blue'}} onClick={() => this.typeToggle('meal')}>+</button>
+          color: 'blue'}} onClick={() => this.typeChange('meal')}>+</button>
         <br/>
         <br/>
         <h2>DINNER</h2>
         <br/>
         <button style={{
           backgroundColor: 'white',
-          color: 'blue'}} onClick={() => this.typeToggle('meal')}>+</button>
+          color: 'blue'}} onClick={() => this.typeChange('meal')}>+</button>
         <br/>
         <br/>
         <h2>SNACK</h2>
         <br/>
         <button style={{
           backgroundColor: 'white',
-          color: 'blue'}} onClick={() => this.typeToggle('snack')}>+</button>
+          color: 'blue'}} onClick={() => this.typeChange('snack')}>+</button>
+            {this.state.showPopup ?
+              <MealView
+                closePopup={() => this.setState({ showPopup: null })}
+                selectRecipes={this.state.savedRecipesByID}
+              /> : null }
       </div>
     // </Router>
     )
