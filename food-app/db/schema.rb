@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190525150101) do
+ActiveRecord::Schema.define(version: 20190531130946) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,23 @@ ActiveRecord::Schema.define(version: 20190525150101) do
     t.string   "food_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "meal_plan_recipes", force: :cascade do |t|
+    t.integer  "recipe_id"
+    t.integer  "meal_plan_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["meal_plan_id"], name: "index_meal_plan_recipes_on_meal_plan_id", using: :btree
+    t.index ["recipe_id"], name: "index_meal_plan_recipes_on_recipe_id", using: :btree
+  end
+
+  create_table "meal_plans", force: :cascade do |t|
+    t.integer  "user_id"
+    t.datetime "meal_plan_date"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["user_id"], name: "index_meal_plans_on_user_id", using: :btree
   end
 
   create_table "quantities", force: :cascade do |t|
@@ -61,6 +78,9 @@ ActiveRecord::Schema.define(version: 20190525150101) do
 
   add_foreign_key "books", "recipes"
   add_foreign_key "books", "users"
+  add_foreign_key "meal_plan_recipes", "meal_plans"
+  add_foreign_key "meal_plan_recipes", "recipes"
+  add_foreign_key "meal_plans", "users"
   add_foreign_key "quantities", "ingredients"
   add_foreign_key "quantities", "recipes"
 end
