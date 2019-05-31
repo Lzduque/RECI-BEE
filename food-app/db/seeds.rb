@@ -957,3 +957,46 @@ b1 = Book.create!({
   recipe_id:  rec1.id
 })
 
+b2 = Book.create!({
+  user_id:    user1.id,
+  recipe_id:  rec2.id
+})
+
+b3 = Book.create!({
+  user_id:    user1.id,
+  recipe_id:  rec3.id
+})
+
+b4 = Book.create!({
+  user_id:    user1.id,
+  recipe_id:  rec4.id
+})
+
+b5 = Book.create!({
+  user_id:    user1.id,
+  recipe_id:  rec5.id
+})
+
+b6 = Book.create!({
+  user_id:    user1.id,
+  recipe_id:  rec6.id
+})
+
+# MEAL PLANS
+
+puts "Re-creating MEAL_PLANS ..."
+
+m1 = MealPlan.create!({
+  user_id:    user1.id,
+  meal_plan_date:  DateTime.parse("01/06/2019")
+})
+
+# MEAL PLANS RECIPES
+
+puts "Re-creating MEAL PLANS RECIPES ..."
+
+mpr1 = MealPlanRecipe.create!({
+  meal_plan_id: m1.id,
+  recipe_id:    rec1.id
+})
+
