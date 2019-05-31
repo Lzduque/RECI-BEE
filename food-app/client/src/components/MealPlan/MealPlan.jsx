@@ -1,29 +1,69 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import ShoppingList from './ShoppingList/ShoppingList.jsx';
-import RecipeChoice from './RecipeChoice/RecipeChoice.jsx';
+
 
 class MealPlan extends Component {
+  constructor(props) {
+    super(props);
+    // this.state = {
+    //   breakfastPopup: false,
+    //   lunchPopup: false,
+    //   dinnerPopup: false,
+    //   snackPopup: false
+    // }
+    // this.breakfastToggle = this.breakfastToggle.bind(this);
+    // this.lunchToggle = this.lunchToggle.bind(this);
+    // this.dinnerToggle = this.dinnerToggle.bind(this);
+    // this.snackToggle = this.snackToggle.bind(this);
+  }
+
+  // breakfastToggle() {
+  //   this.setState({ breakfastPopup: true })
+  //   console.log(this.state.breakfastPopup);
+  // }
   render() {
     return (
       <Router>
       <div>
-        <div>
-        <p>Meal Plan Page</p>
+        <div className="nav-bar">
         </div>
-        <ul>
-          <li>
-            <Link to="/shopping-list">Shopping List</Link>
-          </li>
-          <li>
-            <Link to="/recipe/choice">Recipe Choice</Link>
-          </li>
-        </ul>
-
+        <br/>
+        <div className="create-recipe container-1">
+          <div className="container-1-box page-title">
+            <h1 className="page-title">Meal Plan Page</h1>
+          </div>
+        </div>
         <hr />
-
-        <Route path="/shopping-list" component={ShoppingList} />
-        <Route path="/recipe/choice" component={RecipeChoice} />
+        <br/>
+        <h3>Select Meals for the Day</h3>
+        <br/>
+        <br/>
+        <h2>BREAKFAST</h2>
+        <br/>
+        <button style={{
+          backgroundColor: 'white',
+          color: 'blue'}} onClick={ this.breakfastToggle }>+</button>
+        <br/>
+        <br/>
+        <h2>LUNCH</h2>
+        <br/>
+        <button style={{
+          backgroundColor: 'white',
+          color: 'blue'}}>+</button>
+        <br/>
+        <br/>
+        <h2>DINNER</h2>
+        <br/>
+        <button style={{
+          backgroundColor: 'white',
+          color: 'blue'}}>+</button>
+        <br/>
+        <br/>
+        <h2>SNACK</h2>
+        <br/>
+        <button style={{
+          backgroundColor: 'white',
+          color: 'blue'}}>+</button>
       </div>
     </Router>
     )
@@ -31,3 +71,4 @@ class MealPlan extends Component {
 };
 
 export default MealPlan;
+

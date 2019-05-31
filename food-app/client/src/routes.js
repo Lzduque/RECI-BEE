@@ -40,8 +40,8 @@ class Routes extends Component {
           <ul className="nav-links-container">
             <Link className="nav-link" to="/">Welcome</Link>
             <Link className="nav-link" to="/profile">Profile</Link>
-            <Link className="nav-link" to="/recipebook">RecipeBook</Link>
-            <Link className="nav-link" to="/mealplan">MealPlan</Link>
+            <Link className="nav-link" to="/recipebook">Recipe Book</Link>
+            <Link className="nav-link" to="/mealplan">Meal Plan</Link>
           </ul>
         </div>
 

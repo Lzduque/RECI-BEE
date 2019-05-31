@@ -349,6 +349,36 @@ ing52 = Ingredient.create!({
   food_type:  "spice"
 })
 
+ing53 = Ingredient.create!({
+  name:       "buckwheat flour",
+  unit:       "g",
+  food_type:  "grain"
+})
+
+ing54 = Ingredient.create!({
+  name:       "soy milk",
+  unit:       "mL",
+  food_type:  "dairy"
+})
+
+ing55 = Ingredient.create!({
+  name:       "coconut oil",
+  unit:       "mL",
+  food_type:  "sauce"
+})
+
+ing56 = Ingredient.create!({
+  name:       "baking powder",
+  unit:       "g",
+  food_type:  "other"
+})
+
+ing57 = Ingredient.create!({
+  name:       "lime",
+  unit:       "whole",
+  food_type:  "fruit"
+})
+
 # RECIPES
 
 puts "Re-creating Recipes ..."
@@ -414,6 +444,24 @@ rec7 = Recipe.create!({
   time:        20,
   preparation: "\n 1. Add oil, beans, and chopped tomato to a medium-sized pot on medium-high heat. Stir to combine. Continue to stir for 3-5 minutes until the tomatoes and beans have heated and softened. \n 2. Reduce to medium heat and add the water and bean-filling spices. Partially cover. \n 3. While the beans are marinating in spices on the stove, place all salsa ingredients into a bowl and mix to combine. \n 4. Return periodically to the beans and stir to avoid burning. Feel free to mash beans into a chunky puree of desired. \n 5. After 10-15 minutes on the stove, the beans are ready. Until ready to serve, reduce the heat to low and add a splash of water if needed to allow the spices to continue to infuse into the beans. \n 6. Toast the tortilla wraps, cut the cabbage and prepare the garnish.",
   meal_type:   "meal"
+})
+
+rec8 = Recipe.create!({
+  name:         "Buckwheat Pancakes",
+  image:         "",
+  servings:      2,
+  time:          25,
+  preparation:   "\n 1. Preheat oven to 350 F/ 180 C. \n 2. Mash bananas in a large bowl. Add all remaining ingredients and stir until well until combined. \n 3. Spoon onto a baking tray lined with baking paper to create 8-10 pancakes. \n 4. Bake in the oven for 20 minutes. \n 5. Add desired toppings (I always go for a nut butter and some stewed frozen berries). Enjoy!",
+  meal_type:     "breakfast"
+})
+
+rec9 = Recipe.create!({
+  name:           "Coconut Lime Sorbet",
+  image:          "",
+  servings:       6,
+  time:           5,
+  preparation:    "\n 1. Add all ingredients to a food processor and blend until smooth to create your sorbet. \n 2. To make it a firm ice-cream consistency, place in the freezer for one to two hours before serving. Enjoy!",
+  meal_type:      "snack"
 })
 
 # QUANTITIES
@@ -820,6 +868,84 @@ q67 = Quantity.create!({
   ingredient_id: ing52.id,
   recipe_id:     rec7.id,
   quantity:      15
+})
+
+q68 = Quantity.create!({
+  ingredient_id: ing53.id,
+  recipe_id:     rec8.id,
+  quantity:      105
+})
+
+q69 = Quantity.create!({
+  ingredient_id: ing41.id,
+  recipe_id:     rec8.id,
+  quantity:      3
+})
+
+q70 = Quantity.create!({
+  ingredient_id: ing54.id,
+  recipe_id:     rec8.id,
+  quantity:      60
+})
+
+q71 = Quantity.create!({
+  ingredient_id: ing55.id,
+  recipe_id:     rec8.id,
+  quantity:      20
+})
+
+q72 = Quantity.create!({
+  ingredient_id: ing11.id,
+  recipe_id:     rec8.id,
+  quantity:      15
+})
+
+q73 = Quantity.create!({
+  ingredient_id: ing56.id,
+  recipe_id:     rec8.id,
+  quantity:      7
+})
+
+q74 = Quantity.create!({
+  ingredient_id: ing12.id,
+  recipe_id:     rec8.id,
+  quantity:      7
+})
+
+q75 = Quantity.create!({
+  ingredient_id: ing39.id,
+  recipe_id:     rec8.id,
+  quantity:      5
+})
+
+q76 = Quantity.create!({
+  ingredient_id: ing6.id,
+  recipe_id:     rec8.id,
+  quantity:      1.25
+})
+
+q77 = Quantity.create!({
+  ingredient_id: ing38.id,
+  recipe_id:     rec9.id,
+  quantity:      250
+})
+
+q78 = Quantity.create!({
+  ingredient_id: ing41.id,
+  recipe_id:     rec9.id,
+  quantity:      3
+})
+
+q79 = Quantity.create!({
+  ingredient_id: ing57.id,
+  recipe_id:     rec9.id,
+  quantity:      1
+})
+
+q80 = Quantity.create!({
+  ingredient_id: ing12.id,
+  recipe_id:     rec9.id,
+  quantity:      1.25
 })
 
 # BOOKS
