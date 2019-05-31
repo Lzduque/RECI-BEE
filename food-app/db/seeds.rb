@@ -370,13 +370,91 @@ ing55 = Ingredient.create!({
 ing56 = Ingredient.create!({
   name:       "baking powder",
   unit:       "g",
-  food_type:  "other"
+  food_type:  "baking"
 })
 
 ing57 = Ingredient.create!({
   name:       "lime",
   unit:       "whole",
   food_type:  "fruit"
+})
+
+ing58 = Ingredient.create!({
+  name:       "yellow onion",
+  unit:       "whole",
+  food_type:  "vegetable"
+})
+
+ing59 = Ingredient.create!({
+  name:       "pinto beans",
+  unit:       "g",
+  food_type:  "grain"
+})
+
+ing60 = Ingredient.create!({
+  name:       "cumin",
+  unit:       "g",
+  food_type:  "spice"
+})
+
+ing61 = Ingredient.create!({
+  name:       "cajun spice",
+  unit:       "g",
+  food_type:  "spice"
+})
+
+ing62 = Ingredient.create!({
+  name:       "burger buns",
+  unit:       "whole",
+  food_type:  "grain"
+})
+
+ing63 = Ingredient.create!({
+  name:       "leafy greens",
+  unit:       "g",
+  food_type:  "vegetable"
+})
+
+ing64 = Ingredient.create!({
+  name:       "cashews",
+  unit:       "g",
+  food_type:  "grain"
+})
+
+ing65 = Ingredient.create!({
+  name:       "white vinegar",
+  unit:       "mL",
+  food_type:  "sauce"
+})
+
+ing66 = Ingredient.create!({
+  name:       "applesauce",
+  unit:       "g",
+  food_type:  "sauce"
+})
+
+ing67 = Ingredient.create!({
+  name:       "sugar",
+  unit:       "g",
+  food_type:  "baking"
+})
+
+ing68 = Ingredient.create!({
+  name:       "baking soda",
+  unit:       "g",
+  food_type:  "baking"
+})
+
+ing69 = Ingredient.create!({
+  name:       "blueberries",
+  unit:       "g",
+  food_type:  "fruit"
+})
+
+ing70 = Ingredient.create!({
+  name:       "wheat flour",
+  unit:       "g",
+  food_type:  "grain"
 })
 
 # RECIPES
@@ -448,7 +526,7 @@ rec7 = Recipe.create!({
 
 rec8 = Recipe.create!({
   name:         "Buckwheat Pancakes",
-  image:         "",
+  image:         "https://static.wixstatic.com/media/26357d_f6b265dfea8a45fb819eecb218e8603d~mv2_d_4000_6000_s_4_2.jpg/v1/fill/w_1260,h_1890,al_c,q_90,usm_0.66_1.00_0.01/26357d_f6b265dfea8a45fb819eecb218e8603d~mv2_d_4000_6000_s_4_2.webp",
   servings:      2,
   time:          25,
   preparation:   "\n 1. Preheat oven to 350 F/ 180 C. \n 2. Mash bananas in a large bowl. Add all remaining ingredients and stir until well until combined. \n 3. Spoon onto a baking tray lined with baking paper to create 8-10 pancakes. \n 4. Bake in the oven for 20 minutes. \n 5. Add desired toppings (I always go for a nut butter and some stewed frozen berries). Enjoy!",
@@ -457,11 +535,29 @@ rec8 = Recipe.create!({
 
 rec9 = Recipe.create!({
   name:           "Coconut Lime Sorbet",
-  image:          "",
+  image:          "https://static.wixstatic.com/media/26357d_49efb053a1e94be3886b3d8bbd58a1f8~mv2_d_5184_3456_s_4_2.jpg/v1/fill/w_1260,h_840,al_c,q_85,usm_0.66_1.00_0.01/26357d_49efb053a1e94be3886b3d8bbd58a1f8~mv2_d_5184_3456_s_4_2.webps",
   servings:       6,
   time:           5,
   preparation:    "\n 1. Add all ingredients to a food processor and blend until smooth to create your sorbet. \n 2. To make it a firm ice-cream consistency, place in the freezer for one to two hours before serving. Enjoy!",
   meal_type:      "snack"
+})
+
+rec10 = Recipe.create!({
+  name:           "Bean Burger",
+  image:          "https://static.wixstatic.com/media/26357d_a8dc71bee054425ebce939eef0b43271~mv2_d_3888_2592_s_4_2.jpg/v1/fill/w_1260,h_840,al_c,q_85,usm_0.66_1.00_0.01/26357d_a8dc71bee054425ebce939eef0b43271~mv2_d_3888_2592_s_4_2.webp",
+  servings:       6,
+  time:           40,
+  preparation:    "\n 1. Add ground flax seeds plus 6 Tbsp water to a large food processor. Allow to sit for 5 minutes until flax seeds gel, stirring once halfway. \n 2. In a medium pan on high heat sauté the onions in oil until lightly golden, about 5 minutes. Add 2 Tbsp water as needed while stirring to bring up the browning and prevent burning. Add the garlic and sauté for another 2 minutes. \n 3. Add the caramelized onion and garlic mixture to the food processor, along with the remaining ingredients for the burger patty. Blend on high and scrape down sides until well combined. Let it sit to gel while preparing accompaniments. \n 4. In a medium pan on medium-high heat sauté mushrooms in oil. Don’t worry if it seems dry at first, after about 3 minutes the mushrooms will naturally release water. After 5 minutes of cooking add the bell pepper and spices and cook for another 3 minutes. Add water if needed to bring up the spices from the bottom of the pan and to avoid burning. Set aside. \n 5. Prepare the cajun mayo by placing all ingredients in a blender and adding 1/4 cup water - blend on high until creamy. Set aside. \n 6. Divide the bean and oat mixture into the desired number of patties. Cook on a non-stick pan on medium-high heat, using 1/2 tsp oil per patty per side. Cook until lightly browned, about 3 to 4 minutes per side. \n 7. Serve on burger buns with coleslaw, sautéed mushroom and bell pepper mix, and topped with arugula, cajun mayo and jalapeños. Enjoy!",
+  meal_type:      "meal"
+})
+
+rec11 = Recipe.create!({
+  name:           "Blueberry Muffins",
+  image:          "https://static.wixstatic.com/media/26357d_6b4eadce593a466a8b16eaf487b6ece1~mv2_d_3888_2592_s_4_2.jpg/v1/fill/w_1260,h_840,al_c,q_85,usm_0.66_1.00_0.01/26357d_6b4eadce593a466a8b16eaf487b6ece1~mv2_d_3888_2592_s_4_2.webp",
+  servings:       12,
+  time:           35,
+  preparation:    "\n 1. Preheat the oven to 375 F (190 C) and lightly grease a muffin tin or add paper muffin liners. \n 2. In a large bowl, whisk together the flax seeds and water and allow it to sit for 5 minutes until the flax gels, stirring once after a couple minutes. \n 3. To the flax gel, add the soy milk and vinegar, whisk, and allow to sit for another 5 minutes. Meanwhile, blend the oats into a flour. \n 4. Add the oil, applesauce, sugar, vanilla and cinnamon and whisk. \n 5. One at a time add the baking soda, baking powder and salt stirring after each addition. Then gently mix in the oat flour until just combined. \n 6. Gently stir in blueberries until just combined. If frozen, do not and thaw. Toss first in flour until coated and then stir into the muffin batter until just combined. Divide evenly into the muffin tin. \n 7. For the sugar and cinnamon sprinkle, mix these two ingredients together first and then evenly distribute on top of the 12 muffins. \n 8. Bake until a toothpick inserted into the centre comes out clean, about 20 minutes.",
+  meal_type:      "breakfast"
 })
 
 # QUANTITIES
@@ -946,6 +1042,228 @@ q80 = Quantity.create!({
   ingredient_id: ing12.id,
   recipe_id:     rec9.id,
   quantity:      1.25
+})
+
+q81 = Quantity.create!({
+  ingredient_id: ing11.id,
+  recipe_id:     rec10.id,
+  quantity:      15
+})
+
+q82 = Quantity.create!({
+  ingredient_id: ing31.id,
+  recipe_id:     rec10.id,
+  quantity:      5
+})
+
+q83 = Quantity.create!({
+  ingredient_id: ing58.id,
+  recipe_id:     rec10.id,
+  quantity:      1
+})
+
+q84 = Quantity.create!({
+  ingredient_id: ing32.id,
+  recipe_id:     rec10.id,
+  quantity:      2
+})
+
+q85 = Quantity.create!({
+  ingredient_id: ing59.id,
+  recipe_id:     rec10.id,
+  quantity:      400
+})
+
+q86 = Quantity.create!({
+  ingredient_id: ing22.id,
+  recipe_id:     rec10.id,
+  quantity:      50
+})
+
+q87 = Quantity.create!({
+  ingredient_id: ing9.id,
+  recipe_id:     rec10.id,
+  quantity:      115
+})
+
+q88 = Quantity.create!({
+  ingredient_id: ing60.id,
+  recipe_id:     rec10.id,
+  quantity:      5
+})
+
+q89 = Quantity.create!({
+  ingredient_id: ing5.id,
+  recipe_id:     rec10.id,
+  quantity:      5
+})
+
+q90 = Quantity.create!({
+  ingredient_id: ing61.id,
+  recipe_id:     rec10.id,
+  quantity:      5
+})
+
+q91 = Quantity.create!({
+  ingredient_id: ing31.id,
+  recipe_id:     rec10.id,
+  quantity:      5
+})
+
+q92 = Quantity.create!({
+  ingredient_id: ing33.id,
+  recipe_id:     rec10.id,
+  quantity:      38
+})
+
+q93 = Quantity.create!({
+  ingredient_id: ing19.id,
+  recipe_id:     rec10.id,
+  quantity:      2
+})
+
+q94 = Quantity.create!({
+  ingredient_id: ing60.id,
+  recipe_id:     rec10.id,
+  quantity:      2.5
+})
+
+q95 = Quantity.create!({
+  ingredient_id: ing5.id,
+  recipe_id:     rec10.id,
+  quantity:      2.5
+})
+
+q96 = Quantity.create!({
+  ingredient_id: ing4.id,
+  recipe_id:     rec10.id,
+  quantity:      2.5
+})
+
+q97 = Quantity.create!({
+  ingredient_id: ing3.id,
+  recipe_id:     rec10.id,
+  quantity:      2.5
+})
+
+q98 = Quantity.create!({
+  ingredient_id: ing62.id,
+  recipe_id:     rec10.id,
+  quantity:      6
+})
+
+q99 = Quantity.create!({
+  ingredient_id: ing63.id,
+  recipe_id:     rec10.id,
+  quantity:      20
+})
+
+q100 = Quantity.create!({
+  ingredient_id: ing64.id,
+  recipe_id:     rec10.id,
+  quantity:      50
+})
+
+q101 = Quantity.create!({
+  ingredient_id: ing57.id,
+  recipe_id:     rec10.id,
+  quantity:      1
+})
+
+q102 = Quantity.create!({
+  ingredient_id: ing61.id,
+  recipe_id:     rec10.id,
+  quantity:      30
+})
+
+q103 = Quantity.create!({
+  ingredient_id: ing11.id,
+  recipe_id:     rec11.id,
+  quantity:      14
+})
+
+q104 = Quantity.create!({
+  ingredient_id: ing44.id,
+  recipe_id:     rec11.id,
+  quantity:      90
+})
+
+q105 = Quantity.create!({
+  ingredient_id: ing54.id,
+  recipe_id:     rec11.id,
+  quantity:      8
+})
+
+q106 = Quantity.create!({
+  ingredient_id: ing65.id,
+  recipe_id:     rec11.id,
+  quantity:      5
+})
+
+q107 = Quantity.create!({
+  ingredient_id: ing55.id,
+  recipe_id:     rec11.id,
+  quantity:      63
+})
+
+q108 = Quantity.create!({
+  ingredient_id: ing66.id,
+  recipe_id:     rec11.id,
+  quantity:      85
+})
+
+q109 = Quantity.create!({
+  ingredient_id: ing67.id,
+  recipe_id:     rec11.id,
+  quantity:      75
+})
+
+q110 = Quantity.create!({
+  ingredient_id: ing39.id,
+  recipe_id:     rec11.id,
+  quantity:      5
+})
+
+q111 = Quantity.create!({
+  ingredient_id: ing12.id,
+  recipe_id:     rec11.id,
+  quantity:       7
+})
+
+q112 = Quantity.create!({
+  ingredient_id: ing68.id,
+  recipe_id:     rec11.id,
+  quantity:       7
+})
+
+q113 = Quantity.create!({
+  ingredient_id: ing56.id,
+  recipe_id:     rec11.id,
+  quantity:      14
+})
+
+q114 = Quantity.create!({
+  ingredient_id: ing6.id,
+  recipe_id:     rec11.id,
+  quantity:      3.5
+})
+
+q115 = Quantity.create!({
+  ingredient_id: ing9.id,
+  recipe_id:     rec11.id,
+  quantity:      160
+})
+
+q116 = Quantity.create!({
+  ingredient_id: ing69.id,
+  recipe_id:     rec11.id,
+  quantity:      150
+})
+
+q117 = Quantity.create!({
+  ingredient_id: ing70.id,
+  recipe_id:     rec11.id,
+  quantity:      7
 })
 
 # BOOKS
