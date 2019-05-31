@@ -16,38 +16,43 @@ class SavedRecipe extends Component {
       savedRecipes: [],
       savedRecipesByID: {}
     };
-
     this.togglePopup = this.togglePopup.bind(this);
   }
 
+  //put into function, needs to be passed as prop and then called after save/unsave
+  //after any recipe changes (re-fetch)
+  //create saves, closes and refetches
+  // getting all recipes for this user
   componentDidMount() {
-    // getting all recipes for this user
-    fetch('/api/recipes/')
-      .then(response => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error('Something went wrong ...');
-        }
-      })
-      .then(recipes => {
-          // console.log('recipes', recipes);
-        this.setState({
-          savedRecipes: recipes,
-          savedRecipesByID: recipes.reduce(
-            (acc, item) => Object.assign(acc, {
-              [item.id]: item
-              }), {})
+    const getRecipes = () => {
+      fetch('/api/recipes/')
+        .then(response => {
+          if (response.ok) {
+            return response.json();
+          } else {
+            throw new Error('Something went wrong ...');
+          }
         })
-      })
-      .catch(error => this.setState({ error }))
-      .then(() => console.log('saved', this.state.savedRecipes, 'savedID', this.state.savedRecipesByID));
+        .then(recipes => {
+          // console.log('recipes', recipes);
+          this.setState({
+            savedRecipes: recipes,
+            savedRecipesByID: recipes.reduce(
+              (acc, item) => Object.assign(acc, {
+                [item.id]: item
+                }), {})
+          })
+        })
+        .catch(error => this.setState({ error }))
+        .then(() => console.log('saved', this.state.savedRecipes, 'savedID', this.state.savedRecipesByID));
+    }
+    getRecipes();
   }
 
   togglePopup(id) {
     this.setState({
       showPopup: id
-    });
+    }, () => this.getRecipes)
     // console.log('id', id);
   }
 
@@ -104,6 +109,7 @@ class SavedRecipe extends Component {
               </div>
             {this.state.showPopup > 0 && (
               <ViewRecipe
+                getRecipes={() => this.getRecipes()}
                 closePopup={() => this.togglePopup(0)}
                 recipe={this.state.savedRecipesByID[this.state.showPopup]}
               />)}
