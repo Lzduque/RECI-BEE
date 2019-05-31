@@ -33,12 +33,10 @@ add ingredient in another class --> box, column reverse and add button in the st
 }
 
 @media print {
-  html {
-    height: 100%;
-    page-break-after: always;
-  }
-  .no-print {
-    display: none;
+  body * {
+    position: absolute;
+    left: 0;
+    top: 0;
   }
 }
 

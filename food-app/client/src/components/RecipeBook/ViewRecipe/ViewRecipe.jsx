@@ -103,20 +103,31 @@ class ViewRecipe extends Component {
       return this.props.recipe.ingredients.map((ingredient) => (<li key={ingredient.id}>{ingredient.quantities[0].quantity} {ingredient.unit} {ingredient.name}</li>))
     }
 
+    print = () => {
+      console.log('printing')
+      const printWindow = window.open('', '', 'height=800, width=800');
+      printWindow.document.write('<html><head><title>Recipe</title></head>');
+      printWindow.document.write('<body>');
+      printWindow.document.write(document.getElementById('recipe-popup').innerHTML);
+      printWindow.document.write('</body></html>');
+      printWindow.print();
+      printWindow.close();
+    }
+
     return (
-      <div className='popup' >
-        <div className='popup-inner' >
+      <div className='popup' id='recipe-popup' >
+        <div className='popup-inner print' >
           <h1>{ this.props.recipe.name }</h1>
           <p>Type: {this.props.recipe.meal_type} | Servings: {this.props.recipe.servings} | Time: {this.props.recipe.time}min</p>
           <img alt="" src={this.props.recipe.image} width={200} height={200}/>
-          <button className='no-print' onClick={() => window.print()}>PRINT</button>
+          <button onClick={print}>PRINT</button>
           <h2>Ingredients:</h2>
           <ul>
             { ingredientsList() }
           </ul>
           <pre>{this.props.recipe.preparation}</pre>
-          <button className='no-print' onClick={this.props.closePopup}>CLOSE</button>
-          <button className='no-print' onClick={() => this.saveRecipe()}>
+          <button onClick={this.props.closePopup}>CLOSE</button>
+          <button onClick={() => this.saveRecipe()}>
           { this.state.saved ? `♥` : `♡` } </button>
           {/* STATE
           <pre style={{marginTop: '1em'}}>{JSON.stringify(this.state, null, '\t')}</pre>

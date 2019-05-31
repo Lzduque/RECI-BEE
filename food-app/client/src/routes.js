@@ -32,7 +32,7 @@ class Routes extends Component {
     return (
       <Router>
       <div>
-        <div className="nav-bar no-print">
+        <div className="nav-bar">
           <div className="app-name">
             <h1>Reci-bee</h1>
             <img src="https://github.com/Lzduque/final-project/blob/feature/create-recipe/food-app/docs/free-icon_bee-icon-png-60.png?raw=true" alt="Bee" height="42" width="42" />

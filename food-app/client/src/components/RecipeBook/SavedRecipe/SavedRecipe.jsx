@@ -41,7 +41,7 @@ class SavedRecipe extends Component {
         })
       })
       .catch(error => this.setState({ error }))
-      // .then(() => console.log(this.state.savedRecipes));
+      .then(() => console.log('saved', this.state.savedRecipes, 'savedID', this.state.savedRecipesByID));
   }
 
   togglePopup(id) {

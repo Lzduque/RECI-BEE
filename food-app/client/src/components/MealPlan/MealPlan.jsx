@@ -22,13 +22,25 @@ class MealPlan extends Component {
   //   console.log(this.state.breakfastPopup);
   // }
   render() {
+
+    print = () => {
+      console.log('printing')
+      const printWindow = window.open('', '', 'height=800, width=800');
+      printWindow.document.write('<html><head><title>Recipe</title></head>');
+      printWindow.document.write('<body>');
+      printWindow.document.write(document.getElementById('recipe-popup').innerHTML);
+      printWindow.document.write('</body></html>');
+      printWindow.print();
+      printWindow.close();
+    }
+
     return (
       <Router>
       <div>
-        <div className="nav-bar no-print">
+        <div className="nav-bar">
         </div>
         <br/>
-        <div className="create-recipe container-1 no-print">
+        <div className="create-recipe container-1">
           <div className="container-1-box page-title">
             <h1 className="page-title">Meal Plan Page</h1>
           </div>
@@ -36,7 +48,7 @@ class MealPlan extends Component {
         <hr />
         <br/>
         <h3>Select Meals for the Day</h3>
-        <button className='no-print' onClick={() => window.print()}>PRINT</button>
+        <button onClick={print}>PRINT</button>
         <br/>
         <br/>
         <h2>BREAKFAST</h2>
