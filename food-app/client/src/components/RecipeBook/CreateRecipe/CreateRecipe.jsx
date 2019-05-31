@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom'
+
 // import Autosuggest from 'react-autosuggest';
 // https://github.com/moroshko/react-autosuggest
 
@@ -12,7 +14,8 @@ class CreateRecipe extends Component {
                     servings: 0,
                     cookingTime: 0,
                     ingredients: [],
-                    options: ""
+                    options: "",
+                    redirect: false
                   };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -110,6 +113,13 @@ class CreateRecipe extends Component {
     console.log('new this.state: ', this.state);
   }
 
+  renderRedirect = () => {
+    if (this.state.redirect) {
+      console.log("Is trying to redirect!")
+      return <Redirect to='/recipebook' />
+    }
+  }
+
   handleSubmit = (event) => {
     // alert('Submitted 1: ' + this.state.recipeTitle);
     // debugger
@@ -133,15 +143,18 @@ class CreateRecipe extends Component {
           headers: {
               'Content-Type': 'application/json'
           }
-      }).then(response => {
-          return response;
-      }).catch(error => error);
+      }).then(options => this.setState({ redirect: true })
+      ).catch(error => error);
     };
 
     createRecipe(newRecipe)
   }
 
   render() {
+    if (this.state.redirect) {
+      return <Redirect to='/recipebook' />
+    }
+
     return (
       <div className='popup' >
         <div className='popup-inner' >
