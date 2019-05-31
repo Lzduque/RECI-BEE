@@ -25,10 +25,10 @@ class MealPlan extends Component {
     return (
       <Router>
       <div>
-        <div className="nav-bar">
+        <div className="nav-bar no-print">
         </div>
         <br/>
-        <div className="create-recipe container-1">
+        <div className="create-recipe container-1 no-print">
           <div className="container-1-box page-title">
             <h1 className="page-title">Meal Plan Page</h1>
           </div>
@@ -36,6 +36,7 @@ class MealPlan extends Component {
         <hr />
         <br/>
         <h3>Select Meals for the Day</h3>
+        <button className='no-print' onClick={() => window.print()}>PRINT</button>
         <br/>
         <br/>
         <h2>BREAKFAST</h2>

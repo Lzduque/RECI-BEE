@@ -109,13 +109,14 @@ class ViewRecipe extends Component {
           <h1>{ this.props.recipe.name }</h1>
           <p>Type: {this.props.recipe.meal_type} | Servings: {this.props.recipe.servings} | Time: {this.props.recipe.time}min</p>
           <img alt="" src={this.props.recipe.image} width={200} height={200}/>
-           <h2>Ingredients:</h2>
-            <ul>
-              { ingredientsList() }
-            </ul>
+          <button className='no-print' onClick={() => window.print()}>PRINT</button>
+          <h2>Ingredients:</h2>
+          <ul>
+            { ingredientsList() }
+          </ul>
           <pre>{this.props.recipe.preparation}</pre>
-          <button onClick={this.props.closePopup}>CLOSE</button>
-          <button onClick={() => this.saveRecipe()}>
+          <button className='no-print' onClick={this.props.closePopup}>CLOSE</button>
+          <button className='no-print' onClick={() => this.saveRecipe()}>
           { this.state.saved ? `♥` : `♡` } </button>
           {/* STATE
           <pre style={{marginTop: '1em'}}>{JSON.stringify(this.state, null, '\t')}</pre>
@@ -126,6 +127,7 @@ class ViewRecipe extends Component {
     )
   }
 };
+
 
 export default ViewRecipe;
 

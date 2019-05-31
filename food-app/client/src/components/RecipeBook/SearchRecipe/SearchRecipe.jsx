@@ -47,7 +47,7 @@ class SearchRecipe extends Component {
     console.log('thispropssearch', this.props.searchedRecipes);
     for (let recipe of this.props.searchedRecipes) {
       console.log('recipe', recipe);
-      if (recipe.id == id) {
+      if (recipe.id === id) {
         return recipe;
       }
     }

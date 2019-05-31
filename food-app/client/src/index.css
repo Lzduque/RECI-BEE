@@ -11,6 +11,7 @@ popups - best way to do it? modals, popup...
 add ingredient in another class --> box, column reverse and add button in the start
  */
 @import url('https://fonts.googleapis.com/css?family=ABeeZee:400,400i&display=swap');
+
 #root {
   --background: rgb(231, 231, 231);
   --blue: rgb(96, 215, 255);
@@ -29,6 +30,16 @@ add ingredient in another class --> box, column reverse and add button in the st
   background-color: var(--background);
   vertical-align: middle;
   box-sizing: border-box;
+}
+
+@media print {
+  html {
+    height: 100%;
+    page-break-after: always;
+  }
+  .no-print {
+    display: none;
+  }
 }
 
 @media(min-width: 768px) {
