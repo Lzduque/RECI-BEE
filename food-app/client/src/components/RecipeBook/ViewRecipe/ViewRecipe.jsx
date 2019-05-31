@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 
+const ingredientQuantityForRecipe = (quantities, id) => {
+ return quantities.find(element => element.recipe_id === id).quantity
+}
+
 class ViewRecipe extends Component {
   constructor(props) {
     super(props);
@@ -100,7 +104,7 @@ class ViewRecipe extends Component {
     let ingredientsList = () => {
       console.log("inside ingredients")
       console.log("this.props.recipe: ", this.props.recipe)
-      return this.props.recipe.ingredients.map((ingredient) => (<li key={ingredient.id}>{ingredient.quantities[0].quantity} {ingredient.unit} {ingredient.name}</li>))
+      return this.props.recipe.ingredients.map((ingredient) => (<li key={ingredient.id}>{ingredientQuantityForRecipe(ingredient.quantities, this.props.recipe.id)} {ingredient.unit} {ingredient.name}</li>))
     }
 
     return (

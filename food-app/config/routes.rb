@@ -6,11 +6,13 @@ Rails.application.routes.draw do
 
   scope '/api' do
 
+    get '/books/search' => 'books#search'
     get '/recipes/search' => 'recipes#search'
+
     # resources :users
     resources :ingredients, only: [:index]
     resources :recipes, only: [:index, :create]
-    resources :books, only: [:show, :create, :destroy]
-    resources :mealplans, only: [:index, :create, :destroy]
+    resources :books, only: [:index, :show, :create, :destroy]
+    resources :meal_plans, only: [:index, :create, :destroy]
   end
 end

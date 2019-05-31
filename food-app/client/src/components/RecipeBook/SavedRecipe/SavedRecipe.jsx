@@ -20,9 +20,12 @@ class SavedRecipe extends Component {
     this.togglePopup = this.togglePopup.bind(this);
   }
 
+  //put into function, needs to be passed as prop and then called after save/unsave
+  //after any recipe changes (re-fetch)
+  //create saves, closes and refetches
   componentDidMount() {
     // getting all recipes for this user
-    fetch('/api/recipes/')
+    fetch('/api/books/')
       .then(response => {
         if (response.ok) {
           return response.json();
@@ -30,7 +33,8 @@ class SavedRecipe extends Component {
           throw new Error('Something went wrong ...');
         }
       })
-      .then(recipes => {
+      .then(data => {
+        const recipes = data.map(x => x.recipe)
           // console.log('recipes', recipes);
         this.setState({
           savedRecipes: recipes,
@@ -41,7 +45,7 @@ class SavedRecipe extends Component {
         })
       })
       .catch(error => this.setState({ error }))
-      // .then(() => console.log(this.state.savedRecipes));
+      .then(() => console.log("savedrec", this.state.savedRecipes, "savedrecID", this.state.savedRecipesByID));
   }
 
   togglePopup(id) {

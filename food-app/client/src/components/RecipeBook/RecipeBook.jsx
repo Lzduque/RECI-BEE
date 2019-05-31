@@ -119,7 +119,6 @@ class RecipeBook extends Component {
             })
             .catch(error => this.setState({ error }))
             .then(() => console.log('end of fetch', this.state.searchedRecipes, 'searchedID', this.state.searchedRecipesByID));
-
           })
       })
 

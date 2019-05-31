@@ -2,6 +2,13 @@ class BooksController < ApplicationController
   # before_action :set_recipe
   before_filter :new_book, :only => [:create]
 
+  def index
+    @user_id = 1
+    @books = Book.where(['user_id = ?', @user_id])
+    render :json => @books.to_json(:include => {recipe: {:include => {ingredients: {include: :quantities}}}})
+    # render :json => @recipes.to_json(:include => {ingredients: {include: :quantities}})
+  end
+
   # VIEWRECIPE - GET/ - books/:recipe_id - to check recipe in Db for a user --> to render saved button state
   def show
     # byebug
@@ -22,6 +29,24 @@ class BooksController < ApplicationController
     else
       puts "Recipe is NOT saved for this user"
       render json: false
+    end
+  end
+
+#MEALPLAN - GET/ - /books - to see all saved recipes for a user ---> to render saved recipes carousel
+  def search
+    # byebug
+    puts 'params[:type]'
+    puts params[:type]
+    search = params[:type]
+    if search.blank?
+      render status: 400, json: { error: 'Expected parameter `type`' }
+    else
+
+      @books = Book.joins(:recipe).where(["meal_type = ?", search])
+      @user_id = 1
+      # @books = Book.where(['user_id = ?', @user_id])
+      # @recipes = Recipe.where(["meal_type = ?", search]).limit(10)
+      render :json => @books.to_json(:include => {recipe: {:include => {ingredients: {include: :quantities}}}})
     end
   end
 
