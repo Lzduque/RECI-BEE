@@ -93,7 +93,7 @@ class SavedRecipe extends Component {
     }
     return (
       <div className="search-container">
-        <font align="center" size="3" color="grey"><h1>Saved Recipes</h1></font>
+        <font align="center" size="3" color="goldenrod"><h1>Saved Recipes</h1></font>
         <div className="carousel-container">
               <div style={imageStyles(recipe.image)} key={recipe.id}>
                 <button

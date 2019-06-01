@@ -84,28 +84,28 @@ class MealPlan extends Component {
         <br/>
         <button style={{
           backgroundColor: 'white',
-          color: 'blue'}} onClick={() => this.typeToggle('breakfast')}>+</button>
+          color: 'goldenrod'}} onClick={() => this.typeToggle('breakfast')}>+</button>
         <br/>
         <br/>
         <h2>LUNCH</h2>
         <br/>
         <button style={{
           backgroundColor: 'white',
-          color: 'blue'}} onClick={() => this.typeToggle('meal')}>+</button>
+          color: 'goldenrod'}} onClick={() => this.typeToggle('meal')}>+</button>
         <br/>
         <br/>
         <h2>DINNER</h2>
         <br/>
         <button style={{
           backgroundColor: 'white',
-          color: 'blue'}} onClick={() => this.typeToggle('meal')}>+</button>
+          color: 'goldenrod'}} onClick={() => this.typeToggle('meal')}>+</button>
         <br/>
         <br/>
         <h2>SNACK</h2>
         <br/>
         <button style={{
           backgroundColor: 'white',
-          color: 'blue'}} onClick={() => this.typeToggle('snack')}>+</button>
+          color: 'goldenrod'}} onClick={() => this.typeToggle('snack')}>+</button>
             {this.state.showPopup ?
               <MealView
                 closePopup={() => this.setState({ showPopup: null })}
