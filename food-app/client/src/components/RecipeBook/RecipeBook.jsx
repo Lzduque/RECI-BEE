@@ -24,12 +24,15 @@ class RecipeBook extends Component {
       ),
       searchedRecipes: [],
       searchedRecipesByID: null,
-      queryArr: []
+      queryArr: [],
+      savedRecipes: [],
+      savedRecipesByID: {}
     };
     this.togglePopup = this.togglePopup.bind(this);
     // this.searchRecipes = this.searchRecipes.bind(this);
     // this.formatQuery = this.formatQuery.bind(this);
   };
+
 
   // make popup work - crete recipe
   togglePopup(state) {
@@ -125,7 +128,41 @@ class RecipeBook extends Component {
   };
 
 
+  //put into function, needs to be passed as prop and then called after save/unsave
+  //after any recipe changes (re-fetch)
+  //create saves, closes and refetches
+  // getting all recipes for this user
+  savedRecipesForUser = () => {
+    fetch('/api/books/')
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error('Something went wrong ...');
+        }
+      })
+      .then(data => {
+        const recipes = data.map(x => x.recipe)
+          // console.log('recipes', recipes);
+        this.setState({
+          savedRecipes: recipes,
+          savedRecipesByID: recipes.reduce(
+            (acc, item) => Object.assign(acc, {
+              [item.id]: item
+              }), {})
+        })
+      })
+      .catch(error => this.setState({ error }))
+      .then(() => console.log("savedrec", this.state.savedRecipes, "savedrecID", this.state.savedRecipesByID));
+  }
+
+  componentDidMount() {
+    this.savedRecipesForUser();
+  }
+
+
   render() {
+
     return (
       <Router>
       <div>
@@ -177,12 +214,12 @@ class RecipeBook extends Component {
 
         { this.state.toggleState && (
         <Route path="/recipe/create" component={
-          () => <CreateRecipe closePopup={ () => this.togglePopup(false) } />
+          () => <CreateRecipe changeRecipeState={this.savedRecipesForUser} closePopup={ () => this.togglePopup(false) } />
         } />
         )}
-        { this.state.searchShow ? <SearchRecipe searchedRecipes={this.state.searchedRecipes} /> : null }
+        { this.state.searchShow ? <SearchRecipe changeRecipeState={this.savedRecipesForUser} searchedRecipes={this.state.searchedRecipes} /> : null }
         <br/>
-        <SavedRecipe />
+        <SavedRecipe changeRecipeState={this.savedRecipesForUser} savedRecipes={this.state.savedRecipes} savedRecipesByID={this.state.savedRecipesByID} />
       </div>
     </Router>
     )

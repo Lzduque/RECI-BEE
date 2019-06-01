@@ -21,6 +21,7 @@ class ViewRecipe extends Component {
       this.removeFromDB()
       );
     }
+    //
   };
 
   // save recipe in Db for a user

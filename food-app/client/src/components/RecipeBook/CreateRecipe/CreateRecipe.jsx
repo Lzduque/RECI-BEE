@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom'
+
 // import Autosuggest from 'react-autosuggest';
 // https://github.com/moroshko/react-autosuggest
 
@@ -8,11 +10,12 @@ class CreateRecipe extends Component {
     this.state = { recipeTitle: "",
                     mealType: "meal",
                     preparation: "",
-                    recipeImg: "",
+                    recipeImg: "https://image.flaticon.com/icons/svg/1813/1813029.svg",
                     servings: 0,
                     cookingTime: 0,
                     ingredients: [],
-                    options: ""
+                    options: "",
+                    redirect: false
                   };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -110,6 +113,13 @@ class CreateRecipe extends Component {
     console.log('new this.state: ', this.state);
   }
 
+  renderRedirect = () => {
+    if (this.state.redirect) {
+      console.log("Is trying to redirect!")
+      return <Redirect to='/recipebook' />
+    }
+  }
+
   handleSubmit = (event) => {
     // alert('Submitted 1: ' + this.state.recipeTitle);
     // debugger
@@ -133,15 +143,21 @@ class CreateRecipe extends Component {
           headers: {
               'Content-Type': 'application/json'
           }
-      }).then(response => {
-          return response;
-      }).catch(error => error);
+      }).then(options => this.setState({ redirect: true }, () => {
+        console.log('change recipe state');
+        this.props.changeRecipeState();
+      })
+      ).catch(error => error);
     };
 
     createRecipe(newRecipe)
   }
 
   render() {
+    if (this.state.redirect) {
+      return <Redirect to='/recipebook' />
+    }
+
     return (
       <div className='popup' >
         <div className='popup-inner' >
@@ -200,7 +216,6 @@ class CreateRecipe extends Component {
                           value={this.state.recipeImg}
                           onChange={this.handleChange}
                           type="url"
-                          placeholder="https://example.com"
                           pattern="https://.*" size="30" />
                 </div>
               </label>

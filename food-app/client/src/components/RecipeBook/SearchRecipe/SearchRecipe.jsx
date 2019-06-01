@@ -34,13 +34,22 @@ const CardContainer = (props) => {
 };
 
 class SearchRecipe extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
       showPopup: 0,
       selectedRecipe: null
     }
+  }
+
+  closePopup = () => {
+    this.setState({
+      selectedRecipe: null
+    }, () => {
+      console.log('change recipe state');
+      this.props.changeRecipeState();
+    });
+    // console.log('id', id);
   }
 
   getRecipeByID(id) {
@@ -67,7 +76,7 @@ class SearchRecipe extends Component {
         </h1>
         <CardContainer searchedRecipes={ this.props.searchedRecipes } onCardSelected={this._recipeSelected}/>
         {
-          this.state.selectedRecipe ? <ViewRecipe recipe={ this.state.selectedRecipe } closePopup={() => this.setState({ selectedRecipe: null }) } /> : null
+          this.state.selectedRecipe ? <ViewRecipe recipe={ this.state.selectedRecipe } closePopup={this.closePopup} /> : null
         }
       </div>
     )
