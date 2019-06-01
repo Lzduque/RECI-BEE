@@ -364,3 +364,14 @@ button {
   margin: 0.5em;
   font-size: 1em;
 }
+
+.chosen-image {
+  width: 200px;
+  height: 200px;
+  object-fit: center;
+}
+
+.chosen-image:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+

@@ -58,9 +58,10 @@ class MealView extends Component {
 
   choiceSelected = id => {
     let chosenRecipe = this.getRecipeByID(id);
-    this.setState({
-      chosenRecipe: chosenRecipe
-    })
+    this.props.change(chosenRecipe)
+    // this.setState({
+    //   chosenRecipe: chosenRecipe
+    // })
   }
 
   render() {
@@ -70,7 +71,6 @@ class MealView extends Component {
           <div className='popup-inner'>
           <h1 style={{ 'textAlign' : 'center' }}>Add a Recipe</h1>
           <ChoiceContainer choices={ this.props.choices } onChoice={this.choiceSelected}/>
-          <button onClick={() => this.props.change(this.state.chosenRecipe)}>CLOSE</button>
           </div>
         </div>
     )
