@@ -16,6 +16,7 @@ class SavedRecipe extends Component {
       savedRecipes: [],
       savedRecipesByID: {}
     };
+
     this.togglePopup = this.togglePopup.bind(this);
   }
 
@@ -35,25 +36,22 @@ class SavedRecipe extends Component {
       .then(data => {
         const recipes = data.map(x => x.recipe)
           // console.log('recipes', recipes);
-          this.setState({
-            savedRecipes: recipes,
-            savedRecipesByID: recipes.reduce(
-              (acc, item) => Object.assign(acc, {
-                [item.id]: item
-                }), {})
-          })
+        this.setState({
+          savedRecipes: recipes,
+          savedRecipesByID: recipes.reduce(
+            (acc, item) => Object.assign(acc, {
+              [item.id]: item
+              }), {})
         })
       })
       .catch(error => this.setState({ error }))
       .then(() => console.log("savedrec", this.state.savedRecipes, "savedrecID", this.state.savedRecipesByID));
-    }
-    getRecipes();
   }
 
   togglePopup(id) {
     this.setState({
       showPopup: id
-    }, () => this.getRecipes)
+    });
     // console.log('id', id);
   }
 
@@ -95,7 +93,7 @@ class SavedRecipe extends Component {
     }
     return (
       <div className="search-container">
-        <font align="center" size="3" color="grey"><h1>Saved Recipes</h1></font>
+        <font align="center" size="3" color="goldenrod"><h1>Saved Recipes</h1></font>
         <div className="carousel-container">
               <div style={imageStyles(recipe.image)} key={recipe.id}>
                 <button
@@ -110,7 +108,6 @@ class SavedRecipe extends Component {
               </div>
             {this.state.showPopup > 0 && (
               <ViewRecipe
-                getRecipes={() => this.getRecipes()}
                 closePopup={() => this.togglePopup(0)}
                 recipe={this.state.savedRecipesByID[this.state.showPopup]}
               />)}

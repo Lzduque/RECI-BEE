@@ -21,7 +21,6 @@ class ViewRecipe extends Component {
       this.removeFromDB()
       );
     }
-    this.props.getRecipes();
   };
 
   // save recipe in Db for a user
@@ -146,4 +145,3 @@ class ViewRecipe extends Component {
 
 
 export default ViewRecipe;
-
