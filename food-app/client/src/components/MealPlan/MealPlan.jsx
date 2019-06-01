@@ -122,4 +122,3 @@ class MealPlan extends Component {
 };
 
 export default MealPlan;
-

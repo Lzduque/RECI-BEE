@@ -5,4 +5,3 @@ class MealPlansController < ApplicationController
   end
 
 end
-
