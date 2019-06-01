@@ -58,10 +58,38 @@ class MealView extends Component {
 
   choiceSelected = id => {
     let chosenRecipe = this.getRecipeByID(id);
+    console.log('chosenrecipe', chosenRecipe.id);
     this.props.change(chosenRecipe)
-    // this.setState({
-    //   chosenRecipe: chosenRecipe
-    // })
+
+    fetch(`/api/meal_plans?recipe_id=${chosenRecipe.id}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => {
+      console.log("response is happening inside save in DB")
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error('Something went wrong ...');
+      }
+    })
+    .then(recipeIsSaved => {
+      console.log('recipe if saved after query DB?', recipeIsSaved);
+
+      if (recipeIsSaved) {
+        // this.setState = { saved: true };
+        console.log("is being set to TRUE")
+        // console.log("this.state.saved should be TRUE now: ", this.state.saved)
+      } else {
+        // this.setState = { saved: false };
+        // this.saveRecipe();
+        console.log("this.state.saved is FALSE")
+        // console.log("this.state.saved should be FALSE now: ", this.state.saved)
+      }
+    })
+    .catch(error => this.setState({ error }))
   }
 
   render() {
