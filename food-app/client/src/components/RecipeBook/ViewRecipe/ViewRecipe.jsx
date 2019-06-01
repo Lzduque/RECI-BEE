@@ -134,10 +134,10 @@ class ViewRecipe extends Component {
           <button onClick={this.props.closePopup}>CLOSE</button>
           <button onClick={() => this.saveRecipe()}>
           { this.state.saved ? `♥` : `♡` } </button>
-          STATE
+          {/* STATE
           <pre style={{marginTop: '1em'}}>{JSON.stringify(this.state, null, '\t')}</pre>
           PROPS
-          <pre style={{marginTop: '1em'}}>{JSON.stringify(this.props, null, '\t')}</pre>
+          <pre style={{marginTop: '1em'}}>{JSON.stringify(this.props, null, '\t')}</pre> */}
         </div>
       </div>
     )

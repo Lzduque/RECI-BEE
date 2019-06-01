@@ -10,7 +10,7 @@ class CreateRecipe extends Component {
     this.state = { recipeTitle: "",
                     mealType: "meal",
                     preparation: "",
-                    recipeImg: "",
+                    recipeImg: "https://image.flaticon.com/icons/svg/1813/1813029.svg",
                     servings: 0,
                     cookingTime: 0,
                     ingredients: [],
@@ -143,7 +143,10 @@ class CreateRecipe extends Component {
           headers: {
               'Content-Type': 'application/json'
           }
-      }).then(options => this.setState({ redirect: true })
+      }).then(options => this.setState({ redirect: true }, () => {
+        console.log('change recipe state');
+        this.props.changeRecipeState();
+      })
       ).catch(error => error);
     };
 
@@ -213,7 +216,6 @@ class CreateRecipe extends Component {
                           value={this.state.recipeImg}
                           onChange={this.handleChange}
                           type="url"
-                          placeholder="https://example.com"
                           pattern="https://.*" size="30" />
                 </div>
               </label>

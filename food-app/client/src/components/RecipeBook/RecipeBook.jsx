@@ -214,7 +214,7 @@ class RecipeBook extends Component {
 
         { this.state.toggleState && (
         <Route path="/recipe/create" component={
-          () => <CreateRecipe closePopup={ () => this.togglePopup(false) } />
+          () => <CreateRecipe changeRecipeState={this.savedRecipesForUser} closePopup={ () => this.togglePopup(false) } />
         } />
         )}
         { this.state.searchShow ? <SearchRecipe changeRecipeState={this.savedRecipesForUser} searchedRecipes={this.state.searchedRecipes} /> : null }
