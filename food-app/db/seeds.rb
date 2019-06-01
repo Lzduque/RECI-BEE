@@ -535,7 +535,7 @@ rec8 = Recipe.create!({
 
 rec9 = Recipe.create!({
   name:           "Coconut Lime Sorbet",
-  image:          "https://static.wixstatic.com/media/26357d_49efb053a1e94be3886b3d8bbd58a1f8~mv2_d_5184_3456_s_4_2.jpg/v1/fill/w_1260,h_840,al_c,q_85,usm_0.66_1.00_0.01/26357d_49efb053a1e94be3886b3d8bbd58a1f8~mv2_d_5184_3456_s_4_2.webps",
+  image:          "https://static.wixstatic.com/media/26357d_ba1116007dad473f88de16842b96f510~mv2_d_5184_3456_s_4_2.jpg/v1/fill/w_1260,h_840,al_c,q_85,usm_0.66_1.00_0.01/26357d_ba1116007dad473f88de16842b96f510~mv2_d_5184_3456_s_4_2.webp",
   servings:       6,
   time:           5,
   preparation:    "\n 1. Add all ingredients to a food processor and blend until smooth to create your sorbet. \n 2. To make it a firm ice-cream consistency, place in the freezer for one to two hours before serving. Enjoy!",
