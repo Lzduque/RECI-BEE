@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import MealView from './MealView/MealView.jsx';
 
-// import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-
 class MealPlan extends Component {
 
   constructor(props) {
@@ -11,10 +9,33 @@ class MealPlan extends Component {
       showPopup: false,
       showRecipes: [],
       showRecipesByID: null,
-      recipeType: ""
+      recipeType: "",
+      chosenBreakfast: null,
+      chosenMeal: null,
+      chosenSnack: null
     }
-    // this.typeChange = this.typeChange.bind(this);
   };
+
+  changeChoice = (props) => {
+    if (props.meal_type === 'breakfast') {
+      this.setState({
+        chosenBreakfast: props,
+        showPopup: null
+      })
+    }
+    if (props.meal_type === 'meal') {
+      this.setState({
+        chosenMeal: props,
+        showPopup: null
+      })
+    }
+    if (props.meal_type === 'snack') {
+      this.setState({
+        chosenSnack: props,
+        showPopup: null
+      })
+    }
+  }
 
   typeToggle = (type) => {
     this.setState({ recipeType: type }, () => {
@@ -50,7 +71,6 @@ class MealPlan extends Component {
     })
   }
 
-
   render() {
 
     print = () => {
@@ -65,6 +85,7 @@ class MealPlan extends Component {
     }
 
     return (
+
       <div>
         <div className="nav-bar">
         </div>
@@ -82,35 +103,34 @@ class MealPlan extends Component {
         <br/>
         <h2>BREAKFAST</h2>
         <br/>
-        <button style={{
-          backgroundColor: 'white',
-          color: 'goldenrod'}} onClick={() => this.typeToggle('breakfast')}>+</button>
+        { this.state.chosenBreakfast ? <img className="recipe-image" src={this.state.chosenBreakfast.image} alt={this.state.chosenBreakfast.name || 'Image'}/> :
+          <button style={{
+            backgroundColor: 'white',
+            color: 'goldenrod'}} onClick={() => this.typeToggle('breakfast')}>+</button>
+        }
         <br/>
         <br/>
-        <h2>LUNCH</h2>
+        <h2>MEALS</h2>
         <br/>
-        <button style={{
-          backgroundColor: 'white',
-          color: 'goldenrod'}} onClick={() => this.typeToggle('meal')}>+</button>
-        <br/>
-        <br/>
-        <h2>DINNER</h2>
-        <br/>
-        <button style={{
-          backgroundColor: 'white',
-          color: 'goldenrod'}} onClick={() => this.typeToggle('meal')}>+</button>
+        { this.state.chosenMeal ? <img className="recipe-image" src={this.state.chosenMeal.image} alt={this.state.chosenMeal.name || 'Image'}/> :
+          <button style={{
+            backgroundColor: 'white',
+            color: 'goldenrod'}} onClick={() => this.typeToggle('meal')}>+</button>
+        }
         <br/>
         <br/>
         <h2>SNACK</h2>
         <br/>
-        <button style={{
-          backgroundColor: 'white',
-          color: 'goldenrod'}} onClick={() => this.typeToggle('snack')}>+</button>
-            {this.state.showPopup ?
-              <MealView
-                closePopup={() => this.setState({ showPopup: null })}
-                choices={this.state.showRecipes}
-              /> : null }
+        { this.state.chosenSnack ? <img className="recipe-image" src={this.state.chosenSnack.image} alt={this.state.chosenSnack.name || 'Image'}/> :
+          <button style={{
+            backgroundColor: 'white',
+            color: 'goldenrod'}} onClick={() => this.typeToggle('snack')}>+</button>
+        }
+        {this.state.showPopup ?
+          <MealView
+            choices={this.state.showRecipes}
+            change={this.changeChoice}
+          /> : null }
       </div>
     )
   }
