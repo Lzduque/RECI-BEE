@@ -4,7 +4,7 @@ class BooksController < ApplicationController
 
   def index
     @user_id = 1
-    @books = Book.where(['user_id = ?', @user_id])
+    @books = Book.where(['user_id = ?', @user_id]).order(:recipe_id)
     render :json => @books.to_json(:include => {recipe: {:include => {ingredients: {include: :quantities}}}})
     # render :json => @recipes.to_json(:include => {ingredients: {include: :quantities}})
   end
