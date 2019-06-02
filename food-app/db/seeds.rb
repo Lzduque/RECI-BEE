@@ -457,6 +457,42 @@ ing70 = Ingredient.create!({
   food_type:  "grain"
 })
 
+ing71 = Ingredient.create!({
+  name:       "curry powder",
+  unit:       "g",
+  food_type:  "spice"
+})
+
+ing72 = Ingredient.create!({
+  name:       "garam masala powder",
+  unit:       "g",
+  food_type:  "spice"
+})
+
+ing73 = Ingredient.create!({
+  name:       "tumeric",
+  unit:       "g",
+  food_type:  "spice"
+})
+
+ing74 = Ingredient.create!({
+  name:       "coriander",
+  unit:       "g",
+  food_type:  "spice"
+})
+
+ing75 = Ingredient.create!({
+  name:       "cherry tomato",
+  unit:       "whole",
+  food_type:  "vegetable"
+})
+
+ing76 = Ingredient.create!({
+  name:       "spinach",
+  unit:       "g",
+  food_type:  "vegetable"
+})
+
 # RECIPES
 
 puts "Re-creating Recipes ..."
@@ -1264,6 +1300,96 @@ q117 = Quantity.create!({
   ingredient_id: ing70.id,
   recipe_id:     rec11.id,
   quantity:      7
+})
+
+q118 = Quantity.create!({
+  ingredient_id: ing2.id,
+  recipe_id:     rec1.id,
+  quantity:      15
+})
+
+q119 = Quantity.create!({
+  ingredient_id: ing58.id,
+  recipe_id:     rec1.id,
+  quantity:      1
+})
+
+q120 = Quantity.create!({
+  ingredient_id: ing32.id,
+  recipe_id:     rec1.id,
+  quantity:      3
+})
+
+q121 = Quantity.create!({
+  ingredient_id: ing71.id,
+  recipe_id:     rec1.id,
+  quantity:      15
+})
+
+q122 = Quantity.create!({
+  ingredient_id: ing72.id,
+  recipe_id:     rec1.id,
+  quantity:      7.5
+})
+
+q123 = Quantity.create!({
+  ingredient_id: ing73.id,
+  recipe_id:     rec1.id,
+  quantity:      7.5
+})
+
+q124 = Quantity.create!({
+  ingredient_id: ing60.id,
+  recipe_id:     rec1.id,
+  quantity:      5
+})
+
+q125 = Quantity.create!({
+  ingredient_id: ing74.id,
+  recipe_id:     rec1.id,
+  quantity:      5
+})
+
+q126 = Quantity.create!({
+  ingredient_id: ing12.id,
+  recipe_id:     rec1.id,
+  quantity:      5
+})
+
+q127 = Quantity.create!({
+  ingredient_id: ing6.id,
+  recipe_id:     rec1.id,
+  quantity:      5
+})
+
+q128 = Quantity.create!({
+  ingredient_id: ing28.id,
+  recipe_id:     rec1.id,
+  quantity:      4
+})
+
+q129 = Quantity.create!({
+  ingredient_id: ing75.id,
+  recipe_id:     rec1.id,
+  quantity:      10
+})
+
+q130 = Quantity.create!({
+  ingredient_id: ing38.id,
+  recipe_id:     rec1.id,
+  quantity:      400
+})
+
+q131 = Quantity.create!({
+  ingredient_id: ing15.id,
+  recipe_id:     rec1.id,
+  quantity:      250
+})
+
+q132 = Quantity.create!({
+  ingredient_id: ing76.id,
+  recipe_id:     rec1.id,
+  quantity:      60
 })
 
 # BOOKS

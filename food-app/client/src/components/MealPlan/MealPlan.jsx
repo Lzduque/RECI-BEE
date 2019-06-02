@@ -16,6 +16,8 @@ class MealPlan extends Component {
         meal: null,
         snack: null,
       },
+      viewPopup: false,
+      viewRecipe: null,
     }
   };
 
@@ -60,7 +62,6 @@ class MealPlan extends Component {
     }))
   }
 
-
   fetchSavedPlan = () => {
 
     fetch(`/api/meal_plans`, {
@@ -71,17 +72,17 @@ class MealPlan extends Component {
     })
     .then(response => response.json())
     .then(data => {
-      console.log('going inside');
+      // console.log('going inside');
       data[0].meal_plan_recipes.map(i => {
         this.changeChoice(i.recipe);
       })
     })
     .catch(error => this.setState({ error }))
-    .then(() => console.log("end of fetch", "show", this.state.recipes, "showID", this.state.recipesByID, this.state.showPopup));
+    // .then(() => console.log("end of fetch", "show", this.state.recipes, "showID", this.state.recipesByID, this.state.showPopup));
   }
 
-  fetchRecipes = (type) => {
-    console.log("fetch begins")
+  fetchRecipes = () => {
+    // console.log("fetch begins")
 
     fetch(`/api/books`, {
       method: 'GET',
@@ -104,48 +105,69 @@ class MealPlan extends Component {
     // .then(() => console.log("end of fetch", "show", this.state.recipes, "showID", this.state.recipesByID, this.state.showPopup));
   }
 
+  openView = (chosenType) => {
+    this.setState({viewPopup : true, viewRecipe: chosenType})
+  }
+
+  togglePopup = (state) => {
+    this.setState({viewPopup: state, showPopup: state})
+  }
+
   render() {
+    const buttonStyles = {
+      backgroundColor: 'white',
+      color: 'goldenrod'
+    };
+
     const filteredChoices = this.state.recipes.filter(recipe => this.state.chosenType === recipe.meal_type);
-    console.log('chosenType: ', this.state.chosenType)
+    // console.log('chosenType: ', this.state.chosenType)
     return (
 
       <div id='recipe-popup'>
+        <br/>
         <div className="create-recipe container-1">
-          <div className="page-title">
-            <h2 className="page-title">Meal Plan Page</h2>
+          <div className="container-1-box page-title">
+            <h1 className="page-title">Meal Plan Page</h1>
           </div>
         </div>
-        <div className="container-1" >
-          <div className="search-container" >
-            <h3>Select Meals for the Day</h3>
-          </div>
-          {Object.keys(this.state.choices).map(mealType => {
-            console.log("this.state.choices: ", this.state.choices)
-            return (
-              <div key={mealType} style={{marginBottom: '2rem'}}>
-                <h2 style={{'textTransform': 'uppercase', marginBottom: '1rem'}}>{mealType}</h2>
-                {
-                  this.state.choices[mealType]
-                  ? (
-                    <div>
-                      <h4>{this.state.choices[mealType].name}</h4>
-                      <img className="chosen-image" src={this.state.choices[mealType].image} alt={this.state.choices[mealType].name || 'Image'}/>
-                      <button className="button-meal" onClick={() => this.filterType(mealType)}>EDIT</button>
-                    </div>
-                  )
-                  :
-                  <button className="button-meal" onClick={() => this.filterType(mealType)}>+</button>
-                }
-              </div>
-            )
-          })}
+        <hr />
+        <br/>
+        <h3>Select Meals for the Day</h3>
+        <br/>
+        <br/>
 
-          {this.state.showPopup ?
-            <MealView
-              choices={filteredChoices}
-              change={this.changeChoice}
-            /> : null }
-        </div>
+        {Object.keys(this.state.choices).map(mealType => {
+          {/* console.log("this.state.choices: ", this.state.choices) */}
+          return (
+            <div key={mealType} style={{marginBottom: '2rem'}}>
+              <h2 style={{'textTransform': 'uppercase', marginBottom: '1rem'}}>{mealType}</h2>
+              {
+                this.state.choices[mealType]
+                ? (
+                  <div>
+                    <h4>{this.state.choices[mealType].name}</h4>
+                    <img className="chosen-image" onClick={() => this.openView(this.state.choices[mealType])} src={this.state.choices[mealType].image} alt={this.state.choices[mealType].name || 'Image'}/>
+                    <button style={buttonStyles} onClick={() => this.filterType(mealType)}>EDIT</button>
+                  </div>
+                )
+                :
+                <button style={buttonStyles} onClick={() => this.filterType(mealType)}>+</button>
+              }
+            </div>
+          )
+        })}
+        {this.state.showPopup ?
+          <MealView
+            choices={filteredChoices}
+            change={this.changeChoice}
+            closePopup={() => this.togglePopup(false)}
+          /> : null }
+
+        {this.state.viewPopup ?
+          <ViewRecipe
+            recipe={this.state.viewRecipe}
+            closePopup={() => this.togglePopup(false)}
+          />  : null}
       </div>
     )
   }
