@@ -48,7 +48,7 @@ main {
   --blue: #58A7E4;
   --light-yellow: rgb(241, 215, 147);
   --gold-yellow: #daa520;
-  --dark-yellow: #9D7100);
+  --dark-yellow: #9D7100;
   --text-color-link: white;
   --text-color: black;
   --modal-background: rgba(0, 0, 0, 0.5);
@@ -78,14 +78,14 @@ body {
   font-size: 1.5em; /* currently ems cause chrome bug misinterpreting rems on body element */
   line-height: 1.6;
   font-weight: 400;
-  color: #222; }
+  color: var(--text-color); }
 
 
 /* Typography
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 h1, h2, h3, h4, h5, h6 {
-  margin-top: 0;
-  margin-bottom: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
   font-weight: 300; }
 h1 { font-size: 4.0rem; line-height: 1.2;  letter-spacing: -.1rem;}
 h2 { font-size: 3.6rem; line-height: 1.25; letter-spacing: -.1rem; }
@@ -126,6 +126,219 @@ p {
   } */
 }
 
+
+/* ROUTES STYLING ------------------------------------------------ */
+
+/* div to wrap all nav-bar */
+.nav-bar {
+  background-color: var(--blue);
+  /* display: flex; shouldnt be flex, because the title needs to stay alone in the line*/
+}
+
+/* app name + bee img */
+.app-name {
+  padding: 0.5em;
+  display: flex;
+  align-content: center;
+  margin: 0 1rem;
+}
+
+/* app name -> bee img */
+.app-name img {
+  margin: 0.5rem 1rem;
+}
+
+/* div do wrap all the links in nav-bar */
+.nav-links-container{
+  display: flex;
+  /* align-items: flex-start; */
+}
+
+/* links in nav-bar */
+.nav-link {
+  background-color: var(--gold-yellow);
+  color: var(--text-color-link);
+  padding: 0.5em;
+  margin: 0.5em 1em 1em 1em;
+  text-decoration: none;
+  /* text-transform: uppercase; */
+  border-radius: var(--border-radius);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: auto;
+  height: auto;
+  box-sizing: border-box;
+  /* font-size: 1em; */
+  text-align: center;
+  align-items: center;
+}
+
+/* links in nav-bar */
+.nav-link:hover {
+  background-color: var(--dark-yellow);
+}
+
+
+/* WELCOME PAGE ------------------------------------------------ */
+
+/* catch prhase above form login/signup */
+.catch-phrase {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+/* box form for login/signup */
+.form-modal{
+  position: relative;
+  width: 450px;
+  height: auto;
+  margin-top: 4em;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--background);
+  border-top-right-radius: var(--border-radius);
+  border-top-left-radius: var(--border-radius);
+  border-bottom-right-radius: var(--border-radius);
+  box-shadow:0 3px 20px 0px var(--modal-background);
+}
+
+/* buttons inside login or signup form */
+.form-modal button {
+  cursor: pointer;
+  position: relative;
+  text-transform: capitalize;
+  font-size: 1em;
+  z-index: 2;
+  outline: none;
+  background: var(--background);
+  transition: 0.2s;
+}
+
+/* login and signup buttons inside form-modal */
+.form-modal .btn {
+  border-radius: var(--border-radius);
+  border:none;
+  font-weight: bold;
+  font-size: 1.2em;
+  padding: 0.8em 1em 0.8em 1em;
+  transition: 0.5s;
+  border: 1px solid var(--background);
+  margin: 0.5em 0 0.5em 0;
+}
+
+/* login and signup buttons inside form-modal */
+.form-modal .login , .form-modal .signup {
+  background: var(--gold-yellow);
+  color: var(--text-color-link);
+}
+
+/* login and signup buttons inside form-modal on hover */
+.form-modal .login:hover , .form-modal .signup:hover {
+  background: var(--modal-background);
+}
+
+/* div that wraps the buttons to choose login and sign up */
+.form-toggle {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+/* buttons inside div that wraps the buttons to choose login and sign up */
+.form-toggle button {
+  width: 50%;
+  float: left;
+  padding: 1.5em;
+  margin: 0 0 1.5em 0;
+  border: none;
+  transition: 0.2s;
+  font-size: 1.1em;
+  font-weight: bold;
+  border-top-right-radius: var(--border-radius);
+  border-top-left-radius: var(--border-radius);
+}
+
+.form-toggle button:nth-child(1) {
+  border-bottom-right-radius: var(--border-radius);
+}
+
+.form-toggle button:nth-child(2) {
+  border-bottom-left-radius: var(--border-radius);
+}
+
+/* login button default selected with main color */
+#login-toggle{
+  background: var(--gold-yellow);
+  color: var(--text-color);
+}
+
+/* each form (login and signup) inside the main div */
+.form-modal form {
+  position: relative;
+  width: 90%;
+  height: auto;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* form for login or sign up */
+#login-form , #signup-form {
+  position: relative;
+  width: 100%;
+  height: auto;
+  padding-bottom: 1em;
+}
+
+/* form for sign up */
+#signup-form {
+  display: none;
+}
+
+/* buttons to choose login and sign up */
+#login-form button , #signup-form button {
+  width: 100%;
+  margin-top: 0.5em;
+  padding: 0.6em;
+}
+
+/* inputs inside each form login and sign up */
+.form-modal input {
+  position: relative;
+  width: 100%;
+  font-size: 1em;
+  padding: 1.2em 1.7em 1.2em 1.7em;
+  margin-top: 0.6em;
+  margin-bottom: 0.6em;
+  border-radius: var(--border-radius);
+  border: none;
+  background: var(--light-yellow);
+  outline: none;
+  font-weight: bold;
+  transition: 0.4s;
+}
+
+/* inputs inside each form login and sign up */
+.form-modal input:focus , .form-modal input:active{
+  transform: scaleX(1.02);
+}
+
+/* inputs inside each form login and sign up with placeholder text */
+.form-modal input::-webkit-input-placeholder{
+  color: var(--text-color);
+}
+
+
+@media only screen and (max-width: 500px) {
+  .form-modal {
+      width:100%;
+  }
+}
+
+
+/* CREATE RECIPE ------------------------------------------------ */
+
+/* create recipe window - div wraps everything */
 .popup {
   position: fixed;
   width: 100%;
@@ -149,48 +362,6 @@ p {
   overflow-y: auto;
   overflow-x: hidden;
 }
-
-/* ROUTES STYLING ------------------------------------------------ */
-
-/* div to wrap all nav-bar */
-.nav-bar {
-  background-color: var(--blue);
-  /* display: flex; shouldnt be flex, because the title needs to stay alone in the line*/
-}
-
-/* app name + bee img */
-.app-name {
-  padding: 0.5em;
-  display: flex;
-  align-content: center;
-}
-
-/* div do wrap all the links in nav-bar */
-.nav-links-container{
-  display: flex;
-  /* align-items: flex-start; */
-}
-
-/* links in nav-bar */
-.nav-link {
-  background-color: var(--gold-yellow);
-  color: var(--text-color-link);
-  padding: 0.5em 0.5em;
-  margin: 0.5em 0.5em 1em 0.5em;
-  text-decoration: none;
-  /* text-transform: uppercase; */
-  border-radius: var(--border-radius);
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-/* links in nav-bar */
-.nav-link:hover {
-  background-color: var(--dark-yellow);
-}
-
-/*  ------------------------------------------------ */
 
 .page-title {
   background-color: var(--blue);
@@ -433,177 +604,4 @@ body{
   background: var(--image-hover);
 }
 
-/* catch prhase above form login/signup */
-.catch-phrase {
-  text-align: center;
-  margin-top: 3rem;
-}
 
-/* box form for login/signup */
-.form-modal{
-  position: relative;
-  width: 450px;
-  height: auto;
-  margin-top: 4em;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--background);
-  border-top-right-radius: var(--border-radius);
-  border-top-left-radius: var(--border-radius);
-  border-bottom-right-radius: var(--border-radius);
-  box-shadow:0 3px 20px 0px var(--modal-background);
-}
-
-/* button to choose login or signup form */
-.form-modal button{
-  cursor: pointer;
-  position: relative;
-  text-transform: capitalize;
-  font-size: 1em;
-  z-index: 2;
-  outline: none;
-  background: var(--background);
-  transition: 0.2s;
-}
-
-.form-modal .btn{
-  border-radius: var(--border-radius);
-  border:none;
-  font-weight: bold;
-  font-size: 1.2em;
-  padding: 0.8em 1em 0.8em 1em!important;
-  transition: 0.5s;
-  border: 1px solid var(--background);
-  margin: 0.5em 0 0.5em 0;
-}
-
-.form-modal .login , .form-modal .signup{
-  background: var(--gold-yellow);
-  color: var(--text-color-link);
-}
-
-.form-modal .login:hover , .form-modal .signup:hover{
-  background: var(--modal-background);
-}
-
-.form-toggle{
-  position: relative;
-  width: 100%;
-  height: auto;
-}
-
-.form-toggle button{
-  width: 50%;
-  float: left;
-  padding: 1.5em;
-  margin: 0 0 1.5em 0;
-  border: none;
-  transition: 0.2s;
-  font-size: 1.1em;
-  font-weight: bold;
-  border-top-right-radius: var(--border-radius);
-  border-top-left-radius: var(--border-radius);
-}
-
-.form-toggle button:nth-child(1){
-  border-bottom-right-radius: var(--border-radius);
-}
-
-.form-toggle button:nth-child(2){
-  border-bottom-left-radius: var(--border-radius);
-}
-
-/* login button default selected with main color */
-#login-toggle{
-  background: var(--gold-yellow);
-  color: var(--text-color);
-}
-
-.form-modal form{
-  position: relative;
-  width: 90%;
-  height: auto;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-#login-form , #signup-form{
-  position: relative;
-  width: 100%;
-  height: auto;
-  padding-bottom: 1em;
-}
-
-#signup-form{
-  display: none;
-}
-
-
-#login-form button , #signup-form button{
-  width: 100%;
-  margin-top: 0.5em;
-  padding: 0.6em;
-}
-
-.form-modal input{
-  position: relative;
-  width: 100%;
-  font-size: 1em;
-  padding: 1.2em 1.7em 1.2em 1.7em;
-  margin-top: 0.6em;
-  margin-bottom: 0.6em;
-  border-radius: var(--border-radius);
-  border: none;
-  background: var(--light-yellow);
-  outline: none;
-  font-weight: bold;
-  transition: 0.4s;
-}
-
-.form-modal input:focus , .form-modal input:active{
-  transform: scaleX(1.02);
-}
-
-.form-modal input::-webkit-input-placeholder{
-  color: var(--text-color);
-}
-
-
-.form-modal p{
-  font-size: 16px;
-  font-weight: bold;
-}
-
-.form-modal p a{
-  color: var(--gold-yellow);
-  text-decoration: none;
-  transition: 0.2s;
-}
-
-.form-modal p a:hover{
-  color: var(--text-color);
-}
-
-
-.form-modal i {
-  position: absolute;
-  left: 10%;
-  top: 50%;
-  transform: translateX(-10%) translateY(-50%);
-}
-
-.-box-sd-effect:hover{
-  box-shadow: 0 4px 8px hsla(210,2%,84%,.2);
-}
-
-@media only screen and (max-width:500px){
-  .form-modal {
-      width:100%;
-  }
-}
-
-@media only screen and (max-width:400px){
-  i {
-    display: none!important;
-  }
-}

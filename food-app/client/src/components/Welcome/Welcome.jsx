@@ -15,6 +15,8 @@ class Welcome extends Component {
   }
 
   render() {
+
+    // all styles match the css index file!!! CAUTION!
     function toggleSignup() {
       document.getElementById("login-toggle").style.backgroundColor="rgb(231, 231, 231)";
       document.getElementById("login-toggle").style.color="black";
@@ -41,9 +43,9 @@ class Welcome extends Component {
       <Router>
       <div>
         <div className="catch-phrase">
-          <h3>
+          <h4>
             Save your recipes, choose from our catalog, and create you personalzied meal plan!
-          </h3>
+          </h4>
         </div>
         <div className="form-modal">
           <div className="form-toggle">
@@ -55,7 +57,6 @@ class Welcome extends Component {
                   <input type="email" placeholder="Enter email"/>
                   <input type="password" placeholder="Enter password"/>
                   <button type="button" className="btn login" onClick={ () => this.renderRedirect() }>login</button>
-                  <hr/>
               </form>
           </div>
           <div id="signup-form">
@@ -65,7 +66,6 @@ class Welcome extends Component {
                   <input type="password" placeholder="Create password"/>
                   <button type="button" className="btn signup" onClick={ () => this.renderRedirect() }>create account</button>
                   {/* <p>Clicking <strong>create account</strong> means that you are agree to our <a href="javascript:void(0)">terms of services</a>.</p> */}
-                  <hr/>
               </form>
           </div>
         </div>
