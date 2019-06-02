@@ -176,7 +176,6 @@ class RecipeBook extends Component {
           <div className="page-title">
             <h2 className="page-title">Recipe Book Page</h2>
           </div>
-          <br />
           <form onSubmit={this.handleFormSubmit}>
             <div className="search-container">
               <h3>Search Recipes by Category</h3>
@@ -218,7 +217,6 @@ class RecipeBook extends Component {
         } />
         )}
         { this.state.searchShow ? <SearchRecipe changeRecipeState={this.savedRecipesForUser} searchedRecipes={this.state.searchedRecipes} /> : null }
-        <br/>
         <SavedRecipe changeRecipeState={this.savedRecipesForUser} savedRecipes={this.state.savedRecipes} savedRecipesByID={this.state.savedRecipesByID} />
       </div>
     </Router>

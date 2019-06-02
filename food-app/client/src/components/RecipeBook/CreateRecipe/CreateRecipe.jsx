@@ -177,12 +177,15 @@ class CreateRecipe extends Component {
                 </div>
               </label>
               <label>
-                <div className="container-ingredients">
+                <div >
                   <h3>Ingredients</h3>
+                  <div className="ingredients-box">
+                    <button type="button" className="btn btn-primary" onClick={this.addIngredient.bind(this, 'ingredients')}>Add Ingredient</button>
+                  </div>
                   <div className="container-ingredients">
                   {
                     this.state.ingredients.map((item, i) => (
-                      <div className="ingredients-box" key={item.id} >
+                      <div key={item.id} >
                         <select name="ingredientName"
                                 value={item.ingredientName}
                                 ingredientid={item.ingredientid}
@@ -203,9 +206,6 @@ class CreateRecipe extends Component {
                       </div>
                     ))
                   }
-                  </div>
-                  <div className="ingredients-box">
-                    <button type="button" className="btn btn-primary" onClick={this.addIngredient.bind(this, 'ingredients')}>Add Ingredient</button>
                   </div>
                 </div>
               </label>
