@@ -23,7 +23,6 @@ add ingredient in another class --> box, column reverse and add button in the st
 }
 
 * {
-
   margin: 0;
   padding: 0;
   font-family: 'ABeeZee', sans-serif;
@@ -49,6 +48,18 @@ add ingredient in another class --> box, column reverse and add button in the st
   } */
 }
 
+html {
+  height: 100vh;
+  background-color: var(--background);
+}
+
+main {
+  /* Some code to make things look pretty */
+  height: 100vh;
+  background-color: var(--background);
+  padding: 1.5rem 3rem;
+}
+
 hr {
   height:0px;
   border:none;
@@ -65,20 +76,6 @@ hr {
   margin: auto;
   background-color: var(--modal-background);
 }
-
-
-/* width: auto;
-height: 2.5em;
-padding: 0.5em;
-margin: 0.5em;
-box-sizing: border-box;
-border-radius: 4px;
-font-size: 1em;
-text-align: center;
-display: flex;
-justify-content: center;
-align-items: center; */
-
 
 .popup-inner {
   position: fixed;
@@ -301,7 +298,7 @@ input {
   background-color: var(--light-yellow);
 }
 
-input[type=text] {
+/* input[type=text] {
   width: 30em;
   height: 3em;
 }
@@ -324,7 +321,7 @@ input[type=file] {
 
 input[type=submit] {
   height: 2em;
-  /* align-items: flex-end; */
+  align-items: flex-end;
 }
 
 input[type=button] {
@@ -335,7 +332,7 @@ input[type=button] {
   box-sizing: border-box;
   border-radius: 4px;
   font-size: 1em;
-}
+} */
 
 select {
   width: auto;
@@ -348,12 +345,16 @@ select {
 
 button {
   width: auto;
-  height: 2em;
+  height: 2.5em;
   padding: 0.5em;
   margin: 0.5em;
   box-sizing: border-box;
   border-radius: 4px;
   font-size: 1em;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .preparation-box {

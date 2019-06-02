@@ -1,12 +1,4 @@
 class MealPlansController < ApplicationController
-<<<<<<< HEAD
-
-  def index
-    @user_id = 1
-    @meal_plan_date = Time.zone.today
-
-    render :json => @meal_plan.to_json(:include => {meal_plan_recipe: {include: :recipe}})
-=======
   # before_filter :new_meal_plan, :only => [:create]
 
   def index
@@ -16,7 +8,6 @@ class MealPlansController < ApplicationController
     @meal_plan = MealPlan.where(["user_id = ? AND meal_plan_date = ?", @user_id, @meal_plan_date])
     render :json => @meal_plan.to_json(:include => {meal_plan_recipes: {include: :recipe}})
 
->>>>>>> 5f1d78429070b225c05875ce304513b2a7b14417
   end
 
   def create
@@ -46,13 +37,7 @@ class MealPlansController < ApplicationController
     @recipe_id = params[:recipe_id]
 
     puts "@meal_plan.id"
-<<<<<<< HEAD
-    puts @meal_plan.id
-    meal_plan_id = @meal_plan.id
-    puts meal_plan_id
-=======
     puts @meal_plan_search.id
->>>>>>> 5f1d78429070b225c05875ce304513b2a7b14417
     puts "@recipe_id"
     puts @recipe_id
 
