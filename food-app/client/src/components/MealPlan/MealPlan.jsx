@@ -11,15 +11,11 @@ class MealPlan extends Component {
       recipes: [], // userRecipes or recipeBook
       recipesByID: null,
       chosenType: null,
-
       choices: {
         breakfast: null,
         meal: null,
         snack: null,
       },
-      // chosenBreakfast: null,
-      // chosenMeal: null,
-      // chosenSnack: null
     }
   };
 
@@ -31,29 +27,11 @@ class MealPlan extends Component {
       },
       showPopup: false
     });
-
-    // if (choice.meal_type === 'breakfast') {
-    //   this.setState({
-    //     chosenBreakfast: choice,
-    //     showPopup: null
-    //   })
-    // }
-    // if (choice.meal_type === 'meal') {
-    //   this.setState({
-    //     chosenMeal: choice,
-    //     showPopup: null
-    //   })
-    // }
-    // if (choice.meal_type === 'snack') {
-    //   this.setState({
-    //     chosenSnack: choice,
-    //     showPopup: null
-    //   })
-    // }
   }
 
   componentDidMount() {
     this.fetchRecipes();
+    this.fetchSavedPlan();
   }
 
   filterType = (mealType) => {
@@ -61,7 +39,45 @@ class MealPlan extends Component {
     this.setState({
       chosenType: mealType,
       showPopup: true,
-    });
+    })
+
+    fetch(`/api/meal_plans/1/?recipe_id=${this.state.choices[mealType].id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => {
+      console.log("response is happening")
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error('Something went wrong ...');
+      }
+    })
+    .catch(error => this.setState({
+      error
+    }))
+  }
+
+
+  fetchSavedPlan = () => {
+
+    fetch(`/api/meal_plans`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log('going inside');
+      data[0].meal_plan_recipes.map(i => {
+        this.changeChoice(i.recipe);
+      })
+    })
+    .catch(error => this.setState({ error }))
+    .then(() => console.log("end of fetch", "show", this.state.recipes, "showID", this.state.recipesByID, this.state.showPopup));
   }
 
   fetchRecipes = (type) => {
@@ -85,17 +101,8 @@ class MealPlan extends Component {
       })
     })
     .catch(error => this.setState({ error }))
-    .then(() => console.log("end of fetch", "show", this.state.recipes, "showID", this.state.recipesByID, this.state.showPopup));
+    // .then(() => console.log("end of fetch", "show", this.state.recipes, "showID", this.state.recipesByID, this.state.showPopup));
   }
-
-  // createToggleButton = (type, content) => {
-  //   const buttonStyles = {
-  //     backgroundColor: 'white',
-  //     color: 'goldenrod'
-  //   };
-
-  //   return <button style={buttonStyles} onClick={() => this.typeToggle(type)}>{content}</button>;
-  // }
 
   render() {
     const buttonStyles = {
@@ -121,13 +128,15 @@ class MealPlan extends Component {
         <br/>
 
         {Object.keys(this.state.choices).map(mealType => {
+          console.log("this.state.choices: ", this.state.choices)
           return (
             <div key={mealType} style={{marginBottom: '2rem'}}>
-              <h2 style={{'textTransform': 'uppercase'}}>{mealType}</h2>
+              <h2 style={{'textTransform': 'uppercase', marginBottom: '1rem'}}>{mealType}</h2>
               {
                 this.state.choices[mealType]
                 ? (
                   <div>
+                    <h4>{this.state.choices[mealType].name}</h4>
                     <img className="chosen-image" src={this.state.choices[mealType].image} alt={this.state.choices[mealType].name || 'Image'}/>
                     <button style={buttonStyles} onClick={() => this.filterType(mealType)}>EDIT</button>
                   </div>
