@@ -44,6 +44,7 @@ main {
 
 #root {
   --background: rgb(231, 231, 231);
+  --sub-menu: rgb(170, 170, 170);
   --cards: rgb(216, 100, 100);
   --blue: #58A7E4;
   --light-yellow: rgb(241, 215, 147);
@@ -159,7 +160,7 @@ p {
   background-color: var(--gold-yellow);
   color: var(--text-color-link);
   padding: 0.5em;
-  margin: 0.5em 1em 1em 1em;
+  margin: 0.5em 1em 1em 1.5em;
   text-decoration: none;
   /* text-transform: uppercase; */
   border-radius: var(--border-radius);
@@ -336,6 +337,66 @@ p {
 }
 
 
+/* RECIPE BOOK ------------------------------------------------ */
+
+/* div that wrap up all RECIPE BOOK PAGE */
+.container-1 {
+  display: flex;
+  /* align-items: flex-end; -start -center actually makes all boxes inside with different hieghts*/
+  flex-direction: column;
+  /* justify-content: space-between; divides the space inbetween the boxes, and live a spece inbetween
+  in the container you have to specify a width of 30% for example! (or flex-basis) */
+  padding: 17.5px;
+}
+
+/* div that wraps up the title and the button to create recipe */
+.page-title {
+  background-color: var(--sub-menu);
+  color: var(--text-color-link);
+  align-items: center;
+  padding: 10px;
+  display: flex;
+
+}
+
+/* separating the create-recipe-button from the page title */
+#create-recipe-button {
+  /* margin-left: 10rem; */
+  margin-left: auto;
+}
+
+/* div that wraps up the title and the checkboxes for the search */
+.search-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: center;
+  margin: 1rem;
+}
+
+/* div that wraps checkboxes options */
+.search-container-choices {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-content: center;
+  font-size: 2rem;
+}
+
+/* div container for the search buttons */
+.search-buttons-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-content: center;
+}
+
+/* each search button inside search */
+.search-button {
+  margin: 0.5em 1em 1em 0.5em;
+}
+
+
 /* CREATE RECIPE ------------------------------------------------ */
 
 /* create recipe window - div wraps everything */
@@ -363,24 +424,6 @@ p {
   overflow-x: hidden;
 }
 
-.page-title {
-  background-color: var(--blue);
-  color: var(--text-color-link);
-}
-
-.container-1 {
-  display: flex;
-  /* align-items: flex-end; -start -center actually makes all boxes inside with different hieghts*/
-  flex-direction: column;
-  /* justify-content: space-between; divides the space inbetween the boxes, and live a spece inbetween
-  in the container you have to specify a width of 30% for example! (or flex-basis) */
-}
-
-.container-1 div {
-  /* border: 1px var(--dark-yellow) solid; */
-  padding: 10px;
-}
-
 .button-meal {
   background-color: var(--text-color-link);
   color: var(--gold-yellow);
@@ -393,13 +436,6 @@ p {
   flex-direction: column-reverse;
   flex-wrap: wrap;
   justify-content: right;
-}
-
-.search-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-content: center;
 }
 
 .carouselContainer {
@@ -567,7 +603,7 @@ select {
 
 button {
   width: auto;
-  height: 2.5em;
+  height: auto;
   padding: 0.5em;
   margin: 0.5em;
   box-sizing: border-box;

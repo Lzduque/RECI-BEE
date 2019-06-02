@@ -166,43 +166,36 @@ class RecipeBook extends Component {
     return (
       <Router>
       <div>
-        <div className="nav-bar">
-          <ul className="nav-links-container">
-            <Link className="nav-link" to="/recipe/create" onClick={ () => this.togglePopup(true) }>Create Recipe</Link>
-          </ul>
-        </div>
-
-        <div className="create-recipe container-1">
+        <div className="container-1">
           <div className="page-title">
-            <h2 className="page-title">Recipe Book Page</h2>
+            <h2>Recipe Book Page</h2>
+            <Link className="nav-link" id="create-recipe-button" to="/recipe/create" onClick={ () => this.togglePopup(true) }>Create Recipe</Link>
           </div>
           <form onSubmit={this.handleFormSubmit}>
             <div className="search-container">
               <h3>Search Recipes by Category</h3>
-              <div className="search-container">
+              <div className="search-container-choices">
                 {this.createCheckboxes()}
               </div>
             </div>
-            <div className="container-1-box">
-              <div className="container-1-box container-ingredients">
-                <button
-                  type="button"
-                  className="btn btn-outline-primary mr-2"
-                  onClick={this.selectAll}
-                >
-                  Select All
-                </button>
-                <button
-                  type="button"
-                  className="btn btn-outline-primary mr-2"
-                  onClick={this.deselectAll}
-                >
-                  Deselect All
-                </button>
-                <button type="submit" className="btn btn-primary">
-                  Search
-                </button>
-              </div>
+            <div className="search-buttons-container">
+              <button
+                type="button"
+                className="search-button"
+                onClick={this.selectAll}
+              >
+                Select All
+              </button>
+              <button
+                type="button"
+                className="search-button"
+                onClick={this.deselectAll}
+              >
+                Deselect All
+              </button>
+              <button type="submit" className="search-button">
+                Search
+              </button>
             </div>
             {/* STATE
             <pre style={{marginTop: '1em'}}>{JSON.stringify(this.state, null, '\t')}</pre>
