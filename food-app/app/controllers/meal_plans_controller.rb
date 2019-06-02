@@ -1,8 +1,10 @@
 class MealPlansController < ApplicationController
-  before_filter :new_meal_plan, :only => [:create]
 
   def index
-    render json: MealPlan.all
+    @user_id = 1
+    @meal_plan_date = Time.zone.today
+
+    render :json => @meal_plan.to_json(:include => {meal_plan_recipe: {include: :recipe}})
   end
 
   def create
@@ -37,6 +39,8 @@ class MealPlansController < ApplicationController
 
     puts "@meal_plan.id"
     puts @meal_plan.id
+    meal_plan_id = @meal_plan.id
+    puts meal_plan_id
     puts "@recipe_id"
     puts @recipe_id
 
