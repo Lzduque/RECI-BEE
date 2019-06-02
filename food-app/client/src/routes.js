@@ -39,14 +39,14 @@ class Routes extends Component {
           </div>
           <ul className="nav-links-container">
             <Link className="nav-link" to="/">Welcome</Link>
-            <Link className="nav-link" to="/profile">Profile</Link>
+            {/* <Link className="nav-link" to="/profile">Profile</Link> */}
             <Link className="nav-link" to="/recipebook">Recipe Book</Link>
             <Link className="nav-link" to="/mealplan">Meal Plan</Link>
           </ul>
         </div>
 
         <Route exact path="/" component={Welcome} />
-        <Route path="/profile" component={Profile} />
+        {/* <Route path="/profile" component={Profile} /> */}
         <Route path="/recipebook" component={RecipeBook} />
         <Route path="/mealplan" component={MealPlan} />
       </div>

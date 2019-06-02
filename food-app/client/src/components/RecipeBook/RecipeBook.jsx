@@ -172,17 +172,17 @@ class RecipeBook extends Component {
           </ul>
         </div>
 
-        <br/>
-
         <div className="create-recipe container-1">
-          <div className="container-1-box page-title">
+          <div className="page-title">
             <h1 className="page-title">Recipe Book Page</h1>
           </div>
           <br />
-          <h3>Search Recipes by Category</h3>
           <form onSubmit={this.handleFormSubmit}>
-            <div className="container-1-box container-ingredients">
-              {this.createCheckboxes()}
+            <div className="search-container">
+              <h3>Search Recipes by Category</h3>
+              <div className="search-container">
+                {this.createCheckboxes()}
+              </div>
             </div>
             <div className="container-1-box">
               <div className="container-1-box container-ingredients">
