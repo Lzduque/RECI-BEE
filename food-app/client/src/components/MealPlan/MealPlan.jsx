@@ -131,11 +131,12 @@ class MealPlan extends Component {
           console.log("this.state.choices: ", this.state.choices)
           return (
             <div key={mealType} style={{marginBottom: '2rem'}}>
-              <h2 style={{'textTransform': 'uppercase'}}>{mealType}</h2>
+              <h2 style={{'textTransform': 'uppercase', marginBottom: '1rem'}}>{mealType}</h2>
               {
                 this.state.choices[mealType]
                 ? (
                   <div>
+                    <h4>{this.state.choices[mealType].name}</h4>
                     <img className="chosen-image" src={this.state.choices[mealType].image} alt={this.state.choices[mealType].name || 'Image'}/>
                     <button style={buttonStyles} onClick={() => this.filterType(mealType)}>EDIT</button>
                   </div>
