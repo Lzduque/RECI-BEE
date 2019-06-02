@@ -231,7 +231,7 @@ class CreateRecipe extends Component {
               </label>
               <label>
                 <div className="container-1-box">
-                  <h3>Cooking Time</h3>
+                  <h3>Total Time</h3>
                   <input name="cookingTime"
                           value={this.state.cookingTime}
                           type="number"

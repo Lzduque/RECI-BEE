@@ -1,28 +1,32 @@
 import React, { Component } from 'react';
 
-const RecipeCard = (props) => (
+const ChoiceCard = (props) => (
   <div className="recipe-card">
-    <img className="recipe-image" src={ props.image } alt={ props.alt || 'Image' }/>
+    <img className="recipe-image" src={props.image} alt={props.alt || 'Image'}/>
     <div className="recipe-content">
-      <p className="recipe-title">{ props.name }</p>
+      <p className="recipe-title">{props.name}</p>
+      <h6 className="recipe-title">Serves: {props.servings} | Time: {props.time} min</h6>
     </div>
   </div>
 );
 
-const CardContainer = (props) => {
+const ChoiceContainer = (props) => {
 
-  const onClickCard = (id) => (evt) => {
-    props.onCardSelected(id);
+  const onChoice = (id) => (evt) => {
+    // console.log(evt.target)
+    props.onChoice(id);
   }
 
   return (
     <div className="card-container">
       {
-        props.selectRecipes.map((recipe) => (
-          <div className="card-button" key={recipe.id} onClick={ onClickCard(recipe.id) }><RecipeCard
-            key={ recipe.id }
-            name={ recipe.name }
-            image={ recipe.image }
+        props.choices.map((choice) => (
+          <div className="card-button" key={choice.id} onClick={onChoice(choice.id)}><ChoiceCard
+            key={choice.id}
+            name={choice.name}
+            image={choice.image}
+            servings={choice.servings}
+            time={choice.time}
             />
           </div>
         ))
@@ -41,10 +45,9 @@ class MealView extends Component {
   }
 
   getRecipeByID(id) {
-    console.log('thispropssearch', this.props.selectRecipes);
-    for (let recipe of this.props.selectRecipes) {
+    for (let recipe of this.props.choices) {
       console.log('recipe', recipe);
-      if (recipe.id == id) {
+      if (recipe.id === id) {
         return recipe;
       }
     }
@@ -53,23 +56,52 @@ class MealView extends Component {
     // if recipe.id == id , then return recipe.obj else return null
   }
 
+  choiceSelected = id => {
+    let chosenRecipe = this.getRecipeByID(id);
+    console.log('chosenrecipe', chosenRecipe.id);
+    this.props.change(chosenRecipe)
+
+    fetch(`/api/meal_plans?recipe_id=${chosenRecipe.id}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => {
+      console.log("response is happening inside save in DB")
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error('Something went wrong ...');
+      }
+    })
+    .then(recipeIsSaved => {
+      console.log('recipe if saved after query DB?', recipeIsSaved);
+
+      if (recipeIsSaved) {
+        // this.setState = { saved: true };
+        console.log("is being set to TRUE")
+        // console.log("this.state.saved should be TRUE now: ", this.state.saved)
+      } else {
+        // this.setState = { saved: false };
+        // this.saveRecipe();
+        console.log("this.state.saved is FALSE")
+        // console.log("this.state.saved should be FALSE now: ", this.state.saved)
+      }
+    })
+    .catch(error => this.setState({ error }))
+  }
+
   render() {
 
     return (
         <div className='popup'>
           <div className='popup-inner'>
           <h1 style={{ 'textAlign' : 'center' }}>Add a Recipe</h1>
-          <CardContainer selectRecipes={ this.props.selectRecipes } onCardSelected={this._recipeSelected}/>
-          <button onClick={this.props.closePopup}>CLOSE</button>
+          <ChoiceContainer choices={ this.props.choices } onChoice={this.choiceSelected}/>
           </div>
         </div>
     )
-  }
-
-  _recipeSelected = id => {
-  let selectedRecipe = this.getRecipeByID(id);
-  this.setState({selectedRecipe: selectedRecipe})
-  console.log(id, 'selectedrep', 'null?', selectedRecipe);
   }
 }
 

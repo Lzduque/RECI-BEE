@@ -228,7 +228,7 @@ h3 {
   width: 90%;
   margin: auto;
   background: white;
-  color: grey;
+  color: goldenrod;
   min-height: 100%;
   min-width: 100%;
 }
@@ -255,6 +255,7 @@ h3 {
 
 .recipe-content {
   padding: 1em;
+  background: var(--light-yellow);
 }
 
 .recipe-title {
@@ -262,16 +263,17 @@ h3 {
   width: 100%;
   overflow: hidden;
   text-emphasis: wrap;
+  background: var(--light-yellow);
+  color: black;
 }
 
 .card-container {
 
   display: flex;
-  border-radius: 6px;
   color: grey;
   background: white;
   padding: 1rem;
-  box-shadow: 0 0 1rem #000 inset;
+  box-shadow: 0 0 1em goldenrod inset;
   overflow: auto;
   position: relative;
 }
@@ -283,6 +285,7 @@ h3 {
   margin: auto;
   box-sizing: border-box;
   border-radius: auto;
+  background: white;
 }
 
 input {
@@ -361,3 +364,14 @@ button {
   margin: 0.5em;
   font-size: 1em;
 }
+
+.chosen-image {
+  width: 200px;
+  height: 200px;
+  object-fit: center;
+}
+
+.chosen-image:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
