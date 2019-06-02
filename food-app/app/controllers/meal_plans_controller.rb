@@ -6,7 +6,7 @@ class MealPlansController < ApplicationController
     @user_id = 1
     @meal_plan_date = Time.zone.today
     @meal_plan = MealPlan.where(["user_id = ? AND meal_plan_date = ?", @user_id, @meal_plan_date])
-    render :json => @meal_plan.to_json(:include => {meal_plan_recipes: {include: :recipe}})
+    render :json => @meal_plan.to_json(:include => {meal_plan_recipes: {:include => {recipe: {:include => {ingredients: {include: :quantities}}}}}})
 
   end
 

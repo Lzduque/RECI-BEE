@@ -52,8 +52,6 @@ class MealView extends Component {
       }
     }
     return false;
-    // loop through this.props.recipes
-    // if recipe.id == id , then return recipe.obj else return null
   }
 
   choiceSelected = id => {
@@ -99,6 +97,8 @@ class MealView extends Component {
           <div className='popup-inner'>
           <h1 style={{ 'textAlign' : 'center' }}>Add a Recipe</h1>
           <ChoiceContainer choices={ this.props.choices } onChoice={this.choiceSelected}/>
+          <h2 style={{ 'textAlign' : 'center'}}>Please select a recipe</h2>
+          <button onClick={this.props.closePopup}>CLOSE</button>
           </div>
         </div>
     )
