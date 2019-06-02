@@ -14,7 +14,7 @@ add ingredient in another class --> box, column reverse and add button in the st
 
 #root {
   --background: #e7e7e7;
-  --cards: rgb(202, 202, 202);
+  --cards: rgb(216, 100, 100);
   --blue: #58A7E4;
   --light-yellow: rgb(241, 215, 147);
   --gold-yellow: #daa520;
@@ -155,6 +155,13 @@ div.app-name h1 {
 .container-1 div {
   /* border: 1px var(--dark-yellow) solid; */
   padding: 10px;
+}
+
+.button-meal {
+  background-color: var(--text-color-link);
+  color: var(--gold-yellow);
+  height: 50px;
+  width: 50px;
 }
 
 .container-ingredients {

@@ -174,7 +174,7 @@ class RecipeBook extends Component {
 
         <div className="create-recipe container-1">
           <div className="page-title">
-            <h1 className="page-title">Recipe Book Page</h1>
+            <h2 className="page-title">Recipe Book Page</h2>
           </div>
           <br />
           <form onSubmit={this.handleFormSubmit}>
