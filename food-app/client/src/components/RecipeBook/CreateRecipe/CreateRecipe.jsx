@@ -113,12 +113,12 @@ class CreateRecipe extends Component {
     console.log('new this.state: ', this.state);
   }
 
-  renderRedirect = () => {
-    if (this.state.redirect) {
-      console.log("Is trying to redirect!")
-      return <Redirect to='/recipebook' />
-    }
-  }
+  // renderRedirect = () => {
+  //   if (this.state.redirect) {
+  //     console.log("Is trying to redirect!")
+  //     return <Redirect to='/recipebook' />
+  //   }
+  // }
 
   handleSubmit = (event) => {
     // alert('Submitted 1: ' + this.state.recipeTitle);
