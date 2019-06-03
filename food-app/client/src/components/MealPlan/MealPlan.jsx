@@ -3,6 +3,12 @@ import MealView from './MealView/MealView.jsx';
 import ViewRecipe from '../RecipeBook/ViewRecipe/ViewRecipe.jsx';
 import Nutrition from './Nutrition/Nutrition.jsx';
 
+var calories = 0;
+var protein = 0;
+var fat = 0;
+var sugar = 0;
+var carbs = 0;
+
 class MealPlan extends Component {
 
   constructor(props) {
@@ -21,6 +27,11 @@ class MealPlan extends Component {
       viewRecipe: null,
       servings: null,
       showNutrition: null,
+      calories: 0,
+      protein: 0,
+      fat: 0,
+      sugar: 0,
+      carbs: 0,
     }
   };
 
@@ -116,49 +127,48 @@ class MealPlan extends Component {
     this.setState({viewPopup: state, showPopup: state})
   }
 
-  displayNutrition = (props) => {
-    let result = this.makeRequest(this.transform(this.openNutrition(props)));
-    console.log('result', result);
-    this.setState({
-      showNutrition: result
-    })
-  }
+
+  // displayNutrition = (props) => {
+  //   event.preventDefault();
+  //   this.setState({
+  //     showNutrition: this.makeRequest(this.transform(this.openNutrition(props))),
+  //   })
+  // }
 
   openNutrition = (props) => {
-    // console.log('props on open nutrition', props)
+    console.log('props on open nutrition', props)
     var nutrArr = [];
 
     var searchQuantity = (quantities, id) => {
-      // console.log("inside search Quantity");
+      console.log("inside search Quantity");
       return quantities.find(element => element.recipe_id === id).quantity
     }
 
     props.ingredients.map((ingredient) => {
-      // console.log("inside map ingredient for", ingredient);
+      console.log("inside map ingredient for", ingredient);
       nutrArr.push(searchQuantity(ingredient.quantities, props.id));
       nutrArr.push(ingredient.unit);
       nutrArr.push(ingredient.name);
     })
     this.setState({servings: props.servings});
-    // console.log('serv', props.servings, 'nutrArr', nutrArr);
+    console.log('serv', props.servings, 'nutrArr', nutrArr);
     return nutrArr;
   }
 
   transform = (props) => {
     let string = [];
-    // console.log('props on transform', props);
+    console.log('props on transform', props);
     while (props.length > 0) {
       let chunk = " " + (props.splice(0, 3).join(" "));
       string.push(chunk);
     }
     var q = string.toString().substring(1);
-    // console.log("finish transform")
+    console.log("finish transform")
     return q;
   }
 
   makeRequest = (param) => {
-    var request = require("request");
-    // console.log("inside make request!")
+    console.log("inside make request!")
     var options = {
       method: 'POST',
       url: 'https://trackapi.nutritionix.com/v2/natural/nutrients',
@@ -175,16 +185,50 @@ class MealPlan extends Component {
         query: param,
       },
       json: true
-    };
-
-    request(options, function (error, body) {
-      if (error) throw new Error(error);
-      // console.log('body inside request', body)
-      return body
-    })
+    }
+    return options
   }
 
+  request = (options) => {
+    var request = require("request");
+    request(options, function (error, body) {
+      console.log('body', body.body.foods)
+
+      body.body.foods.map((food) => {
+        calories += food.nf_calories;
+        protein += food.nf_protein;
+        fat += food.nf_total_fat;
+        sugar += food.nf_sugars;
+        carbs += food.nf_total_carbohydrate;
+      })
+      return body.body.foods;
+    });
+    console.log('finish body???')
+  }
+
+  displayNutrition = (props) => {
+    let openNutrition = this.openNutrition(props)
+
+    Promise.all(openNutrition)
+      .then((nutrArr) => {
+        this.transform(nutrArr)
+      })
+      .then((q) => {
+        this.makeRequest(q)
+      })
+      .then((options) => {
+        this.request(options)
+      })
+      .then((response) => {
+        this.setState({
+          showNutrition: response
+        })
+      })
+  }
+
+
   render() {
+    console.log('cal', calories, 'protein', protein, 'fat', fat, 'sugar', sugar, 'carbs', carbs)
 
     const buttonStyles = {
       backgroundColor: 'white',
@@ -223,7 +267,7 @@ class MealPlan extends Component {
                     <h4>{this.state.choices[mealType].name}</h4>
                     <img className="chosen-image" onClick={() => this.openView(this.state.choices[mealType])} src={this.state.choices[mealType].image} alt={this.state.choices[mealType].name || 'Image'}/>
                     <button style={buttonStyles} onClick={() => this.filterType(mealType)}>EDIT</button>
-                    <button style={{float: 'right'}} onClick={() => this.displayNutrition(this.state.choices[mealType])}>Nutrition</button>
+                    <button style={{float: 'right'}} onDoubleClick={this.nutritionShow} onClick={() => this.displayNutrition(this.state.choices[mealType])}>Nutrition</button>
                   </div>
                 )
                 :
@@ -244,6 +288,11 @@ class MealPlan extends Component {
             recipe={this.state.viewRecipe}
             closePopup={() => this.togglePopup(false)}
           />  : null}
+
+          STATE
+          <pre style={{marginTop: '1em'}}>{JSON.stringify(this.state, null, '\t')}</pre>
+          PROPS
+          <pre style={{marginTop: '1em'}}>{JSON.stringify(this.props, null, '\t')}</pre>
 
        </div>
     )
