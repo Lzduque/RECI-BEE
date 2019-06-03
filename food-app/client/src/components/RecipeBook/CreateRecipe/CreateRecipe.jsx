@@ -164,7 +164,7 @@ class CreateRecipe extends Component {
           <div className="container-create-recipe">
             <div className="page-title">
               <h2>Create Recipe Page</h2>
-              <button id="close-button"  onClick={ () => this.props.closePopup() }>Go Back</button>
+              <button className="close-button"  onClick={ () => this.props.closePopup() }>Go Back</button>
             </div>
             <form onSubmit={ this.handleSubmit } >
               <label>

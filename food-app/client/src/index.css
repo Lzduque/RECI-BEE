@@ -109,7 +109,7 @@ p {
   margin-top: 0;
 }
 
-
+/* view recipe print page */
 @media print {
   body * {
     position: absolute;
@@ -402,7 +402,7 @@ p {
 
 /* CREATE RECIPE ------------------------------------------------ */
 
-/* create recipe window - div wraps everything */
+/* create recipe window and view recipe window - div wraps everything */
 .popup {
   position: fixed;
   z-index: 100;
@@ -416,7 +416,7 @@ p {
   background-color: var(--modal-background);
 }
 
-/* create recipe window - div inside the pop */
+/* create recipe window and view recipe window - div inside the pop */
 .popup-inner {
   position: fixed;
   left: 10%;
@@ -440,7 +440,7 @@ p {
 }
 
 /* separating the close button from the page title */
-#close-button {
+.close-button {
   /* margin-left: 10rem; */
   margin-left: auto;
   background-color: var(--text-color-link);
@@ -620,6 +620,49 @@ p {
   color: var(--text-color);
 }
 
+
+/* VIEW RECIPE POPUP ------------------------------------------------ */
+
+/* div that wraps everything inside popup */
+.view-recipe {
+  padding: 17.5px;
+}
+
+/* wraps all fields inside view recipe page */
+.view-recipe-field {
+  margin-bottom: 3rem;
+  margin-top: 2rem;
+  display: flex;
+  list-style-position: inside;
+}
+
+.view-recipe-field h5 {
+  margin-top: 0;
+}
+
+.view-recipe-field-preparation {
+  margin-bottom: 3rem;
+  margin-top: 2rem;
+  list-style-position: inside;
+}
+
+.view-recipe-field-preparation h5 {
+  margin-bottom: 0;
+}
+
+.view-recipe-img {
+  flex: 1 1 60%;
+}
+
+.view-recipe-img img {
+  max-width: 100%;
+}
+
+.view-recipe-ingredients {
+  flex: 1 1 40%;
+  margin: 0 3rem 0 0;
+  height: auto;
+}
 
 .button-meal {
   background-color: var(--text-color-link);
