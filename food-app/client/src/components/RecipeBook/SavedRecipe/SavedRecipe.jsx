@@ -3,8 +3,8 @@ import ViewRecipe from '../ViewRecipe/ViewRecipe.jsx';
 
 // eslint-disable-next-line
 
-const right = '-1';
-const left = '+1';
+const left = '-1';
+const right = '+1';
 
 class SavedRecipe extends Component {
   constructor(props) {
@@ -52,7 +52,9 @@ class SavedRecipe extends Component {
       backgroundImage: `url(${url})`,
       backgroundAttachment: 'flex',
       backgroundPosition: 'center center',
-      backgroundSize: 'cover'
+      backgroundSize: 'cover',
+      // position: 'relative',
+      // textAlign: 'center',
     });
 
     const recipe = this.props.savedRecipes[imageIndex];
@@ -63,27 +65,28 @@ class SavedRecipe extends Component {
       //show spinner here
     }
     return (
-      <div className="search-container">
-        <font align="center" size="3" color="goldenrod"><h1>Saved Recipes</h1></font>
-        <div className="carousel-container">
-              <div style={imageStyles(recipe.image)} key={recipe.id}>
-                <button
-                  onClick={()=>this.onClick(right)}
-                  className="click-right">⇦</button>
-                <button
-                  onClick={() => this.togglePopup(recipe.id)}
-                  className="click-center">⇪</button>
-                <button
-                  onClick={()=>this.onClick(left)}
-                  className="click-left">⇨</button>
-              </div>
-            {this.state.showPopup > 0 && (
-              <ViewRecipe
-                closePopup={() => this.togglePopup(0)}
-                recipe={this.props.savedRecipesByID[this.state.showPopup]}
-              />)}
+      <div className="saved-recipes-container">
+        <h4 className="saved-recipes-title">Saved Recipes</h4>
+        <div>
+          <div style={imageStyles(recipe.image)} key={recipe.id}>
+            <div className="arrow-container">
+              <button
+                onClick={()=>this.onClick(left)}
+                className="click-left">⇦</button>
+              <button
+                onClick={() => this.togglePopup(recipe.id)}
+                className="click-center">{recipe.name}</button>
+              <button
+                onClick={()=>this.onClick(right)}
+                className="click-right">⇨</button>
+            </div>
+          </div>
+          {this.state.showPopup > 0 && (
+          <ViewRecipe
+            closePopup={() => this.togglePopup(0)}
+            recipe={this.props.savedRecipesByID[this.state.showPopup]}
+          />)}
         </div>
-        <font align="center" size="1">Recipe: {imageIndex}</font>
       </div>
     )
   }

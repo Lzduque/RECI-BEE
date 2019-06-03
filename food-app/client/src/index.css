@@ -454,6 +454,93 @@ p {
   margin-top: 2rem;
 }
 
+/* SAVED RECIPES ------------------------------------------------ */
+
+/* div that wraps up the saved recipes carousel */
+.saved-recipes-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: center;
+}
+
+/* div that wraps up the saved recipes carousel */
+.saved-recipes-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: center;
+  margin: 35px 27.5px 15px 27.5px;
+}
+
+/* container just for the text/arrows in the image */
+.arrow-container {
+  display: flex;
+  justify-content: space-between;
+
+}
+
+/* left arrow text */
+.click-left {
+  order: 1;
+  height: 500px;
+  color: var(--text-color-link);
+  font-size: 4rem;
+  position: left;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  font-weight: bold;
+  text-shadow: 4px 4px 3px var(--text-color);
+}
+
+/* naem of the recipe and trigger popup */
+.click-center {
+  order: 2;
+  height: 500px;
+  color: var(--text-color-link);
+  font-size: 4rem;
+  position: center;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  font-weight: bold;
+  text-shadow: 4px 4px 3px var(--text-color);
+}
+
+/* right arrow text */
+.click-right {
+  order: 3;
+  height: 500px;
+  color: var(--text-color-link);
+  font-size: 4rem;
+  position: right;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  font-weight: bold;
+  text-shadow: 4px 4px 3px var(--text-color);
+}
+
+/* left arrow text effect while hover*/
+.click-left:hover {
+  color: var(--gold-yellow);
+  box-shadow: none;
+}
+
+/* left arrow text effect while hover*/
+.click-right:hover {
+  color: var(--gold-yellow);
+  box-shadow: none;
+}
+
+/* left arrow text effect while hover*/
+.click-center:hover {
+  color: var(--gold-yellow);
+  box-shadow: none;
+}
+
+
 .button-meal {
   background-color: var(--text-color-link);
   color: var(--gold-yellow);
@@ -471,42 +558,6 @@ p {
 .carouselContainer {
   display: flex;
   justify-content: space-between;
-}
-
-h3 {
-  display: block;
-}
-
-.click-left {
-  order: 1;
-  height: 500px;
-  color: var(--text-color-link);
-  font-size: 2em;
-  position: left;
-  background-color: transparent;
-  border: 0;
-  cursor: pointer;
-}
-
-.click-center {
-  height: 500px;
-  color: var(--text-color-link);
-  font-size: 2em;
-  position: center;
-  background-color: transparent;
-  border: 0;
-  cursor: pointer;
-}
-
-.click-right {
-  order: 3;
-  height: 500px;
-  color: var(--text-color-link);
-  font-size: 2em;
-  position: right;
-  background-color: transparent;
-  border: 0;
-  cursor: pointer;
 }
 
 .search-page {
@@ -613,6 +664,14 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+button:hover {
+  box-shadow: 4px 4px 3px var(--image-hover);
+}
+
+a:hover {
+  box-shadow: 4px 4px 3px var(--image-hover);
 }
 
 .preparation-box {
