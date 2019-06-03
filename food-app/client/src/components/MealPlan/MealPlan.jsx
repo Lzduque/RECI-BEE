@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import MealView from './MealView/MealView.jsx';
 import ViewRecipe from '../RecipeBook/ViewRecipe/ViewRecipe.jsx';
+import Nutrition from './Nutrition/Nutrition.jsx';
 
 class MealPlan extends Component {
 
@@ -18,6 +19,7 @@ class MealPlan extends Component {
       },
       viewPopup: false,
       viewRecipe: null,
+      viewNutrition: null,
     }
   };
 
@@ -37,7 +39,7 @@ class MealPlan extends Component {
   }
 
   filterType = (mealType) => {
-    console.log('mealType: ', mealType)
+    // console.log('mealType: ', mealType)
     this.setState({
       chosenType: mealType,
       showPopup: true,
@@ -50,7 +52,7 @@ class MealPlan extends Component {
       }
     })
     .then(response => {
-      console.log("response is happening")
+      // console.log("response is happening")
       if (response.ok) {
         return response.json();
       } else {
@@ -78,7 +80,7 @@ class MealPlan extends Component {
       })
     })
     .catch(error => this.setState({ error }))
-    // .then(() => console.log("end of fetch", "show", this.state.recipes, "showID", this.state.recipesByID, this.state.showPopup));
+    // .then(() => console.log("end of fetch", "show", this.state.recipes, "showID", this.state.recipesByID, 'hi', this.state.arrRecipe));
   }
 
   fetchRecipes = () => {
@@ -102,7 +104,7 @@ class MealPlan extends Component {
       })
     })
     .catch(error => this.setState({ error }))
-    // .then(() => console.log("end of fetch", "show", this.state.recipes, "showID", this.state.recipesByID, this.state.showPopup));
+    // .then(() => console.log("end of fetch", "show", this.state.recipes, "showID", this.state.recipesByID));
   }
 
   openView = (chosenType) => {
@@ -110,17 +112,37 @@ class MealPlan extends Component {
   }
 
   togglePopup = (state) => {
-    this.setState({viewPopup: state, showPopup: state})
+    this.setState({viewPopup: state, showPopup: state, viewNutrition: state})
+  }
+
+  openNutrition = (props) => {
+    // console.log('props', props)
+
+    var nutrArr = [];
+
+    var searchQuantity = (quantities, id) => {
+      return quantities.find(element => element.recipe_id === id).quantity
+    }
+
+    props.ingredients.map((ingredient) => {
+      nutrArr.push(searchQuantity(ingredient.quantities, props.id));
+      nutrArr.push(ingredient.unit);
+      nutrArr.push(ingredient.name);
+    })
+
+    console.log('Arr', nutrArr);
+    this.setState({viewNutrition: true, viewRecipe: nutrArr})
   }
 
   render() {
+
     const buttonStyles = {
       backgroundColor: 'white',
       color: 'goldenrod'
     };
 
     const filteredChoices = this.state.recipes.filter(recipe => this.state.chosenType === recipe.meal_type);
-    // console.log('chosenType: ', this.state.chosenType)
+
     return (
 
       <div id='recipe-popup'>
@@ -136,8 +158,10 @@ class MealPlan extends Component {
         <br/>
         <br/>
 
+        {this.state.viewNutrition ? <Nutrition recipe={this.state.viewRecipe}/> : null}
+
         {Object.keys(this.state.choices).map(mealType => {
-          {/* console.log("this.state.choices: ", this.state.choices) */}
+
           return (
             <div key={mealType} style={{marginBottom: '2rem'}}>
               <h2 style={{'textTransform': 'uppercase', marginBottom: '1rem'}}>{mealType}</h2>
@@ -148,6 +172,7 @@ class MealPlan extends Component {
                     <h4>{this.state.choices[mealType].name}</h4>
                     <img className="chosen-image" onClick={() => this.openView(this.state.choices[mealType])} src={this.state.choices[mealType].image} alt={this.state.choices[mealType].name || 'Image'}/>
                     <button style={buttonStyles} onClick={() => this.filterType(mealType)}>EDIT</button>
+                    <button style={{float: 'right'}} onDoubleClick={() => this.togglePopup(false)} onClick={() => this.openNutrition(this.state.choices[mealType])}>Nutrition</button>
                   </div>
                 )
                 :
@@ -168,6 +193,7 @@ class MealPlan extends Component {
             recipe={this.state.viewRecipe}
             closePopup={() => this.togglePopup(false)}
           />  : null}
+
       </div>
     )
   }
