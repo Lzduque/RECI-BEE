@@ -240,7 +240,6 @@ class MealPlan extends Component {
     return (
 
       <div id='recipe-popup'>
-        <br/>
         <div className="create-recipe container-1">
           <div className="container-1-box page-title">
             <h1 className="page-title">Meal Plan Page</h1>

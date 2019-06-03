@@ -161,14 +161,15 @@ class CreateRecipe extends Component {
     return (
       <div className='popup' >
         <div className='popup-inner' >
-          <div className="create-recipe container-1">
-            <div className="container-1-box page-title">
-              <h1 className="page-title">Create Recipe Page</h1>
+          <div className="container-create-recipe">
+            <div className="page-title">
+              <h2>Create Recipe Page</h2>
+              <button className="close-button"  onClick={ () => this.props.closePopup() }>Go Back</button>
             </div>
             <form onSubmit={ this.handleSubmit } >
               <label>
-                <div className="container-1-box">
-                <h3>Recipe Title</h3>
+                <div className="create-recipe-field">
+                <h5>Recipe Title</h5>
                   <input name="recipeTitle"
                           value={this.state.recipeTitle}
                           type="text"
@@ -177,12 +178,15 @@ class CreateRecipe extends Component {
                 </div>
               </label>
               <label>
-                <div className="container-ingredients">
-                  <h3>Ingredients</h3>
-                  <div className="container-ingredients">
+                <div className="create-recipe-field">
+                  <h5>Ingredients</h5>
+                  <div>
+                    <button type="button" onClick={this.addIngredient.bind(this, 'ingredients')}>Add Ingredient</button>
+                  </div>
+                  <div className="create-recipe-field container-ingredients">
                   {
                     this.state.ingredients.map((item, i) => (
-                      <div className="ingredients-box" key={item.id} >
+                      <div key={item.id} >
                         <select name="ingredientName"
                                 value={item.ingredientName}
                                 ingredientid={item.ingredientid}
@@ -204,14 +208,11 @@ class CreateRecipe extends Component {
                     ))
                   }
                   </div>
-                  <div className="ingredients-box">
-                    <button type="button" className="btn btn-primary" onClick={this.addIngredient.bind(this, 'ingredients')}>Add Ingredient</button>
-                  </div>
                 </div>
               </label>
               <label>
-                <div className="container-1-box">
-                  <h3>Recipe Image Url</h3>
+                <div className="create-recipe-field">
+                  <h5>Recipe Image Url</h5>
                   <input name="recipeImg"
                           value={this.state.recipeImg}
                           onChange={this.handleChange}
@@ -220,8 +221,8 @@ class CreateRecipe extends Component {
                 </div>
               </label>
               <label>
-                <div className="container-1-box">
-                  <h3>Servings per Recipe</h3>
+                <div className="create-recipe-field">
+                  <h5>Servings per Recipe</h5>
                   <input name="servings"
                           value={this.state.servings}
                           type="number"
@@ -230,8 +231,8 @@ class CreateRecipe extends Component {
                 </div>
               </label>
               <label>
-                <div className="container-1-box">
-                  <h3>Total Time</h3>
+                <div className="create-recipe-field">
+                  <h5>Total Time</h5>
                   <input name="cookingTime"
                           value={this.state.cookingTime}
                           type="number"
@@ -240,8 +241,8 @@ class CreateRecipe extends Component {
                 </div>
               </label>
               <label>
-                <div className="container-1-box">
-                  <h3>Meal Type</h3>
+                <div className="create-recipe-field">
+                  <h5>Meal Type</h5>
                   <select name="mealType"
                           value={this.state.mealType}
                           onChange={this.handleChange}>
@@ -252,8 +253,8 @@ class CreateRecipe extends Component {
                 </div>
               </label>
               <label>
-                <div className="container-1-box">
-                  <h3>Preparation</h3>
+                <div className="create-recipe-field">
+                  <h5>Preparation</h5>
                   <textarea className="preparation-box"
                             name="preparation"
                             type="text"
@@ -263,12 +264,7 @@ class CreateRecipe extends Component {
                 </div>
               </label>
               <div className="container-1-box container-ingredients">
-                <div className="container-1-box container-ingredients">
-                  <button type="submit">Create Recipe</button>
-                </div>
-                <div className="container-1-box container-ingredients">
-                  <button onClick={ () => this.props.closePopup() }>Go Back</button>
-                </div>
+                <button type="submit">Create Recipe</button>
               </div>
             </form>
           </div>

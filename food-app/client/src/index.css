@@ -9,30 +9,107 @@ start designing for mobile size first - media query?
 popups - best way to do it? modals, popup...
 
 add ingredient in another class --> box, column reverse and add button in the start
+
+.container {
+    display: flex;
+}
+
+aside {
+    flex-basis: 33%;
+    order: 1;
+}
+
+main {
+    flex-basis: 67%;
+    order: 2;
+}
+<body>
+    <div class="container">
+        <main>
+            <h1>How did we do this?</h1>
+
+        </main>
+
+        <aside>
+            <h1>Flexbox</h1>
+            <p>Using Flexbox, full-height columns are a breeze!</p>
+        </aside>
+
+    </div>
+</body>
+
+
  */
 @import url('https://fonts.googleapis.com/css?family=ABeeZee:400,400i&display=swap');
 
 #root {
-  --background: #e7e7e7;
-  --cards: rgb(216, 100, 100);
+  --background: rgb(231, 231, 231);
+  --sub-menu: rgb(170, 170, 170);
+  --heart: rgb(211, 51, 51);
   --blue: #58A7E4;
   --light-yellow: rgb(241, 215, 147);
   --gold-yellow: #daa520;
-  --dark-yellow: #9D7100);
+  --dark-yellow: #9D7100;
   --text-color-link: white;
   --text-color: black;
   --modal-background: rgba(0, 0, 0, 0.5);
   --image-hover: rgba(0, 0, 0, 0.2);
+  --border-radius: 10px;
 }
 
 * {
   margin: 0;
   padding: 0;
-  font-family: 'ABeeZee', sans-serif;
+  font-family: 'ABeeZee', "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
   vertical-align: middle;
   box-sizing: border-box;
 }
 
+/* Base Styles
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+/* NOTE
+html is set to 62.5% so that all the REM measurements throughout Skeleton
+are based on 10px sizing. So basically 1.5rem = 15px :) */
+html {
+  font-size: 62.5%;
+  background-color: var(--background);
+}
+
+body {
+  font-size: 1.5em; /* currently ems cause chrome bug misinterpreting rems on body element */
+  line-height: 1.6;
+  font-weight: 400;
+  color: var(--text-color); }
+
+
+/* Typography
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-weight: 300; }
+h1 { font-size: 4.0rem; line-height: 1.2;  letter-spacing: -.1rem;}
+h2 { font-size: 3.6rem; line-height: 1.25; letter-spacing: -.1rem; }
+h3 { font-size: 3.0rem; line-height: 1.3;  letter-spacing: -.1rem; }
+h4 { font-size: 2.4rem; line-height: 1.35; letter-spacing: -.08rem; }
+h5 { font-size: 1.8rem; line-height: 1.5;  letter-spacing: -.05rem; }
+h6 { font-size: 1.5rem; line-height: 1.6;  letter-spacing: 0; }
+
+/* Larger than phablet */
+@media (min-width: 550px) {
+  h1 { font-size: 5.0rem; }
+  h2 { font-size: 4.2rem; }
+  h3 { font-size: 3.6rem; }
+  h4 { font-size: 3.0rem; }
+  h5 { font-size: 2.4rem; }
+  h6 { font-size: 1.5rem; }
+}
+
+p {
+  margin-top: 0;
+}
+
+/* view recipe print page */
 @media print {
   body * {
     position: absolute;
@@ -50,25 +127,285 @@ add ingredient in another class --> box, column reverse and add button in the st
   } */
 }
 
-html {
-  /* height: 100vh; */
-  background-color: var(--background);
+
+/* ROUTES STYLING ------------------------------------------------ */
+
+/* div to wrap all nav-bar */
+.nav-bar {
+  background-color: var(--blue);
+  /* display: flex; shouldnt be flex, because the title needs to stay alone in the line*/
 }
 
-main {
-  /* Some code to make things look pretty */
-  /* height: 100vh; */
-  background-color: var(--background);
-  padding: 1.5rem 3rem;
+/* app name + bee img */
+.app-name {
+  padding: 0.5em;
+  display: flex;
+  align-content: center;
+  margin: 0 1rem;
 }
 
-hr {
-  height:0px;
+/* app name -> bee img */
+.app-name img {
+  margin: 0.5rem 1rem;
+}
+
+/* div do wrap all the links in nav-bar */
+.nav-links-container{
+  display: flex;
+  /* align-items: flex-start; */
+}
+
+/* links in nav-bar */
+.nav-link {
+  background-color: var(--gold-yellow);
+  color: var(--text-color-link);
+  padding: 0.5em;
+  margin: 0.5em 1em 1em 1.5em;
+  text-decoration: none;
+  /* text-transform: uppercase; */
+  border-radius: var(--border-radius);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: auto;
+  height: auto;
+  box-sizing: border-box;
+  /* font-size: 1em; */
+  text-align: center;
+  align-items: center;
+}
+
+/* links in nav-bar */
+.nav-link:hover {
+  background-color: var(--dark-yellow);
+}
+
+
+/* WELCOME PAGE ------------------------------------------------ */
+
+/* catch prhase above form login/signup */
+.catch-phrase {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+/* box form for login/signup */
+.form-modal{
+  position: relative;
+  width: 450px;
+  height: auto;
+  margin-top: 4em;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--background);
+  border-top-right-radius: var(--border-radius);
+  border-top-left-radius: var(--border-radius);
+  border-bottom-right-radius: var(--border-radius);
+  box-shadow:0 3px 20px 0px var(--modal-background);
+}
+
+/* buttons inside login or signup form */
+.form-modal button {
+  cursor: pointer;
+  position: relative;
+  text-transform: capitalize;
+  font-size: 1em;
+  z-index: 2;
+  outline: none;
+  background: var(--background);
+  transition: 0.2s;
+}
+
+/* login and signup buttons inside form-modal */
+.form-modal .btn {
+  border-radius: var(--border-radius);
   border:none;
+  font-weight: bold;
+  font-size: 1.2em;
+  padding: 0.8em 1em 0.8em 1em;
+  transition: 0.5s;
+  border: 1px solid var(--background);
+  margin: 0.5em 0 0.5em 0;
 }
 
+/* login and signup buttons inside form-modal */
+.form-modal .login , .form-modal .signup {
+  background: var(--gold-yellow);
+  color: var(--text-color-link);
+}
+
+/* login and signup buttons inside form-modal on hover */
+.form-modal .login:hover , .form-modal .signup:hover {
+  background: var(--modal-background);
+}
+
+/* div that wraps the buttons to choose login and sign up */
+.form-toggle {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+/* buttons inside div that wraps the buttons to choose login and sign up */
+.form-toggle button {
+  width: 50%;
+  float: left;
+  padding: 1.5em;
+  margin: 0 0 1.5em 0;
+  border: none;
+  transition: 0.2s;
+  font-size: 1.1em;
+  font-weight: bold;
+  border-top-right-radius: var(--border-radius);
+  border-top-left-radius: var(--border-radius);
+}
+
+.form-toggle button:nth-child(1) {
+  border-bottom-right-radius: var(--border-radius);
+}
+
+.form-toggle button:nth-child(2) {
+  border-bottom-left-radius: var(--border-radius);
+}
+
+/* login button default selected with main color */
+#login-toggle{
+  background: var(--gold-yellow);
+  color: var(--text-color);
+}
+
+/* each form (login and signup) inside the main div */
+.form-modal form {
+  position: relative;
+  width: 90%;
+  height: auto;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* form for login or sign up */
+#login-form , #signup-form {
+  position: relative;
+  width: 100%;
+  height: auto;
+  padding-bottom: 1em;
+}
+
+/* form for sign up */
+#signup-form {
+  display: none;
+}
+
+/* buttons to choose login and sign up */
+#login-form button , #signup-form button {
+  width: 100%;
+  margin-top: 0.5em;
+  padding: 0.6em;
+}
+
+/* inputs inside each form login and sign up */
+.form-modal input {
+  position: relative;
+  width: 100%;
+  font-size: 1em;
+  padding: 1.2em 1.7em 1.2em 1.7em;
+  margin-top: 0.6em;
+  margin-bottom: 0.6em;
+  border-radius: var(--border-radius);
+  border: none;
+  background: var(--light-yellow);
+  outline: none;
+  font-weight: bold;
+  transition: 0.4s;
+}
+
+/* inputs inside each form login and sign up */
+.form-modal input:focus , .form-modal input:active{
+  transform: scaleX(1.02);
+}
+
+/* inputs inside each form login and sign up with placeholder text */
+.form-modal input::-webkit-input-placeholder{
+  color: var(--text-color);
+}
+
+
+@media only screen and (max-width: 500px) {
+  .form-modal {
+      width:100%;
+  }
+}
+
+
+/* RECIPE BOOK ------------------------------------------------ */
+
+/* div that wrap up all RECIPE BOOK PAGE */
+.container-1 {
+  display: flex;
+  /* align-items: flex-end; -start -center actually makes all boxes inside with different hieghts*/
+  flex-direction: column;
+  /* justify-content: space-between; divides the space inbetween the boxes, and live a spece inbetween
+  in the container you have to specify a width of 30% for example! (or flex-basis) */
+  padding: 17.5px;
+}
+
+/* div that wraps up the title and the button to create recipe */
+.page-title {
+  background-color: var(--sub-menu);
+  color: var(--text-color-link);
+  align-items: center;
+  padding: 10px;
+  display: flex;
+
+}
+
+/* separating the create-recipe-button from the page title */
+#create-recipe-button {
+  /* margin-left: 10rem; */
+  margin-left: auto;
+  background-color: var(--text-color-link);
+  color: var(--gold-yellow);
+
+}
+
+/* div that wraps up the title and the checkboxes for the search */
+.search-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: center;
+  margin: 1rem;
+}
+
+/* div that wraps checkboxes options */
+.search-container-choices {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-content: center;
+  font-size: 2rem;
+}
+
+/* div container for the search buttons */
+.search-buttons-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-content: center;
+}
+
+/* each search button inside search */
+.search-button {
+  margin: 0.5em 1em 1em 0.5em;
+}
+
+
+/* CREATE RECIPE ------------------------------------------------ */
+
+/* create recipe window and view recipe window - div wraps everything */
 .popup {
   position: fixed;
+  z-index: 100;
   width: 100%;
   height: 100%;
   top: 0;
@@ -79,6 +416,7 @@ hr {
   background-color: var(--modal-background);
 }
 
+/* create recipe window and view recipe window - div inside the pop */
 .popup-inner {
   position: fixed;
   left: 10%;
@@ -91,70 +429,268 @@ hr {
   overflow-x: hidden;
 }
 
-.nav-bar {
-  background-color: var(--blue);
-}
-
-.app-name {
-  padding: 0.5em;
-  display: flex;
-  align-content: center;
-}
-
-.app-name img{
-  margin: 0 0.5em;
-}
-
-.nav-links-container{
-  display: flex;
-  /* align-items: flex-start; */
-}
-
-.nav-link {
-  background-color: var(--gold-yellow);
-  color: var(--text-color-link);
-  padding: 0.5em 0.5em;
-  margin: 0.5em 0.5em 1em 0.5em;
-  text-decoration: none;
-  /* text-transform: uppercase; */
-  border-radius: 10px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-.nav-link:hover {
-  background-color: var(--dark-yellow);
-}
-
-div.app-name{
-  display: flexbox;
-}
-
-div.app-name img {
-  display: flex;
-}
-
-div.app-name h1 {
-  display: flex;
-}
-
-.page-title {
-  background-color: var(--blue);
-  color: var(--text-color-link);
-}
-
-.container-1 {
+/* div that wrap up all CREATE RECIPE PAGE */
+.container-create-recipe {
   display: flex;
   /* align-items: flex-end; -start -center actually makes all boxes inside with different hieghts*/
   flex-direction: column;
   /* justify-content: space-between; divides the space inbetween the boxes, and live a spece inbetween
   in the container you have to specify a width of 30% for example! (or flex-basis) */
+  padding: 17.5px;
 }
 
-.container-1 div {
-  /* border: 1px var(--dark-yellow) solid; */
-  padding: 10px;
+/* separating the close button from the page title */
+.close-button {
+  /* margin-left: 10rem; */
+  margin-left: auto;
+  background-color: var(--gold-yellow);
+  color: var(--text-color-link);
+  border: none;
+
+}
+
+/* wraps all fields inside create recipe page */
+.create-recipe-field {
+  margin-bottom: 3rem;
+  margin-top: 2rem;
+}
+
+/* SAVED RECIPES ------------------------------------------------ */
+
+/* div that wraps up the saved recipes carousel */
+.saved-recipes-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: center;
+}
+
+/* div that wraps up the saved recipes carousel */
+.saved-recipes-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: center;
+  margin: 35px 27.5px 15px 27.5px;
+}
+
+/* container just for the text/arrows in the image */
+.arrow-container {
+  display: flex;
+  justify-content: space-between;
+
+}
+
+/* left arrow text */
+.click-left {
+  order: 1;
+  height: 500px;
+  color: var(--text-color-link);
+  font-size: 4rem;
+  position: left;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  font-weight: bold;
+  text-shadow: 4px 4px 3px var(--text-color);
+}
+
+/* naem of the recipe and trigger popup */
+.click-center {
+  order: 2;
+  height: 500px;
+  color: var(--text-color-link);
+  font-size: 4rem;
+  position: center;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  font-weight: bold;
+  text-shadow: 4px 4px 3px var(--text-color);
+}
+
+/* right arrow text */
+.click-right {
+  order: 3;
+  height: 500px;
+  color: var(--text-color-link);
+  font-size: 4rem;
+  position: right;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  font-weight: bold;
+  text-shadow: 4px 4px 3px var(--text-color);
+}
+
+/* left arrow text effect while hover*/
+.click-left:hover {
+  color: var(--gold-yellow);
+  box-shadow: none;
+}
+
+/* left arrow text effect while hover*/
+.click-right:hover {
+  color: var(--gold-yellow);
+  box-shadow: none;
+}
+
+/* left arrow text effect while hover*/
+.click-center:hover {
+  color: var(--gold-yellow);
+  box-shadow: none;
+}
+
+/* SEARCHED RECIPES ------------------------------------------------ */
+
+/* div that wraps all search recipes content */
+.search-page {
+  width: 90%;
+  margin: auto;
+  background: var(--text-color-link);
+  min-height: 100%;
+  min-width: 100%;
+}
+
+/* div that wraps up the title searched recipes */
+.search-recipes-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: center;
+  margin: 0px 27.5px 15px 27.5px;
+}
+
+/* wraps up all card container for searched recipes */
+.card-container {
+  display: flex;
+  background: var(--background);
+  padding: 1rem;
+  /* box-shadow: 0 0 1em var(--gold-yellow) inset; */
+  overflow: auto;
+  position: relative;
+}
+
+/* every card inside search recipe */
+.card-button {
+  width: auto;
+  height: auto;
+  padding: auto;
+  margin: auto;
+  box-sizing: border-box;
+  border-radius: var(--border-radius);
+  background: var(--background);
+}
+
+/* the card that contains the image and the name of the recipe */
+.recipe-card {
+  flex: 1 0 250px;
+  box-shadow: var(--image-hover);
+  margin: 1em;
+  overflow: hidden;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: all 250ms ease-in-out;
+}
+
+/* the card that contains the image and the name of the recipe on hover */
+.recipe-card:hover {
+  box-shadow: 0 8px 16px 0 var(--image-hover);
+  cursor: pointer;
+}
+
+/* image of recipe inside the recipe card */
+.recipe-image {
+  width: 200px;
+  height: 200px;
+  object-fit: center;
+}
+
+/* wraps text content of recipe inside the recipe card */
+.recipe-content {
+  padding: 1em;
+  background: var(--light-yellow);
+}
+
+/* text content of recipe inside the recipe card */
+.recipe-title {
+  text-overflow: ellipsis;
+  width: 100%;
+  overflow: hidden;
+  text-emphasis: wrap;
+  color: var(--text-color);
+}
+
+
+/* VIEW RECIPE POPUP ------------------------------------------------ */
+
+/* div that wraps everything inside popup */
+.view-recipe {
+  padding: 17.5px;
+}
+
+/* wraps all fields inside view recipe page */
+.view-recipe-field {
+  margin-bottom: 3rem;
+  margin-top: 2rem;
+  display: flex;
+  list-style-position: inside;
+}
+
+
+.view-recipe-field h5 {
+  margin-top: 0;
+}
+
+/* div wraps preparation in view recipe */
+.view-recipe-field-preparation {
+  margin-bottom: 3rem;
+  margin-top: 2rem;
+  list-style-position: inside;
+}
+
+/* reduces the margin of the title of preparation */
+.view-recipe-field-preparation h5 {
+  margin-bottom: 0;
+}
+
+/* makes the recipe img ocupy 60% of the avaliable space */
+.view-recipe-img {
+  flex: 1 1 60%;
+}
+
+/* image inside view recipe */
+.view-recipe-img img {
+  max-width: 100%;
+}
+
+/* makes the recipe ingredients ocupy only 40% of the avaliable space */
+.view-recipe-ingredients {
+  flex: 1 1 40%;
+  margin: 0 3rem 0 0;
+  height: auto;
+}
+
+/* separating the close button from the page title */
+.save-button {
+  /* margin-left: 10rem; */
+  margin-left: auto;
+  background-color: var(--text-color-link);
+  color: var(--heart);
+  border: none;
+  font-weight: bolder;
+  width: 33px;
+  height: 33px;
+}
+
+/* wrpa up the pre tag inside view recipe */
+pre {
+  overflow-x: auto;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
 }
 
 .button-meal {
@@ -166,16 +702,9 @@ div.app-name h1 {
 
 .container-ingredients {
   display: flex;
-  flex-direction: row;
+  flex-direction: column-reverse;
   flex-wrap: wrap;
   justify-content: right;
-}
-
-.search-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-content: center;
 }
 
 .carouselContainer {
@@ -183,176 +712,54 @@ div.app-name h1 {
   justify-content: space-between;
 }
 
-h3 {
-  display: block;
-}
-
-.click-left {
-  order: 1;
-  height: 500px;
-  color: var(--text-color-link);
-  font-size: 2em;
-  position: left;
-  background-color: transparent;
-  border: 0;
-  cursor: pointer;
-}
-
-.click-center {
-  height: 500px;
-  color: var(--text-color-link);
-  font-size: 2em;
-  position: center;
-  background-color: transparent;
-  border: 0;
-  cursor: pointer;
-}
-
-.click-right {
-  order: 3;
-  height: 500px;
-  color: var(--text-color-link);
-  font-size: 2em;
-  position: right;
-  background-color: transparent;
-  border: 0;
-  cursor: pointer;
-}
-
-.search-page {
-  width: 90%;
-  margin: auto;
-  background: var(--text-color-link);
-  color: var(--gold-yellow);
-  min-height: 100%;
-  min-width: 100%;
-}
-
-.recipe-card {
-  flex: 1 0 250px;
-  box-shadow: var(--image-hover);
-  margin: 1em;
-  overflow: hidden;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: all 250ms ease-in-out;
-}
-
-.recipe-card:hover {
-  box-shadow: 0 8px 16px 0 var(--image-hover);
-}
-
-.recipe-image {
-  width: 200px;
-  height: 200px;
-  object-fit: center;
-}
-
-.recipe-content {
-  padding: 1em;
-  background: var(--light-yellow);
-}
-
-.recipe-title {
-  text-overflow: ellipsis;
-  width: 100%;
-  overflow: hidden;
-  text-emphasis: wrap;
-  background: var(--light-yellow);
-  color: var(--text-color);
-}
-
-.card-container {
-
-  display: flex;
-  color: var(-cards);
-  background: var(--text-color-link);
-  padding: 1rem;
-  box-shadow: 0 0 1em var(--gold-yellow) inset;
-  overflow: auto;
-  position: relative;
-}
-
-.card-button {
-  width: auto;
-  height: auto;
-  padding: auto;
-  margin: auto;
-  box-sizing: border-box;
-  border-radius: 10px;
-  background: var(--text-color-link);
-}
-
 input {
   width: auto;
-  height: 1.5em;
-  padding: 0.5em;
+  height: auto;
+  padding: 1em;
   margin: 0.5em;
   box-sizing: border-box;
   border: 2px solid var(--gold-yellow);
-  border-radius: 10px;
+  border-radius: var(--border-radius);
   text-align: center;
   font-size: 1em;
   background-color: var(--light-yellow);
-}
+  border: none;
+  outline: none;
+  font-weight: bold;
+  transition: 0.4s;
 
-/* input[type=text] {
-  width: 30em;
-  height: 3em;
 }
-
-input[type=url] {
-  width: 30em;
-  height: 3em;
-}
-
-input[type=number] {
-  width: 5em;
-  height: 2em;
-}
-
-input[type=file] {
-  width: auto;
-  height: 4em;
-  border: hidden;
-}
-
-input[type=submit] {
-  height: 2em;
-  align-items: flex-end;
-}
-
-input[type=button] {
-  width: auto;
-  height: 2em;
-  padding: 0.5em;
-  margin: 0.5em;
-  box-sizing: border-box;
-  border-radius: 10px;
-  font-size: 1em;
-} */
 
 select {
   width: auto;
-  height: 2em;
+  height: auto;
+  font-size: 1em;
   padding: 0.5em;
   margin: 0.5em;
   box-sizing: border-box;
-  border-radius: 10px;
+  border-radius: var(--border-radius);
 }
 
 button {
   width: auto;
-  height: 2.5em;
+  height: auto;
   padding: 0.5em;
   margin: 0.5em;
   box-sizing: border-box;
-  border-radius: 10px;
+  border-radius: var(--border-radius);
   font-size: 1em;
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+button:hover {
+  box-shadow: 0 8px 16px 0 var(--image-hover);
+}
+
+a:hover {
+  box-shadow: 0 8px 16px 0 var(--image-hover);
 }
 
 .preparation-box {
@@ -380,168 +787,4 @@ body{
   background: var(--image-hover);
 }
 
-.form-modal{
-  position: relative;
-  width: 450px;
-  height: auto;
-  margin-top: 4em;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--image-hover);
-  border-top-right-radius: 10px;
-  border-top-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  box-shadow:0 3px 20px 0px var(--image-hover);
-}
 
-.form-modal button{
-  cursor: pointer;
-  position: relative;
-  text-transform: capitalize;
-  font-size: 1em;
-  z-index: 2;
-  outline: none;
-  background: var(--background);
-  transition: 0.2s;
-}
-
-.form-modal .btn{
-  border-radius: 10px;
-  border:none;
-  font-weight: bold;
-  font-size: 1.2em;
-  padding: 0.8em 1em 0.8em 1em!important;
-  transition: 0.5s;
-  border: 1px solid var(--background);
-  margin: 0.5em 0 0.5em 0;
-}
-
-.form-modal .login , .form-modal .signup{
-  background: var(--gold-yellow);
-  color: var(--text-color-link);
-}
-
-.form-modal .login:hover , .form-modal .signup:hover{
-  background: var(--modal-background);
-}
-
-.form-toggle{
-  position: relative;
-  width: 100%;
-  height: auto;
-}
-
-.form-toggle button{
-  width: 50%;
-  float: left;
-  padding: 1.5em;
-  margin: 0 0 1.5em 0;
-  border: none;
-  transition: 0.2s;
-  font-size: 1.1em;
-  font-weight: bold;
-  border-top-right-radius: 10px;
-  border-top-left-radius: 10px;
-}
-
-.form-toggle button:nth-child(1){
-  border-bottom-right-radius: 10px;
-}
-
-.form-toggle button:nth-child(2){
-  border-bottom-left-radius: 10px;
-}
-
-#login-toggle{
-  background: var(--gold-yellow);
-  color: var(--text-color);
-}
-
-.form-modal form{
-  position: relative;
-  width: 90%;
-  height: auto;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-#login-form , #signup-form{
-  position: relative;
-  width: 100%;
-  height: auto;
-  padding-bottom: 1em;
-}
-
-#signup-form{
-  display: none;
-}
-
-
-#login-form button , #signup-form button{
-  width: 100%;
-  margin-top: 0.5em;
-  padding: 0.6em;
-}
-
-.form-modal input{
-  position: relative;
-  width: 100%;
-  font-size: 1em;
-  padding: 1.2em 1.7em 1.2em 1.7em;
-  margin-top: 0.6em;
-  margin-bottom: 0.6em;
-  border-radius: 10px;
-  border: none;
-  background: var(--light-yellow);
-  outline: none;
-  font-weight: bold;
-  transition: 0.4s;
-}
-
-.form-modal input:focus , .form-modal input:active{
-  transform: scaleX(1.02);
-}
-
-.form-modal input::-webkit-input-placeholder{
-  color: var(--text-color);
-}
-
-
-.form-modal p{
-  font-size: 16px;
-  font-weight: bold;
-}
-
-.form-modal p a{
-  color: var(--gold-yellow);
-  text-decoration: none;
-  transition: 0.2s;
-}
-
-.form-modal p a:hover{
-  color: var(--text-color);
-}
-
-
-.form-modal i {
-  position: absolute;
-  left: 10%;
-  top: 50%;
-  transform: translateX(-10%) translateY(-50%);
-}
-
-.-box-sd-effect:hover{
-  box-shadow: 0 4px 8px hsla(210,2%,84%,.2);
-}
-
-@media only screen and (max-width:500px){
-  .form-modal {
-      width:100%;
-  }
-}
-
-@media only screen and (max-width:400px){
-  i {
-    display: none!important;
-  }
-}

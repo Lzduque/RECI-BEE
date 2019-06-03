@@ -121,19 +121,33 @@ class ViewRecipe extends Component {
 
     return (
       <div className='popup' id='recipe-popup' >
-        <div className='popup-inner print' >
-          <h1>{ this.props.recipe.name }</h1>
-          <p>Type: {this.props.recipe.meal_type} | Servings: {this.props.recipe.servings} | Time: {this.props.recipe.time}min</p>
-          <img alt="" src={this.props.recipe.image} width={200} height={200}/>
-          <button onClick={print}>PRINT</button>
-          <h2>Ingredients:</h2>
-          <ul>
-            { ingredientsList() }
-          </ul>
-          <pre>{this.props.recipe.preparation}</pre>
-          <button onClick={this.props.closePopup}>CLOSE</button>
-          <button onClick={() => this.saveRecipe()}>
-          { this.state.saved ? `♥` : `♡` } </button>
+        <div className='popup-inner view-recipe print' >
+          <div className="page-title">
+            <h2>{ this.props.recipe.name }</h2>
+            <button className="save-button" onClick={() => this.saveRecipe()}>
+            { this.state.saved ? `♥` : `♡` } </button>
+            <button className="close-button" onClick={print}>Print Recipe</button>
+            <button className="close-button" onClick={this.props.closePopup}>Go Back</button>
+          </div>
+          <div className="view-recipe-field">
+            <h6>Type: {this.props.recipe.meal_type} | Servings: {this.props.recipe.servings} | Time: {this.props.recipe.time}min</h6>
+          </div>
+          <div className="view-recipe-field">
+            <div className="view-recipe-ingredients">
+              <h5>Ingredients:</h5>
+              <ul>
+                { ingredientsList() }
+              </ul>
+            </div>
+
+            <div className="view-recipe-img">
+              <img alt={this.props.recipe.name} src={this.props.recipe.image}/>
+            </div>
+          </div>
+          <div className="view-recipe-field-preparation">
+            <h5>Preparation:</h5>
+            <pre>{this.props.recipe.preparation}</pre>
+          </div>
           {/* STATE
           <pre style={{marginTop: '1em'}}>{JSON.stringify(this.state, null, '\t')}</pre>
           PROPS
