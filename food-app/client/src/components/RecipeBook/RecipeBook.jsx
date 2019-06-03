@@ -173,7 +173,7 @@ class RecipeBook extends Component {
           </div>
           <form onSubmit={this.handleFormSubmit}>
             <div className="search-container">
-              <h3>Search Recipes by Category</h3>
+              <h4>Search Recipes by Category</h4>
               <div className="search-container-choices">
                 {this.createCheckboxes()}
               </div>

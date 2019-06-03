@@ -363,6 +363,9 @@ p {
 #create-recipe-button {
   /* margin-left: 10rem; */
   margin-left: auto;
+  background-color: var(--text-color-link);
+  color: var(--gold-yellow);
+
 }
 
 /* div that wraps up the title and the checkboxes for the search */
@@ -402,6 +405,7 @@ p {
 /* create recipe window - div wraps everything */
 .popup {
   position: fixed;
+  z-index: 100;
   width: 100%;
   height: 100%;
   top: 0;
@@ -412,6 +416,7 @@ p {
   background-color: var(--modal-background);
 }
 
+/* create recipe window - div inside the pop */
 .popup-inner {
   position: fixed;
   left: 10%;
@@ -422,6 +427,31 @@ p {
   background-color: var(--background);
   overflow-y: auto;
   overflow-x: hidden;
+}
+
+/* div that wrap up all CREATE RECIPE PAGE */
+.container-create-recipe {
+  display: flex;
+  /* align-items: flex-end; -start -center actually makes all boxes inside with different hieghts*/
+  flex-direction: column;
+  /* justify-content: space-between; divides the space inbetween the boxes, and live a spece inbetween
+  in the container you have to specify a width of 30% for example! (or flex-basis) */
+  padding: 17.5px;
+}
+
+/* separating the close button from the page title */
+#close-button {
+  /* margin-left: 10rem; */
+  margin-left: auto;
+  background-color: var(--text-color-link);
+  color: var(--gold-yellow);
+
+}
+
+/* wraps all fields inside create recipe page */
+.create-recipe-field {
+  margin-bottom: 3rem;
+  margin-top: 2rem;
 }
 
 .button-meal {
@@ -545,8 +575,8 @@ h3 {
 
 input {
   width: auto;
-  height: 1.5em;
-  padding: 0.5em;
+  height: auto;
+  padding: 1em;
   margin: 0.5em;
   box-sizing: border-box;
   border: 2px solid var(--gold-yellow);
@@ -554,47 +584,17 @@ input {
   text-align: center;
   font-size: 1em;
   background-color: var(--light-yellow);
-}
+  border: none;
+  outline: none;
+  font-weight: bold;
+  transition: 0.4s;
 
-/* input[type=text] {
-  width: 30em;
-  height: 3em;
 }
-
-input[type=url] {
-  width: 30em;
-  height: 3em;
-}
-
-input[type=number] {
-  width: 5em;
-  height: 2em;
-}
-
-input[type=file] {
-  width: auto;
-  height: 4em;
-  border: hidden;
-}
-
-input[type=submit] {
-  height: 2em;
-  align-items: flex-end;
-}
-
-input[type=button] {
-  width: auto;
-  height: 2em;
-  padding: 0.5em;
-  margin: 0.5em;
-  box-sizing: border-box;
-  border-radius: var(--border-radius);
-  font-size: 1em;
-} */
 
 select {
   width: auto;
-  height: 2em;
+  height: auto;
+  font-size: 1em;
   padding: 0.5em;
   margin: 0.5em;
   box-sizing: border-box;
