@@ -540,6 +540,86 @@ p {
   box-shadow: none;
 }
 
+/* SEARCHED RECIPES ------------------------------------------------ */
+
+/* div that wraps all search recipes content */
+.search-page {
+  width: 90%;
+  margin: auto;
+  background: var(--text-color-link);
+  min-height: 100%;
+  min-width: 100%;
+}
+
+/* div that wraps up the title searched recipes */
+.search-recipes-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: center;
+  margin: 0px 27.5px 15px 27.5px;
+}
+
+/* wraps up all card container for searched recipes */
+.card-container {
+  display: flex;
+  background: var(--background);
+  padding: 1rem;
+  /* box-shadow: 0 0 1em var(--gold-yellow) inset; */
+  overflow: auto;
+  position: relative;
+}
+
+/* every card inside search recipe */
+.card-button {
+  width: auto;
+  height: auto;
+  padding: auto;
+  margin: auto;
+  box-sizing: border-box;
+  border-radius: var(--border-radius);
+  background: var(--background);
+}
+
+/* the card that contains the image and the name of the recipe */
+.recipe-card {
+  flex: 1 0 250px;
+  box-shadow: var(--image-hover);
+  margin: 1em;
+  overflow: hidden;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: all 250ms ease-in-out;
+}
+
+/* the card that contains the image and the name of the recipe on hover */
+.recipe-card:hover {
+  box-shadow: 0 8px 16px 0 var(--image-hover);
+  cursor: pointer;
+}
+
+/* image of recipe inside the recipe card */
+.recipe-image {
+  width: 200px;
+  height: 200px;
+  object-fit: center;
+}
+
+/* wraps text content of recipe inside the recipe card */
+.recipe-content {
+  padding: 1em;
+  background: var(--light-yellow);
+}
+
+/* text content of recipe inside the recipe card */
+.recipe-title {
+  text-overflow: ellipsis;
+  width: 100%;
+  overflow: hidden;
+  text-emphasis: wrap;
+  color: var(--text-color);
+}
+
 
 .button-meal {
   background-color: var(--text-color-link);
@@ -558,70 +638,6 @@ p {
 .carouselContainer {
   display: flex;
   justify-content: space-between;
-}
-
-.search-page {
-  width: 90%;
-  margin: auto;
-  background: var(--text-color-link);
-  color: var(--gold-yellow);
-  min-height: 100%;
-  min-width: 100%;
-}
-
-.recipe-card {
-  flex: 1 0 250px;
-  box-shadow: var(--image-hover);
-  margin: 1em;
-  overflow: hidden;
-  border-radius: var(--border-radius);
-  cursor: pointer;
-  transition: all 250ms ease-in-out;
-}
-
-.recipe-card:hover {
-  box-shadow: 0 8px 16px 0 var(--image-hover);
-}
-
-.recipe-image {
-  width: 200px;
-  height: 200px;
-  object-fit: center;
-}
-
-.recipe-content {
-  padding: 1em;
-  background: var(--light-yellow);
-}
-
-.recipe-title {
-  text-overflow: ellipsis;
-  width: 100%;
-  overflow: hidden;
-  text-emphasis: wrap;
-  background: var(--light-yellow);
-  color: var(--text-color);
-}
-
-.card-container {
-
-  display: flex;
-  color: var(-cards);
-  background: var(--text-color-link);
-  padding: 1rem;
-  box-shadow: 0 0 1em var(--gold-yellow) inset;
-  overflow: auto;
-  position: relative;
-}
-
-.card-button {
-  width: auto;
-  height: auto;
-  padding: auto;
-  margin: auto;
-  box-sizing: border-box;
-  border-radius: var(--border-radius);
-  background: var(--text-color-link);
 }
 
 input {
@@ -667,11 +683,11 @@ button {
 }
 
 button:hover {
-  box-shadow: 4px 4px 3px var(--image-hover);
+  box-shadow: 0 8px 16px 0 var(--image-hover);
 }
 
 a:hover {
-  box-shadow: 4px 4px 3px var(--image-hover);
+  box-shadow: 0 8px 16px 0 var(--image-hover);
 }
 
 .preparation-box {
