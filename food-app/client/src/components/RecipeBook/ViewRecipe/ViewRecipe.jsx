@@ -124,6 +124,8 @@ class ViewRecipe extends Component {
         <div className='popup-inner view-recipe print' >
           <div className="page-title">
             <h2>{ this.props.recipe.name }</h2>
+            <button className="save-button" onClick={() => this.saveRecipe()}>
+            { this.state.saved ? `♥` : `♡` } </button>
             <button className="close-button" onClick={print}>Print Recipe</button>
             <button className="close-button" onClick={this.props.closePopup}>Go Back</button>
           </div>
@@ -146,8 +148,6 @@ class ViewRecipe extends Component {
             <h5>Preparation:</h5>
             <pre>{this.props.recipe.preparation}</pre>
           </div>
-          <button onClick={() => this.saveRecipe()}>
-          { this.state.saved ? `♥` : `♡` } </button>
           {/* STATE
           <pre style={{marginTop: '1em'}}>{JSON.stringify(this.state, null, '\t')}</pre>
           PROPS

@@ -45,7 +45,7 @@ main {
 #root {
   --background: rgb(231, 231, 231);
   --sub-menu: rgb(170, 170, 170);
-  --cards: rgb(216, 100, 100);
+  --heart: rgb(211, 51, 51);
   --blue: #58A7E4;
   --light-yellow: rgb(241, 215, 147);
   --gold-yellow: #daa520;
@@ -443,8 +443,9 @@ p {
 .close-button {
   /* margin-left: 10rem; */
   margin-left: auto;
-  background-color: var(--text-color-link);
-  color: var(--gold-yellow);
+  background-color: var(--gold-yellow);
+  color: var(--text-color-link);
+  border: none;
 
 }
 
@@ -636,32 +637,60 @@ p {
   list-style-position: inside;
 }
 
+
 .view-recipe-field h5 {
   margin-top: 0;
 }
 
+/* div wraps preparation in view recipe */
 .view-recipe-field-preparation {
   margin-bottom: 3rem;
   margin-top: 2rem;
   list-style-position: inside;
 }
 
+/* reduces the margin of the title of preparation */
 .view-recipe-field-preparation h5 {
   margin-bottom: 0;
 }
 
+/* makes the recipe img ocupy 60% of the avaliable space */
 .view-recipe-img {
   flex: 1 1 60%;
 }
 
+/* image inside view recipe */
 .view-recipe-img img {
   max-width: 100%;
 }
 
+/* makes the recipe ingredients ocupy only 40% of the avaliable space */
 .view-recipe-ingredients {
   flex: 1 1 40%;
   margin: 0 3rem 0 0;
   height: auto;
+}
+
+/* separating the close button from the page title */
+.save-button {
+  /* margin-left: 10rem; */
+  margin-left: auto;
+  background-color: var(--text-color-link);
+  color: var(--heart);
+  border: none;
+  font-weight: bolder;
+  width: 33px;
+  height: 33px;
+}
+
+/* wrpa up the pre tag inside view recipe */
+pre {
+  overflow-x: auto;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
 }
 
 .button-meal {
