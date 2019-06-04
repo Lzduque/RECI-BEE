@@ -95,10 +95,14 @@ class MealView extends Component {
     return (
         <div className='popup'>
           <div className='popup-inner'>
-          <h1 style={{ 'textAlign' : 'center' }}>Add a Recipe</h1>
-          <ChoiceContainer choices={ this.props.choices } onChoice={this.choiceSelected}/>
-          <h2 style={{ 'textAlign' : 'center'}}>Please select a recipe</h2>
-          <button onClick={this.props.closePopup}>CLOSE</button>
+            <div className="container-create-recipe">
+              <div className="page-title">
+                  <h2>Add a Recipe</h2>
+                  <button className="close-button" onClick={this.props.closePopup}>Go Back</button>
+              </div>
+              <ChoiceContainer choices={ this.props.choices } onChoice={this.choiceSelected}/>
+              <h3>Please select a recipe</h3>
+            </div>
           </div>
         </div>
     )
