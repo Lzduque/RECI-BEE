@@ -339,7 +339,7 @@ p {
 
 /* RECIPE BOOK ------------------------------------------------ */
 
-/* div that wrap up all RECIPE BOOK PAGE */
+/* div that wrap up all RECIPE BOOK PAGE AND MEAL PLAN PAGE */
 .container-1 {
   display: flex;
   /* align-items: flex-end; -start -center actually makes all boxes inside with different hieghts*/
@@ -349,7 +349,7 @@ p {
   padding: 17.5px;
 }
 
-/* div that wraps up the title and the button to create recipe */
+/* div that wraps up the title and the button to create recipe and MEAL PLAN PAGE */
 .page-title {
   background-color: var(--sub-menu);
   color: var(--text-color-link);
@@ -637,7 +637,7 @@ p {
   list-style-position: inside;
 }
 
-
+/* ingredients title inside */
 .view-recipe-field h5 {
   margin-top: 0;
 }
@@ -683,7 +683,7 @@ p {
   height: 33px;
 }
 
-/* wrpa up the pre tag inside view recipe */
+/* wrap up the pre tag inside view recipe */
 pre {
   overflow-x: auto;
   white-space: pre-wrap;
@@ -693,12 +693,85 @@ pre {
   word-wrap: break-word;
 }
 
+
+/* MEAL PLAN PAGE ------------------------------------------------ */
+
+/* img of chosen image */
+.chosen-image {
+  width: 200px;
+  height: 200px;
+  object-fit: center;
+}
+
+/* wraps up all card container for searched recipes */
+.chosen-recipe-container {
+  /* display: flex; */
+  background: var(--background);
+  padding: 1rem;
+  /* box-shadow: 0 0 1em var(--gold-yellow) inset; */
+  text-transform: capitalize;
+  overflow: auto;
+  position: relative;
+  margin-bottom: 2rem;
+
+}
+
+/*  */
+.chosen-recipe {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+  background: var(--gold-yellow);
+  /* box-shadow: 0 0 1em var(--gold-yellow) inset; */
+  overflow: auto;
+  position: relative;
+  width: auto;
+  height: auto;
+  padding: auto;
+  box-sizing: border-box;
+  border-radius: var(--border-radius);
+
+}
+
+/* the button to open pop up and select meal inside MEAL PLAN */
 .button-meal {
   background-color: var(--text-color-link);
   color: var(--gold-yellow);
-  height: 50px;
-  width: 50px;
+  font-weight: bolder;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 5rem;
+  height: 120px;
+  width: 120px;
 }
+
+/* the button to edit pop up and select meal inside MEAL PLAN */
+.button-edit {
+  background-color: var(--text-color-link);
+  color: var(--gold-yellow);
+  max-width: 5%;
+  height: auto;
+  font-weight: bolder;
+
+  /* text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center; */
+}
+
+/* card chosen recipe */
+.chosen-recipe-car {
+  width: auto;
+  height: auto;
+  padding: auto;
+  margin: auto;
+  box-sizing: border-box;
+  border-radius: var(--border-radius);
+  background: var(--background);
+}
+
 
 .container-ingredients {
   display: flex;
@@ -769,12 +842,6 @@ a:hover {
   padding: 0.5em;
   margin: 0.5em;
   font-size: 1em;
-}
-
-.chosen-image {
-  width: 200px;
-  height: 200px;
-  object-fit: center;
 }
 
 .chosen-image:hover {
