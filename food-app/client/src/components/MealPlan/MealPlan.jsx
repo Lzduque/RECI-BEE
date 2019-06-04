@@ -10,13 +10,6 @@ var fat = 0;
 var sugar = 0;
 var carbs = 0;
 
-const styles={
-  buttonStyles: {
-    backgroundColor: 'white',
-    color: 'goldenrod'
-  }
-}
-
 
 class MealPlan extends Component {
   state = {
@@ -210,11 +203,11 @@ class MealPlan extends Component {
     return this.state.recipes.filter(recipe => this.state.chosenType === recipe.meal_type);
   }
 
-  renderHeader(){
+  renderHeader() {
     return (
-      <div className="create-recipe container-1">
-        <div className="container-1-box page-title">
-          <h1 className="page-title">Meal Plan Page</h1>
+      <div className="container-1">
+        <div className="page-title">
+          <h2 className="page-title">Meal Plan Page</h2>
         </div>
       </div>
     );
@@ -223,11 +216,11 @@ class MealPlan extends Component {
   renderMeals() {
     return Object.keys(this.state.choices).map(mealType => {
       return (
-        <div key={mealType} style={{marginBottom: '2rem'}}>
-          <h2 style={{'textTransform': 'uppercase', marginBottom: '1rem'}}>{mealType}</h2>
+        <div key={mealType} className="chosen-recipe-container" >
+          <h4>{mealType}</h4>
           { this.state.choices[mealType] ? (
               <div>
-                <h4>{this.state.choices[mealType].name}</h4>
+                <h5>{this.state.choices[mealType].name}</h5>
 
                 <img
                   className="chosen-image"
@@ -236,7 +229,7 @@ class MealPlan extends Component {
                   alt={this.state.choices[mealType].name || 'Image'} />
 
                 <button
-                  style={styles.buttonStyles}
+                  className="button-edit"
                   onClick={() => this.filterType(mealType)}
                 >EDIT</button>
 
@@ -245,7 +238,7 @@ class MealPlan extends Component {
                   onClick={() => this.displayNutrition(this.state.choices[mealType])}
                 >Nutrition</button>
               </div>
-            ) : <button style={styles.buttonStyles} onClick={() => this.filterType(mealType)}>+</button>
+            ) : <button className="button-meal" onClick={() => this.filterType(mealType)}>+</button>
           }
         </div>
       );
@@ -254,37 +247,34 @@ class MealPlan extends Component {
 
   render() {
     return (
-      <div id='recipe-popup'>
+      <div>
         {this.renderHeader()}
 
-        <h3>Select Meals for the Day</h3>
-
-        { this.state.showNutrition &&
-          <Nutrition
-            servings={this.state.servings}
-            nutrition={this.state.showNutrition} />
-        }
-
-        {this.renderMeals()}
-        {this.state.showPopup ?
-          <MealView
-            choices={this.filteredChoices()}
-            change={this.changeChoice}
-            closePopup={() => this.togglePopup(false)}
-          /> : null }
-
-        {this.state.viewPopup ?
-          <ViewRecipe
-            recipe={this.state.viewRecipe}
-            closePopup={() => this.togglePopup(false)}
-          />  : null}
-
-          STATE
-          <pre style={{marginTop: '1em'}}>{JSON.stringify(this.state, null, '\t')}</pre>
-          PROPS
-          <pre style={{marginTop: '1em'}}>{JSON.stringify(this.props, null, '\t')}</pre>
-
-       </div>
+        <div className="container-1" >
+          <h3>Select Meals for the Day</h3>
+          { this.state.showNutrition &&
+            <Nutrition
+              servings={this.state.servings}
+              nutrition={this.state.showNutrition} />
+          }
+          {this.renderMeals()}
+          {this.state.showPopup ?
+            <MealView
+              choices={this.filteredChoices()}
+              change={this.changeChoice}
+              closePopup={() => this.togglePopup(false)}
+            /> : null }
+          {this.state.viewPopup ?
+            <ViewRecipe
+              recipe={this.state.viewRecipe}
+              closePopup={() => this.togglePopup(false)}
+            />  : null}
+            {/* STATE
+            <pre style={{marginTop: '1em'}}>{JSON.stringify(this.state, null, '\t')}</pre>
+            PROPS
+            <pre style={{marginTop: '1em'}}>{JSON.stringify(this.props, null, '\t')}</pre> */}
+          </div>
+      </div>
     )
   }
 };
