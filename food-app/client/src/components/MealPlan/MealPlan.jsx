@@ -219,11 +219,18 @@ class MealPlan extends Component {
         <div key={mealType} className="chosen-recipe-container" >
           <h4>{mealType}</h4>
           { this.state.choices[mealType] ? (
-              <div>
-                <h5>{this.state.choices[mealType].name}</h5>
+            <div>
+              <button className="nutrition-button"
+                  onDoubleClick={this.nutritionShow}
+                  onClick={() => this.displayNutrition(this.state.choices[mealType])}
+                >Nutrition</button>
 
+              <div className="recipe-card">
+                <div className="recipe-content">
+                  <h6 className="recipe-title">{this.state.choices[mealType].name}</h6>
+                </div>
                 <img
-                  className="chosen-image"
+                  className="recipe-image"
                   onClick={() => this.openView(this.state.choices[mealType])}
                   src={this.state.choices[mealType].image}
                   alt={this.state.choices[mealType].name || 'Image'} />
@@ -232,12 +239,9 @@ class MealPlan extends Component {
                   className="button-edit"
                   onClick={() => this.filterType(mealType)}
                 >EDIT</button>
-
-                <button style={{float: 'right'}}
-                  onDoubleClick={this.nutritionShow}
-                  onClick={() => this.displayNutrition(this.state.choices[mealType])}
-                >Nutrition</button>
               </div>
+
+            </div>
             ) : <button className="button-meal" onClick={() => this.filterType(mealType)}>+</button>
           }
         </div>
