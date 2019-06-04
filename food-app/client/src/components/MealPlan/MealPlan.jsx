@@ -33,6 +33,7 @@ class MealPlan extends Component {
     carbs: 0,
   }
 
+  // didnt change
   changeChoice(choice){
     this.setState({
       choices: {
@@ -43,11 +44,13 @@ class MealPlan extends Component {
     });
   }
 
+  // didnt change
   componentDidMount() {
     this.fetchRecipes();
     this.fetchSavedPlan();
   }
 
+  // didnt change
   filterType = (mealType) => {
     // console.log('mealType: ', mealType)
     this.setState({
@@ -55,6 +58,7 @@ class MealPlan extends Component {
       showPopup: true,
     })
 
+    // added this.state.meal_plan_id
     fetch(`/api/meal_plans/${this.state.meal_plan_id}/?recipe_id=${this.state.choices[mealType].id}`, {
       method: 'DELETE',
       headers: {
@@ -74,6 +78,7 @@ class MealPlan extends Component {
     }))
   }
 
+  // now it sets the state for the meal_plan_id and it does a forEach instead a map
   fetchSavedPlan = () => {
 
     fetch(`/api/meal_plans`, {
@@ -95,6 +100,7 @@ class MealPlan extends Component {
     // .then(() => console.log("end of fetch", "show", this.state.recipes, "showID", this.state.recipesByID, 'hi', this.state.arrRecipe));
   }
 
+  // didnt change
   // fetch all recipes saved in user book
   fetchRecipes = () => {
     // console.log("fetch begins")
@@ -120,6 +126,7 @@ class MealPlan extends Component {
     // .then(() => console.log("end of fetch", "show", this.state.recipes, "showID", this.state.recipesByID));
   }
 
+  // didnt change
   openView(chosenType){
     this.setState({
       viewPopup : true,
@@ -127,10 +134,12 @@ class MealPlan extends Component {
     })
   }
 
+  // didnt change
   togglePopup = (state) => {
     this.setState({viewPopup: state, showPopup: state})
   }
 
+  // nearly the same - changed props -> mealType!!
   openNutrition = (mealType) => {
     console.log('mealType on open nutrition', mealType)
 
@@ -143,6 +152,7 @@ class MealPlan extends Component {
 
     mealType.ingredients.map((ingredient) => {
       console.log("inside map ingredient for", ingredient);
+      console.log("mealType.id", mealType.id);
       nutrArr.push(searchQuantity(ingredient.quantities, mealType.id));
       nutrArr.push(ingredient.unit);
       nutrArr.push(ingredient.name);
@@ -153,6 +163,7 @@ class MealPlan extends Component {
     return nutrArr;
   }
 
+  // didnt change
   transform(props) {
     let string = [];
     console.log('props on transform', props);
@@ -165,6 +176,7 @@ class MealPlan extends Component {
     return q;
   }
 
+  // took of the url from here, request is not made here, stringfy query
   buildRequest = (param) => {
     console.log("inside make request!")
     var options = {
@@ -186,22 +198,27 @@ class MealPlan extends Component {
     return options
   }
 
+  // didnt change -> is separated now
   updateNutrition(nutrition) {
     this.setState({
       showNutrition: nutrition
     })
   }
 
+  // another structure to do the fetch - apparently, correct order!
   displayNutrition(mealType) {
     const openNutrition = this.transform(this.openNutrition(mealType))
 
     fetch("https://trackapi.nutritionix.com/v2/natural/nutrients", this.buildRequest(openNutrition)).then((res) => {
+      console.log("res.json(): ", res.json())
       return res.json();
     }).then((body) => {
+      console.log("body.foods: ", body.foods)
       this.updateNutrition(body.foods);
     }).catch((err) => { console.error(err) })
   }
 
+  // took out from render
   filteredChoices() {
     return this.state.recipes.filter(recipe => this.state.chosenType === recipe.meal_type);
   }
