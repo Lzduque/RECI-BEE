@@ -171,6 +171,7 @@ p {
     left: 0;
     top: 0;
   }
+
   img {
     max-width: 150px;
     max-height: 150px;
@@ -516,7 +517,7 @@ p {
 .close-button {
   /* margin-left: 10rem; */
   margin-left: auto;
-  background-color: red;
+  background-color: var(--heart);
   color: var(--text-color-link);
   border: none;
 }
