@@ -44,8 +44,7 @@ class Welcome extends Component {
       <div>
         <div className="catch-phrase">
           <h4>
-            Save your recipes, choose from our catalog, and create you personalzied meal plan!
-          </h4>
+          Save your recipes, choose from our catalog, and create your personalized meal plan!          </h4>
         </div>
         <div className="form-modal">
           <div className="form-toggle">
