@@ -71,7 +71,7 @@ class SearchRecipe extends Component {
 
     return (
       <div className="search-page">
-        <h5 className="search-recipes-title">Recipe Search Results</h5>
+        <h5 className="search-recipes-title">Search Results</h5>
         <CardContainer searchedRecipes={ this.props.searchedRecipes } onCardSelected={this._recipeSelected}/>
         {
           this.state.selectedRecipe ? <ViewRecipe recipe={ this.state.selectedRecipe } closePopup={this.closePopup} /> : null

@@ -125,12 +125,12 @@ class ViewRecipe extends Component {
           <div className="page-title">
             <h2>{ this.props.recipe.name }</h2>
             <button className="save-button" onClick={() => this.saveRecipe()}>
-            { this.state.saved ? `♥` : `♡` } </button>
-            <button className="close-button" onClick={print}>Print Recipe</button>
-            <button className="close-button" onClick={this.props.closePopup}>Go Back</button>
+            { this.state.saved ? ` ♥ ` : ` ♡ ` } </button>
+            <button className="print-button" onClick={print}>Print Recipe</button>
+            <button className="close-button" onClick={this.props.closePopup}>&#160;X&#160;</button>
           </div>
           <div className="view-recipe-field">
-            <h6>Type: {this.props.recipe.meal_type} | Servings: {this.props.recipe.servings} | Time: {this.props.recipe.time}min</h6>
+            <h6>Type: {this.props.recipe.meal_type} | Servings: {this.props.recipe.servings} | 🕒 {this.props.recipe.time}min</h6>
           </div>
           <div className="view-recipe-field">
             <div className="view-recipe-ingredients">
