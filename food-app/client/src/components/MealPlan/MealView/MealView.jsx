@@ -100,8 +100,8 @@ class MealView extends Component {
                   <h2>Add a Recipe</h2>
                   <button className="close-button" onClick={this.props.closePopup}>Go Back</button>
               </div>
-              <ChoiceContainer choices={ this.props.choices } onChoice={this.choiceSelected}/>
               <h3>Please select a recipe</h3>
+              <ChoiceContainer choices={ this.props.choices } onChoice={this.choiceSelected}/>
             </div>
           </div>
         </div>

@@ -66,8 +66,6 @@ class MealPlansController < ApplicationController
 
     puts '@recipe_id'
     puts @recipe_id
-    puts '@user_id'
-    puts @user_id
 
     @delete = MealPlanRecipe.where(['recipe_id = ? AND meal_plan_id = ?', @recipe_id, @meal_plan_id]).first
     @delete.destroy

@@ -55,7 +55,7 @@ class MealPlan extends Component {
       showPopup: true,
     })
 
-    fetch(`/api/meal_plans/1/?recipe_id=${this.state.choices[mealType].id}`, {
+    fetch(`/api/meal_plans/${this.state.meal_plan_id}/?recipe_id=${this.state.choices[mealType].id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
@@ -84,7 +84,9 @@ class MealPlan extends Component {
     })
     .then(response => response.json())
     .then(data => {
-      // console.log('going inside');
+      console.log('data being fetch: ', data);
+      console.log('today meal plan id: ', data[0].id);
+      this.setState({ meal_plan_id: data[0].id })
       data[0].meal_plan_recipes.forEach(i => {
         this.changeChoice(i.recipe);
       })
@@ -93,6 +95,7 @@ class MealPlan extends Component {
     // .then(() => console.log("end of fetch", "show", this.state.recipes, "showID", this.state.recipesByID, 'hi', this.state.arrRecipe));
   }
 
+  // fetch all recipes saved in user book
   fetchRecipes = () => {
     // console.log("fetch begins")
 
@@ -273,10 +276,10 @@ class MealPlan extends Component {
               recipe={this.state.viewRecipe}
               closePopup={() => this.togglePopup(false)}
             />  : null}
-            {/* STATE
+            STATE
             <pre style={{marginTop: '1em'}}>{JSON.stringify(this.state, null, '\t')}</pre>
             PROPS
-            <pre style={{marginTop: '1em'}}>{JSON.stringify(this.props, null, '\t')}</pre> */}
+            <pre style={{marginTop: '1em'}}>{JSON.stringify(this.props, null, '\t')}</pre>
           </div>
       </div>
     )
