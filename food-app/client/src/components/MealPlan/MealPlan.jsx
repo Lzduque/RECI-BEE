@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 import React, { Component } from 'react';
 import MealView from './MealView/MealView.jsx';
 import ViewRecipe from '../RecipeBook/ViewRecipe/ViewRecipe.jsx';
@@ -297,4 +295,3 @@ class MealPlan extends Component {
 };
 
 export default MealPlan;
->>>>>>> 62334d6e3645a407fccaf3dc4b549909562b99b4
