@@ -73,20 +73,20 @@ class MealView extends Component {
         throw new Error('Something went wrong ...');
       }
     })
-    .then(recipeIsSaved => {
-      console.log('recipe if saved after query DB?', recipeIsSaved);
+    // .then(recipeIsSaved => {
+    //   console.log('recipe if saved after query DB?', recipeIsSaved);
 
-      if (recipeIsSaved) {
-        // this.setState = { saved: true };
-        console.log("is being set to TRUE")
-        // console.log("this.state.saved should be TRUE now: ", this.state.saved)
-      } else {
-        // this.setState = { saved: false };
-        // this.saveRecipe();
-        console.log("this.state.saved is FALSE")
-        // console.log("this.state.saved should be FALSE now: ", this.state.saved)
-      }
-    })
+    //   if (recipeIsSaved) {
+    //     // this.setState = { saved: true };
+    //     console.log("is being set to TRUE")
+    //     // console.log("this.state.saved should be TRUE now: ", this.state.saved)
+    //   } else {
+    //     // this.setState = { saved: false };
+    //     // this.saveRecipe();
+    //     console.log("this.state.saved is FALSE")
+    //     // console.log("this.state.saved should be FALSE now: ", this.state.saved)
+    //   }
+    // })
     .catch(error => this.setState({ error }))
   }
 
@@ -98,7 +98,7 @@ class MealView extends Component {
             <div className="container-create-recipe">
               <div className="page-title">
                   <h2>Add a Recipe</h2>
-                  <button className="close-button" onClick={this.props.closePopup}>Go Back</button>
+                  <button className="close-button" onClick={this.props.closePopup}>&#160;X&#160;</button>
               </div>
               <h3>Please select a recipe</h3>
               <ChoiceContainer choices={ this.props.choices } onChoice={this.choiceSelected}/>

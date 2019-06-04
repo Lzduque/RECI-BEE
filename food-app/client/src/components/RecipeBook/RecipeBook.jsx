@@ -168,7 +168,7 @@ class RecipeBook extends Component {
       <div>
         <div className="container-1">
           <div className="page-title">
-            <h2>Recipe Book Page</h2>
+            <h2>Recipe Book</h2>
             <Link className="nav-link" id="create-recipe-button" to="/recipe/create" onClick={ () => this.togglePopup(true) }>Create Recipe</Link>
           </div>
           <form onSubmit={this.handleFormSubmit}>

@@ -500,13 +500,21 @@ p {
 }
 
 /* separating the close button from the page title */
-.close-button {
+
+.print-button {
   /* margin-left: 10rem; */
   margin-left: auto;
   background-color: var(--gold-yellow);
   color: var(--text-color-link);
   border: none;
+}
 
+.close-button {
+  /* margin-left: 10rem; */
+  margin-left: auto;
+  background-color: red;
+  color: var(--text-color-link);
+  border: none;
 }
 
 /* wraps all fields inside create recipe page */
@@ -750,6 +758,7 @@ p {
   color: var(--heart);
   border: none;
   font-weight: bolder;
+  text-align: center;
   width: 33px;
   height: 33px;
 }
@@ -805,8 +814,9 @@ pre {
 .button-edit {
   background-color: var(--text-color-link);
   color: var(--gold-yellow);
-  max-width: 25%;
+  width: 70%;
   height: auto;
+  display: inline-block;
   font-weight: bolder;
 
   /* text-align: center;
@@ -871,6 +881,7 @@ button {
 
 button:hover {
   box-shadow: 0 8px 16px 0 var(--image-hover);
+  color: black;
 }
 
 a:hover {

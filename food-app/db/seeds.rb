@@ -1443,3 +1443,8 @@ mpr1 = MealPlanRecipe.create!({
   meal_plan_id: m1.id,
   recipe_id:    rec1.id
 })
+
+mpr2 = MealPlanRecipe.create!({
+  meal_plan_id: m1.id,
+  recipe_id:    rec2.id
+})
