@@ -133,7 +133,7 @@ class MealPlan extends Component {
   }
 
   togglePopup = (state) => {
-    this.setState({viewPopup: state, showPopup: state})
+    this.setState({viewPopup: state, showPopup: state, viewNutrition: state})
   }
 
   openNutrition = (mealType) => {
@@ -195,6 +195,7 @@ class MealPlan extends Component {
     this.setState({
       viewNutrition: nutrition
     })
+    console.log('nutr', nutrition);
   }
 
   displayNutrition(mealType) {
@@ -217,7 +218,19 @@ class MealPlan extends Component {
     );
   }
 
+  renderNutrition(mealType) {
+    if (this.state.viewNutrition && this.state.viewNutrition.length == this.state.choices[mealType].ingredients.length) {
+      return (
+        <Nutrition
+          servings={this.state.servings}
+          nutrition={this.state.viewNutrition}
+          closePopup={()=> this.togglePopup(false)}/>
+      )
+    }
+  }
+
   renderMeals() {
+
     return Object.keys(this.state.choices).map(mealType => {
       return (
         <div key={mealType} className="chosen-recipe-container" >
@@ -226,10 +239,12 @@ class MealPlan extends Component {
           this.state.choices[mealType]
           ? (
             <div>
-              {/* <button className="nutrition-button"
-                onDoubleClick={this.nutritionShow}
+              <button className="nutrition-button"
+                // onDoubleClick={() => this.togglePopup(false)}
                 onClick={() => this.displayNutrition(this.state.choices[mealType])}
-                >Nutrition</button> */}
+                >Nutrition</button>
+
+              {this.renderNutrition(mealType)}
 
               <div className="recipe-card">
                 <div className="recipe-content">
@@ -263,12 +278,6 @@ class MealPlan extends Component {
       {this.renderHeader()}
       <div className="container-1" >
         <h3>Select Meals for the Day</h3>
-
-        { this.state.showNutrition &&
-          <Nutrition
-            servings={this.state.servings}
-            nutrition={this.state.showNutrition} />
-          }
 
         {this.renderMeals()}
 
