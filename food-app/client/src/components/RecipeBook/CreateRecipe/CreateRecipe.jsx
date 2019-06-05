@@ -181,7 +181,7 @@ class CreateRecipe extends Component {
                 <div className="create-recipe-field">
                   <h5>Ingredients</h5>
                   <div>
-                    <button type="button" onClick={this.addIngredient.bind(this, 'ingredients')}>Add Ingredient</button>
+                    <button type="button" onClick={this.addIngredient.bind(this, 'ingredients')}>➕Ingredient</button>
                   </div>
                   <div className="create-recipe-field container-ingredients">
                   {
@@ -202,7 +202,7 @@ class CreateRecipe extends Component {
                                     min="0"
                                     onChange={this.updateQuantity.bind(this, item.id, 'ingredients')}/>
                         <span>
-                          <button type="button" className="btn btn-danger" onClick={this.removeIngredient.bind(this, item.id, 'ingredients')}>Remove</button>
+                          <button type="button" className="btn btn-danger" onClick={this.removeIngredient.bind(this, item.id, 'ingredients')}>❌</button>
                         </span>
                       </div>
                     ))
