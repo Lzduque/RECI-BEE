@@ -532,8 +532,14 @@ p {
 .container-ingredients {
   display: flex;
   flex-direction: row-reverse;
-  flex-wrap: wrap;
-  justify-content: right;
+  justify-content: space-evenly;
+  flex-wrap: wrap-reverse;
+  justify-content: center;
+}
+
+/* creaste recipe container for ingredients */
+.container-ingredients input {
+  max-width: 70px;
 }
 
 /* SAVED RECIPES ------------------------------------------------ */
