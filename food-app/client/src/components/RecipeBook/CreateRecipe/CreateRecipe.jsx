@@ -198,7 +198,7 @@ class CreateRecipe extends Component {
                                     type="number"
                                     min="0"
                                     onChange={this.updateQuantity.bind(this, item.id, 'ingredients')}/>
-                          <button type="button" onClick={this.removeIngredient.bind(this, item.id, 'ingredients')}>❌</button>
+                          <button type="button" className="remove-button" onClick={this.removeIngredient.bind(this, item.id, 'ingredients')}>&#160;X&#160;</button>
                       </div>
                     ))
                   }

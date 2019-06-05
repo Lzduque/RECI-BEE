@@ -549,6 +549,15 @@ p {
   max-width: 70px;
 }
 
+.remove-button {
+  /* margin-left: 10rem; */
+  margin-left: auto;
+  background-color: var(--text-color-link);
+  color: var(--heart);
+  border: none;
+  font-weight: bolder;
+}
+
 /* SAVED RECIPES ------------------------------------------------ */
 
 /* div that wraps up the saved recipes carousel */
