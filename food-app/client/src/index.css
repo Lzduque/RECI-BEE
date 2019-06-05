@@ -531,10 +531,17 @@ p {
 /* creaste recipe container for ingredients */
 .container-ingredients {
   display: flex;
-  flex-direction: row-reverse;
-  justify-content: space-evenly;
-  flex-wrap: wrap-reverse;
+  /* flex-direction: row-reverse; */
+  flex-direction: row;
+  justify-content: space-between;
+  /* flex-wrap: wrap-reverse; */
+  flex-wrap: wrap;
   justify-content: center;
+}
+
+/* wraps all inputs for one ingredient */
+.each-ingredient {
+  margin: 1.5rem;
 }
 
 /* creaste recipe container for ingredients */
