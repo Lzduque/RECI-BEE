@@ -198,13 +198,13 @@ class CreateRecipe extends Component {
                                     type="number"
                                     min="0"
                                     onChange={this.updateQuantity.bind(this, item.id, 'ingredients')}/>
-                        <button type="button" onClick={this.removeIngredient.bind(this, item.id, 'ingredients')}>Remove</button>
+                          <button type="button" onClick={this.removeIngredient.bind(this, item.id, 'ingredients')}>❌</button>
                       </div>
                     ))
                   }
                   </div>
                   <div>
-                    <button type="button" onClick={this.addIngredient.bind(this, 'ingredients')}>Add Ingredient</button>
+                    <button type="button" onClick={this.addIngredient.bind(this, 'ingredients')}>➕Ingredient</button>
                   </div>
                 </div>
               </label>

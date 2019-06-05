@@ -759,6 +759,7 @@ p {
 /* image inside view recipe */
 .view-recipe-img img {
   max-width: 100%;
+  border-radius: var(--border-radius);
 }
 
 /* makes the recipe ingredients ocupy only 40% of the avaliable space */
