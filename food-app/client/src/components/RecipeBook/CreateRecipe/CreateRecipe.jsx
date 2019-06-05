@@ -163,7 +163,7 @@ class CreateRecipe extends Component {
         <div className='popup-inner' >
           <div className="container-create-recipe">
             <div className="page-title">
-              <h2>Create Recipe Page</h2>
+              <h2>Create Recipe</h2>
               <button className="close-button"  onClick={ () => this.props.closePopup() }>&#160;X&#160;</button>
             </div>
             <form onSubmit={ this.handleSubmit } >
