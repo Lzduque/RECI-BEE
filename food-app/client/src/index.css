@@ -767,7 +767,9 @@ p {
 
 /* image inside view recipe */
 .view-recipe-img img {
-  max-width: 100%;
+  /* max-width: 100%; */
+  width: 400px;
+  height: 400px;
   border-radius: var(--border-radius);
 }
 
@@ -860,6 +862,72 @@ pre {
   display: flex;
   justify-content: center;
   align-items: center; */
+}
+
+/* NUTRITION ------------------------------------------------ */
+
+#nutritionfacts {
+  background-color: white;
+  border: 1px solid black;
+  padding: 3px;
+  width: 244px;
+  float: right;
+}
+
+#nutritionfacts td {
+  color: black;
+  font-family: 'Arial Black', 'Helvetica Bold', sans-serif;
+  font-size: 8pt;
+  padding: 0;
+}
+
+#nutritionfacts td.header {
+  font-family: 'Arial Black', 'Helvetica Bold', sans-serif;
+  font-size: 28px;
+  white-space: nowrap;
+}
+
+#nutritionfacts div.label {
+  float: left;
+  font-family: 'Arial Black', 'Helvetica Bold', sans-serif;
+}
+
+#nutritionfacts div.serving {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 8pt;
+  text-align: center;
+}
+
+#nutritionfacts div.weight {
+  display: inline;
+  font-family: Arial, Helvetica, sans-serif;
+  padding-left: 1px;
+}
+
+#nutritionfacts div.dv {
+  display: inline;
+  float: right;
+  font-family: 'Arial Black', 'Helvetica Bold', sans-serif;
+}
+
+#nutritionfacts table.vitamins td {
+  font-family: Arial, Helvetica, sans-serif;
+  white-space: nowrap;
+  width: 33%;
+}
+
+#nutritionfacts div.line {
+  border-top: 1px solid black;
+}
+
+#nutritionfacts div.labellight {
+  float: left;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#nutritionfacts .highlighted {
+  border: 1px dotted grey;
+  padding: 2px;
 }
 
 /* OVERALL STYLING ------------------------------------------------ */
