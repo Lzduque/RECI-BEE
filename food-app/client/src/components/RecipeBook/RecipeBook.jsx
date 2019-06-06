@@ -193,7 +193,7 @@ class RecipeBook extends Component {
               >
                 Deselect All
               </button>
-              <button type="submit" className="search-button">
+              <button type="submit" className="do-search-button">
                 Search
               </button>
             </div>

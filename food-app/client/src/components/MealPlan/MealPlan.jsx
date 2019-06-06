@@ -4,12 +4,6 @@ import ViewRecipe from '../RecipeBook/ViewRecipe/ViewRecipe.jsx';
 import Nutrition from './Nutrition/Nutrition.jsx';
 import request from 'request'
 
-// var calories = 0;
-// var protein = 0;
-// var fat = 0;
-// var sugar = 0;
-// var carbs = 0;
-
 
 class MealPlan extends Component {
 
@@ -29,11 +23,6 @@ class MealPlan extends Component {
       viewRecipe: null,
       viewNutrition: null,
       servings: null,
-      // calories: 0,
-      // protein: 0,
-      // fat: 0,
-      // sugar: 0,
-      // carbs: 0,
     }
   };
 
