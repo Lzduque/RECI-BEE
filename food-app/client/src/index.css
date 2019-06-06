@@ -862,6 +862,27 @@ pre {
   align-items: center; */
 }
 
+/*  top secret  */
+.photos-container {
+  margin: 2rem;
+  justify-content: center;
+  justify-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 20px;
+}
+
+.photos {
+  width: 120px;
+  height: 120px;
+}
+
+/* .secret-button {
+  position: right;
+} */
+
 /* OVERALL STYLING ------------------------------------------------ */
 
 
@@ -934,3 +955,4 @@ a:hover {
 body {
   background: var(--image-hover);
 }
+

@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
     # resources :users
     resources :ingredients, only: [:index]
+    resources :secrets, only: [:index]
     resources :recipes, only: [:index, :create]
     resources :books, only: [:index, :show, :create, :destroy]
     resources :meal_plans, only: [:index, :create, :destroy]

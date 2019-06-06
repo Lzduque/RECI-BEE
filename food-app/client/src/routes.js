@@ -4,6 +4,7 @@ import Welcome from './components/Welcome/Welcome.jsx';
 import Profile from './components/Profile/Profile.jsx';
 import RecipeBook from './components/RecipeBook/RecipeBook.jsx';
 import MealPlan from './components/MealPlan/MealPlan.jsx';
+import Secret from './components/Secret/Secret.jsx';
 
 class Routes extends Component {
   // static propTypes = {
@@ -42,6 +43,7 @@ class Routes extends Component {
             {/* <Link className="nav-link" to="/profile">Profile</Link> */}
             <Link className="nav-link" to="/recipebook">Recipe Book</Link>
             <Link className="nav-link" to="/mealplan">Meal Plan</Link>
+            <Link className="nav-link secret-button" to="/secret">Secret</Link>
           </ul>
         </div>
 
@@ -49,6 +51,7 @@ class Routes extends Component {
         {/* <Route path="/profile" component={Profile} /> */}
         <Route path="/recipebook" component={RecipeBook} />
         <Route path="/mealplan" component={MealPlan} />
+        <Route path="/secret" component={Secret} />
       </div>
     </Router>
     )
