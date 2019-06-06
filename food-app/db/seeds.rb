@@ -529,6 +529,13 @@ ing82 = Ingredient.create!({
   food_type:  "vegetable"
 })
 
+ing83 = Ingredient.create!({
+  name:       "muesli",
+  unit:       "g",
+  food_type:  "grain"
+})
+
+
 # RECIPES
 
 puts "Re-creating Recipes ..."
@@ -648,6 +655,15 @@ rec13 = Recipe.create!({
   time:         15,
   preparation:  "\n 1. Cook pasta according to package instruction in salted water until al dente. \n 2. Roast pine nuts in a medium pan on high heat for 2 minutes, stirring throughout. Remove from heat and add to food processor, reserving 2 Tbsp for topping. \n 3. To the same pan add the oil and garlic and sauté for 2 minutes, adding a splash of water to deglaze the pan as needed. Add to the food processor as well. \n 4. Back to the same pan add the oil and shallots, and let cook for 2 minutes, , adding a splash of water to deglaze the pan as needed. Then add the roasted paprika and cook for 1 minute longer. \n 5. While the shallot cooks, add the peas, lemon juice, basil, olive oil, salt and pepper to the food processor which already contains the pine nuts and garlic. Blend until creamy. \n 6. When pasta is done, drain, rinse, and return to the pot. Add to the shallot mixture on top, pour over the pea pesto, add the arugula, and toss to combine. Plate, garnish, and enjoy!",
   meal_type:    "meal"
+})
+
+rec14 = Recipe.create!({
+  name:         "Breakfast Parfait",
+  image:        "https://static.wixstatic.com/media/26357d_16bbe7ed45df4f038f3d8f04e682b2ce~mv2_d_2592_3888_s_4_2.jpg/v1/fill/w_1260,h_1890,al_c,q_90,usm_0.66_1.00_0.01/26357d_16bbe7ed45df4f038f3d8f04e682b2ce~mv2_d_2592_3888_s_4_2.webp",
+  servings:     1,
+  time:         5,
+  preparation:  "\n 1. Place the frozen berries in the microwave for about 60 seconds or until defrosted while you prepare your other ingredients, or use fresh berries instead. \n 2. Layer ingredients in a cup or bowl, and enjoy!",
+  meal_type:    "breakfast"
 })
 
 # QUANTITIES
@@ -1530,6 +1546,35 @@ q146 = Quantity.create!({
   quantity:      50
 })
 
+q147 = Quantity.create!({
+  ingredient_id: ing83.id,
+  recipe_id:     rec14.id,
+  quantity:      30
+})
+
+q148 = Quantity.create!({
+  ingredient_id: ing13.id,
+  recipe_id:     rec14.id,
+  quantity:      125
+})
+
+q149 = Quantity.create!({
+  ingredient_id: ing14.id,
+  recipe_id:     rec14.id,
+  quantity:      75
+})
+
+q149 = Quantity.create!({
+  ingredient_id: ing11.id,
+  recipe_id:     rec14.id,
+  quantity:      7
+})
+
+q150 = Quantity.create!({
+  ingredient_id: ing42.id,
+  recipe_id:     rec14.id,
+  quantity:      5
+})
 
 # BOOKS
 
@@ -1563,6 +1608,21 @@ b5 = Book.create!({
 b6 = Book.create!({
   user_id:    user1.id,
   recipe_id:  rec6.id
+})
+
+b7 = Book.create!({
+  user_id:    user1.id,
+  recipe_id:  rec7.id
+})
+
+b8 = Book.create!({
+  user_id:    user1.id,
+  recipe_id:  rec8.id
+})
+
+b9 = Book.create!({
+  user_id:    user1.id,
+  recipe_id:  rec9.id
 })
 
 # MEAL PLANS
