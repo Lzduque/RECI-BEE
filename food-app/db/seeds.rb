@@ -493,6 +493,42 @@ ing76 = Ingredient.create!({
   food_type:  "vegetable"
 })
 
+ing77 = Ingredient.create!({
+  name:       "kalamata olive",
+  unit:       "g",
+  food_type:  "vegetable"
+})
+
+ing78 = Ingredient.create!({
+  name:       "pasta",
+  unit:       "g",
+  food_type:  "grain"
+})
+
+ing79 = Ingredient.create!({
+  name:       "pine nuts",
+  unit:       "g",
+  food_type:  "grain"
+})
+
+ing80 = Ingredient.create!({
+  name:       "shallots",
+  unit:       "whole",
+  food_type:  "vegetable"
+})
+
+ing81 = Ingredient.create!({
+  name:       "peas",
+  unit:       "g",
+  food_type:  "vegetable"
+})
+
+ing82 = Ingredient.create!({
+  name:       "arugula",
+  unit:       "g",
+  food_type:  "vegetable"
+})
+
 # RECIPES
 
 puts "Re-creating Recipes ..."
@@ -594,6 +630,24 @@ rec11 = Recipe.create!({
   time:           35,
   preparation:    "\n 1. Preheat the oven to 375 F (190 C) and lightly grease a muffin tin or add paper muffin liners. \n 2. In a large bowl, whisk together the flax seeds and water and allow it to sit for 5 minutes until the flax gels, stirring once after a couple minutes. \n 3. To the flax gel, add the soy milk and vinegar, whisk, and allow to sit for another 5 minutes. Meanwhile, blend the oats into a flour. \n 4. Add the oil, applesauce, sugar, vanilla and cinnamon and whisk. \n 5. One at a time add the baking soda, baking powder and salt stirring after each addition. Then gently mix in the oat flour until just combined. \n 6. Gently stir in blueberries until just combined. If frozen, do not and thaw. Toss first in flour until coated and then stir into the muffin batter until just combined. Divide evenly into the muffin tin. \n 7. For the sugar and cinnamon sprinkle, mix these two ingredients together first and then evenly distribute on top of the 12 muffins. \n 8. Bake until a toothpick inserted into the centre comes out clean, about 20 minutes.",
   meal_type:      "breakfast"
+})
+
+rec12 = Recipe.create!({
+  name:         "Zucchini Bites",
+  image:        "https://static.wixstatic.com/media/26357d_857fa0b74749495d82445cea25d0c69d~mv2_d_5184_3456_s_4_2.jpg/v1/fill/w_1236,h_824,al_c,q_85,usm_0.66_1.00_0.01/26357d_857fa0b74749495d82445cea25d0c69d~mv2_d_5184_3456_s_4_2.webp",
+  servings:     7,
+  time:         15,
+  preparation:  "\n 1. Place zucchini slices on a serving plate or platter. \n 2. Add olives, drizzle on tahini, sprinkle on pomegranate seeds, and top with buckwheat and basil to garnish. Don't worry about how much to add on each slice. The more you add without everything falling off, the tastier it will be.",
+  meal_type:    "snack"
+})
+
+rec13 = Recipe.create!({
+  name:         "Basil Pesto Pasta",
+  image:        "https://static.wixstatic.com/media/26357d_8fe54e3b83c14fc3b246799338026d1a~mv2_d_4000_6000_s_4_2.jpg/v1/fill/w_1260,h_1890,al_c,q_90,usm_0.66_1.00_0.01/26357d_8fe54e3b83c14fc3b246799338026d1a~mv2_d_4000_6000_s_4_2.webp",
+  servings:     4,
+  time:         15,
+  preparation:  "\n 1. Cook pasta according to package instruction in salted water until al dente. \n 2. Roast pine nuts in a medium pan on high heat for 2 minutes, stirring throughout. Remove from heat and add to food processor, reserving 2 Tbsp for topping. \n 3. To the same pan add the oil and garlic and sauté for 2 minutes, adding a splash of water to deglaze the pan as needed. Add to the food processor as well. \n 4. Back to the same pan add the oil and shallots, and let cook for 2 minutes, , adding a splash of water to deglaze the pan as needed. Then add the roasted paprika and cook for 1 minute longer. \n 5. While the shallot cooks, add the peas, lemon juice, basil, olive oil, salt and pepper to the food processor which already contains the pine nuts and garlic. Blend until creamy. \n 6. When pasta is done, drain, rinse, and return to the pot. Add to the shallot mixture on top, pour over the pea pesto, add the arugula, and toss to combine. Plate, garnish, and enjoy!",
+  meal_type:    "meal"
 })
 
 # QUANTITIES
@@ -1391,6 +1445,91 @@ q132 = Quantity.create!({
   recipe_id:     rec1.id,
   quantity:      60
 })
+
+q133 = Quantity.create!({
+  ingredient_id: ing36.id,
+  recipe_id:     rec12.id,
+  quantity:      1
+})
+
+q134 = Quantity.create!({
+  ingredient_id: ing77.id,
+  recipe_id:     rec12.id,
+  quantity:      250
+})
+
+q135 = Quantity.create!({
+  ingredient_id: ing26.id,
+  recipe_id:     rec12.id,
+  quantity:      60
+})
+
+q136 = Quantity.create!({
+  ingredient_id: ing40.id,
+  recipe_id:     rec12.id,
+  quantity:      1
+})
+
+q137 = Quantity.create!({
+  ingredient_id: ing78.id,
+  recipe_id:     rec13.id,
+  quantity:      250
+})
+
+q138 = Quantity.create!({
+  ingredient_id: ing79.id,
+  recipe_id:     rec13.id,
+  quantity:      68
+})
+
+q139 = Quantity.create!({
+  ingredient_id: ing31.id,
+  recipe_id:     rec13.id,
+  quantity:      40
+})
+
+q140 = Quantity.create!({
+  ingredient_id: ing32.id,
+  recipe_id:     rec13.id,
+  quantity:      4
+})
+
+q141 = Quantity.create!({
+  ingredient_id: ing80.id,
+  recipe_id:     rec13.id,
+  quantity:      2
+})
+
+q142 = Quantity.create!({
+  ingredient_id: ing19.id,
+  recipe_id:     rec13.id,
+  quantity:      2
+})
+
+q143 = Quantity.create!({
+  ingredient_id: ing81.id,
+  recipe_id:     rec13.id,
+  quantity:      263
+})
+
+q144 = Quantity.create!({
+  ingredient_id: ing25.id,
+  recipe_id:     rec13.id,
+  quantity:      1
+})
+
+q145 = Quantity.create!({
+  ingredient_id: ing29.id,
+  recipe_id:     rec13.id,
+  quantity:      30
+})
+
+q146 = Quantity.create!({
+  ingredient_id: ing82.id,
+  recipe_id:     rec13.id,
+  quantity:      50
+})
+
 
 # BOOKS
 
