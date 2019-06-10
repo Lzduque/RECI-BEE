@@ -1,4 +1,4 @@
-## FOOD APP
+## RECIPE-BEE | FOOD APP
 
 Reci-bee website was created to be a recipe management and meal planner app, with daily nutritional analysis and recommendations.
 
