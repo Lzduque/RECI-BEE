@@ -4,6 +4,10 @@ Reci-bee website was created to be a recipe management and meal planner app, wit
 
 We divided the work equally, so we both could have the chance to work on all aspects of it: backend development with Ruby on Rails and front-end with JavaScript, React, Postgres. We set up the project as two servers communicating through API queries utilizing Webpack. In the front-end, we choose to work with flex-box and styled it ourselves with CSS.
 
+## Contributors
+
+[Leticia Duque](https://github.com/Lzduque) and [Sahanah Ganesh](https://github.com/sahanah-ganesh)
+
 ## Getting Started
 
 1. Install Frontend dependencies using the `npm install` command.
