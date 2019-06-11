@@ -1,8 +1,8 @@
 ## RECI-BEE | FOOD APP
 
-Reci-bee website was created to be a recipe management and meal planner app, with daily nutritional analysis and recommendations.
+The Reci-bee website was created to be a recipe management and meal planner app, with daily nutritional analysis and recommendations.
 
-We divided the work equally, so we both could have the chance to work on all aspects of it: backend development with Ruby on Rails and front-end with JavaScript, React, Postgres. We set up the project as two servers communicating through API queries utilizing Webpack. In the front-end, we choose to work with flex-box and styled it ourselves with CSS.
+We divided the work equally, so we both could have the chance to work on all aspects of it: backend development with Ruby on Rails and front-end with JavaScript, React, Postgres. Two servers communicate through API queries utilizing Webpack. In the front-end, we choose to work with flex-box and styled it ourselves with CSS.
 
 ## Contributors
 
