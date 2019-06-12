@@ -5,9 +5,7 @@ import SearchRecipe from './SearchRecipe/SearchRecipe.jsx';
 import SavedRecipe from './SavedRecipe/SavedRecipe.jsx';
 import Checkbox from "./Checkbox";
 
-
 const OPTIONS = ["Breakfast", "Meal", "Snack"];
-
 
 class RecipeBook extends Component {
   constructor(props) {
@@ -29,10 +27,7 @@ class RecipeBook extends Component {
       savedRecipesByID: {}
     };
     this.togglePopup = this.togglePopup.bind(this);
-    // this.searchRecipes = this.searchRecipes.bind(this);
-    // this.formatQuery = this.formatQuery.bind(this);
   };
-
 
   // make popup work - crete recipe
   togglePopup(state) {
@@ -65,11 +60,11 @@ class RecipeBook extends Component {
   };
 
   selectAll = () => this.selectAllCheckboxes(true);
+
   deselectAll = () => this.selectAllCheckboxes(false);
 
   handleCheckboxChange = (event) => {
     const { name } = event.target;
-
     this.setState(prevState => ({
       checkboxes: {
         ...prevState.checkboxes,
@@ -80,29 +75,22 @@ class RecipeBook extends Component {
 
   handleFormSubmit = (event) => {
     event.preventDefault();
-
     // query format --> passing an array to query not key pair values
     let queryArr = [];
     Object.keys(this.state.checkboxes)
       .filter(checkbox => this.state.checkboxes[checkbox])
       .forEach(checkbox => {
-        console.log(checkbox, "is selected.");
         queryArr.push(checkbox);
-        console.log("queryArr: ", queryArr);
         // setting the state and and sendind to the backend
         this.setState({ queryArr },
           () => {
-            console.log("fetch is happening")
-            // debugger
-
             fetch(`/api/recipes/search?queryArr=${this.state.queryArr}`, {
               method: 'GET',
               headers: {
-                  'Content-Type': 'application/json'
+                'Content-Type': 'application/json'
               }
             })
             .then(response => {
-              console.log("response is happening")
               if (response.ok) {
                 return response.json();
               } else {
@@ -110,7 +98,6 @@ class RecipeBook extends Component {
               }
             })
             .then(recipes => {
-                // console.log('recipes', recipes);
               this.setState({
                 searchShow: true,
                 searchedRecipes: recipes,
@@ -121,12 +108,9 @@ class RecipeBook extends Component {
               })
             })
             .catch(error => this.setState({ error }))
-            .then(() => console.log('end of fetch', this.state.searchedRecipes, 'searchedID', this.state.searchedRecipesByID));
           })
       })
-
   };
-
 
   //put into function, needs to be passed as prop and then called after save/unsave
   //after any recipe changes (re-fetch)
@@ -143,7 +127,6 @@ class RecipeBook extends Component {
       })
       .then(data => {
         const recipes = data.map(x => x.recipe)
-          // console.log('recipes', recipes);
         this.setState({
           savedRecipes: recipes,
           savedRecipesByID: recipes.reduce(
@@ -153,16 +136,13 @@ class RecipeBook extends Component {
         })
       })
       .catch(error => this.setState({ error }))
-      .then(() => console.log("savedrec", this.state.savedRecipes, "savedrecID", this.state.savedRecipesByID));
   }
 
   componentDidMount() {
     this.savedRecipesForUser();
   }
 
-
   render() {
-
     return (
       <Router>
       <div>
@@ -197,13 +177,8 @@ class RecipeBook extends Component {
                 Search
               </button>
             </div>
-            {/* STATE
-            <pre style={{marginTop: '1em'}}>{JSON.stringify(this.state, null, '\t')}</pre>
-            PROPS
-            <pre style={{marginTop: '1em'}}>{JSON.stringify(this.props, null, '\t')}</pre> */}
           </form>
         </div>
-
         { this.state.toggleState && (
         <Route path="/recipe/create" component={
           () => <CreateRecipe changeRecipeState={this.savedRecipesForUser} closePopup={ () => this.togglePopup(false) } />

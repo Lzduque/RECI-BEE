@@ -6,22 +6,14 @@ class BooksController < ApplicationController
     @user_id = 1
     @books = Book.where(['user_id = ?', @user_id]).order(:recipe_id)
     render :json => @books.to_json(:include => {recipe: {:include => {ingredients: {include: :quantities}}}})
-    # render :json => @recipes.to_json(:include => {ingredients: {include: :quantities}})
   end
 
   # VIEWRECIPE - GET/ - books/:recipe_id - to check recipe in Db for a user --> to render saved button state
   def show
-    # byebug
     puts "show method"
 
     @recipe_id = params[:id]
     @user_id = 1
-    # puts "params[:id]"
-    # puts params[:id]
-    puts "@recipe_id"
-    puts @recipe_id
-    puts "@user_id"
-    puts @user_id
 
     if Book.where(['recipe_id = ? AND user_id = ?', @recipe_id, @user_id]).first
       puts "Recipe is already saved for this user"
@@ -34,9 +26,6 @@ class BooksController < ApplicationController
 
 #MEALPLAN - GET/ - /books - to see all saved recipes for a user ---> to render saved recipes carousel
   def search
-    # byebug
-    puts 'params[:type]'
-    puts params[:type]
     search = params[:type]
     if search.blank?
       render status: 400, json: { error: 'Expected parameter `type`' }
@@ -44,8 +33,6 @@ class BooksController < ApplicationController
 
       @books = Book.joins(:recipe).where(["meal_type = ?", search])
       @user_id = 1
-      # @books = Book.where(['user_id = ?', @user_id])
-      # @recipes = Recipe.where(["meal_type = ?", search]).limit(10)
       render :json => @books.to_json(:include => {recipe: {:include => {ingredients: {include: :quantities}}}})
     end
   end
@@ -55,25 +42,9 @@ class BooksController < ApplicationController
     puts "create method"
     @user_id = 1
 
-    puts params
-    puts params[:id]
     @recipe_id = params[:id]
 
-    # @book = { "recipe_id" => @recipe_id, "user_id" => 1 }
-    # @book.recipe_id = @recipe_id
-    # @book.user_id = 1
-
-    puts "@book"
-    pp @book
-
     if Book.where(['recipe_id = ? AND user_id = ?', @recipe_id, @user_id]).first
-      puts "Book.where('recipe_id = @recipe_id AND user_id = @user_id').first"
-      puts Book.where('recipe_id = @recipe_id AND user_id = @user_id').first
-      puts '@recipe_id'
-      puts @recipe_id
-      puts '@user_id'
-      puts @user_id
-
       render status: 400, json: { error: 'Recipe is already saved to this user in DB!' }
     elsif @book.save
       render status: 200, json: @book
@@ -84,17 +55,8 @@ class BooksController < ApplicationController
 
   # VIEWRECIPE - DELETE/ - books/:recipe_id - to remove recipe in Db for a user --> unsave button
   def destroy
-    puts "destroy method"
-    puts 'params'
-    puts params
-    puts 'params[:id]'
-    puts params[:id]
     @recipe_id = params[:id]
     @user_id = 1
-    puts '@recipe_id'
-    puts @recipe_id
-    puts '@user_id'
-    puts @user_id
 
     @delete = Book.where(['recipe_id = ? AND user_id = ?', @recipe_id, @user_id]).first
     @delete.destroy
